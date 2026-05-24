@@ -119,16 +119,52 @@
         }
     </script>
 <style>
-        body {
-            /* Mobile restriction styling for 390px width */
+         body {
             max-width: 390px;
             margin: 0 auto;
             min-height: 100vh;
-            background-color: #050707; /* Cyber Black fallback */
+            background-color: #050707;
             position: relative;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5); /* Just to see the edges on larger screens */
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
+        
+        /* Animated Background Pattern */
+        .cyber-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background: linear-gradient(rgba(40, 167, 137, 0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(40, 167, 137, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: background-move 20s linear infinite;
+            pointer-events: none;
+        }
+
+        /* Scanning Light Bar */
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, transparent, rgba(40, 167, 137, 0.1), transparent);
+            z-index: 1;
+            animation: scan 8s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes background-move {
+            from { background-position: 0 0; }
+            to { background-position: 0 30px; }
+        }
+
+        @keyframes scan {
+            0% { top: -10%; }
+            100% { top: 110%; }
+        }
+
         
         .circuit-bg {
             background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M54.627 0l.83.83v58.34l-.83.83H5.373l-.83-.83V.83l.83-.83h49.254zM53.5 2.5h-47v55h47v-55zM22.5 15h15v30h-15V15z" fill="%2328A789" fill-opacity="0.02" fill-rule="evenodd"/%3E');
