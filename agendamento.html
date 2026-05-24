@@ -111,10 +111,12 @@
 <body class="bg-[#050707] text-on-background min-h-screen flex flex-col font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container">
 <!-- TopAppBar -->
 <header class="fixed top-0 w-full bg-background dark:bg-background border-b border-outline-variant flex items-center justify-between px-margin-mobile md:px-margin-desktop h-16 z-50 transition-all duration-300">
-<a class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors active:scale-95 text-label-sm font-label-sm uppercase tracking-wider" href="index.html">
-<span class="material-symbols-outlined text-[18px]">arrow_back</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant group-hover:text-primary transition-colors">Voltar</span>
-</a>
+ <a href="index.html" class="flex items-center gap-xs cursor-pointer active:scale-95 transition-transform group">
+            <span
+                class="material-symbols-outlined text-primary dark:text-primary group-hover:bg-primary-container/10 rounded-full p-1 transition-colors">arrow_back</span>
+            <span
+                class="font-label-sm text-label-sm text-on-surface-variant group-hover:text-primary transition-colors">Voltar</span>
+        </a>
 <div class="absolute left-1/2 -translate-x-1/2 flex items-center justify-center">
 <span class="material-symbols-outlined text-primary text-[28px] drop-shadow-[0_0_8px_rgba(102,218,186,0.5)]">calendar_month</span>
 </div>
