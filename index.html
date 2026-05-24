@@ -1,11 +1,12 @@
-<!DOCTYPE html><html class="dark" lang="pt-BR" style=""><head>
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
 <title>Konnected - Presença Digital Local</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
           darkMode: "class",
@@ -59,8 +60,6 @@
                       "on-secondary-fixed": "#191c1c",
                       "surface-variant": "#333535",
                       "inverse-on-surface": "#2e3131",
-                      
-                      // Custom brand additions mapping to requests
                       "cyber-black": "#050707",
                       "deep-charcoal": "#0E1111",
                       "dark-circuit": "#141919",
@@ -109,17 +108,13 @@
                   "neon-glow": "0px 8px 24px rgba(40, 167, 137, 0.15)",
                   "neon-glow-hover": "0px 12px 32px rgba(40, 167, 137, 0.3)",
                   "image-glow": "0px 0px 40px rgba(40, 167, 137, 0.2)"
-              },
-              "backgroundImage": {
-                  "circuit-pattern": "url('data:image/svg+xml,%3Csvg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M2 2h2v2H2V2zm4 0h2v2H6V2zm4 0h2v2h-2V2zm4 0h2v2h-2V2zm0 4h2v2h-2V6zm-4 0h2v2h-2V6zm-4 0h2v2H6V6zM2 6h2v2H2V6zm0 4h2v2H2v-2zm4 0h2v2H6v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2zm0 4h2v2h-2v-2zm-4 0h2v2h-2v-2zm-4 0h2v2H6v-2zM2 14h2v2H2v-2z\" fill=\"%2328A789\" fill-opacity=\"0.03\" fill-rule=\"evenodd\"/%3E')",
-                  "gradient-down": "linear-gradient(to bottom, transparent, rgba(14, 17, 17, 1))"
               }
             }
           }
         }
     </script>
 <style>
-         body {
+        body {
             max-width: 390px;
             margin: 0 auto;
             min-height: 100vh;
@@ -165,22 +160,61 @@
             100% { top: 110%; }
         }
 
-        
+        /* Pulsing Glow Animation */
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0px 0px 15px rgba(40, 167, 137, 0.2); }
+            50% { box-shadow: 0px 0px 35px rgba(40, 167, 137, 0.5); }
+        }
+
+        .animate-pulse-glow {
+            animation: pulse-glow 3s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+        }
+
+        /* Entrance Animations - Sequential */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1), 
+                        transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Interactive Elements */
+        .interactive-btn {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .interactive-btn:active {
+            transform: scale(0.95);
+            filter: brightness(1.2);
+        }
+        @media (hover: hover) {
+            .interactive-btn:hover {
+                transform: scale(1.02);
+                filter: brightness(1.1);
+            }
+        }
+
         .circuit-bg {
             background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M54.627 0l.83.83v58.34l-.83.83H5.373l-.83-.83V.83l.83-.83h49.254zM53.5 2.5h-47v55h47v-55zM22.5 15h15v30h-15V15z" fill="%2328A789" fill-opacity="0.02" fill-rule="evenodd"/%3E');
         }
     </style>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&amp;display=swap" rel="stylesheet" class=""></head>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&amp;display=swap" rel="stylesheet"/>
+</head>
 <body class="bg-cyber-black text-on-surface antialiased font-body-md selection:bg-electric-emerald selection:text-black">
-<!-- JSON Component Structure Setup (Hidden on mobile, purely logical mapping as per instructions to only use BottomNav on mobile. However, instructed to suppress if landing/transactional. This is a conversion biosite, so nav is suppressed to focus on Canvas.) -->
+<div class="cyber-bg"></div>
+<div class="scanline"></div>
+<main class="relative z-10">
 <!-- SECTION 1: HERO SECTION -->
 <section class="relative pt-xl pb-lg px-margin-mobile flex flex-col items-center text-center circuit-bg">
-<!-- Downward gradient overlay -->
 <div class="absolute inset-0 bg-gradient-to-b from-transparent to-deep-charcoal opacity-80 pointer-events-none"></div>
 <div class="relative z-10 w-full flex flex-col items-center">
-<!-- Centered Image with Glow -->
-<div class="w-[110px] h-[110px] rounded-full overflow-hidden shadow-image-glow border border-dark-circuit mb-md" style="width: 110px; height: 110px; border-radius: 50%; box-shadow: rgba(40, 167, 137, 0.4) 0px 0px 20px;">
-<img alt="Konnected Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0uhQX5V-vyM3_Qc-BYOuwS5oJ0UYtqjAQ_W-CxoWqD1nK7148uJQeTn4waje9WOzf0m74RjtAoNXLq3DtNsGkdbcvLvJx2fNFUoLpS6a1xZVQDdyv5LCcbKF0WffEhoaCP2iG_pnQFecgr9Jmy-_jPA0u68h4vkfIsWYWXBiohGFqo7Rz3n_E_E0p3Gwn1mBMzawJfa3TwxUOzn9W4fxU3ccpB7JIhB6BkCVqKgl5LQtkIpXKkIJXMwD6ZyfN7MGRUuopJAAZbpzbuk">
+<!-- Centered Image with Pulsing Glow -->
+<div class="reveal w-[110px] h-[110px] rounded-full overflow-hidden border border-dark-circuit mb-md animate-pulse-glow" style="width: 110px; height: 110px; border-radius: 50%;">
+<img alt="Konnected Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0uhQX5V-vyM3_Qc-BYOuwS5oJ0UYtqjAQ_W-CxoWqD1nK7148uJQeTn4waje9WOzf0m74RjtAoNXLq3DtNsGkdbcvLvJx2fNFUoLpS6a1xZVQDdyv5LCcbKF0WffEhoaCP2iG_pnQFecgr9Jmy-_jPA0u68h4vkfIsWYWXBiohGFqo7Rz3n_E_E0p3Gwn1mBMzawJfa3TwxUOzn9W4fxU3ccpB7JIhB6BkCVqKgl5LQtkIpXKkIJXMwD6ZyfN7MGRUuopJAAZbpzbuk"/>
 </div>
 <!-- Brand Name -->
 <h1 class="font-headline-lg-mobile text-headline-lg-mobile tracking-widest uppercase mb-sm font-bold text-white" style="font-family: Montserrat, sans-serif; font-weight: 600;">
