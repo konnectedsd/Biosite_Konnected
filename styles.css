@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+/* Globals */
+body {
+    max-width: 390px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background-color: #050707;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    font-family: 'Inter', sans-serif;
+    color: #e1e3e2;
+}
+
+body.full-width {
+    max-width: none;
+    box-shadow: none;
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.montserrat-font {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Animated Background Pattern (Cyber) */
+.cyber-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(rgba(40, 167, 137, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(40, 167, 137, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+    animation: background-move 20s linear infinite;
+    pointer-events: none;
+}
+
+.circuit-pattern {
+    background-image: radial-gradient(#141919 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.circuit-bg {
+    background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M54.627 0l.83.83v58.34l-.83.83H5.373l-.83-.83V.83l.83-.83h49.254zM53.5 2.5h-47v55h47v-55zM22.5 15h15v30h-15V15z" fill="%2328A789" fill-opacity="0.02" fill-rule="evenodd"/%3E');
+}
+
+.circuit-bg-radial {
+    background-image: radial-gradient(circle at 50% 50%, rgba(40, 167, 137, 0.05) 0%, transparent 60%);
+}
+
+@keyframes background-move {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 0 30px;
+    }
+}
+
+/* Scanning Light Bar */
+.scanline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, transparent, rgba(40, 167, 137, 0.1), transparent);
+    z-index: 1;
+    animation: scan 8s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes scan {
+    0% {
+        top: -10%;
+    }
+    100% {
+        top: 110%;
+    }
+}
+
+/* Pulsing Glow Animation */
+@keyframes pulse-glow {
+    0%,
+    100% {
+        box-shadow: 0px 0px 15px rgba(40, 167, 137, 0.2);
+    }
+    50% {
+        box-shadow: 0px 0px 35px rgba(40, 167, 137, 0.5);
+    }
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 3s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+.emerald-glow {
+    box-shadow: 0 0 15px rgba(102, 218, 186, 0.1);
+}
+
+.neon-glow {
+    box-shadow: 0px 8px 24px rgba(40, 167, 137, 0.15);
+}
+
+.lit-edge {
+    border-top: 1px solid #141919;
+}
+
+/* Entrance Animations - Sequential */
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1),
+        transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Interactive Elements */
+.interactive-btn {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.interactive-btn:active {
+    transform: scale(0.95);
+    filter: brightness(1.2);
+}
+
+@media (hover: hover) {
+    .interactive-btn:hover {
+        transform: scale(1.02);
+        filter: brightness(1.1);
+    }
+}
+
+.row-hover {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.row-hover:hover {
+    background-color: rgba(102, 218, 186, 0.03);
+    transform: translateX(4px) !important;
+}
+
+.trace-divider {
+    position: relative;
+}
+
+.trace-divider::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    width: 4px;
+    height: 4px;
+    background-color: #3d4945;
+}

@@ -101,12 +101,7 @@
             }
         }
     </script>
-<style>
-        body { background-color: #050707; }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-    </style>
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body class="bg-[#050707] text-on-background min-h-screen flex flex-col font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container">
 <!-- TopAppBar -->
@@ -123,7 +118,7 @@
 <div class="w-[60px]"></div> <!-- Spacer for centering -->
 </header>
 <!-- Main Content -->
-<main class="flex-grow pt-24 pb-lg px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto w-full flex flex-col items-center" style="opacity: 1; transform: translateY(0px); transition: opacity 0.8s ease-out, transform 0.8s ease-out;">
+<main class="flex-grow pt-24 pb-lg px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto w-full flex flex-col items-center">
 <!-- Header Text -->
 <div class="text-center mb-lg md:mb-xl w-full max-w-2xl">
 <h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-background mb-sm tracking-tight text-balance">
@@ -139,7 +134,7 @@
 <div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 <div class="h-[600px] w-full flex items-center justify-center bg-surface-dim relative z-10">
 <!-- Início do agendamento de consultas no Google Calendar -->
-<iframe src="https://calendar.google.com/calendar/appointments/AcZssZ2EvF9jd96ox6mJTIBYeZ12kfJ1SawQb3WmaJk=?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe>
+<iframe src="https://calendar.google.com/calendar/appointments/AcZssZ2EvF9jd96ox6mJTIBYeZ12kfJ1SawQb3WmaJk=?gv=true" class="border-0 w-full h-[600px]" title="Agendamento Google Calendar" frameborder="0"></iframe>
 <!-- fim do agendamento de compromissos no Google Calendar -->
 </div>
 <!-- Circuit decorative element bottom -->
