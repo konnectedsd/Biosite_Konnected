@@ -109,6 +109,7 @@
         }
     </script>
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
 </head>
 
 <body class="font-body-md antialiased min-h-screen flex flex-col relative circuit-bg">
@@ -130,7 +131,7 @@
     </header>
     <!-- Main Content Canvas -->
     <main class="flex-grow pt-[88px] pb-lg px-margin-mobile max-w-3xl mx-auto w-full">
-        <h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-xl">Soluções Digitais</h2>
+        <h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-xl reveal">Soluções Digitais</h2>
         <!-- Subsection 1: Serviços Digitais -->
         <section class="mb-xl">
             <h3 class="font-headline-md text-headline-md-mobile text-on-surface mb-md relative inline-block">
@@ -183,13 +184,12 @@
                             src="images/sessão.jpg">
                     </div>
                     <div class="flex flex-col justify-center">
-                        <h4 class="font-headline-md text-[18px] font-semibold text-primary mb-1">Sessão de Mídia
+                        <h4 class="font-headline-md text-[18px] font-semibold text-primary mb-1">Sessão Fotográfica
                             Profissional</h4>
                         <p class="font-body-md text-[14px] text-on-surface-variant leading-tight">Produção de fotos em
-                            alta resolução do seu estabelecimento e captação de vídeos dinâmicos em formato Reels/Shorts
-                            para destacar o seu negócio nas redes sociais.</p>
+                            alta resolução do seu estabelecimento para destacar o seu negócio nas redes sociais.</p>
                         <span class="font-label-sm text-[13px] text-tertiary mt-3 mb-1 block">A partir de R$
-                            397,00</span>
+                            197,00</span>
                     </div>
                 </div>
             </div>
@@ -230,7 +230,7 @@
                         <h4 class="font-label-sm text-label-sm font-bold text-primary mb-1">Plaquinha Premium NFC</h4>
                         <p class="font-body-md text-[12px] text-on-surface-variant leading-tight flex-grow mb-2">
                             Identidade visual completa com chip de aproximação inteligente NFC e QR Code integrado.</p>
-                        <span class="font-label-sm text-[11px] text-tertiary">A partir de R$ 59,90</span>
+                        <span class="font-label-sm text-[11px] text-tertiary">A partir de R$ 89,90</span>
                     </div>
                 </div>
             </div>
@@ -242,33 +242,60 @@
             </div>
         </section>
     </main>
-    </section>
-    </main>
     <!-- Bottom Nav Suppressed as this is a subpage with a 'Back' action -->
     <footer
         class="w-full py-lg mt-xl bg-surface-dim flex flex-col items-center gap-base px-margin-mobile text-center border-t border-outline-variant/20">
-        <!-- Social Links (Custom requested override) -->
-        <div class="flex flex-row justify-center gap-md mb-sm">
-            <a class="text-electric-emerald hover:text-white transition-colors flex items-center justify-center p-xs"
-                href="https://wa.me/5599999999999" target="_blank" rel="noopener noreferrer">
-                <span class="material-symbols-outlined">chat</span>
-            </a>
-            <a class="text-electric-emerald hover:text-white transition-colors flex items-center justify-center p-xs"
-                href="https://www.instagram.com/konnected.sd/" target="_blank" rel="noopener noreferrer">
-                <span class="material-symbols-outlined">photo_camera</span>
-            </a>
-            <a class="text-electric-emerald hover:text-white transition-colors flex items-center justify-center p-xs"
-                href="https://mail.google.com/mail/u/3/" target="_blank" rel="noopener noreferrer">
-                <span class="material-symbols-outlined">mail</span>
-            </a>
-        </div>
-        <!-- Copyright (Custom requested string) -->
         <p
             class="font-label-sm text-[10px] tracking-[0.2em] uppercase text-muted-gray opacity-80 hover:opacity-100 transition-all max-w-[90%] mx-auto leading-relaxed">
             Konnected © 2026 — Presença Digital Local com Plaquinhas NFC + QR Code + Mídia Profissional. Todos os
             direitos reservados.
         </p>
     </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const lenis = new Lenis({
+                duration: 1.2,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                direction: 'vertical',
+                gestureDirection: 'vertical',
+                smooth: true,
+                smoothTouch: false,
+                touchMultiplier: 2,
+            });
+
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+            requestAnimationFrame(raf);
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const reveals = document.querySelectorAll(".reveal");
+            reveals.forEach((el, index) => {
+                if (index < 2) {
+                    setTimeout(() => {
+                        el.classList.add("active");
+                    }, index * 150);
+                } else {
+                    observer.observe(el);
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

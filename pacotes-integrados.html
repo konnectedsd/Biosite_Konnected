@@ -1,36 +1,21 @@
-<!DOCTYPE html><html class="dark" lang="pt-BR"><head>
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Nossos Planos - Konnected</title>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap');
-        
-        .material-symbols-outlined {
-          font-family: 'Material Symbols Outlined';
-          font-weight: normal;
-          font-style: normal;
-          font-size: 24px;  /* Preferred icon size */
-          display: inline-block;
-          line-height: 1;
-          text-transform: none;
-          letter-spacing: normal;
-          word-wrap: normal;
-          white-space: nowrap;
-          direction: ltr;
-          /* Support for all WebKit browsers. */
-          -webkit-font-smoothing: antialiased;
-          /* Support for Safari and Chrome. */
-          text-rendering: optimizeLegibility;
-          /* Support for Firefox. */
-          -moz-osx-font-smoothing: grayscale;
-          /* Support for IE. */
-          font-feature-settings: 'liga';
-        }
-    </style>
-<script id="tailwind-config">
+<!DOCTYPE html>
+<html class="dark" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Nossos Planos - Konnected</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
@@ -128,116 +113,221 @@
         }
     </script>
 </head>
+
 <body class="bg-[#050707] text-on-background min-h-screen pb-32">
-<!-- TopAppBar -->
-<header class="bg-background dark:bg-background border-b border-outline-variant flex items-center justify-between px-margin-mobile h-16 w-full z-50 fixed top-0">
-<a class="flex items-center text-on-surface-variant hover:text-primary transition-colors active:scale-95 transition-transform" href="index.html">
-<span class="material-symbols-outlined mr-2" data-icon="arrow_back">arrow_back</span>
-<span class="font-label-sm text-label-sm">Voltar</span>
-</a>
-<h1 class="font-headline-md text-headline-md-mobile font-bold text-primary dark:text-primary">Konnected</h1>
-<div class="w-20"></div> <!-- Spacer for centering -->
-</header>
-<main class="pt-24 px-margin-mobile max-w-md mx-auto">
-<!-- Header Section -->
-<div class="mb-8">
-<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-background mb-4">Nossos Planos</h2>
-<p class="font-body-md text-body-md text-on-surface-variant">
+    <!-- TopAppBar -->
+    <header
+        class="bg-background dark:bg-background border-b border-outline-variant flex items-center justify-between px-margin-mobile h-16 w-full z-50 fixed top-0">
+        <a class="flex items-center text-on-surface-variant hover:text-primary transition-colors active:scale-95 transition-transform"
+            href="index.html">
+            <span class="material-symbols-outlined mr-2" data-icon="arrow_back">arrow_back</span>
+            <span class="font-label-sm text-label-sm">Voltar</span>
+        </a>
+        <h1 class="font-headline-md text-headline-md-mobile font-bold text-primary dark:text-primary">Konnected</h1>
+        <div class="w-20"></div> <!-- Spacer for centering -->
+    </header>
+    <main class="pt-24 px-margin-mobile max-w-md mx-auto">
+        <!-- Header Section -->
+        <div class="mb-8 reveal">
+            <h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-background mb-4">Nossos Planos</h2>
+            <p class="font-body-md text-body-md text-on-surface-variant">
                 Soluções completas com o melhor custo-benefício para transformar a presença do seu comércio.
             </p>
-</div>
-<!-- Pricing Cards Stack -->
-<div class="space-y-6">
-<!-- Card 1: Entrada -->
-<div class="bg-[#111111] rounded-[16px] p-6 border-t border-outline-variant relative overflow-hidden group">
-<div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(circle at 100% 0%, #28a789 0%, transparent 50%);"></div>
-<h3 class="font-headline-md text-headline-md-mobile text-on-background mb-2">PACOTE ENTRADA</h3>
-<div class="mb-6 flex flex-col">
-<span class="font-headline-lg-mobile text-headline-lg-mobile text-primary">R$ 147,00 <span class="text-sm text-on-surface-variant font-normal">à vista</span></span>
-<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">+ R$ 29,90/mês</span>
-</div>
-<ul class="space-y-3 font-body-md text-body-md text-on-background">
-<li class="flex items-start">
-<span class="material-symbols-outlined text-primary mr-2 text-[20px]" data-icon="check_circle">check_circle</span>
-<span class="">Plaquinha Básica com QR Code (Sem NFC)</span>
-</li>
-<li class="flex items-start">
-<span class="material-symbols-outlined text-primary mr-2 text-[20px]" data-icon="check_circle">check_circle</span>
-<span class="">Biosite criado e publicado no seu domínio</span>
-</li>
-<li class="flex items-start">
-<span class="material-symbols-outlined text-primary mr-2 text-[20px]" data-icon="check_circle">check_circle</span>
-<span class="">Google Meu Negócio configurado</span>
-</li>
-</ul>
-</div>
-<!-- Card 2: Profissional (Highlighted) -->
-<div class="bg-[#111111] rounded-[16px] p-6 border-t border-outline-variant relative overflow-hidden group">
+        </div>
+        <!-- Pricing Cards Stack -->
+        <div class="space-y-6">
+            <!-- Card 1: Entrada -->
+            <div class="bg-[#111111] rounded-[16px] p-6 border-t border-outline-variant relative overflow-hidden group reveal">
+                <div class="absolute inset-0 opacity-5 pointer-events-none bg-gradient-top-right"></div>
+                <h3 class="font-headline-md text-headline-md-mobile text-on-background mb-2">PACOTE ENTRADA</h3>
+                <div class="mb-6 flex flex-col">
+                    <span class="font-headline-lg-mobile text-headline-lg-mobile text-primary">R$ 227,00 <span
+                            class="text-sm text-on-surface-variant font-normal">à vista</span></span>
+                    <span class="font-label-sm text-label-sm text-on-surface-variant mt-1">+ R$ 29,90/mês</span>
+                </div>
+                <ul class="space-y-3 font-body-md text-body-md text-on-background">
+                    <li class="flex items-start">
+                        <span class="material-symbols-outlined text-primary mr-2 text-[20px]"
+                            data-icon="check_circle">check_circle</span>
+                        <span class="">Plaquinha Básica com QR Code (Sem NFC)</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="material-symbols-outlined text-primary mr-2 text-[20px]"
+                            data-icon="check_circle">check_circle</span>
+                        <span class="">Biosite criado e publicado no seu domínio</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="material-symbols-outlined text-primary mr-2 text-[20px]"
+                            data-icon="check_circle">check_circle</span>
+                        <span class="">Google Meu Negócio configurado</span>
+                    </li>
+                </ul>
+            </div>
+            <!-- Card 2: Profissional (Highlighted) -->
+            <div class="mb-lg rounded-xl overflow-hidden glass-panel emerald-glow reveal">
+                <div class="absolute inset-0 opacity-5 pointer-events-none bg-gradient-top-right">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-headline-md text-headline-md-mobile text-on-background mb-2">PACOTE PROFISSIONAL</h3>
+                    <div class="mb-6 flex flex-col">
+                        <span class="font-headline-lg-mobile text-headline-lg-mobile text-primary">R$ 447,00 <span
+                                class="text-sm text-on-surface-variant font-normal">à vista</span></span>
+                        <span class="font-label-sm text-label-sm text-on-surface-variant mt-1">+ R$ 29,90/mês</span>
+                    </div>
+                    <ul class="space-y-3 font-body-md text-body-md text-on-background">
+                        <li class="flex items-start">
+                            <span class="material-symbols-outlined text-primary mr-2 text-[20px]"
+                                data-icon="check_circle">check_circle</span>
+                            <span class="">Plaquinha Premium com Tecnologia NFC + QR Code</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="material-symbols-outlined text-primary mr-2 text-[20px]"
+                                data-icon="check_circle">check_circle</span>
+                            <span class="">Biosite criado e publicado no seu domínio</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="material-symbols-outlined text-primary mr-2 text-[20px]"
+                                data-icon="check_circle">check_circle</span>
+                            <span class="">Google Meu Negócio configurado</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="material-symbols-outlined text-primary mr-2 text-[20px]"
+                                data-icon="check_circle">check_circle</span>
+                            <span class="">Sessão Básica — 20 fotos editadas</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Card 3: Completo -->
+            <div class="bg-[#111111] rounded-[16px] p-6 border-t border-outline-variant relative overflow-hidden group reveal">
+                <div class="absolute inset-0 opacity-5 pointer-events-none bg-gradient-bottom-left"></div>
+                <h3 class="font-headline-md text-headline-md-mobile text-on-background mb-2">PACOTE COMPLETO</h3>
+                <div class="mb-6 flex flex-col">
+                    <span class="font-headline-lg-mobile text-headline-lg-mobile text-primary">R$ 597,00 <span
+                            class="text-sm text-on-surface-variant font-normal">à vista</span></span>
+                    <span class="font-label-sm text-label-sm text-on-surface-variant mt-1">+ R$ 29,90/mês</span>
+                </div>
+                <ul class="space-y-3 font-body-md text-body-md text-on-background">
+                    <li class="flex items-start">
+                        <span class="material-symbols-outlined text-primary mr-2 text-[20px]"
+                            data-icon="check_circle">check_circle</span>
+                        <span class="">Plaquinha Premium com Tecnologia NFC + QR Code</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="material-symbols-outlined text-primary mr-2 text-[20px]"
+                            data-icon="check_circle">check_circle</span>
+                        <span class="">Biosite criado e publicado no seu domínio</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="material-symbols-outlined text-primary mr-2 text-[20px]"
+                            data-icon="check_circle">check_circle</span>
+                        <span class="">Google Meu Negócio configurado</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="material-symbols-outlined text-primary mr-2 text-[20px]"
+                            data-icon="check_circle">check_circle</span>
+                        <span class="">Sessão Completa — 40 fotos editadas</span>
+                    </li>
+                </ul>
+            </div>
+            <!-- Card 4: Digital Total -->
+            <div class="mb-lg rounded-xl overflow-hidden glass-panel emerald-glow reveal">
+                <div class="absolute inset-0 opacity-5 pointer-events-none bg-gradient-top-right">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-headline-md text-headline-md-mobile text-on-background mb-2">PACOTE DIGITAL TOTAL</h3>
+                    <div class="mb-6 flex flex-col">
+                        <span class="font-headline-lg-mobile text-headline-lg-mobile text-primary">R$ 647,00 <span
+                                class="text-sm text-on-surface-variant font-normal">à vista</span></span>
+                        <span class="font-label-sm text-label-sm text-on-surface-variant mt-1">+ R$ 29,90/mês</span>
+                    </div>
+                    <ul class="space-y-3 font-body-md text-body-md text-on-background">
+                        <li class="flex items-start">
+                            <span class="material-symbols-outlined text-primary mr-2 text-[20px]"
+                                data-icon="check_circle">check_circle</span>
+                            <span class="">Plaquinha Premium com Tecnologia NFC + QR Code</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="material-symbols-outlined text-primary mr-2 text-[20px]"
+                                data-icon="check_circle">check_circle</span>
+                            <span class="">Biosite criado e publicado no seu domínio</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="material-symbols-outlined text-primary mr-2 text-[20px]"
+                                data-icon="check_circle">check_circle</span>
+                            <span class="">Google Meu Negócio configurado</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="material-symbols-outlined text-primary mr-2 text-[20px]"
+                                data-icon="check_circle">check_circle</span>
+                            <span class="">Sessão Básica — 20 fotos editadas</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="material-symbols-outlined text-primary mr-2 text-[20px]"
+                                data-icon="check_circle">check_circle</span>
+                            <span class="">Setup Google Ads (Tráfego Pago Local)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const lenis = new Lenis({
+                duration: 1.2,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                direction: 'vertical',
+                gestureDirection: 'vertical',
+                smooth: true,
+                smoothTouch: false,
+                touchMultiplier: 2,
+            });
 
-<div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(circle at 100% 0%, rgb(40, 167, 137) 0%, transparent 50%);"></div>
-<h3 class="font-headline-md text-headline-md-mobile text-on-background mb-2">PACOTE PROFISSIONAL</h3>
-<div class="mb-6 flex flex-col">
-<span class="font-headline-lg-mobile text-headline-lg-mobile text-primary">R$ 447,00 <span class="text-sm text-on-surface-variant font-normal">à vista</span></span>
-<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">+ R$ 29,90/mês</span>
-</div>
-<ul class="space-y-3 font-body-md text-body-md text-on-background">
-<li class="flex items-start">
-<span class="material-symbols-outlined text-primary mr-2 text-[20px]" data-icon="check_circle">check_circle</span>
-<span class="">Plaquinha Premium com Tecnologia NFC + QR Code</span>
-</li>
-<li class="flex items-start">
-<span class="material-symbols-outlined text-primary mr-2 text-[20px]" data-icon="check_circle">check_circle</span>
-<span class="">Biosite criado e publicado no seu domínio</span>
-</li>
-<li class="flex items-start">
-<span class="material-symbols-outlined text-primary mr-2 text-[20px]" data-icon="check_circle">check_circle</span>
-<span class="">Google Meu Negócio configurado</span>
-</li>
-<li class="flex items-start">
-<span class="material-symbols-outlined text-primary mr-2 text-[20px]" data-icon="check_circle">check_circle</span>
-<span class="">Sessão Básica de Mídia (20 fotos profissionais editadas)</span>
-</li>
-</ul>
-</div>
-<!-- Card 3: Completo -->
-<div class="bg-[#111111] rounded-[16px] p-6 border-t border-outline-variant relative overflow-hidden group">
-<div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(circle at 0% 100%, #28a789 0%, transparent 50%);"></div>
-<h3 class="font-headline-md text-headline-md-mobile text-on-background mb-2">PACOTE COMPLETO</h3>
-<div class="mb-6 flex flex-col">
-<span class="font-headline-lg-mobile text-headline-lg-mobile text-primary">R$ 647,00 <span class="text-sm text-on-surface-variant font-normal">à vista</span></span>
-<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">(ou 2x de R$ 348,50) | + R$ 29,90/mês</span>
-</div>
-<ul class="space-y-3 font-body-md text-body-md text-on-background">
-<li class="flex items-start">
-<span class="material-symbols-outlined text-primary mr-2 text-[20px]" data-icon="check_circle">check_circle</span>
-<span class="">Plaquinha Premium com Tecnologia NFC + QR Code</span>
-</li>
-<li class="flex items-start">
-<span class="material-symbols-outlined text-primary mr-2 text-[20px]" data-icon="check_circle">check_circle</span>
-<span class="">Biosite criado e publicado no seu domínio</span>
-</li>
-<li class="flex items-start">
-<span class="material-symbols-outlined text-primary mr-2 text-[20px]" data-icon="check_circle">check_circle</span>
-<span class="">Google Meu Negócio configurado</span>
-</li>
-<li class="flex items-start">
-<span class="material-symbols-outlined text-primary mr-2 text-[20px]" data-icon="check_circle">check_circle</span>
-<span class="">Sessão Completa de Mídia (40 fotos profissionais editadas)</span>
-</li>
-<li class="flex items-start">
-<span class="material-symbols-outlined text-primary mr-2 text-[20px]" data-icon="check_circle">check_circle</span>
-<span class="">1 Vídeo produzido e editado para Redes Sociais</span>
-</li>
-</ul>
-</div>
-</div>
-</main>
-<!-- Footer CTA -->
-<div class="fixed bottom-0 left-0 w-full p-4 bg-background/90 backdrop-blur-md border-t border-outline-variant z-40">
-<a href="agendamento.html" class="w-full bg-[#28a789] hover:bg-primary-fixed transition-colors text-black font-label-sm text-label-sm font-bold uppercase py-4 rounded-xl shadow-[0px_0px_20px_rgba(40,167,137,0.3)] active:scale-95 flex justify-center items-center text-center">
-            QUERO ALAVANCAR MEU NEGÓCIO <span class="material-symbols-outlined ml-2" data-icon="arrow_forward">arrow_forward</span>
-</a>
-</div>
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+            requestAnimationFrame(raf);
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const reveals = document.querySelectorAll(".reveal");
+            reveals.forEach((el, index) => {
+                if(index < 2) {
+                    setTimeout(() => {
+                        el.classList.add("active");
+                    }, index * 150);
+                } else {
+                    observer.observe(el);
+                }
+            });
+        });
+    </script>
+    <!-- Footer CTA -->
+    <div
+        class="fixed bottom-0 left-0 w-full p-4 bg-background/90 backdrop-blur-md border-t border-outline-variant z-40">
+        <a href="agendamento.html"
+            class="w-full bg-[#28a789] hover:bg-primary-fixed transition-colors text-black font-label-sm text-label-sm font-bold uppercase py-4 rounded-xl shadow-[0px_0px_20px_rgba(40,167,137,0.3)] active:scale-95 flex justify-center items-center text-center">
+            QUERO ALAVANCAR MEU NEGÓCIO <span class="material-symbols-outlined ml-2"
+                data-icon="arrow_forward">arrow_forward</span>
+        </a>
+    </div>
 
 
-</body></html>
+</body>
+
+</html>
