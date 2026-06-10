@@ -29,8 +29,6 @@
 | Pacote | Inclusos | Valor (Tabela Geral) | Valor (Página Pacotes) |
 | :--- | :--- | :--- | :--- |
 | **Entrada** | Plaquinha Básica NFC + Biosite + Google | R$ 227,00 | R$ 227,00 |
-| **Profissional** | Plaquinha Premium NFC + Biosite + Google + 20 fotos | R$ 547,00 | R$ 447,00 |
-| **Completo** | Plaquinha Premium NFC + Biosite + Google + 40 fotos | R$ 697,00 | R$ 597,00 |
-| **Digital Total** | Plaquinha Premium NFC + Biosite + Google + 20 fotos | R$ 747,00 | R$ 647,00 |
-
-*(Nota: Existe uma divergência nos valores de alguns pacotes entre os arquivos `tabela-de-precos.html` e `pacotes-integrados.html`)*
+| **Profissional** | Plaquinha Premium NFC + Biosite + Google + 20 fotos | R$ 547,00 | R$ 547,00 |
+| **Completo** | Plaquinha Premium NFC + Biosite + Google + 40 fotos | R$ 697,00 | R$ 697,00 |
+| **Digital Total** | Plaquinha Premium NFC + Biosite + Google + 20 fotos | R$ 747,00 | R$ 747,00 |

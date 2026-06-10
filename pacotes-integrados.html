@@ -14,7 +14,9 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link rel="stylesheet" href="styles.css" />
     <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap"
+        rel="stylesheet">
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -137,7 +139,8 @@
         <!-- Pricing Cards Stack -->
         <div class="space-y-6">
             <!-- Card 1: Entrada -->
-            <div class="bg-[#111111] rounded-[16px] p-6 border-t border-outline-variant relative overflow-hidden group reveal">
+            <div
+                class="bg-[#111111] rounded-[16px] p-6 border-t border-outline-variant relative overflow-hidden group reveal">
                 <div class="absolute inset-0 opacity-5 pointer-events-none bg-gradient-top-right"></div>
                 <h3 class="font-headline-md text-headline-md-mobile text-on-background mb-2">PACOTE ENTRADA</h3>
                 <div class="mb-6 flex flex-col">
@@ -168,9 +171,10 @@
                 <div class="absolute inset-0 opacity-5 pointer-events-none bg-gradient-top-right">
                 </div>
                 <div class="p-6">
-                    <h3 class="font-headline-md text-headline-md-mobile text-on-background mb-2">PACOTE PROFISSIONAL</h3>
+                    <h3 class="font-headline-md text-headline-md-mobile text-on-background mb-2">PACOTE PROFISSIONAL
+                    </h3>
                     <div class="mb-6 flex flex-col">
-                        <span class="font-headline-lg-mobile text-headline-lg-mobile text-primary">R$ 447,00 <span
+                        <span class="font-headline-lg-mobile text-headline-lg-mobile text-primary">R$ 547,00 <span
                                 class="text-sm text-on-surface-variant font-normal">à vista</span></span>
                         <span class="font-label-sm text-label-sm text-on-surface-variant mt-1">+ R$ 29,90/mês</span>
                     </div>
@@ -199,11 +203,12 @@
                 </div>
             </div>
             <!-- Card 3: Completo -->
-            <div class="bg-[#111111] rounded-[16px] p-6 border-t border-outline-variant relative overflow-hidden group reveal">
+            <div
+                class="bg-[#111111] rounded-[16px] p-6 border-t border-outline-variant relative overflow-hidden group reveal">
                 <div class="absolute inset-0 opacity-5 pointer-events-none bg-gradient-bottom-left"></div>
                 <h3 class="font-headline-md text-headline-md-mobile text-on-background mb-2">PACOTE COMPLETO</h3>
                 <div class="mb-6 flex flex-col">
-                    <span class="font-headline-lg-mobile text-headline-lg-mobile text-primary">R$ 597,00 <span
+                    <span class="font-headline-lg-mobile text-headline-lg-mobile text-primary">R$ 697,00 <span
                             class="text-sm text-on-surface-variant font-normal">à vista</span></span>
                     <span class="font-label-sm text-label-sm text-on-surface-variant mt-1">+ R$ 29,90/mês</span>
                 </div>
@@ -235,9 +240,10 @@
                 <div class="absolute inset-0 opacity-5 pointer-events-none bg-gradient-top-right">
                 </div>
                 <div class="p-6">
-                    <h3 class="font-headline-md text-headline-md-mobile text-on-background mb-2">PACOTE DIGITAL TOTAL</h3>
+                    <h3 class="font-headline-md text-headline-md-mobile text-on-background mb-2">PACOTE DIGITAL TOTAL
+                    </h3>
                     <div class="mb-6 flex flex-col">
-                        <span class="font-headline-lg-mobile text-headline-lg-mobile text-primary">R$ 647,00 <span
+                        <span class="font-headline-lg-mobile text-headline-lg-mobile text-primary">R$ 747,00 <span
                                 class="text-sm text-on-surface-variant font-normal">à vista</span></span>
                         <span class="font-label-sm text-label-sm text-on-surface-variant mt-1">+ R$ 29,90/mês</span>
                     </div>
@@ -262,10 +268,6 @@
                                 data-icon="check_circle">check_circle</span>
                             <span class="">Sessão Básica — 20 fotos editadas</span>
                         </li>
-                        <li class="flex items-start">
-                            <span class="material-symbols-outlined text-primary mr-2 text-[20px]"
-                                data-icon="check_circle">check_circle</span>
-                            <span class="">Setup Google Ads (Tráfego Pago Local)</span>
                         </li>
                     </ul>
                 </div>
@@ -307,7 +309,7 @@
 
             const reveals = document.querySelectorAll(".reveal");
             reveals.forEach((el, index) => {
-                if(index < 2) {
+                if (index < 2) {
                     setTimeout(() => {
                         el.classList.add("active");
                     }, index * 150);
