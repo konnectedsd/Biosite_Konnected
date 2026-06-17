@@ -70,15 +70,12 @@ body.full-width {
 @keyframes mesh-drift {
     0% { 
         background-position: 0% 0%, 100% 0%, 50% 100%; 
-        filter: blur(60px);
     }
     50% { 
         background-position: 30% 20%, 70% 50%, 20% 60%; 
-        filter: blur(80px);
     }
     100% { 
         background-position: 10% 40%, 90% 10%, 60% 80%; 
-        filter: blur(60px);
     }
 }
 
@@ -197,6 +194,13 @@ body.full-width {
     opacity: 0.6;
 }
 
+/* Disable 3D grid animation on mobile for performance */
+@media (max-width: 768px) {
+    .cyber-bg {
+        animation: none;
+    }
+}
+
 @keyframes background-move-3d {
     from {
         background-position: 0 0;
@@ -232,7 +236,7 @@ body.full-width {
 /* Scanning Light Bar */
 .scanline {
     position: fixed;
-    top: 0;
+    top: -10%;
     left: 0;
     width: 100%;
     height: 4px;
@@ -240,15 +244,16 @@ body.full-width {
     z-index: 1;
     animation: scan 8s linear infinite;
     pointer-events: none;
+    will-change: transform;
 }
 
 @keyframes scan {
     0% {
-        top: -10%;
+        transform: translateY(0);
     }
 
     100% {
-        top: 110%;
+        transform: translateY(120vh);
     }
 }
 
