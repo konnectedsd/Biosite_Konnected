@@ -2,96 +2,37 @@
 <html class="dark" lang="pt-BR">
 
 <head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Tabela de Preços | Konnected</title>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Konnected - Tabela de Preços</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=Montserrat:wght@400;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet">
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        "primary-fixed-dim": "#66daba",
-                        "inverse-on-surface": "#2e3131",
-                        "error": "#ffb4ab",
-                        "on-background": "#e1e3e2",
-                        "surface-variant": "#333535",
-                        "on-tertiary": "#2c3131",
-                        "on-surface": "#e1e3e2",
-                        "on-tertiary-fixed-variant": "#434848",
-                        "on-primary-fixed": "#002018",
-                        "surface-container-lowest": "#0c0f0f",
-                        "surface": "#111414",
-                        "on-tertiary-fixed": "#171c1c",
-                        "secondary-container": "#444747",
+                        "cyber-black": "#050707",
+                        "deep-charcoal": "#0E1111",
+                        "dark-circuit": "#141919",
+                        "electric-emerald": "#28A789",
                         "primary": "#66daba",
-                        "outline": "#86948e",
-                        "tertiary": "#c3c7c7",
-                        "surface-bright": "#373a39",
-                        "tertiary-container": "#919696",
-                        "on-secondary-container": "#b3b5b5",
-                        "on-tertiary-container": "#2a2f2f",
-                        "on-primary-container": "#003529",
-                        "inverse-surface": "#e1e3e2",
-                        "surface-dim": "#111414",
-                        "surface-container": "#1d2020",
-                        "secondary": "#c5c7c6",
-                        "on-primary": "#00382c",
-                        "surface-container-low": "#191c1c",
-                        "secondary-fixed": "#e1e3e2",
-                        "inverse-primary": "#006b56",
-                        "on-error-container": "#ffdad6",
-                        "surface-tint": "#66daba",
-                        "on-error": "#690005",
-                        "outline-variant": "#3d4945",
-                        "surface-container-high": "#282a2a",
-                        "on-surface-variant": "#bccac3",
-                        "background": "#050707",
-                        "surface-container-highest": "#333535",
-                        "on-secondary-fixed-variant": "#444747",
-                        "error-container": "#93000a",
-                        "primary-container": "#28a789",
-                        "on-secondary-fixed": "#191c1c",
-                        "tertiary-fixed": "#dfe3e3",
-                        "secondary-fixed-dim": "#c5c7c6",
-                        "on-secondary": "#2e3131",
-                        "on-primary-fixed-variant": "#005140",
-                        "primary-fixed": "#84f7d5",
-                        "tertiary-fixed-dim": "#c3c7c7"
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.125rem",
-                        "lg": "0.25rem",
-                        "xl": "0.5rem",
-                        "full": "0.75rem"
-                    },
-                    spacing: {
-                        "md": "24px",
-                        "sm": "12px",
-                        "lg": "48px",
-                        "gutter": "24px",
-                        "xl": "80px",
-                        "margin-desktop": "64px",
-                        "margin-mobile": "16px",
-                        "base": "8px",
-                        "xs": "4px"
+                        "silver-light": "#E1E3E2",
+                        "muted-gray": "#86948E"
                     },
                     fontFamily: {
-                        "headline-lg": ["Space Grotesk"],
-                        "display-xl": ["Space Grotesk"],
-                        "body-lg": ["Inter"],
-                        "label-sm": ["Inter"],
-                        "headline-lg-mobile": ["Space Grotesk"],
-                        "body-md": ["Inter"],
-                        "headline-md": ["Space Grotesk"],
-                        "montserrat": ["Montserrat", "sans-serif"]
+                        "display-xl": ["Space Grotesk", "sans-serif"],
+                        "headline-lg": ["Space Grotesk", "sans-serif"],
+                        "headline-md": ["Space Grotesk", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "headline-lg-mobile": ["Space Grotesk", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "label-sm": ["Inter", "sans-serif"]
                     }
                 }
             }
@@ -101,253 +42,331 @@
     <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
 </head>
 
-<body class="bg-background selection:bg-primary selection:text-on-primary">
-    <!-- TopAppBar -->
-    <header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-outline-variant">
-        <div class="flex justify-between items-center h-16 px-margin-mobile w-full">
-            <a href="index.html"
-                class="flex items-center gap-2 text-primary active:scale-95 transition-all cursor-pointer group">
-                <span
-                    class="material-symbols-outlined group-hover:bg-primary-container/10 rounded-full p-1 transition-colors">arrow_back</span>
-                <span
-                    class="font-label-sm text-label-sm text-on-surface-variant group-hover:text-primary transition-colors">Voltar</span>
-            </a>
-            <h1 class="font-headline-md text-headline-md font-bold text-primary tracking-tight">&nbsp;</h1>
+<body class="antialiased selection:bg-electric-emerald selection:text-black min-h-screen relative flex flex-col">
 
-        </div>
+    <!-- Animated Grid Background -->
+    <div class="cyber-bg"></div>
+
+    <!-- Hero Gradient Mesh BG -->
+    <div class="hero-gradient-mesh opacity-50"></div>
+
+    <!-- Header / Nav -->
+    <header class="w-full relative z-50 pt-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex items-center justify-between">
+        <a href="index.html"
+            class="flex items-center gap-2 text-silver-light/80 hover:text-primary transition-colors group">
+            <span class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
+            <span class="font-label-sm tracking-wider uppercase text-[12px]">Voltar</span>
+        </a>
+        <span
+            class="font-label-sm text-[12px] tracking-widest uppercase text-silver-light/60 border border-silver-light/20 rounded-full px-4 py-1">Konnected</span>
     </header>
-    <main class="pt-24 pb-xl px-margin-mobile circuit-pattern min-h-screen">
-        <!-- Hero Concept Image Section -->
-        <div class="mb-lg rounded-xl overflow-hidden border border-outline-variant emerald-glow reveal">
+
+    <main class="flex-grow relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col pt-16 pb-24">
+
+        <!-- Hero Title -->
+        <div class="text-center mb-16 reveal">
+            <h1
+                class="font-headline-lg-mobile text-[32px] md:text-[56px] font-bold text-white mb-4 leading-tight text-gradient-reveal">
+                Tabela de Preços
+            </h1>
+            <p class="font-body-md text-[16px] md:text-[18px] text-silver-light/80 max-w-2xl mx-auto">
+                Transparência e flexibilidade para montar a presença digital ideal para o seu negócio.
+            </p>
+        </div>
+
+        <div class="flex flex-col gap-12">
+
+            <!-- Category 1: Plaquinhas NFC -->
+            <section class="reveal">
+                <div class="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
+                    <span class="material-symbols-outlined text-primary text-[28px]">nfc</span>
+                    <h2 class="font-headline-md text-[24px] text-white">Plaquinhas NFC</h2>
+                </div>
+
+                <div class="glass-panel rounded-xl overflow-hidden divide-y divide-white/5">
+
+                    <!-- Subcategory: Básica -->
+                    <div class="bg-white/5 p-4 flex flex-col">
+                        <span class="font-headline-md text-[18px] text-primary">Plaquinha Básica</span>
+                        <span class="font-body-md text-[12px] text-muted-gray italic">Arte simples (Logo + QR
+                            Code)</span>
+                    </div>
+                    <div class="flex justify-between items-center p-4 hover:bg-white/5 transition-colors">
+                        <span class="font-body-md text-[15px] text-silver-light">A6 (10×15 cm) sem NFC</span>
+                        <span class="font-headline-md text-[16px] text-primary">R$ 44,90</span>
+                    </div>
+                    <div class="flex justify-between items-center p-4 hover:bg-white/5 transition-colors">
+                        <span class="font-body-md text-[15px] text-silver-light">A6 (10×15 cm) com NFC</span>
+                        <span class="font-headline-md text-[16px] text-primary">R$ 59,90</span>
+                    </div>
+                    <div class="flex justify-between items-center p-4 hover:bg-white/5 transition-colors">
+                        <span class="font-body-md text-[15px] text-silver-light">A5 (15×21 cm) sem NFC</span>
+                        <span class="font-headline-md text-[16px] text-primary">R$ 54,90</span>
+                    </div>
+                    <div class="flex justify-between items-center p-4 hover:bg-white/5 transition-colors">
+                        <span class="font-body-md text-[15px] text-silver-light">A5 (15×21 cm) com NFC</span>
+                        <span class="font-headline-md text-[16px] text-primary">R$ 69,90</span>
+                    </div>
+
+                    <!-- Subcategory: Premium -->
+                    <div class="bg-white/5 p-4 flex flex-col border-t border-white/5 mt-4">
+                        <span class="font-headline-md text-[18px] text-primary">Plaquinha Premium</span>
+                        <span class="font-body-md text-[12px] text-muted-gray italic">Arte com identidade visual
+                            completa</span>
+                    </div>
+                    <div class="flex justify-between items-center p-4 hover:bg-white/5 transition-colors">
+                        <span class="font-body-md text-[15px] text-silver-light">A6 (10×15 cm) sem NFC</span>
+                        <span class="font-headline-md text-[16px] text-primary">R$ 64,90</span>
+                    </div>
+                    <div class="flex justify-between items-center p-4 hover:bg-white/5 transition-colors">
+                        <span class="font-body-md text-[15px] text-silver-light">A6 (10×15 cm) com NFC</span>
+                        <span class="font-headline-md text-[16px] text-primary">R$ 79,90</span>
+                    </div>
+                    <div class="flex justify-between items-center p-4 hover:bg-white/5 transition-colors">
+                        <span class="font-body-md text-[15px] text-silver-light">A5 (15×21 cm) sem NFC</span>
+                        <span class="font-headline-md text-[16px] text-primary">R$ 69,90</span>
+                    </div>
+                    <div class="flex justify-between items-center p-4 hover:bg-white/5 transition-colors">
+                        <span class="font-body-md text-[15px] text-silver-light">A5 (15×21 cm) com NFC</span>
+                        <span class="font-headline-md text-[16px] text-primary">R$ 89,90</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Category 2: Cartão de Visita NFC -->
+            <section class="reveal">
+                <div class="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
+                    <span class="material-symbols-outlined text-primary text-[28px]">contact_mail</span>
+                    <h2 class="font-headline-md text-[24px] text-white">Cartão de Visita NFC</h2>
+                </div>
+
+                <div class="glass-panel rounded-xl overflow-hidden">
+                    <div
+                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-6 hover:bg-white/5 transition-colors gap-4">
+                        <div class="flex flex-col gap-1">
+                            <span class="font-body-md text-[15px] text-silver-light">Cartão de Visita NFC — por
+                                unidade</span>
+                            <span class="text-[12px] text-muted-gray italic">Inclui: arte personalizada + impressão
+                                papel fotográfico frente e verso + chip NFC gravado</span>
+                            <span class="text-[12px] text-primary/80 mt-2">Ideal para advogados, corretores, médicos e
+                                profissionais liberais.</span>
+                        </div>
+                        <span class="font-headline-md text-[20px] text-primary whitespace-nowrap">R$ 30,00</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Category 3: Biosite -->
+            <section class="reveal">
+                <div class="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
+                    <span class="material-symbols-outlined text-primary text-[28px]">language</span>
+                    <h2 class="font-headline-md text-[24px] text-white">Biosite</h2>
+                </div>
+
+                <div class="glass-panel rounded-xl overflow-hidden divide-y divide-white/5">
+                    <div
+                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-white/5 transition-colors gap-2">
+                        <span class="font-body-md text-[15px] text-silver-light">Criação + publicação no domínio do
+                            cliente</span>
+                        <span class="font-headline-md text-[16px] text-primary whitespace-nowrap">R$ 150,00 <span
+                                class="text-[12px] font-normal text-muted-gray">(valor único)</span></span>
+                    </div>
+                    <div
+                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-white/5 transition-colors gap-2">
+                        <span class="font-body-md text-[15px] text-silver-light">Manutenção mensal (hospedagem + SSL +
+                            suporte)</span>
+                        <span class="font-headline-md text-[16px] text-primary whitespace-nowrap">R$ 29,90 <span
+                                class="text-[12px] font-normal text-muted-gray">/mês</span></span>
+                    </div>
+                    <div
+                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-primary/10 transition-colors gap-2 bg-primary/5">
+                        <span class="font-body-md text-[15px] text-silver-light font-semibold">Plano anual com desconto
+                            (2 meses grátis)</span>
+                        <span class="font-headline-md text-[16px] text-primary whitespace-nowrap">R$ 279,00 <span
+                                class="text-[12px] font-normal text-muted-gray">/ano</span></span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Category 4: Google Meu Negócio -->
+            <section class="reveal">
+                <div class="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
+                    <span class="material-symbols-outlined text-primary text-[28px]">storefront</span>
+                    <h2 class="font-headline-md text-[24px] text-white">Google Meu Negócio</h2>
+                </div>
+
+                <div class="glass-panel rounded-xl overflow-hidden divide-y divide-white/5">
+                    <div
+                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-white/5 transition-colors gap-2">
+                        <span class="font-body-md text-[15px] text-silver-light">Configuração completa sem fotos</span>
+                        <span class="font-headline-md text-[16px] text-primary whitespace-nowrap">R$ 97,00</span>
+                    </div>
+                    <div
+                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-white/5 transition-colors gap-2">
+                        <span class="font-body-md text-[15px] text-silver-light">Configuração + fotos enviadas pelo
+                            cliente</span>
+                        <span class="font-headline-md text-[16px] text-primary whitespace-nowrap">R$ 137,00</span>
+                    </div>
+                    <div
+                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-white/5 transition-colors gap-2">
+                        <span class="font-body-md text-[15px] text-silver-light">Configuração + sessão fotográfica
+                            profissional</span>
+                        <span class="font-headline-md text-[16px] text-primary whitespace-nowrap">R$ 297,00</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Category 5: Fotografia -->
+            <section class="reveal">
+                <div class="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
+                    <span class="material-symbols-outlined text-primary text-[28px]">photo_camera</span>
+                    <h2 class="font-headline-md text-[24px] text-white">Fotografia</h2>
+                </div>
+
+                <div class="glass-panel rounded-xl overflow-hidden divide-y divide-white/5">
+                    <div
+                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-6 hover:bg-white/5 transition-colors gap-4">
+                        <div class="flex flex-col gap-1">
+                            <span class="font-body-md text-[15px] text-silver-light font-semibold">Sessão Básica</span>
+                            <span class="text-[12px] text-muted-gray italic">20 fotos editadas em alta resolução</span>
+                        </div>
+                        <span class="font-headline-md text-[20px] text-primary whitespace-nowrap">R$ 197,00</span>
+                    </div>
+                    <div
+                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-6 hover:bg-white/5 transition-colors gap-4">
+                        <div class="flex flex-col gap-1">
+                            <span class="font-body-md text-[15px] text-silver-light font-semibold">Sessão
+                                Completa</span>
+                            <span class="text-[12px] text-muted-gray italic">40 fotos editadas em alta resolução</span>
+                        </div>
+                        <span class="font-headline-md text-[20px] text-primary whitespace-nowrap">R$ 347,00</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Category 6: Pacotes -->
+            <section class="reveal">
+                <div class="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
+                    <span class="material-symbols-outlined text-primary text-[28px]">inventory_2</span>
+                    <h2 class="font-headline-md text-[24px] text-white">Pacotes</h2>
+                </div>
+
+                <div class="glass-panel rounded-xl overflow-hidden divide-y divide-white/5">
+                    <div
+                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-white/5 transition-colors gap-2">
+                        <div class="flex flex-col gap-1">
+                            <span class="font-body-md text-[15px] text-silver-light font-semibold">Pacote Entrada</span>
+                            <span class="text-[12px] text-muted-gray italic">Plaquinha Básica NFC + Biosite + Google Meu
+                                Negócio</span>
+                        </div>
+                        <span class="font-headline-md text-[16px] text-primary whitespace-nowrap">R$ 227,00 <span
+                                class="text-[12px] font-normal text-muted-gray">à vista</span></span>
+                    </div>
+                    <div
+                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-white/5 transition-colors gap-2">
+                        <div class="flex flex-col gap-1">
+                            <span class="font-body-md text-[15px] text-silver-light font-semibold">Pacote
+                                Profissional</span>
+                            <span class="text-[12px] text-muted-gray italic">Plaquinha Premium NFC + Biosite + Google +
+                                20 fotos</span>
+                        </div>
+                        <span class="font-headline-md text-[16px] text-primary whitespace-nowrap">R$ 547,00 <span
+                                class="text-[12px] font-normal text-muted-gray">à vista</span></span>
+                    </div>
+                    <div
+                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-white/5 transition-colors gap-2">
+                        <div class="flex flex-col gap-1">
+                            <span class="font-body-md text-[15px] text-silver-light font-semibold">Pacote
+                                Completo</span>
+                            <span class="text-[12px] text-muted-gray italic">Plaquinha Premium NFC + Biosite + Google +
+                                40 fotos</span>
+                        </div>
+                        <span class="font-headline-md text-[16px] text-primary whitespace-nowrap">R$ 697,00 <span
+                                class="text-[12px] font-normal text-muted-gray">à vista</span></span>
+                    </div>
+                    <div
+                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-primary/10 transition-colors gap-2 bg-primary/5">
+                        <div class="flex flex-col gap-1">
+                            <span class="font-body-md text-[15px] text-silver-light font-semibold">Pacote Digital
+                                Total</span>
+                            <span class="text-[12px] text-muted-gray italic">Plaquinha Premium NFC + Biosite + Google +
+                                20 fotos</span>
+                        </div>
+                        <span class="font-headline-md text-[16px] text-primary whitespace-nowrap">R$ 747,00 <span
+                                class="text-[12px] font-normal text-muted-gray">à vista</span></span>
+                    </div>
+                    <div class="p-4 text-center">
+                        <span class="font-body-md text-[12px] text-muted-gray">Todos os pacotes: manutenção do Biosite
+                            R$ 29,90/mês cobrada separadamente.</span>
+                    </div>
+                </div>
+            </section>
 
         </div>
-        <!-- Pricing Categories -->
-        <div class="space-y-lg">
-            <!-- Category: Plaquinhas -->
-            <section class="reveal">
-                <div class="flex items-center gap-3 mb-md">
-                    <div class="w-2 h-2 bg-primary"></div>
-                    <h2 class="font-montserrat font-bold text-lg uppercase tracking-widest text-primary">Plaquinhas NFC
-                    </h2>
-                </div>
-                <div
-                    class="border border-outline-variant bg-surface-container-low rounded-lg divide-y divide-outline-variant">
-                    <div class="flex justify-between items-center p-md row-hover transition-colors">
-                        <span class="font-montserrat text-on-surface text-sm">Plaquinha Básica sem NFC</span>
-                        <span class="font-montserrat font-bold text-primary">R$ 44,90</span>
-                    </div>
-                    <div class="flex justify-between items-center p-md row-hover transition-colors">
-                        <span class="font-montserrat text-on-surface text-sm">Plaquinha Básica com NFC</span>
-                        <span class="font-montserrat font-bold text-primary">R$ 59,90</span>
-                    </div>
-                    <div class="flex justify-between items-center p-md row-hover transition-colors">
-                        <span class="font-montserrat text-on-surface text-sm">Plaquinha Premium sem NFC</span>
-                        <span class="font-montserrat font-bold text-primary">R$ 69,90</span>
-                    </div>
-                    <div class="flex justify-between items-center p-md row-hover transition-colors">
-                        <span class="font-montserrat text-on-surface text-sm">Plaquinha Premium com NFC</span>
-                        <span class="font-montserrat font-bold text-primary">R$ 89,90</span>
-                    </div>
-                </div>
-            </section>
-            <!-- Category: Cartão de Visita NFC -->
-            <section class="reveal">
-                <div class="flex items-center gap-3 mb-md">
-                    <div class="w-2 h-2 bg-primary"></div>
-                    <h2 class="font-montserrat font-bold text-lg uppercase tracking-widest text-primary">Cartão de
-                        Visita NFC</h2>
-                </div>
-                <div
-                    class="border border-outline-variant bg-surface-container-low rounded-lg divide-y divide-outline-variant">
-                    <div class="flex flex-col p-md row-hover transition-colors gap-1">
-                        <span class="font-montserrat text-on-surface text-sm">Cartão de Visita NFC — por unidade</span>
-                        <span class="text-xs text-on-surface-variant italic">(inclui: arte personalizada + impressão
-                            papel fotográfico frente e verso + chip NFC gravado)</span>
-                        <div class="flex justify-between items-end mt-2">
-                            <div class="flex flex-col">
-                                <span class="text-xs text-on-surface-variant italic">Pedido mínimo recomendado: 4
-                                    unidades</span>
-                                <span class="text-xs text-on-surface-variant italic">Observação: ideal para advogados,
-                                    corretores, médicos e profissionais liberais</span>
-                            </div>
-                            <span class="font-montserrat font-bold text-primary text-right min-w-[80px]">R$ 30,00
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- Category: Serviços Digitais (Sites & GMB) -->
-            <section class="reveal">
-                <div class="flex items-center gap-3 mb-md">
-                    <div class="w-2 h-2 bg-primary"></div>
-                    <h2 class="font-montserrat font-bold text-lg uppercase tracking-widest text-primary">Biosite</h2>
-                </div>
-                <div
-                    class="border border-outline-variant bg-surface-container-low rounded-lg divide-y divide-outline-variant">
-                    <div class="flex justify-between items-center p-md row-hover transition-colors">
-                        <span class="font-montserrat text-on-surface text-sm">Criação + publicação no domínio do
-                            cliente</span>
-                        <span class="font-montserrat font-bold text-primary">R$ 150,00<span
-                                class="text-[10px] font-normal text-on-surface-variant ml-1">(valor único)</span></span>
-                    </div>
-                    <div class="flex justify-between items-center p-md row-hover transition-colors">
-                        <span class="font-montserrat text-on-surface text-sm">Manutenção mensal (hospedagem + SSL +
-                            suporte)</span>
-                        <span class="font-montserrat font-bold text-primary">R$ 29,90<span
-                                class="text-[10px] font-normal text-on-surface-variant ml-1">/mês</span></span>
-                    </div>
-                    <div class="flex justify-between items-center p-md row-hover transition-colors bg-primary/5">
-                        <span class="font-montserrat text-on-surface text-sm font-semibold">Plano anual com desconto (2
-                            meses grátis)</span>
-                        <span class="font-montserrat font-bold text-primary">R$ 279,00<span
-                                class="text-[10px] font-normal text-on-surface-variant ml-1">/ano</span></span>
-                    </div>
-                </div>
-            </section>
-            <!-- Category: Fotografia & Mídia -->
-            <section class="reveal">
-                <div class="flex items-center gap-3 mb-md">
-                    <div class="w-2 h-2 bg-primary"></div>
-                    <h2 class="font-montserrat font-bold text-lg uppercase tracking-widest text-primary">Google Meu
-                        Negócio</h2>
-                </div>
-                <div
-                    class="border border-outline-variant bg-surface-container-low rounded-lg divide-y divide-outline-variant">
-                    <div class="flex justify-between items-center p-md row-hover transition-colors">
-                        <span class="font-montserrat text-on-surface text-sm">Configuração completa sem fotos</span>
-                        <span class="font-montserrat font-bold text-primary">R$ 97,00</span>
-                    </div>
-                    <div class="flex justify-between items-center p-md row-hover transition-colors">
-                        <span class="font-montserrat text-on-surface text-sm">Configuração + fotos enviadas pelo
-                            cliente</span>
-                        <span class="font-montserrat font-bold text-primary">R$ 137,00</span>
-                    </div>
-                    <div class="flex justify-between items-center p-md row-hover transition-colors">
-                        <span class="font-montserrat text-on-surface text-sm">Configuração + sessão fotográfica
-                            profissional</span>
-                        <span class="font-montserrat font-bold text-primary">R$ 297,00</span>
-                    </div>
-                </div>
-            </section>
-            <!-- Category: Sessão Fotográfica -->
-            <section class="reveal">
-                <div class="flex items-center gap-3 mb-md">
-                    <div class="w-2 h-2 bg-primary"></div>
-                    <h2 class="font-montserrat font-bold text-lg uppercase tracking-widest text-primary">Fotografia</h2>
-                </div>
-                <div
-                    class="border border-outline-variant bg-surface-container-low rounded-lg divide-y divide-outline-variant">
-                    <div class="flex flex-col p-md row-hover transition-colors gap-1">
-                        <span class="font-montserrat text-on-surface text-sm">Sessão Básica</span>
-                        <div class="flex justify-between items-end">
-                            <span class="text-xs text-on-surface-variant italic">20 fotos editadas em alta
-                                resolução</span>
-                            <span class="font-montserrat font-bold text-primary">R$ 197,00</span>
-                        </div>
-                    </div>
-                    <div class="flex flex-col p-md row-hover transition-colors gap-1">
-                        <span class="font-montserrat text-on-surface text-sm">Sessão Completa</span>
-                        <div class="flex justify-between items-end">
-                            <span class="text-xs text-on-surface-variant italic">40 fotos editadas em alta
-                                resolução</span>
-                            <span class="font-montserrat font-bold text-primary">R$ 347,00</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- Category: Pacotes -->
-            <section class="reveal">
-                <div class="flex items-center gap-3 mb-md">
-                    <div class="w-2 h-2 bg-primary"></div>
-                    <h2 class="font-montserrat font-bold text-lg uppercase tracking-widest text-primary">Pacotes</h2>
-                </div>
-                <div
-                    class="border border-outline-variant bg-surface-container-low rounded-lg divide-y divide-outline-variant">
-                    <div class="flex flex-col p-md row-hover transition-colors gap-1">
-                        <span class="font-montserrat text-on-surface text-sm">Pacote Entrada</span>
-                        <div class="flex justify-between items-end">
-                            <span class="text-xs text-on-surface-variant italic">Plaquinha Básica NFC + Biosite + Google
-                                Meu Negócio</span>
-                            <span class="font-montserrat font-bold text-primary">R$ 227,00 <span
-                                    class="text-[10px] font-normal text-on-surface-variant">à vista</span></span>
-                        </div>
-                    </div>
-                    <div class="flex flex-col p-md row-hover transition-colors gap-1">
-                        <span class="font-montserrat text-on-surface text-sm">Pacote Profissional</span>
-                        <div class="flex justify-between items-end">
-                            <span class="text-xs text-on-surface-variant italic">Plaquinha Premium NFC + Biosite +
-                                Google + 20 fotos</span>
-                            <span class="font-montserrat font-bold text-primary">R$ 547,00 <span
-                                    class="text-[10px] font-normal text-on-surface-variant">à vista</span></span>
-                        </div>
-                    </div>
-                    <div class="flex flex-col p-md row-hover transition-colors gap-1">
-                        <span class="font-montserrat text-on-surface text-sm">Pacote Completo</span>
-                        <div class="flex justify-between items-end">
-                            <span class="text-xs text-on-surface-variant italic">Plaquinha Premium NFC + Biosite +
-                                Google + 40 fotos</span>
-                            <span class="font-montserrat font-bold text-primary">R$ 697,00 <span
-                                    class="text-[10px] font-normal text-on-surface-variant">à vista</span></span>
-                        </div>
-                    </div>
-                    <div class="flex flex-col p-md row-hover transition-colors gap-1 bg-primary/5">
-                        <span class="font-montserrat text-on-surface text-sm font-semibold">Pacote Digital Total</span>
-                        <div class="flex justify-between items-end">
-                            <span class="text-xs text-on-surface-variant italic">Plaquinha Premium NFC + Biosite +
-                                Google + 20 fotos</span>
-                            <span class="font-montserrat font-bold text-primary">R$ 747,00 <span
-                                    class="text-[10px] font-normal text-on-surface-variant">à vista</span></span>
-                        </div>
-                    </div>
-                    <div class="p-md text-xs text-on-surface-variant italic text-center">
-                        Todos os pacotes: manutenção do Biosite R$ 29,90/mês cobrada separadamente.<br>
-                    </div>
-                </div>
-            </section>
-        </div>
+
         <!-- Call to Action -->
-        <div class="mt-xl flex flex-col gap-md text-center">
-            <p class="font-body-md text-on-surface-variant px-sm">Preços sujeitos a alterações sem aviso prévio.
+        <div class="mt-16 text-center reveal">
+            <p class="font-body-md text-[14px] text-muted-gray mb-8">Preços sujeitos a alterações sem aviso prévio.
                 Consulte condições para orçamentos personalizados.</p>
             <a href="agendamento.html"
-                class="block w-full bg-primary py-4 rounded-lg font-montserrat font-bold text-on-primary uppercase tracking-widest active:scale-95 transition-all shadow-lg shadow-primary/20 text-center cursor-pointer">
-                Fale Conosco
+                class="inline-block bg-electric-emerald text-black font-label-sm text-[14px] font-semibold uppercase tracking-wider py-4 px-12 rounded-lg shadow-neon-glow hover:shadow-neon-glow-hover hover:scale-105 transition-all duration-300">
+                FALE CONOSCO
             </a>
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer
-        class="w-full py-lg border-t border-outline-variant bg-surface-container-lowest flex flex-col items-center gap-md px-margin-mobile">
-        <div class="flex items-center gap-xs mb-xs">
-            <span class="font-headline-md text-sm font-bold text-primary tracking-widest uppercase">Konnected</span>
+    <!-- FOOTER -->
+    <footer class="w-full py-12 border-t border-dark-circuit bg-cyber-black/50 backdrop-blur-sm relative z-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col items-center gap-6">
+            <div class="flex items-center gap-8">
+                <a href="https://wa.me/5561981659192?text=Oi!%20Quero%20saber%20mais%20sobre%20a%20Konnected"
+                    target="_blank" rel="noopener noreferrer"
+                    class="text-muted-gray hover:text-primary transition-colors flex flex-col items-center gap-2">
+                    <span class="material-symbols-outlined text-[24px]">chat</span>
+                    <span class="font-label-sm text-[10px] uppercase tracking-wider">WhatsApp</span>
+                </a>
+                <a href="https://www.instagram.com/konnected.sd/" target="_blank" rel="noopener noreferrer"
+                    class="text-muted-gray hover:text-primary transition-colors flex flex-col items-center gap-2">
+                    <span class="material-symbols-outlined text-[24px]">photo_camera</span>
+                    <span class="font-label-sm text-[10px] uppercase tracking-wider">Instagram</span>
+                </a>
+                <a href="mailto:contato@konnected.sd"
+                    class="text-muted-gray hover:text-primary transition-colors flex flex-col items-center gap-2">
+                    <span class="material-symbols-outlined text-[24px]">mail</span>
+                    <span class="font-label-sm text-[10px] uppercase tracking-wider">E-mail</span>
+                </a>
+            </div>
+            <p class="font-label-sm text-[10px] text-muted-gray/50 uppercase tracking-widest text-center mt-4">
+                Konnected © 2026<br />
+                Presença Digital Local
+            </p>
         </div>
-        <p class="font-body-md text-xs text-on-surface-variant text-center opacity-80 max-w-sm">
-            Investimento sob medida para destacar seu negócio.
-        </p>
-        <p class="font-label-sm text-on-surface-variant text-center opacity-60">
-            © 2026 Konnected<br>
-            <span class="text-[10px]">Technical Mastery in Digital Solutions</span>
-        </p>
     </footer>
 
+    <!-- WhatsApp FAB -->
+    <a href="https://wa.me/5561981659192?text=Oi!%20Quero%20saber%20mais%20sobre%20a%20Konnected" target="_blank"
+        rel="noopener noreferrer" class="whatsapp-fab" aria-label="Fale conosco pelo WhatsApp">
+        <span class="fab-ping"></span>
+        <span class="material-symbols-outlined text-white text-[28px] relative z-10">chat</span>
+    </a>
+
+    <!-- Scripts -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const lenis = new Lenis({
-                duration: 1.2,
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                direction: 'vertical',
-                gestureDirection: 'vertical',
-                smooth: true,
-                smoothTouch: false,
-                touchMultiplier: 2,
-            });
+            if (typeof Lenis !== 'undefined') {
+                const lenis = new Lenis({
+                    duration: 1.2,
+                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                    direction: 'vertical',
+                    smooth: true
+                });
 
-            function raf(time) {
-                lenis.raf(time);
+                function raf(time) {
+                    lenis.raf(time);
+                    requestAnimationFrame(raf);
+                }
                 requestAnimationFrame(raf);
             }
-            requestAnimationFrame(raf);
 
             const observerOptions = {
                 root: null,
@@ -355,48 +374,35 @@
                 threshold: 0.15
             };
 
-            const observer = new IntersectionObserver((entries, observer) => {
+            const observer = new IntersectionObserver((entries, obs) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('active');
-                        observer.unobserve(entry.target);
+                        obs.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
 
-            const reveals = document.querySelectorAll(".reveal");
-            reveals.forEach((el, index) => {
-                if (index < 2) {
-                    setTimeout(() => {
-                        el.classList.add("active");
-                    }, index * 150);
+            document.querySelectorAll(".reveal").forEach((el, index) => {
+                if (index < 3) {
+                    setTimeout(() => el.classList.add("active"), index * 100);
                 } else {
                     observer.observe(el);
                 }
             });
+
+            if (window.matchMedia('(hover: hover)').matches) {
+                const glow = document.createElement('div');
+                glow.classList.add('cursor-glow');
+                document.body.appendChild(glow);
+
+                document.addEventListener('mousemove', (e) => {
+                    glow.style.left = e.clientX + 'px';
+                    glow.style.top = e.clientY + 'px';
+                });
+            }
         });
     </script>
-
-    <script>
-        // Subtle atmosphere: Glowing trace effect on scroll
-        window.addEventListener('scroll', () => {
-            const opacity = Math.min(window.scrollY / 500, 0.4);
-            document.body.style.backgroundColor = `rgba(5, 7, 7, 1)`;
-        });
-
-        // Hover micro-interactions for rows
-        const rows = document.querySelectorAll('.row-hover');
-        rows.forEach(row => {
-            row.addEventListener('mouseenter', () => {
-                row.style.transform = 'translateX(4px)';
-            });
-            row.addEventListener('mouseleave', () => {
-                row.style.transform = 'translateX(0px)';
-            });
-        });
-    </script>
-
-
 </body>
 
 </html>
