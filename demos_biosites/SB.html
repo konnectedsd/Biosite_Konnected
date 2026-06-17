@@ -330,6 +330,8 @@
                 biositeContainer.classList.toggle('mobile-sim-mode');
                 
                 if(biositeContainer.classList.contains('mobile-sim-mode')) {
+                    document.body.style.overflow = 'hidden';
+                    window.scrollTo({top: 0, behavior: 'smooth'});
                     biositeContainer.setAttribute('data-lenis-prevent', '');
                     mobileToggleBtn.classList.add('opacity-100');
                     mobileToggleBtn.classList.remove('opacity-30');
@@ -351,13 +353,14 @@
         }
         
         .mobile-sim-mode {
-            max-width: 390px !important;
-            margin-top: 3rem !important;
-            margin-bottom: 3rem !important;
+            width: 390px !important;
+            margin: 2vh auto !important;
             border: 12px solid #2a2a2a !important;
             border-radius: 40px !important;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
-            height: 800px !important;
+            height: 844px !important;
+            transform: scale(0.8) !important;
+            transform-origin: top center !important;
             overflow-y: auto !important;
             display: block !important;
         }
