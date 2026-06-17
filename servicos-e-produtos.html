@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html class="dark" lang="pt-BR">
 <head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval';">
+
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Konnected - Serviços e Produtos</title>
@@ -87,7 +89,7 @@
                 </div>
 
                 <!-- Biosite -->
-                <div class="glass-panel p-6 rounded-xl border-t border-t-white/5 hover:border-primary transition-all duration-300 flex flex-col md:flex-row gap-6 items-center group reveal" style="transition-delay: 100ms;">
+                <div class="glass-panel p-6 rounded-xl border-t border-t-white/5 hover:border-primary transition-all duration-300 flex flex-col md:flex-row gap-6 items-center group reveal delay-100">
                     <div class="w-full md:w-48 h-48 md:h-32 rounded-lg overflow-hidden flex-shrink-0 relative group-hover:shadow-image-glow transition-shadow">
                         <img src="images/biosite.jpg" alt="Biosite Profissional" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                     </div>
@@ -96,12 +98,18 @@
                         <p class="font-body-md text-[14px] text-muted-gray leading-relaxed mb-4">
                             Desenvolvimento de um site compacto de carregamento ultra-rápido, otimizado para conversão mobile e publicado em domínio próprio da sua marca.
                         </p>
-                        <span class="font-label-sm text-[12px] text-primary/80 uppercase tracking-wider">A partir de R$ 150,00</span>
+                        <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+                            <span class="font-label-sm text-[12px] text-primary/80 uppercase tracking-wider">A partir de R$ 150,00</span>
+                            <a href="demos_biosites/demos.html" class="inline-flex items-center gap-2 border border-primary/50 text-primary hover:bg-primary hover:text-black font-label-sm text-[12px] font-semibold uppercase tracking-wider py-1.5 px-4 rounded-lg transition-all duration-300">
+                                Veja exemplos
+                                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Sessão Fotográfica -->
-                <div class="glass-panel p-6 rounded-xl border-t border-t-white/5 hover:border-primary transition-all duration-300 flex flex-col md:flex-row gap-6 items-center group reveal" style="transition-delay: 200ms;">
+                <div class="glass-panel p-6 rounded-xl border-t border-t-white/5 hover:border-primary transition-all duration-300 flex flex-col md:flex-row gap-6 items-center group reveal delay-200">
                     <div class="w-full md:w-48 h-48 md:h-32 rounded-lg overflow-hidden flex-shrink-0 relative group-hover:shadow-image-glow transition-shadow">
                         <img src="images/sessão.jpg" alt="Sessão Fotográfica" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                     </div>
@@ -138,7 +146,7 @@
                 </div>
 
                 <!-- Plaquinha NFC -->
-                <div class="glass-panel rounded-xl overflow-hidden border-t border-t-white/5 hover:border-primary transition-all duration-300 group reveal" style="transition-delay: 100ms;">
+                <div class="glass-panel rounded-xl overflow-hidden border-t border-t-white/5 hover:border-primary transition-all duration-300 group reveal delay-100">
                     <div class="aspect-[4/3] w-full overflow-hidden relative border-b border-dark-circuit">
                         <img src="images/display_A5.jpeg" alt="Plaquinha Premium NFC" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100">
                     </div>
@@ -153,7 +161,7 @@
 
             </div>
 
-            <div class="mt-12 text-center reveal" style="transition-delay: 200ms;">
+            <div class="mt-12 text-center reveal delay-200">
                 <a href="tabela-de-precos.html" class="inline-block bg-electric-emerald text-black font-label-sm text-[14px] font-semibold uppercase tracking-wider py-4 px-8 rounded-lg shadow-neon-glow hover:shadow-neon-glow-hover hover:scale-105 transition-all duration-300">
                     PREÇOS INDIVIDUAIS
                 </a>

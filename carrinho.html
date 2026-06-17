@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-BR">
+
+<head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval';">
+
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Konnected - Simulação de Preço</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "cyber-black": "#050707",
+                        "deep-charcoal": "#0E1111",
+                        "dark-circuit": "#141919",
+                        "electric-emerald": "#28A789",
+                        "primary": "#66daba",
+                        "silver-light": "#E1E3E2",
+                        "muted-gray": "#86948E"
+                    },
+                    fontFamily: {
+                        "display-xl": ["Space Grotesk", "sans-serif"],
+                        "headline-lg": ["Space Grotesk", "sans-serif"],
+                        "headline-md": ["Space Grotesk", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "headline-lg-mobile": ["Space Grotesk", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "label-sm": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="antialiased selection:bg-electric-emerald selection:text-black min-h-screen relative flex flex-col">
+
+    <!-- Animated Grid Background -->
+    <div class="cyber-bg"></div>
+
+    <!-- Hero Gradient Mesh BG -->
+    <div class="hero-gradient-mesh opacity-50"></div>
+
+    <!-- Header / Nav -->
+    <header class="w-full relative z-50 pt-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex items-center justify-between">
+        <a href="tabela-de-precos.html"
+            class="flex items-center gap-2 text-silver-light/80 hover:text-primary transition-colors group">
+            <span class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
+            <span class="font-label-sm tracking-wider uppercase text-[12px]">Voltar para Produtos</span>
+        </a>
+        <span
+            class="font-label-sm text-[12px] tracking-widest uppercase text-silver-light/60 border border-silver-light/20 rounded-full px-4 py-1">Konnected</span>
+    </header>
+
+    <main class="flex-grow relative z-10 w-full max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col pt-16 pb-24">
+
+        <!-- Hero Title -->
+        <div class="text-center mb-12">
+            <h1
+                class="font-headline-lg-mobile text-[32px] md:text-[56px] font-bold text-white mb-4 leading-tight text-gradient-reveal">
+                Seu Carrinho
+            </h1>
+            <p class="font-body-md text-[16px] md:text-[18px] text-silver-light/80 max-w-2xl mx-auto">
+                Revise sua simulação antes de enviar para o nosso WhatsApp.
+            </p>
+        </div>
+
+        <!-- Cart Items -->
+        <div class="glass-panel rounded-xl overflow-hidden divide-y divide-white/5 mb-8" id="cart-items">
+            <!-- Items will be injected here via JS -->
+        </div>
+        
+        <!-- Cart Summary -->
+        <div class="glass-panel rounded-xl overflow-hidden p-6 mb-12 flex flex-col items-end gap-2" id="cart-summary">
+            <div class="flex items-center justify-between w-full">
+                <span class="font-headline-md text-[20px] text-silver-light">Total Estimado</span>
+                <span class="font-headline-md text-[28px] text-primary" id="cart-total-price">R$ 0,00</span>
+            </div>
+            <p class="font-body-md text-[12px] text-muted-gray mt-2 text-right max-w-md">Os valores são estimativas e serão confirmados após nossa conversa. Manutenção do Biosite cobrada separadamente, quando aplicável.</p>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center" id="checkout-container">
+            <button id="checkout-btn"
+                class="inline-flex items-center gap-3 bg-electric-emerald text-black font-label-sm text-[16px] font-semibold uppercase tracking-wider py-4 px-12 rounded-lg shadow-neon-glow hover:shadow-neon-glow-hover hover:scale-105 transition-all duration-300">
+                <span class="material-symbols-outlined text-[24px]">send</span>
+                Enviar Minha Lista
+            </button>
+            <p id="empty-msg" class="hidden text-silver-light/60 mt-4">Seu carrinho está vazio.</p>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="w-full py-12 border-t border-dark-circuit bg-cyber-black/50 backdrop-blur-sm relative z-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col items-center gap-6">
+            <p class="font-label-sm text-[10px] text-muted-gray/50 uppercase tracking-widest text-center mt-4">
+                Konnected © 2026<br />
+                Presença Digital Local
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/cart.js"></script>
+    <script>
+
+            function escapeHTML(str) {
+                return str.replace(/[&<>'"]/g, tag => ({
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    "'": '&#39;',
+                    '"': '&quot;'
+                }[tag]));
+            }
+            
+        document.addEventListener("DOMContentLoaded", () => {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalEl = document.getElementById('cart-total-price');
+            const checkoutBtn = document.getElementById('checkout-btn');
+            const emptyMsg = document.getElementById('empty-msg');
+            
+            function renderCart() {
+                const cart = getCart();
+                const itemKeys = Object.keys(cart);
+                
+                cartItemsContainer.innerHTML = '';
+                let total = 0;
+                
+                if (itemKeys.length === 0) {
+                    cartItemsContainer.innerHTML = '<div class="p-8 text-center text-silver-light/50 font-body-md">Você ainda não selecionou nenhum produto.</div>';
+                    checkoutBtn.classList.add('opacity-50', 'pointer-events-none');
+                    cartTotalEl.innerText = formatPrice(0);
+                    return;
+                }
+                
+                checkoutBtn.classList.remove('opacity-50', 'pointer-events-none');
+                
+                itemKeys.forEach(key => {
+                    const item = cart[key];
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    
+                    const itemEl = document.createElement('div');
+                    itemEl.className = 'flex flex-col sm:flex-row sm:justify-between sm:items-center p-6 hover:bg-white/5 transition-colors gap-4';
+                    
+                    itemEl.innerHTML = `
+                        <div class="flex flex-col gap-1">
+                            <span class="font-body-md text-[16px] text-silver-light font-semibold">${escapeHTML(item.name)}</span>
+                            <span class="font-body-md text-[13px] text-muted-gray">${formatPrice(item.price)} un</span>
+                        </div>
+                        <div class="flex items-center gap-6">
+                            <div class="flex items-center gap-3 bg-white/5 rounded-full px-2 py-1 border border-white/10">
+                                <button onclick="decreaseItem('${item.id}')" class="w-8 h-8 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors active:scale-95"><span class="material-symbols-outlined text-[16px]">remove</span></button>
+                                <span class="font-body-md text-[15px] text-white w-4 text-center">${item.quantity}</span>
+                                <button onclick="increaseItem('${item.id}')" class="w-8 h-8 rounded-full bg-electric-emerald text-black flex items-center justify-center hover:brightness-110 transition-colors active:scale-95"><span class="material-symbols-outlined text-[16px]">add</span></button>
+                            </div>
+                            <span class="font-headline-md text-[20px] text-primary whitespace-nowrap min-w-[100px] text-right">${formatPrice(itemTotal)}</span>
+                        </div>
+                    `;
+                    
+                    cartItemsContainer.appendChild(itemEl);
+                });
+                
+                cartTotalEl.innerText = formatPrice(total);
+            }
+            
+            // Expose globally so inline onclick works
+            window.decreaseItem = function(id) {
+                removeFromCart(id);
+                renderCart();
+            };
+            
+            window.increaseItem = function(id) {
+                const cart = getCart();
+                if(cart[id]) {
+                    addToCart(id, cart[id].name, cart[id].price);
+                    renderCart();
+                }
+            };
+            
+            checkoutBtn.addEventListener('click', () => {
+                const cart = getCart();
+                const itemKeys = Object.keys(cart);
+                
+                if (itemKeys.length === 0) return;
+                
+                let message = 'Estou interessado nesses produtos e serviços da Konnected:\n\n';
+                let total = 0;
+                
+                itemKeys.forEach(key => {
+                    const item = cart[key];
+                    message += `- ${item.quantity}x ${escapeHTML(item.name)} (${formatPrice(item.price)} un)\n`;
+                    total += item.price * item.quantity;
+                });
+                
+                message += `\n*Total Estimado:* ${formatPrice(total)}\n`;
+                message += `\nAguardo o retorno para fechar!`;
+                
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappUrl = `https://wa.me/5561981659192?text=${encodedMessage}`;
+                
+                window.open(whatsappUrl, '_blank');
+            });
+            
+            renderCart();
+        });
+    </script>
+</body>
+
+</html>

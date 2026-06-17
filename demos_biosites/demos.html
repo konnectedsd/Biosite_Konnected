@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-BR">
+<head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval';">
+
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Konnected - Demos Hub</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "cyber-black": "#050707",
+                        "deep-charcoal": "#0E1111",
+                        "dark-circuit": "#141919",
+                        "electric-emerald": "#28A789",
+                        "primary": "#66daba",
+                        "silver-light": "#E1E3E2",
+                        "muted-gray": "#86948E"
+                    },
+                    fontFamily: {
+                        "display-xl": ["Space Grotesk", "sans-serif"],
+                        "headline-lg": ["Space Grotesk", "sans-serif"],
+                        "headline-md": ["Space Grotesk", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "headline-lg-mobile": ["Space Grotesk", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "label-sm": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../styles.css" />
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+</head>
+<body class="antialiased selection:bg-electric-emerald selection:text-black min-h-screen relative flex flex-col">
+    
+    <!-- Animated Grid Background -->
+    <div class="cyber-bg"></div>
+    
+    <!-- Hero Gradient Mesh BG -->
+    <div class="hero-gradient-mesh opacity-50"></div>
+
+    <!-- Header / Nav -->
+    <header class="w-full relative z-50 pt-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex items-center justify-between">
+        <a href="../servicos-e-produtos.html" class="flex items-center gap-2 text-silver-light/80 hover:text-primary transition-colors group">
+            <span class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
+            <span class="font-label-sm tracking-wider uppercase text-[12px]">Voltar</span>
+        </a>
+        <span class="font-label-sm text-[12px] tracking-widest uppercase text-silver-light/60 border border-silver-light/20 rounded-full px-4 py-1">Konnected</span>
+    </header>
+
+    <main class="flex-grow relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col pt-16 pb-24">
+        
+        <!-- Hero Title -->
+        <div class="text-center mb-16 reveal">
+            <h1 class="font-headline-lg-mobile text-[32px] md:text-[56px] font-bold text-white mb-4 leading-tight text-gradient-reveal">
+                Escolha a Demo
+            </h1>
+            <p class="font-body-md text-[16px] md:text-[18px] text-silver-light/80 max-w-2xl mx-auto">
+                Selecione o tipo de negócio para visualizar um biosite profissional em ação.
+            </p>
+        </div>
+
+        <!-- CARDS GRID -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <!-- Card 1: Barbearia -->
+            <a href="Bk.html" class="glass-panel p-6 rounded-xl border-t border-t-white/5 hover:border-primary transition-all duration-300 group reveal flex flex-col gap-5">
+                <div class="h-[160px] w-full rounded-lg overflow-hidden relative group-hover:shadow-image-glow transition-shadow border-b border-dark-circuit">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEeT40hhvhJzaH6YxJod-SUcPuQ2Z3iMmo-VXCUlpxWV09f--jByrutqxviyP_sP0Ljonf2wrkB9UZJyJoXeUYRhAWGgEFlK1OEqUmbJbANWDSAPgr-KEKwYd4t-CsmrU04jonfRM1qpRfzv4Q-kZpTrgc8vYHTkO-13_hZLDfAxxNKX32lo7FwcnKaGeyusDG2plL5qo_TZ1zGTknYkirp-7xk9Eb6Z2IyOySMccmepWIuIO9Zk2Qs5ri38dj8EERcyJOtCqdmA" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-100" alt="Barbearia Kings Logo">
+                </div>
+                <div class="flex flex-col gap-1">
+                    <span class="font-label-sm text-[10px] font-bold text-primary tracking-widest uppercase">BARBEARIA</span>
+                    <h2 class="font-headline-md text-xl font-bold text-white group-hover:text-primary transition-colors">Barbearia Kings</h2>
+                </div>
+            </a>
+
+            <!-- Card 2: Studio Bella -->
+            <a href="SB.html" class="glass-panel p-6 rounded-xl border-t border-t-white/5 hover:border-primary transition-all duration-300 group reveal flex flex-col gap-5 delay-100">
+                <div class="h-[160px] w-full rounded-lg overflow-hidden relative group-hover:shadow-image-glow transition-shadow border-b border-dark-circuit">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDe7PVhFILjhfNjcsDQJfRM1QAetlqKmfClzQkt-XQidObuRJ5DPMatzzYewhoHhhTiH-KUCVat61nDM9rFEVgWmlPNm0nVI_F4MxfF_VQ7C2tatzOj9xgyTRbhhQN44UsR1shTfnjYAOHp_Bg7xQnuK6RQGxrPCX76h4Ok2geL0i1hN92BoA7-wciEKjRF8alzE4NuGiu7B6ftmE_EBSJi_DlQITDRZ-60Ff7UFmvz5g8eApP1o4naYCqOFBU7FPcParFVmnApHA" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-100" alt="Studio Bella Logo">
+                </div>
+                <div class="flex flex-col gap-1">
+                    <span class="font-label-sm text-[10px] font-bold text-primary tracking-widest uppercase">SALÃO DE BELEZA</span>
+                    <h2 class="font-headline-md text-xl font-bold text-white group-hover:text-primary transition-colors">Studio Bella</h2>
+                </div>
+            </a>
+
+            <!-- Card 3: Clínica Sorrir -->
+            <a href="CS.html" class="glass-panel p-6 rounded-xl border-t border-t-white/5 hover:border-primary transition-all duration-300 group reveal flex flex-col gap-5">
+                <div class="h-[160px] w-full rounded-lg overflow-hidden relative group-hover:shadow-image-glow transition-shadow border-b border-dark-circuit">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuj2igtXLmIk5gKNe9Ssi6RdxdOGIkCBZPFhpwReymE9JT1Of_WJ5l1lXK_bD8cM-7xn7512e9qlNPbfSo0RmkJvgFYpVSOjazI67BgNh0WttFSDb5yBp120R_846Md6Jxggbu7ha_g5VpT8W8LErWxTNtIMlu9Wvi7MDrlBXWxqhPXU7cZvlGOlqJBivT9jw0b7WRZosOVkWdxqjjXzR7q1e9qy_ALFGi41qR7NfC5TDJnsQlL2pvWRqgB7WSZBEvmTZxICMjyQ" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-100" alt="Clínica Sorrir Logo">
+                </div>
+                <div class="flex flex-col gap-1">
+                    <span class="font-label-sm text-[10px] font-bold text-primary tracking-widest uppercase">ODONTOLOGIA</span>
+                    <h2 class="font-headline-md text-xl font-bold text-white group-hover:text-primary transition-colors">Clínica Sorrir</h2>
+                </div>
+            </a>
+
+            <!-- Card 4: Atelier Modo -->
+            <a href="AM.html" class="glass-panel p-6 rounded-xl border-t border-t-white/5 hover:border-primary transition-all duration-300 group reveal flex flex-col gap-5 delay-100">
+                <div class="h-[160px] w-full rounded-lg overflow-hidden relative group-hover:shadow-image-glow transition-shadow border-b border-dark-circuit">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-kFXNzpU3t4gttwlS_sN6v4KVVty4YpddCLVQtf6KsR_r41MRQXiSZLL22-hqHBXWATXlm4HxSOEJC31I94jgjDx9g8m7UfZGPD3eOwetG2qukfvVpoW1KGTPrLGHWJtiF5F035N76uqxQsyZrq4BbrxlMvdO8KkH_37qpfRE3lMUAoYEbmgsYUI8wdqoiS_RPTOr3ZSoIxU4lc7dqAfuPeCjq9rzwl6MuQbmEvArJZzx9hENVSp8hK0gkCuvzdqqrmzwTyr8cQ" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-100" alt="Atelier Modo Logo">
+                </div>
+                <div class="flex flex-col gap-1">
+                    <span class="font-label-sm text-[10px] font-bold text-primary tracking-widest uppercase">MODA & ESTILO</span>
+                    <h2 class="font-headline-md text-xl font-bold text-white group-hover:text-primary transition-colors">Atelier Modo</h2>
+                </div>
+            </a>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="w-full py-12 border-t border-dark-circuit bg-cyber-black/50 backdrop-blur-sm relative z-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col items-center gap-6">
+            <p class="font-label-sm text-[10px] text-muted-gray/50 uppercase tracking-widest text-center mt-4">
+                Konnected © 2026<br/>
+                Presença Digital Local
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (typeof Lenis !== 'undefined') {
+                const lenis = new Lenis({
+                    duration: 1.2,
+                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                    direction: 'vertical',
+                    smooth: true
+                });
+
+                function raf(time) {
+                    lenis.raf(time);
+                    requestAnimationFrame(raf);
+                }
+                requestAnimationFrame(raf);
+            }
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll(".reveal").forEach((el, index) => {
+                if (index < 4) {
+                    setTimeout(() => el.classList.add("active"), index * 100);
+                } else {
+                    observer.observe(el);
+                }
+            });
+
+            if (window.matchMedia('(hover: hover)').matches) {
+                const glow = document.createElement('div');
+                glow.classList.add('cursor-glow');
+                document.body.appendChild(glow);
+                
+                document.addEventListener('mousemove', (e) => {
+                    glow.style.left = e.clientX + 'px';
+                    glow.style.top = e.clientY + 'px';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
