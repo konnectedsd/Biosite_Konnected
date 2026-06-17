@@ -189,8 +189,8 @@ body.full-width {
     transform: perspective(800px) rotateX(65deg) translateY(100px);
     animation: background-move-3d 4s linear infinite;
     pointer-events: none;
-    mask-image: linear-gradient(to top, black 20%, transparent 60%);
     -webkit-mask-image: linear-gradient(to top, black 20%, transparent 60%);
+    mask-image: linear-gradient(to top, black 20%, transparent 60%);
     opacity: 0.6;
 }
 
