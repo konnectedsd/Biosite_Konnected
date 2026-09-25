@@ -38,27 +38,40 @@ function removeFromCart(id) {
 
 function updateCartUI() {
     const cart = getCart();
-    
+
     // Update Floating Cart Button visibility and counter
     const floatingCart = document.getElementById('floating-cart');
     const cartCounter = document.getElementById('cart-counter');
-    
+
     let totalItems = 0;
     for (const key in cart) {
         totalItems += cart[key].quantity;
     }
-    
+
     if (floatingCart) {
         if (totalItems > 0) {
             floatingCart.classList.remove('hidden');
             floatingCart.classList.add('flex');
-            if(cartCounter) cartCounter.innerText = totalItems;
+            if (cartCounter) cartCounter.innerText = totalItems;
         } else {
             floatingCart.classList.add('hidden');
             floatingCart.classList.remove('flex');
         }
     }
-    
+
+    // Update Navigation Cart Counter (Header)
+    const navCartCounter = document.getElementById('nav-cart-counter');
+    if (navCartCounter) {
+        if (totalItems > 0) {
+            navCartCounter.classList.remove('hidden');
+            navCartCounter.classList.add('flex');
+            navCartCounter.innerText = totalItems;
+        } else {
+            navCartCounter.classList.add('hidden');
+            navCartCounter.classList.remove('flex');
+        }
+    }
+
     // Update individual product counters in tabela-de-precos
     document.querySelectorAll('.product-counter').forEach(el => {
         const id = el.getAttribute('data-id');
@@ -68,6 +81,12 @@ function updateCartUI() {
             el.innerText = "0";
         }
     });
+}
+
+// Select package directly and redirect to cart
+function selectPackage(id, name, price) {
+    addToCart(id, name, price);
+    window.location.href = 'carrinho.html';
 }
 
 // Initialize on load

@@ -117,12 +117,42 @@
     }
   </script>
 
+    <script>
+        if (window.self !== window.top || window.location.search.includes('embedded=true')) {
+            document.documentElement.classList.add('is-embedded');
+        }
+    </script>
+    <style>
+        .is-embedded .floating-nav-buttons,
+        .is-embedded [data-floating-nav] {
+            display: none !important;
+        }
+
+        /* Oculta a barra de rolagem lateral no simulador sem desativar a rolagem */
+        .is-embedded,
+        .is-embedded body,
+        .is-embedded main,
+        .is-embedded #biosite-container {
+            -ms-overflow-style: none !important;
+            scrollbar-width: none !important;
+        }
+
+        .is-embedded::-webkit-scrollbar,
+        .is-embedded body::-webkit-scrollbar,
+        .is-embedded main::-webkit-scrollbar,
+        .is-embedded #biosite-container::-webkit-scrollbar {
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
+            background: transparent !important;
+        }
+    </style>
 </head>
 
 <body class="bg-surface-container flex justify-center text-on-surface min-h-screen">
     
     <!-- Botões Flutuantes -->
-    <div class="fixed top-4 left-4 z-[999] flex flex-col gap-2">
+    <div class="floating-nav-buttons fixed top-4 left-4 z-[999] flex flex-col gap-2" data-floating-nav>
         <a href="demos.html" class="flex items-center gap-2 bg-[#ffffff] text-[#1b1b1b] px-4 py-2 rounded-full font-label-caps tracking-widest shadow-lg hover:opacity-80 transition-opacity border border-gray-200">
             <span class="material-symbols-outlined text-[18px]">arrow_back</span>
             Voltar

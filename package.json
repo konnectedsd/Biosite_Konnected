@@ -1,0 +1,27 @@
+{
+  "name": "biosite_konnected",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tailwindcss -i ./input.css -o ./styles.css",
+    "watch": "tailwindcss -i ./input.css -o ./styles.css --watch",
+    "serve": "npx -y http-server -p 8080 -c-1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/konnectedsd/Biosite_Konnected.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/konnectedsd/Biosite_Konnected/issues"
+  },
+  "homepage": "https://github.com/konnectedsd/Biosite_Konnected#readme",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.3.2",
+    "tailwindcss": "^4.3.2"
+  }
+}

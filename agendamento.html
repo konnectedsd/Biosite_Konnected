@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="dark" lang="pt-BR">
+<html class="" lang="pt-BR">
 
 <head>
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval';">
@@ -7,131 +7,336 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Konnected - Agendamento</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <meta name="description"
+        content="Konnected - Presença Digital Local. Agende uma consultoria estratégica para destacar seu comércio físico no Google e no digital.">
+    <meta name="keywords" content="agendamento, consultoria, presença digital, biosite, nfc, google meu negócio">
+    <meta name="author" content="Konnected">
+    <meta property="og:title" content="Konnected - Agendamento Estratégico">
+    <meta property="og:description"
+        content="Agende uma consultoria estratégica e coloque seu negócio no topo do Google.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/biosite.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Konnected - Agendamento Estratégico">
+    <meta name="twitter:description"
+        content="Agende uma consultoria estratégica e coloque seu negócio no topo do Google.">
     <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "cyber-black": "#050707",
-                        "deep-charcoal": "#0E1111",
-                        "dark-circuit": "#141919",
-                        "electric-emerald": "#28A789",
-                        "primary": "#66daba",
-                        "silver-light": "#E1E3E2",
-                        "muted-gray": "#86948E"
-                    },
-                    fontFamily: {
-                        "display-xl": ["Space Grotesk", "sans-serif"],
-                        "headline-lg": ["Space Grotesk", "sans-serif"],
-                        "headline-md": ["Space Grotesk", "sans-serif"],
-                        "body-lg": ["Inter", "sans-serif"],
-                        "headline-lg-mobile": ["Space Grotesk", "sans-serif"],
-                        "body-md": ["Inter", "sans-serif"],
-                        "label-sm": ["Inter", "sans-serif"]
-                    }
-                }
-            }
-        }
-    </script>
     <link rel="stylesheet" href="styles.css" />
     <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
 </head>
 
-<body class="antialiased selection:bg-electric-emerald selection:text-black min-h-screen relative flex flex-col">
+<body class="antialiased selection:bg-slate-900 selection:text-white min-h-screen relative flex flex-col">
 
-    <!-- Animated Grid Background -->
-    <div class="cyber-bg"></div>
+    <!-- FULL-WIDTH RETANGULAR HEADER (Sticky Navigation — Minimalista Clean) -->
+    <header class="sticky top-0 z-40 w-full bg-white/80 backdrop-blur-md border-b border-slate-300/80 transition-all">
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-6">
+                <a href="index.html" class="flex items-center group select-none">
+                    <span class="font-headline-md text-[20px] sm:text-[22px] font-bold text-slate-900 tracking-tight group-hover:text-slate-700 transition-colors">
+                        Konnected
+                    </span>
+                </a>
+                <div class="h-4 w-px bg-slate-300 hidden sm:block"></div>
+                <a href="index.html" class="hidden sm:flex items-center gap-1.5 text-[13px] font-medium text-slate-600 hover:text-slate-900 transition-colors">
+                    <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+                    <span>Início</span>
+                </a>
+            </div>
 
-    <!-- Hero Gradient Mesh BG -->
-    <div class="hero-gradient-mesh opacity-50"></div>
+            <nav class="hidden md:flex items-center gap-6 lg:gap-7 text-[14px] font-medium font-body-md text-slate-600">
+                <a href="servicos-e-produtos.html" class="hover:text-slate-900 transition-colors">Serviços</a>
+                <a href="pacotes-integrados.html" class="hover:text-slate-900 transition-colors">Pacotes</a>
+                <a href="tabela-de-precos.html" class="hover:text-slate-900 transition-colors">Tabela de Preços</a>
+            </nav>
 
-    <!-- Header / Nav -->
-    <header class="w-full relative z-50 pt-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex items-center justify-between">
-        <a href="index.html"
-            class="flex items-center gap-2 text-silver-light/80 hover:text-primary transition-colors group">
-            <span class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
-            <span class="font-label-sm tracking-wider uppercase text-[12px]">Voltar</span>
-        </a>
-        <span
-            class="font-label-sm text-[12px] tracking-widest uppercase text-silver-light/60 border border-silver-light/20 rounded-full px-4 py-1">Konnected</span>
+            <div class="flex items-center gap-3 sm:gap-4">
+                <a href="carrinho.html" id="nav-cart-btn" class="relative p-2 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-200/60 transition-colors flex items-center justify-center" aria-label="Abrir Carrinho">
+                    <span class="material-symbols-outlined text-[24px]">shopping_cart</span>
+                    <span id="nav-cart-counter" class="hidden absolute -top-1 -right-1 bg-slate-900 text-white font-mono text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-xs">0</span>
+                </a>
+                <a href="agendamento.html" class="hidden sm:inline-flex items-center gap-2 py-2 px-5 rounded-xl bg-slate-900 text-white font-label-sm text-[13px] font-semibold hover:bg-slate-800 transition-all shadow-xs">
+                    <span>Reunião</span>
+                    <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+                </a>
+            </div>
+        </div>
     </header>
 
     <main
-        class="flex-grow relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col pt-16 pb-24 items-center">
+        class="flex-grow relative z-10 w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col pt-12 pb-24 items-center">
 
-        <!-- Hero Title -->
-        <div class="text-center mb-16 reveal w-full max-w-2xl">
-            <h1
-                class="font-headline-lg-mobile text-[32px] md:text-[56px] font-bold text-white mb-4 leading-tight text-gradient-reveal">
-                Escolha o Melhor Horário
-            </h1>
-            <p class="font-body-md text-[16px] md:text-[18px] text-silver-light/80 text-balance">
-                Selecione uma data na agenda abaixo para batermos um papo sobre a presença digital do seu comércio.
-            </p>
+        <!-- Wizard Progress Bar -->
+        <div class="w-full max-w-md mx-auto mb-10 flex justify-between relative z-20">
+            <div class="absolute top-1/2 left-0 w-full h-[2px] bg-slate-300 -z-10 -translate-y-1/2"></div>
+            <div class="absolute top-1/2 left-0 h-[2px] bg-slate-900 -z-10 -translate-y-1/2 transition-all duration-500 ease-in-out w-0"
+                id="wizard-progress-bar"></div>
+
+            <div class="flex flex-col items-center gap-2 cursor-pointer group"
+                onclick="if(window.wizardMaxStep >= 1) window.goToStep(1)">
+                <div class="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center font-bold text-[15px] font-headline-md shadow-lux transition-all duration-300"
+                    id="step1-indicator">1</div>
+                <span
+                    class="font-label-sm text-[11px] uppercase tracking-widest text-slate-900 font-semibold transition-colors"
+                    id="step1-label">Início</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 cursor-pointer group"
+                onclick="if(window.wizardMaxStep >= 2) window.goToStep(2)">
+                <div class="w-10 h-10 rounded-full bg-white/90 text-slate-400 flex items-center justify-center font-bold text-[15px] font-headline-md border border-slate-300 transition-all duration-500 shadow-xs"
+                    id="step2-indicator">2</div>
+                <span
+                    class="font-label-sm text-[11px] uppercase tracking-widest text-slate-400 transition-colors group-hover:text-slate-600"
+                    id="step2-label">Objetivo</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 cursor-pointer group"
+                onclick="if(window.wizardMaxStep >= 3) window.goToStep(3)">
+                <div class="w-10 h-10 rounded-full bg-white/90 text-slate-400 flex items-center justify-center font-bold text-[15px] font-headline-md border border-slate-300 transition-all duration-500 shadow-xs"
+                    id="step3-indicator">3</div>
+                <span
+                    class="font-label-sm text-[11px] uppercase tracking-widest text-slate-400 transition-colors group-hover:text-slate-600"
+                    id="step3-label">Data</span>
+            </div>
         </div>
 
-        <!-- Booking Widget Container (Google Calendar) -->
-        <div
-            class="w-full glass-panel rounded-xl border border-outline-variant shadow-[0_8px_32px_-8px_rgba(0,0,0,0.5)] overflow-hidden relative group reveal">
-            <!-- Simulated Glow Effect -->
-            <div
-                class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+        <div class="relative w-full overflow-hidden min-h-[520px]">
+            <!-- Step 1: Início -->
+            <div id="wizard-step-1"
+                class="wizard-step w-full transition-all duration-500 transform translate-x-0 opacity-100 flex flex-col items-center text-center">
+                <span
+                    class="font-label-sm text-[11px] tracking-widest uppercase text-slate-600 bg-white/60 backdrop-blur-md mb-3 border border-slate-300/80 rounded-full px-4 py-1 shadow-sm">
+                    Passo 01 • Diagnóstico Rápido
+                </span>
+                <h1
+                    class="font-headline-lg-mobile text-[32px] md:text-[46px] font-bold text-slate-900 mb-3 leading-tight font-display-xl">
+                    Vamos começar!
+                </h1>
+                <p class="font-body-md text-[15px] md:text-[17px] text-slate-600 max-w-lg mb-8 leading-relaxed">
+                    Para personalizarmos seu plano com exatidão, nos conte em qual fase está sua operação:
+                </p>
+
+                <div class="glass-panel rounded-2xl p-6 sm:p-8 mb-8 w-full max-w-lg border border-white/80">
+                    <h2 class="font-headline-md text-[18px] sm:text-[20px] text-slate-900 mb-6 font-semibold">
+                        Você já possui um negócio físico operando?
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <label class="cursor-pointer group">
+                            <input type="radio" name="hasBusiness" class="peer sr-only" value="yes" checked>
+                            <div
+                                class="rounded-xl border border-slate-300/90 bg-white/70 p-6 peer-checked:bg-slate-900 peer-checked:text-white peer-checked:border-slate-900 peer-checked:shadow-lux transition-all duration-200 hover:bg-white h-full flex flex-col items-center justify-center gap-3">
+                                <span class="material-symbols-outlined text-[32px]">store</span>
+                                <span class="font-headline-md text-[16px] font-semibold">Sim, já tenho</span>
+                                <span class="font-body-md text-[12px] opacity-75">Loja, consultório ou escritório</span>
+                            </div>
+                        </label>
+                        <label class="cursor-pointer group">
+                            <input type="radio" name="hasBusiness" class="peer sr-only" value="no">
+                            <div
+                                class="rounded-xl border border-slate-300/90 bg-white/70 p-6 peer-checked:bg-slate-900 peer-checked:text-white peer-checked:border-slate-900 peer-checked:shadow-lux transition-all duration-200 hover:bg-white h-full flex flex-col items-center justify-center gap-3">
+                                <span class="material-symbols-outlined text-[32px]">rocket_launch</span>
+                                <span class="font-headline-md text-[16px] font-semibold">Estou começando</span>
+                                <span class="font-body-md text-[12px] opacity-75">Em fase de
+                                    abertura/planejamento</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="flex justify-center items-center w-full">
+                    <button type="button" onclick="window.nextStep(2)" class="btn-interactive">
+                        <div class="flex items-center justify-center gap-2.5">
+                            <div class="btn-dot"></div>
+                            <span class="btn-text-initial">Próximo Passo</span>
+                        </div>
+                        <div class="btn-text-hover">
+                            <span>Próximo Passo</span>
+                            <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                        </div>
+                    </button>
+                </div>
             </div>
 
-            <div class="h-[600px] w-full flex items-center justify-center bg-surface-dim relative z-10">
-                <iframe
-                    src="https://calendar.google.com/calendar/appointments/AcZssZ2EvF9jd96ox6mJTIBYeZ12kfJ1SawQb3WmaJk=?gv=true"
-                    class="border-0 w-full h-[600px]" title="Agendamento Google Calendar" frameborder="0"></iframe>
+            <!-- Step 2: Objetivo -->
+            <div id="wizard-step-2"
+                class="wizard-step absolute top-0 left-0 w-full transition-all duration-500 transform translate-x-[150%] opacity-0 pointer-events-none flex flex-col items-center text-center">
+                <span
+                    class="font-label-sm text-[11px] tracking-widest uppercase text-slate-600 bg-white/60 backdrop-blur-md mb-3 border border-slate-300/80 rounded-full px-4 py-1 shadow-sm">
+                    Passo 02 • Prioridade
+                </span>
+                <h2
+                    class="font-headline-md text-[30px] md:text-[42px] text-slate-900 mb-3 font-bold font-display-xl leading-tight">
+                    Qual é o seu foco principal?
+                </h2>
+                <p class="font-body-md text-slate-600 text-[15px] md:text-[16px] mb-8 max-w-lg leading-relaxed">
+                    Selecione o resultado que mais trará impacto para o seu faturamento agora:
+                </p>
+
+                <div class="glass-panel rounded-2xl p-6 sm:p-8 mb-8 w-full max-w-lg border border-white/80">
+                    <div class="flex flex-col gap-3 text-left">
+                        <label
+                            class="flex items-center gap-4 cursor-pointer p-4 rounded-xl border border-slate-300/80 bg-white/70 hover:bg-white transition-all shadow-xs has-[:checked]:border-slate-900 has-[:checked]:bg-white has-[:checked]:ring-2 has-[:checked]:ring-slate-900">
+                            <input type="radio" name="goal" value="gmn" checked
+                                class="text-slate-900 focus:ring-slate-900 h-5 w-5 bg-white border-slate-300">
+                            <div class="flex flex-col">
+                                <span class="font-body-md text-slate-900 text-[15px] font-semibold">Aparecer no topo do
+                                    Google Maps</span>
+                                <span class="font-body-md text-slate-500 text-[12px]">SEO Local para atrair clientes da
+                                    vizinhança</span>
+                            </div>
+                        </label>
+                        <label
+                            class="flex items-center gap-4 cursor-pointer p-4 rounded-xl border border-slate-300/80 bg-white/70 hover:bg-white transition-all shadow-xs has-[:checked]:border-slate-900 has-[:checked]:bg-white has-[:checked]:ring-2 has-[:checked]:ring-slate-900">
+                            <input type="radio" name="goal" value="biosite"
+                                class="text-slate-900 focus:ring-slate-900 h-5 w-5 bg-white border-slate-300">
+                            <div class="flex flex-col">
+                                <span class="font-body-md text-slate-900 text-[15px] font-semibold">Biosite Profissional
+                                    de Alta Velocidade</span>
+                                <span class="font-body-md text-slate-500 text-[12px]">Substituir agregadores lentos por
+                                    página própria no domínio</span>
+                            </div>
+                        </label>
+                        <label
+                            class="flex items-center gap-4 cursor-pointer p-4 rounded-xl border border-slate-300/80 bg-white/70 hover:bg-white transition-all shadow-xs has-[:checked]:border-slate-900 has-[:checked]:bg-white has-[:checked]:ring-2 has-[:checked]:ring-slate-900">
+                            <input type="radio" name="goal" value="nfc"
+                                class="text-slate-900 focus:ring-slate-900 h-5 w-5 bg-white border-slate-300">
+                            <div class="flex flex-col">
+                                <span class="font-body-md text-slate-900 text-[15px] font-semibold">Plaquinhas NFC e
+                                    Coleta de Avaliações 5★</span>
+                                <span class="font-body-md text-slate-500 text-[12px]">Aproximação de celular no balcão e
+                                    mesas</span>
+                            </div>
+                        </label>
+                        <label
+                            class="flex items-center gap-4 cursor-pointer p-4 rounded-xl border border-slate-300/80 bg-white/70 hover:bg-white transition-all shadow-xs has-[:checked]:border-slate-900 has-[:checked]:bg-white has-[:checked]:ring-2 has-[:checked]:ring-slate-900">
+                            <input type="radio" name="goal" value="consultoria"
+                                class="text-slate-900 focus:ring-slate-900 h-5 w-5 bg-white border-slate-300">
+                            <div class="flex flex-col">
+                                <span class="font-body-md text-slate-900 text-[15px] font-semibold">Pacote Completo com
+                                    Sessão de Fotos</span>
+                                <span class="font-body-md text-slate-500 text-[12px]">Reformulação total da imagem
+                                    comercial</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center w-full max-w-lg">
+                    <button type="button" onclick="window.prevStep(1)"
+                        class="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900 font-label-sm text-[13px] font-medium uppercase tracking-wider transition-colors focus:outline-none">
+                        <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                        Voltar
+                    </button>
+                    <button type="button" onclick="window.nextStep(3)" class="btn-interactive">
+                        <div class="flex items-center justify-center gap-2.5">
+                            <div class="btn-dot"></div>
+                            <span class="btn-text-initial">Escolher Data & Horário</span>
+                        </div>
+                        <div class="btn-text-hover">
+                            <span>Escolher Data & Horário</span>
+                            <span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                        </div>
+                    </button>
+                </div>
             </div>
 
-            <!-- Circuit decorative element bottom -->
-            <div
-                class="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-primary/30 to-transparent">
+            <!-- Step 3: Google Calendar -->
+            <div id="wizard-step-3"
+                class="wizard-step absolute top-0 left-0 w-full transition-all duration-500 transform translate-x-[150%] opacity-0 pointer-events-none text-center">
+                <span
+                    class="font-label-sm text-[11px] tracking-widest uppercase text-slate-600 bg-white/60 backdrop-blur-md mb-3 border border-slate-300/80 rounded-full px-4 py-1 shadow-sm">
+                    Passo 03 • Confirmação na Agenda
+                </span>
+                <h2
+                    class="font-headline-md text-[30px] md:text-[42px] text-slate-900 mb-2 font-bold font-display-xl leading-tight">
+                    Agende sua Reunião
+                </h2>
+                <p class="font-body-md text-[15px] text-slate-600 mb-8 max-w-lg mx-auto leading-relaxed">
+                    Selecione um horário conveniente abaixo. Nossa equipe analisará seu negócio previamente para
+                    apresentar um plano sob medida.
+                </p>
+
+                <div
+                    class="w-full glass-panel rounded-2xl border border-white/80 shadow-lux overflow-hidden relative mb-8 bg-white/70">
+                    <div class="h-[620px] w-full flex items-center justify-center relative z-10">
+                        <iframe
+                            src="https://calendar.google.com/calendar/appointments/AcZssZ2EvF9jd96ox6mJTIBYeZ12kfJ1SawQb3WmaJk=?gv=true"
+                            class="border-0 w-full h-[620px]" title="Agendamento Google Calendar"
+                            frameborder="0"></iframe>
+                    </div>
+                </div>
+
+                <button type="button" onclick="window.prevStep(2)"
+                    class="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900 font-label-sm text-[13px] font-medium uppercase tracking-wider transition-colors mx-auto focus:outline-none py-2">
+                    <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                    Voltar aos Objetivos
+                </button>
             </div>
         </div>
 
     </main>
 
     <!-- FOOTER -->
-    <footer class="w-full py-12 border-t border-dark-circuit bg-cyber-black/50 backdrop-blur-sm relative z-10">
+    <footer class="w-full py-12 border-t border-slate-300/80 bg-white/40 backdrop-blur-md relative z-10 mt-auto">
         <div class="max-w-7xl mx-auto px-4 flex flex-col items-center gap-6">
             <div class="flex items-center gap-8">
-                <a href="https://wa.me/5561981659192?text=Oi!%20Quero%20saber%20mais%20sobre%20a%20Konnected"
+                <a href="https://wa.me/556199771492?text=Oi!%20Quero%20saber%20mais%20sobre%20a%20Konnected"
                     target="_blank" rel="noopener noreferrer"
-                    class="text-muted-gray hover:text-primary transition-colors flex flex-col items-center gap-2">
-                    <span class="material-symbols-outlined text-[24px]">chat</span>
-                    <span class="font-label-sm text-[10px] uppercase tracking-wider">WhatsApp</span>
+                    class="text-slate-600 hover:text-slate-900 transition-colors flex flex-col items-center gap-2 group">
+                    <span
+                        class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">chat</span>
+                    <span class="font-label-sm text-[11px] uppercase tracking-wider font-medium">WhatsApp</span>
                 </a>
                 <a href="https://www.instagram.com/konnected.sd/" target="_blank" rel="noopener noreferrer"
-                    class="text-muted-gray hover:text-primary transition-colors flex flex-col items-center gap-2">
-                    <span class="material-symbols-outlined text-[24px]">photo_camera</span>
-                    <span class="font-label-sm text-[10px] uppercase tracking-wider">Instagram</span>
+                    class="text-slate-600 hover:text-slate-900 transition-colors flex flex-col items-center gap-2 group">
+                    <span
+                        class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">photo_camera</span>
+                    <span class="font-label-sm text-[11px] uppercase tracking-wider font-medium">Instagram</span>
                 </a>
-                <a href="mailto:contato@konnected.sd"
-                    class="text-muted-gray hover:text-primary transition-colors flex flex-col items-center gap-2">
-                    <span class="material-symbols-outlined text-[24px]">mail</span>
-                    <span class="font-label-sm text-[10px] uppercase tracking-wider">E-mail</span>
+                <a href="mailto:konnected.sd@gmail.com"
+                    class="text-slate-600 hover:text-slate-900 transition-colors flex flex-col items-center gap-2 group">
+                    <span
+                        class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">mail</span>
+                    <span class="font-label-sm text-[11px] uppercase tracking-wider font-medium">E-mail</span>
                 </a>
             </div>
-            <p class="font-label-sm text-[10px] text-muted-gray/50 uppercase tracking-widest text-center mt-4">
-                Konnected © 2026<br />
-                Presença Digital Local
-            </p>
+
+            <!-- Links de Conformidade Legal -->
+            <div class="flex items-center gap-6 text-[12px] font-body-md text-slate-500">
+                <a href="politica-privacidade.html"
+                    class="hover:text-slate-900 transition-colors underline-offset-4 hover:underline">Política de
+                    Privacidade</a>
+                <span>•</span>
+                <a href="termos-uso.html"
+                    class="hover:text-slate-900 transition-colors underline-offset-4 hover:underline">Termos de Uso</a>
+            </div>
+
+            <!-- Rodapé com identificação regulatória obrigatória (Decreto 7.962/2013 e CDC) -->
+            <div class="text-center text-[11px] font-body-md text-slate-500 border-t border-slate-200/80 pt-6 mt-2 max-w-2xl">
+                <p class="font-medium text-slate-700 mb-1">
+                    67.202.316 DIMITRI LOPES BARRETO • CNPJ: 67.202.316/0001-37
+                </p>
+                <p class="text-slate-500">
+                    Quadra QN 7 Conjunto 11 - Riacho Fundo I, Brasília - DF, CEP: 71805-711
+                </p>
+                <p class="text-slate-400 mt-1">
+                    WhatsApp: (61) 9977-1492 • E-mail: konnected.sd@gmail.com
+                </p>
+                <p class="mt-2 text-slate-400 font-mono text-[10px]">
+                    Konnected © 2026 • Presença Digital Local • Todos os direitos reservados.
+                </p>
+            </div>
         </div>
     </footer>
 
     <!-- WhatsApp FAB -->
-    <a href="https://wa.me/5561981659192?text=Oi!%20Quero%20saber%20mais%20sobre%20a%20Konnected" target="_blank"
-        rel="noopener noreferrer" class="whatsapp-fab" aria-label="Fale conosco pelo WhatsApp">
+    <a href="https://wa.me/556199771492?text=Oi!%20Quero%20saber%20mais%20sobre%20a%20Konnected" target="_blank"
+        rel="noopener noreferrer" class="whatsapp-fab group" aria-label="Fale conosco pelo WhatsApp">
         <span class="fab-ping"></span>
-        <span class="material-symbols-outlined text-white text-[28px] relative z-10">chat</span>
+        <svg class="w-7 h-7 text-white fill-current relative z-10 transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.048 2C6.502 2 2 6.502 2 12.048c0 1.77.462 3.498 1.34 5.02L2 22l5.08-1.332a10.02 10.02 0 0 0 4.968 1.309c5.546 0 10.048-4.502 10.048-10.048 0-2.684-1.045-5.207-2.943-7.105C17.255 3.045 14.732 2 12.048 2zm0 1.67c2.22 0 4.307.865 5.877 2.435a8.27 8.27 0 0 1 2.431 5.872c0 4.58-3.727 8.307-8.307 8.307-1.637 0-3.15-.522-4.384-1.411l-.314-.228-3.256.854.869-3.176-.205-.327a8.28 8.28 0 0 1-1.267-4.38c0-4.58 3.727-8.307 8.307-8.307zm5.424 10.712c-.301-.15-1.78-.878-2.056-.978-.276-.1-.477-.15-.678.15-.2.301-.778.978-.954 1.18-.175.2-.35.225-.65.075-.301-.15-1.27-.468-2.42-1.493-.894-.798-1.5-1.783-1.676-2.083-.175-.3-.019-.462.13-.61.135-.135.301-.35.451-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.677-1.633-.927-2.235-.244-.587-.493-.507-.677-.516-.176-.008-.376-.01-.577-.01-.2 0-.526.075-.802.375-.276.3-1.053 1.028-1.053 2.508s1.078 2.908 1.228 3.109c.15.2 2.122 3.24 5.14 4.542.719.31 1.28.495 1.718.634.722.229 1.379.197 1.9.119.58-.088 1.78-.727 2.03-1.428.25-.7.25-1.303.175-1.428-.075-.125-.275-.2-.576-.35z"/>
+        </svg>
     </a>
 
     <!-- Scripts -->
@@ -151,40 +356,80 @@
                 }
                 requestAnimationFrame(raf);
             }
+        });
+    </script>
 
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.15
-            };
+    <!-- Wizard Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let currentStep = 1;
+            window.wizardMaxStep = 1;
 
-            const observer = new IntersectionObserver((entries, obs) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        obs.unobserve(entry.target);
+            function updateWizardUI() {
+                const step1 = document.getElementById('wizard-step-1');
+                const step2 = document.getElementById('wizard-step-2');
+                const step3 = document.getElementById('wizard-step-3');
+
+                const steps = [step1, step2, step3];
+
+                steps.forEach((step, index) => {
+                    const stepNum = index + 1;
+                    if (stepNum === currentStep) {
+                        step.classList.remove('opacity-0', 'pointer-events-none', 'translate-x-[150%]', '-translate-x-[150%]', 'absolute', 'top-0', 'left-0');
+                        step.classList.add('opacity-100', 'translate-x-0', 'relative');
+                    } else if (stepNum < currentStep) {
+                        step.classList.remove('opacity-100', 'translate-x-0', 'relative', 'translate-x-[150%]');
+                        step.classList.add('opacity-0', 'pointer-events-none', '-translate-x-[150%]', 'absolute', 'top-0', 'left-0');
+                    } else {
+                        step.classList.remove('opacity-100', 'translate-x-0', 'relative', '-translate-x-[150%]');
+                        step.classList.add('opacity-0', 'pointer-events-none', 'translate-x-[150%]', 'absolute', 'top-0', 'left-0');
                     }
                 });
-            }, observerOptions);
 
-            document.querySelectorAll(".reveal").forEach((el, index) => {
-                if (index < 4) {
-                    setTimeout(() => el.classList.add("active"), index * 100);
-                } else {
-                    observer.observe(el);
+                // Progress bar (0% -> 50% -> 100%)
+                const progress = currentStep === 1 ? 0 : currentStep === 2 ? 50 : 100;
+                document.getElementById('wizard-progress-bar').style.width = `${progress}%`;
+
+                // Indicators
+                for (let i = 1; i <= 3; i++) {
+                    const ind = document.getElementById(`step${i}-indicator`);
+                    const lbl = document.getElementById(`step${i}-label`);
+                    if (i <= currentStep) {
+                        ind.classList.remove('bg-white/90', 'text-slate-400', 'border', 'border-slate-300', 'shadow-xs');
+                        ind.classList.add('bg-slate-900', 'text-white', 'shadow-lux');
+                        if (lbl) {
+                            lbl.classList.remove('text-slate-400');
+                            lbl.classList.add('text-slate-900', 'font-semibold');
+                        }
+                    } else {
+                        ind.classList.remove('bg-slate-900', 'text-white', 'shadow-lux');
+                        ind.classList.add('bg-white/90', 'text-slate-400', 'border', 'border-slate-300', 'shadow-xs');
+                        if (lbl) {
+                            lbl.classList.remove('text-slate-900', 'font-semibold');
+                            lbl.classList.add('text-slate-400');
+                        }
+                    }
                 }
-            });
-
-            if (window.matchMedia('(hover: hover)').matches) {
-                const glow = document.createElement('div');
-                glow.classList.add('cursor-glow');
-                document.body.appendChild(glow);
-
-                document.addEventListener('mousemove', (e) => {
-                    glow.style.left = e.clientX + 'px';
-                    glow.style.top = e.clientY + 'px';
-                });
             }
+
+            window.nextStep = function (step) {
+                currentStep = step;
+                if (step > window.wizardMaxStep) window.wizardMaxStep = step;
+                updateWizardUI();
+                window.scrollTo({ top: document.querySelector('.wizard-step').offsetTop - 120, behavior: 'smooth' });
+            };
+
+            window.prevStep = function (step) {
+                currentStep = step;
+                updateWizardUI();
+                window.scrollTo({ top: document.querySelector('.wizard-step').offsetTop - 120, behavior: 'smooth' });
+            };
+
+            window.goToStep = function (step) {
+                currentStep = step;
+                updateWizardUI();
+                window.scrollTo({ top: document.querySelector('.wizard-step').offsetTop - 120, behavior: 'smooth' });
+            };
         });
     </script>
 </body>

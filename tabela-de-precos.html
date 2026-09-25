@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="dark" lang="pt-BR">
+<html class="" lang="pt-BR">
 
 <head>
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval';">
@@ -7,184 +7,306 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Konnected - Tabela de Preços</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <meta name="description"
+        content="Konnected - Presença Digital Local. Soluções completas sob medida para destacar seu negócio físico no digital de forma unificada e moderna.">
+    <meta name="keywords" content="presença digital, biosite, nfc, google meu negócio, site para negócios locais">
+    <meta name="author" content="Konnected">
+    <meta property="og:title" content="Konnected - Presença Digital Local">
+    <meta property="og:description"
+        content="Soluções completas sob medida para destacar seu negócio físico no digital.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/biosite.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Konnected - Presença Digital Local">
+    <meta name="twitter:description" content="Destaque seu negócio físico no digital com a Konnected.">
     <link
         href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap"
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "cyber-black": "#050707",
-                        "deep-charcoal": "#0E1111",
-                        "dark-circuit": "#141919",
-                        "electric-emerald": "#28A789",
-                        "primary": "#66daba",
-                        "silver-light": "#E1E3E2",
-                        "muted-gray": "#86948E"
-                    },
-                    fontFamily: {
-                        "display-xl": ["Space Grotesk", "sans-serif"],
-                        "headline-lg": ["Space Grotesk", "sans-serif"],
-                        "headline-md": ["Space Grotesk", "sans-serif"],
-                        "body-lg": ["Inter", "sans-serif"],
-                        "headline-lg-mobile": ["Space Grotesk", "sans-serif"],
-                        "body-md": ["Inter", "sans-serif"],
-                        "label-sm": ["Inter", "sans-serif"]
-                    }
-                }
-            }
-        }
-    </script>
     <link rel="stylesheet" href="styles.css" />
     <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
 </head>
 
-<body class="antialiased selection:bg-electric-emerald selection:text-black min-h-screen relative flex flex-col">
+<body class="antialiased selection:bg-slate-900 selection:text-white min-h-screen relative flex flex-col">
 
-    <!-- Animated Grid Background -->
-    <div class="cyber-bg"></div>
+    <!-- FULL-WIDTH RETANGULAR HEADER (Sticky Navigation — Minimalista Clean) -->
+    <header class="sticky top-0 z-40 w-full bg-white/80 backdrop-blur-md border-b border-slate-300/80 transition-all">
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-6">
+                <a href="index.html" class="flex items-center group select-none">
+                    <span class="font-headline-md text-[20px] sm:text-[22px] font-bold text-slate-900 tracking-tight group-hover:text-slate-700 transition-colors">
+                        Konnected
+                    </span>
+                </a>
+                <div class="h-4 w-px bg-slate-300 hidden sm:block"></div>
+                <a href="index.html" class="hidden sm:flex items-center gap-1.5 text-[13px] font-medium text-slate-600 hover:text-slate-900 transition-colors">
+                    <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+                    <span>Início</span>
+                </a>
+            </div>
 
-    <!-- Hero Gradient Mesh BG -->
-    <div class="hero-gradient-mesh opacity-50"></div>
+            <nav class="hidden md:flex items-center gap-6 lg:gap-7 text-[14px] font-medium font-body-md text-slate-600">
+                <a href="servicos-e-produtos.html" class="hover:text-slate-900 transition-colors">Serviços</a>
+                <a href="pacotes-integrados.html" class="hover:text-slate-900 transition-colors">Pacotes</a>
+                <a href="tabela-de-precos.html" class="text-slate-900 font-semibold transition-colors">Tabela de Preços</a>
+            </nav>
 
-    <!-- Header / Nav -->
-    <header class="w-full relative z-50 pt-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex items-center justify-between">
-        <a href="index.html"
-            class="flex items-center gap-2 text-silver-light/80 hover:text-primary transition-colors group">
-            <span class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
-            <span class="font-label-sm tracking-wider uppercase text-[12px]">Voltar</span>
-        </a>
-        <span
-            class="font-label-sm text-[12px] tracking-widest uppercase text-silver-light/60 border border-silver-light/20 rounded-full px-4 py-1">Konnected</span>
+            <!-- Actions: Cart + Quick Action + Mobile Menu Toggle -->
+            <div class="flex items-center gap-2 sm:gap-4">
+                <a href="carrinho.html" id="nav-cart-btn" class="relative p-2.5 min-w-[44px] min-h-[44px] rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-200/60 transition-colors flex items-center justify-center" aria-label="Abrir Carrinho">
+                    <span class="material-symbols-outlined text-[24px]">shopping_cart</span>
+                    <span id="nav-cart-counter" class="hidden absolute top-1 right-1 bg-slate-900 text-white font-mono text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-xs">0</span>
+                </a>
+                <a href="agendamento.html" class="hidden sm:inline-flex items-center gap-2 py-2 px-5 rounded-xl bg-slate-900 text-white font-label-sm text-[13px] font-semibold hover:bg-slate-800 transition-all shadow-xs">
+                    <span>Reunião</span>
+                    <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+                </a>
+                <!-- Mobile Hamburger Button -->
+                <button id="mobile-menu-btn"
+                    class="md:hidden p-2.5 min-w-[44px] min-h-[44px] rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-200/60 transition-colors flex items-center justify-center cursor-pointer"
+                    aria-label="Abrir Menu de Navegação" aria-expanded="false">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined text-[26px]">menu</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobile-menu"
+            class="hidden md:hidden border-t border-slate-200/80 bg-white/95 backdrop-blur-xl px-4 py-4 flex flex-col gap-2 shadow-lg transition-all">
+            <a href="index.html" class="mobile-nav-link flex items-center justify-between py-3 px-3.5 rounded-xl text-slate-800 hover:bg-slate-100 font-medium text-[15px] transition-colors">
+                <span class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-[20px] text-slate-600">home</span>
+                    Página Inicial
+                </span>
+                <span class="material-symbols-outlined text-[16px] text-slate-400">chevron_right</span>
+            </a>
+            <a href="servicos-e-produtos.html" class="mobile-nav-link flex items-center justify-between py-3 px-3.5 rounded-xl text-slate-800 hover:bg-slate-100 font-medium text-[15px] transition-colors">
+                <span class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-[20px] text-slate-600">inventory_2</span>
+                    Serviços & Produtos
+                </span>
+                <span class="material-symbols-outlined text-[16px] text-slate-400">chevron_right</span>
+            </a>
+            <a href="pacotes-integrados.html" class="mobile-nav-link flex items-center justify-between py-3 px-3.5 rounded-xl text-slate-800 hover:bg-slate-100 font-medium text-[15px] transition-colors">
+                <span class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-[20px] text-slate-600">loyalty</span>
+                    Pacotes Integrados
+                </span>
+                <span class="material-symbols-outlined text-[16px] text-slate-400">chevron_right</span>
+            </a>
+            <a href="cases.html" class="mobile-nav-link flex items-center justify-between py-3 px-3.5 rounded-xl text-slate-800 hover:bg-slate-100 font-medium text-[15px] transition-colors">
+                <span class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-[20px] text-slate-600">verified</span>
+                    Cases de Sucesso
+                </span>
+                <span class="material-symbols-outlined text-[16px] text-slate-400">chevron_right</span>
+            </a>
+            <a href="tabela-de-precos.html" class="mobile-nav-link flex items-center justify-between py-3 px-3.5 rounded-xl bg-slate-100 text-slate-900 font-semibold text-[15px] transition-colors">
+                <span class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-[20px] text-slate-900">payments</span>
+                    Tabela de Preços
+                </span>
+                <span class="material-symbols-outlined text-[16px] text-slate-400">chevron_right</span>
+            </a>
+            <div class="pt-2 border-t border-slate-200/80 mt-1">
+                <a href="agendamento.html" class="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-slate-900 text-white font-label-sm text-[14px] font-semibold hover:bg-slate-800 transition-all shadow-xs">
+                    <span>Agendar Reunião</span>
+                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                </a>
+            </div>
+        </div>
     </header>
 
-    <main class="flex-grow relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col pt-16 pb-24">
+    <main class="flex-grow relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col pt-12 pb-24">
 
         <!-- Hero Title -->
         <div class="text-center mb-16 reveal">
+            <span class="font-label-sm text-[11px] tracking-widest uppercase text-slate-600 mb-3 block">
+                Simulação e Valores Unitários
+            </span>
             <h1
-                class="font-headline-lg-mobile text-[32px] md:text-[56px] font-bold text-white mb-4 leading-tight text-gradient-reveal">
+                class="font-headline-lg-mobile text-[36px] md:text-[54px] font-bold text-slate-900 mb-4 leading-tight text-gradient-reveal">
                 Tabela de Preços
             </h1>
-            <p class="font-body-md text-[16px] md:text-[18px] text-silver-light/80 max-w-2xl mx-auto">
-                Transparência e flexibilidade para montar a presença digital ideal para o seu negócio.
+            <div class="w-12 h-px bg-slate-300 mx-auto mb-4"></div>
+            <p class="font-body-md text-[16px] md:text-[18px] text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                Transparência completa. Selecione os produtos desejados para simular seu orçamento e enviar diretamente
+                para nosso WhatsApp.
             </p>
         </div>
 
-        <div class="flex flex-col gap-12">
+        <div class="flex flex-col gap-10">
 
             <!-- Category 1: Plaquinhas NFC -->
             <section class="reveal">
-                <div class="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
-                    <span class="material-symbols-outlined text-primary text-[28px]">nfc</span>
-                    <h2 class="font-headline-md text-[24px] text-white">Plaquinhas NFC</h2>
+                <div class="flex items-center gap-3 mb-4 pb-2 border-b border-slate-300/80">
+                    <div class="w-10 h-10 rounded-xl bg-slate-900/5 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-slate-900 text-[24px]">nfc</span>
+                    </div>
+                    <h2 class="font-headline-md text-[22px] font-bold text-slate-900">Plaquinhas Físicas</h2>
                 </div>
 
-                <div class="glass-panel rounded-xl overflow-hidden divide-y divide-white/5">
+                <div
+                    class="glass-panel rounded-2xl overflow-hidden divide-y divide-slate-200/70 border border-white/90">
 
                     <!-- Subcategory: Básica -->
-                    <div class="bg-white/5 p-4 flex flex-col">
-                        <span class="font-headline-md text-[18px] text-primary">Plaquinha Básica</span>
-                        <span class="font-body-md text-[12px] text-muted-gray italic">Arte simples (Logo + QR
-                            Code)</span>
+                    <div class="bg-slate-900/5 p-4 flex flex-col">
+                        <span
+                            class="font-headline-md text-[16px] font-bold text-slate-900 uppercase tracking-wide">Plaquinha
+                            Básica</span>
+                        <span class="font-body-md text-[12px] text-muted-gray">Impressão frontal com Logo + QR
+                            Code</span>
                     </div>
-                    <div class="flex justify-between items-center p-4 hover:bg-white/5 transition-colors">
-                        <span class="font-body-md text-[15px] text-silver-light">A6 (10×15 cm) sem NFC</span>
+                    <div class="flex justify-between items-center p-4 hover:bg-white/40 transition-colors gap-4">
+                        <span class="font-body-md text-[15px] text-slate-700 font-medium">A6 (10×15 cm) sem NFC</span>
                         <div class="flex items-center gap-4 text-right justify-end ml-auto">
-                            <span class="font-headline-md text-[16px] text-primary">R$ 44,90</span>
-                            <div class="flex items-center gap-3 bg-white/5 rounded-full px-2 py-1 border border-white/10">
-                                <button onclick="removeFromCart('basica-a6-sem')" class="w-6 h-6 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">remove</span></button>
-                                <span class="product-counter font-body-md text-[14px] text-white w-3 text-center" data-id="basica-a6-sem">0</span>
-                                <button onclick="addToCart('basica-a6-sem', 'Plaquinha Básica A6 sem NFC', 44.9)" class="w-6 h-6 rounded-full bg-electric-emerald text-black flex items-center justify-center hover:brightness-110 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">add</span></button>
+                            <span class="font-headline-md text-[16px] font-bold text-slate-900">R$ 44,90</span>
+                            <div
+                                class="flex items-center gap-2 bg-white/60 rounded-full px-2 py-1 border border-slate-300 shadow-sm">
+                                <button onclick="removeFromCart('basica-a6-sem')"
+                                    class="w-6 h-6 rounded-full bg-slate-200/80 text-slate-800 flex items-center justify-center hover:bg-slate-300 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">remove</span></button>
+                                <span
+                                    class="product-counter font-mono font-bold text-[13px] text-slate-900 w-4 text-center"
+                                    data-id="basica-a6-sem">0</span>
+                                <button onclick="addToCart('basica-a6-sem', 'Plaquinha Básica A6 sem NFC', 44.9)"
+                                    class="w-6 h-6 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-slate-800 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">add</span></button>
                             </div>
                         </div>
                     </div>
-                    <div class="flex justify-between items-center p-4 hover:bg-white/5 transition-colors">
-                        <span class="font-body-md text-[15px] text-silver-light">A6 (10×15 cm) com NFC</span>
+                    <div class="flex justify-between items-center p-4 hover:bg-white/40 transition-colors gap-4">
+                        <span class="font-body-md text-[15px] text-slate-700 font-medium">A6 (10×15 cm) com NFC</span>
                         <div class="flex items-center gap-4 text-right justify-end ml-auto">
-                            <span class="font-headline-md text-[16px] text-primary">R$ 59,90</span>
-                            <div class="flex items-center gap-3 bg-white/5 rounded-full px-2 py-1 border border-white/10">
-                                <button onclick="removeFromCart('basica-a6-com')" class="w-6 h-6 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">remove</span></button>
-                                <span class="product-counter font-body-md text-[14px] text-white w-3 text-center" data-id="basica-a6-com">0</span>
-                                <button onclick="addToCart('basica-a6-com', 'Plaquinha Básica A6 com NFC', 59.9)" class="w-6 h-6 rounded-full bg-electric-emerald text-black flex items-center justify-center hover:brightness-110 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">add</span></button>
+                            <span class="font-headline-md text-[16px] font-bold text-slate-900">R$ 59,90</span>
+                            <div
+                                class="flex items-center gap-2 bg-white/60 rounded-full px-2 py-1 border border-slate-300 shadow-sm">
+                                <button onclick="removeFromCart('basica-a6-com')"
+                                    class="w-6 h-6 rounded-full bg-slate-200/80 text-slate-800 flex items-center justify-center hover:bg-slate-300 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">remove</span></button>
+                                <span
+                                    class="product-counter font-mono font-bold text-[13px] text-slate-900 w-4 text-center"
+                                    data-id="basica-a6-com">0</span>
+                                <button onclick="addToCart('basica-a6-com', 'Plaquinha Básica A6 com NFC', 59.9)"
+                                    class="w-6 h-6 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-slate-800 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">add</span></button>
                             </div>
                         </div>
                     </div>
-                    <div class="flex justify-between items-center p-4 hover:bg-white/5 transition-colors">
-                        <span class="font-body-md text-[15px] text-silver-light">A5 (15×21 cm) sem NFC</span>
+                    <div class="flex justify-between items-center p-4 hover:bg-white/40 transition-colors gap-4">
+                        <span class="font-body-md text-[15px] text-slate-700 font-medium">A5 (15×21 cm) sem NFC</span>
                         <div class="flex items-center gap-4 text-right justify-end ml-auto">
-                            <span class="font-headline-md text-[16px] text-primary">R$ 54,90</span>
-                            <div class="flex items-center gap-3 bg-white/5 rounded-full px-2 py-1 border border-white/10">
-                                <button onclick="removeFromCart('basica-a5-sem')" class="w-6 h-6 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">remove</span></button>
-                                <span class="product-counter font-body-md text-[14px] text-white w-3 text-center" data-id="basica-a5-sem">0</span>
-                                <button onclick="addToCart('basica-a5-sem', 'Plaquinha Básica A5 sem NFC', 54.9)" class="w-6 h-6 rounded-full bg-electric-emerald text-black flex items-center justify-center hover:brightness-110 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">add</span></button>
+                            <span class="font-headline-md text-[16px] font-bold text-slate-900">R$ 54,90</span>
+                            <div
+                                class="flex items-center gap-2 bg-white/60 rounded-full px-2 py-1 border border-slate-300 shadow-sm">
+                                <button onclick="removeFromCart('basica-a5-sem')"
+                                    class="w-6 h-6 rounded-full bg-slate-200/80 text-slate-800 flex items-center justify-center hover:bg-slate-300 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">remove</span></button>
+                                <span
+                                    class="product-counter font-mono font-bold text-[13px] text-slate-900 w-4 text-center"
+                                    data-id="basica-a5-sem">0</span>
+                                <button onclick="addToCart('basica-a5-sem', 'Plaquinha Básica A5 sem NFC', 54.9)"
+                                    class="w-6 h-6 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-slate-800 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">add</span></button>
                             </div>
                         </div>
                     </div>
-                    <div class="flex justify-between items-center p-4 hover:bg-white/5 transition-colors">
-                        <span class="font-body-md text-[15px] text-silver-light">A5 (15×21 cm) com NFC</span>
+                    <div class="flex justify-between items-center p-4 hover:bg-white/40 transition-colors gap-4">
+                        <span class="font-body-md text-[15px] text-slate-700 font-medium">A5 (15×21 cm) com NFC</span>
                         <div class="flex items-center gap-4 text-right justify-end ml-auto">
-                            <span class="font-headline-md text-[16px] text-primary">R$ 69,90</span>
-                            <div class="flex items-center gap-3 bg-white/5 rounded-full px-2 py-1 border border-white/10">
-                                <button onclick="removeFromCart('basica-a5-com')" class="w-6 h-6 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">remove</span></button>
-                                <span class="product-counter font-body-md text-[14px] text-white w-3 text-center" data-id="basica-a5-com">0</span>
-                                <button onclick="addToCart('basica-a5-com', 'Plaquinha Básica A5 com NFC', 69.9)" class="w-6 h-6 rounded-full bg-electric-emerald text-black flex items-center justify-center hover:brightness-110 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">add</span></button>
+                            <span class="font-headline-md text-[16px] font-bold text-slate-900">R$ 69,90</span>
+                            <div
+                                class="flex items-center gap-2 bg-white/60 rounded-full px-2 py-1 border border-slate-300 shadow-sm">
+                                <button onclick="removeFromCart('basica-a5-com')"
+                                    class="w-6 h-6 rounded-full bg-slate-200/80 text-slate-800 flex items-center justify-center hover:bg-slate-300 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">remove</span></button>
+                                <span
+                                    class="product-counter font-mono font-bold text-[13px] text-slate-900 w-4 text-center"
+                                    data-id="basica-a5-com">0</span>
+                                <button onclick="addToCart('basica-a5-com', 'Plaquinha Básica A5 com NFC', 69.9)"
+                                    class="w-6 h-6 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-slate-800 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">add</span></button>
                             </div>
                         </div>
                     </div>
-
                     <!-- Subcategory: Premium -->
-                    <div class="bg-white/5 p-4 flex flex-col border-t border-white/5 mt-4">
-                        <span class="font-headline-md text-[18px] text-primary">Plaquinha Premium</span>
-                        <span class="font-body-md text-[12px] text-muted-gray italic">Arte com identidade visual
+                    <div class="bg-slate-900/5 p-4 flex flex-col border-t border-slate-200/70">
+                        <span
+                            class="font-headline-md text-[16px] font-bold text-slate-900 uppercase tracking-wide">Plaquinha
+                            Premium</span>
+                        <span class="font-body-md text-[12px] text-muted-gray">Arte com identidade visual
                             completa</span>
                     </div>
-                    <div class="flex justify-between items-center p-4 hover:bg-white/5 transition-colors">
-                        <span class="font-body-md text-[15px] text-silver-light">A6 (10×15 cm) sem NFC</span>
+                    <div class="flex justify-between items-center p-4 hover:bg-white/40 transition-colors gap-4">
+                        <span class="font-body-md text-[15px] text-slate-700 font-medium">A6 (10×15 cm) sem NFC</span>
                         <div class="flex items-center gap-4 text-right justify-end ml-auto">
-                            <span class="font-headline-md text-[16px] text-primary">R$ 64,90</span>
-                            <div class="flex items-center gap-3 bg-white/5 rounded-full px-2 py-1 border border-white/10">
-                                <button onclick="removeFromCart('premium-a6-sem')" class="w-6 h-6 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">remove</span></button>
-                                <span class="product-counter font-body-md text-[14px] text-white w-3 text-center" data-id="premium-a6-sem">0</span>
-                                <button onclick="addToCart('premium-a6-sem', 'Plaquinha Premium A6 sem NFC', 64.9)" class="w-6 h-6 rounded-full bg-electric-emerald text-black flex items-center justify-center hover:brightness-110 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">add</span></button>
+                            <span class="font-headline-md text-[16px] font-bold text-slate-900">R$ 64,90</span>
+                            <div
+                                class="flex items-center gap-2 bg-white/60 rounded-full px-2 py-1 border border-slate-300 shadow-sm">
+                                <button onclick="removeFromCart('premium-a6-sem')"
+                                    class="w-7 h-7 rounded-full bg-slate-200/80 text-slate-800 flex items-center justify-center hover:bg-slate-300 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">remove</span></button>
+                                <span
+                                    class="product-counter font-mono font-bold text-[13px] text-slate-900 w-4 text-center"
+                                    data-id="premium-a6-sem">0</span>
+                                <button onclick="addToCart('premium-a6-sem', 'Plaquinha Premium A6 sem NFC', 64.9)"
+                                    class="w-7 h-7 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-slate-800 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">add</span></button>
                             </div>
                         </div>
                     </div>
-                    <div class="flex justify-between items-center p-4 hover:bg-white/5 transition-colors">
-                        <span class="font-body-md text-[15px] text-silver-light">A6 (10×15 cm) com NFC</span>
+                    <div class="flex justify-between items-center p-4 hover:bg-white/40 transition-colors gap-4">
+                        <span class="font-body-md text-[15px] text-slate-700 font-medium">A6 (10×15 cm) com NFC</span>
                         <div class="flex items-center gap-4 text-right justify-end ml-auto">
-                            <span class="font-headline-md text-[16px] text-primary">R$ 79,90</span>
-                            <div class="flex items-center gap-3 bg-white/5 rounded-full px-2 py-1 border border-white/10">
-                                <button onclick="removeFromCart('premium-a6-com')" class="w-6 h-6 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">remove</span></button>
-                                <span class="product-counter font-body-md text-[14px] text-white w-3 text-center" data-id="premium-a6-com">0</span>
-                                <button onclick="addToCart('premium-a6-com', 'Plaquinha Premium A6 com NFC', 79.9)" class="w-6 h-6 rounded-full bg-electric-emerald text-black flex items-center justify-center hover:brightness-110 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">add</span></button>
+                            <span class="font-headline-md text-[16px] font-bold text-slate-900">R$ 79,90</span>
+                            <div
+                                class="flex items-center gap-2 bg-white/60 rounded-full px-2 py-1 border border-slate-300 shadow-sm">
+                                <button onclick="removeFromCart('premium-a6-com')"
+                                    class="w-7 h-7 rounded-full bg-slate-200/80 text-slate-800 flex items-center justify-center hover:bg-slate-300 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">remove</span></button>
+                                <span
+                                    class="product-counter font-mono font-bold text-[13px] text-slate-900 w-4 text-center"
+                                    data-id="premium-a6-com">0</span>
+                                <button onclick="addToCart('premium-a6-com', 'Plaquinha Premium A6 com NFC', 79.9)"
+                                    class="w-7 h-7 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-slate-800 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">add</span></button>
                             </div>
                         </div>
                     </div>
-                    <div class="flex justify-between items-center p-4 hover:bg-white/5 transition-colors">
-                        <span class="font-body-md text-[15px] text-silver-light">A5 (15×21 cm) sem NFC</span>
+                    <div class="flex justify-between items-center p-4 hover:bg-white/40 transition-colors gap-4">
+                        <span class="font-body-md text-[15px] text-slate-700 font-medium">A5 (15×21 cm) sem NFC</span>
                         <div class="flex items-center gap-4 text-right justify-end ml-auto">
-                            <span class="font-headline-md text-[16px] text-primary">R$ 69,90</span>
-                            <div class="flex items-center gap-3 bg-white/5 rounded-full px-2 py-1 border border-white/10">
-                                <button onclick="removeFromCart('premium-a5-sem')" class="w-6 h-6 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">remove</span></button>
-                                <span class="product-counter font-body-md text-[14px] text-white w-3 text-center" data-id="premium-a5-sem">0</span>
-                                <button onclick="addToCart('premium-a5-sem', 'Plaquinha Premium A5 sem NFC', 69.9)" class="w-6 h-6 rounded-full bg-electric-emerald text-black flex items-center justify-center hover:brightness-110 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">add</span></button>
+                            <span class="font-headline-md text-[16px] font-bold text-slate-900">R$ 69,90</span>
+                            <div
+                                class="flex items-center gap-2 bg-white/60 rounded-full px-2 py-1 border border-slate-300 shadow-sm">
+                                <button onclick="removeFromCart('premium-a5-sem')"
+                                    class="w-7 h-7 rounded-full bg-slate-200/80 text-slate-800 flex items-center justify-center hover:bg-slate-300 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">remove</span></button>
+                                <span
+                                    class="product-counter font-mono font-bold text-[13px] text-slate-900 w-4 text-center"
+                                    data-id="premium-a5-sem">0</span>
+                                <button onclick="addToCart('premium-a5-sem', 'Plaquinha Premium A5 sem NFC', 69.9)"
+                                    class="w-7 h-7 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-slate-800 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">add</span></button>
                             </div>
                         </div>
                     </div>
-                    <div class="flex justify-between items-center p-4 hover:bg-white/5 transition-colors">
-                        <span class="font-body-md text-[15px] text-silver-light">A5 (15×21 cm) com NFC</span>
+                    <div class="flex justify-between items-center p-4 hover:bg-white/40 transition-colors gap-4">
+                        <span class="font-body-md text-[15px] text-slate-700 font-medium">A5 (15×21 cm) com NFC</span>
                         <div class="flex items-center gap-4 text-right justify-end ml-auto">
-                            <span class="font-headline-md text-[16px] text-primary">R$ 89,90</span>
-                            <div class="flex items-center gap-3 bg-white/5 rounded-full px-2 py-1 border border-white/10">
-                                <button onclick="removeFromCart('premium-a5-com')" class="w-6 h-6 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">remove</span></button>
-                                <span class="product-counter font-body-md text-[14px] text-white w-3 text-center" data-id="premium-a5-com">0</span>
-                                <button onclick="addToCart('premium-a5-com', 'Plaquinha Premium A5 com NFC', 89.9)" class="w-6 h-6 rounded-full bg-electric-emerald text-black flex items-center justify-center hover:brightness-110 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">add</span></button>
+                            <span class="font-headline-md text-[16px] font-bold text-slate-900">R$ 89,90</span>
+                            <div
+                                class="flex items-center gap-2 bg-white/60 rounded-full px-2 py-1 border border-slate-300 shadow-sm">
+                                <button onclick="removeFromCart('premium-a5-com')"
+                                    class="w-7 h-7 rounded-full bg-slate-200/80 text-slate-800 flex items-center justify-center hover:bg-slate-300 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">remove</span></button>
+                                <span
+                                    class="product-counter font-mono font-bold text-[13px] text-slate-900 w-4 text-center"
+                                    data-id="premium-a5-com">0</span>
+                                <button onclick="addToCart('premium-a5-com', 'Plaquinha Premium A5 com NFC', 89.9)"
+                                    class="w-7 h-7 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-slate-800 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">add</span></button>
                             </div>
                         </div>
                     </div>
@@ -193,28 +315,38 @@
 
             <!-- Category 2: Cartão de Visita NFC -->
             <section class="reveal">
-                <div class="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
-                    <span class="material-symbols-outlined text-primary text-[28px]">contact_mail</span>
-                    <h2 class="font-headline-md text-[24px] text-white">Cartão de Visita NFC</h2>
+                <div class="flex items-center gap-3 mb-4 pb-2 border-b border-slate-300/80">
+                    <div class="w-10 h-10 rounded-xl bg-slate-900/5 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-slate-900 text-[24px]">contact_mail</span>
+                    </div>
+                    <h2 class="font-headline-md text-[22px] font-bold text-slate-900">Cartão de Visita NFC</h2>
                 </div>
 
-                <div class="glass-panel rounded-xl overflow-hidden">
+                <div class="glass-panel rounded-2xl overflow-hidden border border-white/90">
                     <div
-                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-6 hover:bg-white/5 transition-colors gap-4">
+                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-6 hover:bg-white/40 transition-colors gap-4">
                         <div class="flex flex-col gap-1">
-                            <span class="font-body-md text-[15px] text-silver-light">Cartão de Visita NFC — por
-                                unidade</span>
-                            <span class="text-[12px] text-muted-gray italic">Inclui: arte personalizada + impressão
-                                papel fotográfico frente e verso + chip NFC gravado</span>
-                            <span class="text-[12px] text-primary/80 mt-2">Ideal para advogados, corretores, médicos e
-                                profissionais liberais.</span>
+                            <span class="font-body-md text-[16px] text-slate-900 font-semibold">Cartão de Visita NFC —
+                                por unidade</span>
+                            <span class="text-[13px] text-muted-gray">Inclui arte personalizada + papel fotográfico
+                                frente/verso + chip NFC</span>
+                            <span class="text-[12px] text-slate-600 mt-1 font-medium">Mínimo recomendado: 4
+                                unidades</span>
                         </div>
                         <div class="flex items-center gap-4 text-right justify-end ml-auto sm:ml-0">
-                            <span class="font-headline-md text-[20px] text-primary whitespace-nowrap">R$ 30,00</span>
-                            <div class="flex items-center gap-3 bg-white/5 rounded-full px-2 py-1 border border-white/10">
-                                <button onclick="removeFromCart('cartao-nfc')" class="w-6 h-6 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">remove</span></button>
-                                <span class="product-counter font-body-md text-[14px] text-white w-3 text-center" data-id="cartao-nfc">0</span>
-                                <button onclick="addToCart('cartao-nfc', 'Cartão de Visita NFC (unidade)', 30)" class="w-6 h-6 rounded-full bg-electric-emerald text-black flex items-center justify-center hover:brightness-110 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">add</span></button>
+                            <span class="font-headline-md text-[20px] font-bold text-slate-900 whitespace-nowrap">R$
+                                30,00</span>
+                            <div
+                                class="flex items-center gap-2 bg-white/60 rounded-full px-2 py-1 border border-slate-300 shadow-sm">
+                                <button onclick="removeFromCart('cartao-nfc')"
+                                    class="w-7 h-7 rounded-full bg-slate-200/80 text-slate-800 flex items-center justify-center hover:bg-slate-300 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">remove</span></button>
+                                <span
+                                    class="product-counter font-mono font-bold text-[13px] text-slate-900 w-4 text-center"
+                                    data-id="cartao-nfc">0</span>
+                                <button onclick="addToCart('cartao-nfc', 'Cartão de Visita NFC (unidade)', 30)"
+                                    class="w-7 h-7 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-slate-800 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">add</span></button>
                             </div>
                         </div>
                     </div>
@@ -223,100 +355,159 @@
 
             <!-- Category 3: Biosite -->
             <section class="reveal">
-                <div class="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
-                    <span class="material-symbols-outlined text-primary text-[28px]">language</span>
-                    <h2 class="font-headline-md text-[24px] text-white">Biosite</h2>
+                <div class="flex items-center gap-3 mb-4 pb-2 border-b border-slate-300/80">
+                    <div class="w-10 h-10 rounded-xl bg-slate-900/5 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-slate-900 text-[24px]">language</span>
+                    </div>
+                    <h2 class="font-headline-md text-[22px] font-bold text-slate-900">Biosite</h2>
                 </div>
 
-                <div class="glass-panel rounded-xl overflow-hidden divide-y divide-white/5">
+                <div
+                    class="glass-panel rounded-2xl overflow-hidden divide-y divide-slate-200/70 border border-white/90">
                     <div
-                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-white/5 transition-colors gap-2">
-                        <span class="font-body-md text-[15px] text-silver-light">Criação + publicação no domínio do
-                            cliente</span>
+                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-white/40 transition-colors gap-3">
+                        <span class="font-body-md text-[15px] text-slate-700 font-medium">Criação + publicação no
+                            domínio do cliente</span>
                         <div class="flex items-center gap-4 text-right justify-end ml-auto sm:ml-0">
-                            <span class="font-headline-md text-[16px] text-primary whitespace-nowrap">R$ 150,00 <span class="text-[12px] font-normal text-muted-gray">(valor único)</span></span>
-                            <div class="flex items-center gap-3 bg-white/5 rounded-full px-2 py-1 border border-white/10">
-                                <button onclick="removeFromCart('biosite-criacao')" class="w-6 h-6 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">remove</span></button>
-                                <span class="product-counter font-body-md text-[14px] text-white w-3 text-center" data-id="biosite-criacao">0</span>
-                                <button onclick="addToCart('biosite-criacao', 'Biosite - Criação', 150)" class="w-6 h-6 rounded-full bg-electric-emerald text-black flex items-center justify-center hover:brightness-110 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">add</span></button>
+                            <span class="font-headline-md text-[16px] font-bold text-slate-900 whitespace-nowrap">R$
+                                150,00 <span class="text-[12px] font-normal text-muted-gray">(único)</span></span>
+                            <div
+                                class="flex items-center gap-2 bg-white/60 rounded-full px-2 py-1 border border-slate-300 shadow-sm">
+                                <button onclick="removeFromCart('biosite-criacao')"
+                                    class="w-7 h-7 rounded-full bg-slate-200/80 text-slate-800 flex items-center justify-center hover:bg-slate-300 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">remove</span></button>
+                                <span
+                                    class="product-counter font-mono font-bold text-[13px] text-slate-900 w-4 text-center"
+                                    data-id="biosite-criacao">0</span>
+                                <button onclick="addToCart('biosite-criacao', 'Biosite - Criação', 150)"
+                                    class="w-7 h-7 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-slate-800 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">add</span></button>
                             </div>
                         </div>
-
                     </div>
                     <div
-                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-white/5 transition-colors gap-2">
-                        <span class="font-body-md text-[15px] text-silver-light">Manutenção mensal (hospedagem + SSL +
-                            suporte)</span>
+                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-white/40 transition-colors gap-3">
+                        <div class="flex flex-col">
+                            <span class="font-body-md text-[15px] text-slate-700 font-medium">Manutenção mensal gerenciada (hospedagem + SSL + suporte)</span>
+                            <span class="font-body-md text-[12px] text-slate-500">Opcional: o cliente pode optar por hospedar por conta própria</span>
+                        </div>
                         <div class="flex items-center gap-4 text-right justify-end ml-auto sm:ml-0">
-                            <span class="font-headline-md text-[16px] text-primary whitespace-nowrap">R$ 29,90 <span class="text-[12px] font-normal text-muted-gray">/mês</span></span>
-                            <div class="flex items-center gap-3 bg-white/5 rounded-full px-2 py-1 border border-white/10">
-                                <button onclick="removeFromCart('biosite-mensal')" class="w-6 h-6 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">remove</span></button>
-                                <span class="product-counter font-body-md text-[14px] text-white w-3 text-center" data-id="biosite-mensal">0</span>
-                                <button onclick="addToCart('biosite-mensal', 'Biosite - Manutenção Mensal', 29.9)" class="w-6 h-6 rounded-full bg-electric-emerald text-black flex items-center justify-center hover:brightness-110 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">add</span></button>
+                            <span class="font-headline-md text-[16px] font-bold text-slate-900 whitespace-nowrap">R$
+                                75,00 <span class="text-[12px] font-normal text-muted-gray">/mês</span></span>
+                            <div
+                                class="flex items-center gap-2 bg-white/60 rounded-full px-2 py-1 border border-slate-300 shadow-sm">
+                                <button onclick="removeFromCart('biosite-mensal')"
+                                    class="w-7 h-7 rounded-full bg-slate-200/80 text-slate-800 flex items-center justify-center hover:bg-slate-300 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">remove</span></button>
+                                <span
+                                    class="product-counter font-mono font-bold text-[13px] text-slate-900 w-4 text-center"
+                                    data-id="biosite-mensal">0</span>
+                                <button onclick="addToCart('biosite-mensal', 'Biosite - Manutenção Mensal', 75.0)"
+                                    class="w-7 h-7 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-slate-800 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">add</span></button>
                             </div>
                         </div>
-
                     </div>
                     <div
-                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-primary/10 transition-colors gap-2 bg-primary/5">
-                        <span class="font-body-md text-[15px] text-silver-light font-semibold">Plano anual com desconto
-                            (2 meses grátis)</span>
+                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-white/50 transition-colors gap-3 bg-white/30">
+                        <div class="flex flex-col">
+                            <span class="font-body-md text-[15px] text-slate-900 font-semibold">Plano anual com desconto (2
+                                meses grátis)</span>
+                            <span class="font-body-md text-[12px] text-slate-500">Pague 10 meses e receba 12 meses de cobertura</span>
+                        </div>
                         <div class="flex items-center gap-4 text-right justify-end ml-auto sm:ml-0">
-                            <span class="font-headline-md text-[16px] text-primary whitespace-nowrap">R$ 279,00 <span class="text-[12px] font-normal text-muted-gray">/ano</span></span>
-                            <div class="flex items-center gap-3 bg-white/5 rounded-full px-2 py-1 border border-white/10">
-                                <button onclick="removeFromCart('biosite-anual')" class="w-6 h-6 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">remove</span></button>
-                                <span class="product-counter font-body-md text-[14px] text-white w-3 text-center" data-id="biosite-anual">0</span>
-                                <button onclick="addToCart('biosite-anual', 'Biosite - Plano Anual', 279)" class="w-6 h-6 rounded-full bg-electric-emerald text-black flex items-center justify-center hover:brightness-110 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">add</span></button>
+                            <span class="font-headline-md text-[16px] font-bold text-slate-900 whitespace-nowrap">R$
+                                750,00 <span class="text-[12px] font-normal text-muted-gray">/ano</span></span>
+                            <div
+                                class="flex items-center gap-2 bg-white/60 rounded-full px-2 py-1 border border-slate-300 shadow-sm">
+                                <button onclick="removeFromCart('biosite-anual')"
+                                    class="w-7 h-7 rounded-full bg-slate-200/80 text-slate-800 flex items-center justify-center hover:bg-slate-300 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">remove</span></button>
+                                <span
+                                    class="product-counter font-mono font-bold text-[13px] text-slate-900 w-4 text-center"
+                                    data-id="biosite-anual">0</span>
+                                <button onclick="addToCart('biosite-anual', 'Biosite - Plano Anual', 750)"
+                                    class="w-7 h-7 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-slate-800 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">add</span></button>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </section>
 
             <!-- Category 4: Google Meu Negócio -->
             <section class="reveal">
-                <div class="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
-                    <span class="material-symbols-outlined text-primary text-[28px]">storefront</span>
-                    <h2 class="font-headline-md text-[24px] text-white">Google Meu Negócio</h2>
+                <div class="flex items-center gap-3 mb-4 pb-2 border-b border-slate-300/80">
+                    <div class="w-10 h-10 rounded-xl bg-slate-900/5 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-slate-900 text-[24px]">storefront</span>
+                    </div>
+                    <h2 class="font-headline-md text-[22px] font-bold text-slate-900">Google Meu Negócio</h2>
                 </div>
 
-                <div class="glass-panel rounded-xl overflow-hidden divide-y divide-white/5">
+                <div
+                    class="glass-panel rounded-2xl overflow-hidden divide-y divide-slate-200/70 border border-white/90">
                     <div
-                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-white/5 transition-colors gap-2">
-                        <span class="font-body-md text-[15px] text-silver-light">Configuração completa sem fotos</span>
+                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-white/40 transition-colors gap-3">
+                        <span class="font-body-md text-[15px] text-slate-700 font-medium">Configuração completa sem
+                            fotos</span>
                         <div class="flex items-center gap-4 text-right justify-end ml-auto sm:ml-0">
-                            <span class="font-headline-md text-[16px] text-primary whitespace-nowrap">R$ 97,00</span>
-                            <div class="flex items-center gap-3 bg-white/5 rounded-full px-2 py-1 border border-white/10">
-                                <button onclick="removeFromCart('gmb-sem-fotos')" class="w-6 h-6 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">remove</span></button>
-                                <span class="product-counter font-body-md text-[14px] text-white w-3 text-center" data-id="gmb-sem-fotos">0</span>
-                                <button onclick="addToCart('gmb-sem-fotos', 'Google Meu Negócio (Sem fotos)', 97)" class="w-6 h-6 rounded-full bg-electric-emerald text-black flex items-center justify-center hover:brightness-110 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">add</span></button>
+                            <span class="font-headline-md text-[16px] font-bold text-slate-900 whitespace-nowrap">R$
+                                97,00</span>
+                            <div
+                                class="flex items-center gap-2 bg-white/60 rounded-full px-2 py-1 border border-slate-300 shadow-sm">
+                                <button onclick="removeFromCart('gmb-sem-fotos')"
+                                    class="w-7 h-7 rounded-full bg-slate-200/80 text-slate-800 flex items-center justify-center hover:bg-slate-300 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">remove</span></button>
+                                <span
+                                    class="product-counter font-mono font-bold text-[13px] text-slate-900 w-4 text-center"
+                                    data-id="gmb-sem-fotos">0</span>
+                                <button onclick="addToCart('gmb-sem-fotos', 'Google Meu Negócio (Sem fotos)', 97)"
+                                    class="w-7 h-7 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-slate-800 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">add</span></button>
                             </div>
                         </div>
                     </div>
                     <div
-                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-white/5 transition-colors gap-2">
-                        <span class="font-body-md text-[15px] text-silver-light">Configuração + fotos enviadas pelo
-                            cliente</span>
+                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-white/40 transition-colors gap-3">
+                        <span class="font-body-md text-[15px] text-slate-700 font-medium">Configuração + fotos enviadas
+                            pelo cliente</span>
                         <div class="flex items-center gap-4 text-right justify-end ml-auto sm:ml-0">
-                            <span class="font-headline-md text-[16px] text-primary whitespace-nowrap">R$ 137,00</span>
-                            <div class="flex items-center gap-3 bg-white/5 rounded-full px-2 py-1 border border-white/10">
-                                <button onclick="removeFromCart('gmb-fotos-cliente')" class="w-6 h-6 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">remove</span></button>
-                                <span class="product-counter font-body-md text-[14px] text-white w-3 text-center" data-id="gmb-fotos-cliente">0</span>
-                                <button onclick="addToCart('gmb-fotos-cliente', 'Google Meu Negócio (+ fotos do cliente)', 137)" class="w-6 h-6 rounded-full bg-electric-emerald text-black flex items-center justify-center hover:brightness-110 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">add</span></button>
+                            <span class="font-headline-md text-[16px] font-bold text-slate-900 whitespace-nowrap">R$
+                                137,00</span>
+                            <div
+                                class="flex items-center gap-2 bg-white/60 rounded-full px-2 py-1 border border-slate-300 shadow-sm">
+                                <button onclick="removeFromCart('gmb-fotos-cliente')"
+                                    class="w-7 h-7 rounded-full bg-slate-200/80 text-slate-800 flex items-center justify-center hover:bg-slate-300 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">remove</span></button>
+                                <span
+                                    class="product-counter font-mono font-bold text-[13px] text-slate-900 w-4 text-center"
+                                    data-id="gmb-fotos-cliente">0</span>
+                                <button
+                                    onclick="addToCart('gmb-fotos-cliente', 'Google Meu Negócio (+ fotos do cliente)', 137)"
+                                    class="w-7 h-7 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-slate-800 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">add</span></button>
                             </div>
                         </div>
                     </div>
                     <div
-                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-white/5 transition-colors gap-2">
-                        <span class="font-body-md text-[15px] text-silver-light">Configuração + sessão fotográfica
-                            profissional</span>
+                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-white/40 transition-colors gap-3">
+                        <span class="font-body-md text-[15px] text-slate-700 font-medium">Configuração + sessão
+                            fotográfica profissional</span>
                         <div class="flex items-center gap-4 text-right justify-end ml-auto sm:ml-0">
-                            <span class="font-headline-md text-[16px] text-primary whitespace-nowrap">R$ 297,00</span>
-                            <div class="flex items-center gap-3 bg-white/5 rounded-full px-2 py-1 border border-white/10">
-                                <button onclick="removeFromCart('gmb-sessao-fotos')" class="w-6 h-6 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">remove</span></button>
-                                <span class="product-counter font-body-md text-[14px] text-white w-3 text-center" data-id="gmb-sessao-fotos">0</span>
-                                <button onclick="addToCart('gmb-sessao-fotos', 'Google Meu Negócio (+ sessão de fotos)', 297)" class="w-6 h-6 rounded-full bg-electric-emerald text-black flex items-center justify-center hover:brightness-110 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">add</span></button>
+                            <span class="font-headline-md text-[16px] font-bold text-slate-900 whitespace-nowrap">R$
+                                297,00</span>
+                            <div
+                                class="flex items-center gap-2 bg-white/60 rounded-full px-2 py-1 border border-slate-300 shadow-sm">
+                                <button onclick="removeFromCart('gmb-sessao-fotos')"
+                                    class="w-7 h-7 rounded-full bg-slate-200/80 text-slate-800 flex items-center justify-center hover:bg-slate-300 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">remove</span></button>
+                                <span
+                                    class="product-counter font-mono font-bold text-[13px] text-slate-900 w-4 text-center"
+                                    data-id="gmb-sessao-fotos">0</span>
+                                <button
+                                    onclick="addToCart('gmb-sessao-fotos', 'Google Meu Negócio (+ sessão de fotos)', 297)"
+                                    class="w-7 h-7 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-slate-800 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">add</span></button>
                             </div>
                         </div>
                     </div>
@@ -325,40 +516,61 @@
 
             <!-- Category 5: Fotografia -->
             <section class="reveal">
-                <div class="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
-                    <span class="material-symbols-outlined text-primary text-[28px]">photo_camera</span>
-                    <h2 class="font-headline-md text-[24px] text-white">Fotografia</h2>
+                <div class="flex items-center gap-3 mb-4 pb-2 border-b border-slate-300/80">
+                    <div class="w-10 h-10 rounded-xl bg-slate-900/5 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-slate-900 text-[24px]">photo_camera</span>
+                    </div>
+                    <h2 class="font-headline-md text-[22px] font-bold text-slate-900">Fotografia Comercial</h2>
                 </div>
 
-                <div class="glass-panel rounded-xl overflow-hidden divide-y divide-white/5">
+                <div
+                    class="glass-panel rounded-2xl overflow-hidden divide-y divide-slate-200/70 border border-white/90">
                     <div
-                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-6 hover:bg-white/5 transition-colors gap-4">
+                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-6 hover:bg-white/40 transition-colors gap-4">
                         <div class="flex flex-col gap-1">
-                            <span class="font-body-md text-[15px] text-silver-light font-semibold">Sessão Básica</span>
-                            <span class="text-[12px] text-muted-gray italic">20 fotos editadas em alta resolução</span>
+                            <span class="font-body-md text-[16px] text-slate-900 font-semibold">Sessão Básica</span>
+                            <span class="text-[13px] text-muted-gray">20 fotos editadas em alta resolução para Maps e
+                                redes sociais</span>
                         </div>
                         <div class="flex items-center gap-4 text-right justify-end ml-auto sm:ml-0">
-                            <span class="font-headline-md text-[20px] text-primary whitespace-nowrap">R$ 197,00</span>
-                            <div class="flex items-center gap-3 bg-white/5 rounded-full px-2 py-1 border border-white/10">
-                                <button onclick="removeFromCart('foto-basica')" class="w-6 h-6 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">remove</span></button>
-                                <span class="product-counter font-body-md text-[14px] text-white w-3 text-center" data-id="foto-basica">0</span>
-                                <button onclick="addToCart('foto-basica', 'Sessão Fotográfica Básica (20 fotos)', 197)" class="w-6 h-6 rounded-full bg-electric-emerald text-black flex items-center justify-center hover:brightness-110 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">add</span></button>
+                            <span class="font-headline-md text-[20px] font-bold text-slate-900 whitespace-nowrap">R$
+                                197,00</span>
+                            <div
+                                class="flex items-center gap-2 bg-white/60 rounded-full px-2 py-1 border border-slate-300 shadow-sm">
+                                <button onclick="removeFromCart('foto-basica')"
+                                    class="w-7 h-7 rounded-full bg-slate-200/80 text-slate-800 flex items-center justify-center hover:bg-slate-300 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">remove</span></button>
+                                <span
+                                    class="product-counter font-mono font-bold text-[13px] text-slate-900 w-4 text-center"
+                                    data-id="foto-basica">0</span>
+                                <button onclick="addToCart('foto-basica', 'Sessão Fotográfica Básica (20 fotos)', 197)"
+                                    class="w-7 h-7 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-slate-800 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">add</span></button>
                             </div>
                         </div>
                     </div>
                     <div
-                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-6 hover:bg-white/5 transition-colors gap-4">
+                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-6 hover:bg-white/40 transition-colors gap-4">
                         <div class="flex flex-col gap-1">
-                            <span class="font-body-md text-[15px] text-silver-light font-semibold">Sessão
-                                Completa</span>
-                            <span class="text-[12px] text-muted-gray italic">40 fotos editadas em alta resolução</span>
+                            <span class="font-body-md text-[16px] text-slate-900 font-semibold">Sessão Completa</span>
+                            <span class="text-[13px] text-muted-gray">40 fotos editadas em alta resolução (fachada,
+                                produtos, equipe, ambiente)</span>
                         </div>
                         <div class="flex items-center gap-4 text-right justify-end ml-auto sm:ml-0">
-                            <span class="font-headline-md text-[20px] text-primary whitespace-nowrap">R$ 347,00</span>
-                            <div class="flex items-center gap-3 bg-white/5 rounded-full px-2 py-1 border border-white/10">
-                                <button onclick="removeFromCart('foto-completa')" class="w-6 h-6 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">remove</span></button>
-                                <span class="product-counter font-body-md text-[14px] text-white w-3 text-center" data-id="foto-completa">0</span>
-                                <button onclick="addToCart('foto-completa', 'Sessão Fotográfica Completa (40 fotos)', 347)" class="w-6 h-6 rounded-full bg-electric-emerald text-black flex items-center justify-center hover:brightness-110 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">add</span></button>
+                            <span class="font-headline-md text-[20px] font-bold text-slate-900 whitespace-nowrap">R$
+                                347,00</span>
+                            <div
+                                class="flex items-center gap-2 bg-white/60 rounded-full px-2 py-1 border border-slate-300 shadow-sm">
+                                <button onclick="removeFromCart('foto-completa')"
+                                    class="w-7 h-7 rounded-full bg-slate-200/80 text-slate-800 flex items-center justify-center hover:bg-slate-300 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">remove</span></button>
+                                <span
+                                    class="product-counter font-mono font-bold text-[13px] text-slate-900 w-4 text-center"
+                                    data-id="foto-completa">0</span>
+                                <button
+                                    onclick="addToCart('foto-completa', 'Sessão Fotográfica Completa (40 fotos)', 347)"
+                                    class="w-7 h-7 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-slate-800 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">add</span></button>
                             </div>
                         </div>
                     </div>
@@ -367,86 +579,158 @@
 
             <!-- Category 6: Pacotes -->
             <section class="reveal">
-                <div class="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
-                    <span class="material-symbols-outlined text-primary text-[28px]">inventory_2</span>
-                    <h2 class="font-headline-md text-[24px] text-white">Pacotes</h2>
+                <div class="flex items-center gap-3 mb-6 border-b border-slate-300 pb-4">
+                    <span class="material-symbols-outlined text-slate-900 text-[28px]">inventory_2</span>
+                    <h2 class="font-headline-md text-[24px] text-slate-900">Pacotes</h2>
                 </div>
 
-                <div class="glass-panel rounded-xl overflow-hidden divide-y divide-white/5">
+                <div
+                    class="glass-panel rounded-2xl overflow-hidden divide-y divide-slate-200/70 border border-white/90">
                     <div
-                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-white/5 transition-colors gap-2">
+                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-white/40 transition-colors gap-3">
                         <div class="flex flex-col gap-1">
-                            <span class="font-body-md text-[15px] text-silver-light font-semibold">Pacote Entrada</span>
-                            <span class="text-[12px] text-muted-gray italic">Plaquinha Básica NFC + Biosite + Google Meu
+                            <span class="font-body-md text-[15px] text-slate-900 font-semibold">Pacote Entrada</span>
+                            <span class="text-[13px] text-muted-gray">Plaquinha Básica NFC + Biosite + Google Meu
                                 Negócio</span>
                         </div>
                         <div class="flex items-center gap-4 text-right justify-end ml-auto sm:ml-0">
-                            <span class="font-headline-md text-[16px] text-primary whitespace-nowrap">R$ 227,00 <span class="text-[12px] font-normal text-muted-gray">à vista</span></span>
-                            <div class="flex items-center gap-3 bg-white/5 rounded-full px-2 py-1 border border-white/10">
-                                <button onclick="removeFromCart('pacote-entrada')" class="w-6 h-6 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">remove</span></button>
-                                <span class="product-counter font-body-md text-[14px] text-white w-3 text-center" data-id="pacote-entrada">0</span>
-                                <button onclick="addToCart('pacote-entrada', 'Pacote Entrada', 227)" class="w-6 h-6 rounded-full bg-electric-emerald text-black flex items-center justify-center hover:brightness-110 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">add</span></button>
+                            <span class="font-headline-md text-[16px] font-bold text-slate-900 whitespace-nowrap">R$
+                                227,00 <span class="text-[12px] font-normal text-muted-gray">à vista</span></span>
+                            <div
+                                class="flex items-center gap-2 bg-white/60 rounded-full px-2 py-1 border border-slate-300 shadow-sm">
+                                <button onclick="removeFromCart('pacote-entrada')"
+                                    class="w-7 h-7 rounded-full bg-slate-200/80 text-slate-800 flex items-center justify-center hover:bg-slate-300 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">remove</span></button>
+                                <span
+                                    class="product-counter font-mono font-bold text-[13px] text-slate-900 w-4 text-center"
+                                    data-id="pacote-entrada">0</span>
+                                <button onclick="addToCart('pacote-entrada', 'Pacote Entrada', 227)"
+                                    class="w-7 h-7 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-slate-800 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">add</span></button>
                             </div>
                         </div>
 
                     </div>
                     <div
-                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-white/5 transition-colors gap-2">
+                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-white/40 transition-colors gap-3">
                         <div class="flex flex-col gap-1">
-                            <span class="font-body-md text-[15px] text-silver-light font-semibold">Pacote
+                            <span class="font-body-md text-[15px] text-slate-900 font-semibold">Pacote
                                 Profissional</span>
-                            <span class="text-[12px] text-muted-gray italic">Plaquinha Premium NFC + Biosite + Google +
-                                20 fotos</span>
+                            <span class="text-[13px] text-muted-gray">Plaquinha Premium NFC + Biosite + Google + 20
+                                fotos</span>
                         </div>
                         <div class="flex items-center gap-4 text-right justify-end ml-auto sm:ml-0">
-                            <span class="font-headline-md text-[16px] text-primary whitespace-nowrap">R$ 547,00 <span class="text-[12px] font-normal text-muted-gray">à vista</span></span>
-                            <div class="flex items-center gap-3 bg-white/5 rounded-full px-2 py-1 border border-white/10">
-                                <button onclick="removeFromCart('pacote-profissional')" class="w-6 h-6 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">remove</span></button>
-                                <span class="product-counter font-body-md text-[14px] text-white w-3 text-center" data-id="pacote-profissional">0</span>
-                                <button onclick="addToCart('pacote-profissional', 'Pacote Profissional', 547)" class="w-6 h-6 rounded-full bg-electric-emerald text-black flex items-center justify-center hover:brightness-110 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">add</span></button>
+                            <span class="font-headline-md text-[16px] font-bold text-slate-900 whitespace-nowrap">R$
+                                547,00 <span class="text-[12px] font-normal text-muted-gray">à vista</span></span>
+                            <div
+                                class="flex items-center gap-2 bg-white/60 rounded-full px-2 py-1 border border-slate-300 shadow-sm">
+                                <button onclick="removeFromCart('pacote-profissional')"
+                                    class="w-7 h-7 rounded-full bg-slate-200/80 text-slate-800 flex items-center justify-center hover:bg-slate-300 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">remove</span></button>
+                                <span
+                                    class="product-counter font-mono font-bold text-[13px] text-slate-900 w-4 text-center"
+                                    data-id="pacote-profissional">0</span>
+                                <button onclick="addToCart('pacote-profissional', 'Pacote Profissional', 547)"
+                                    class="w-7 h-7 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-slate-800 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">add</span></button>
                             </div>
                         </div>
 
                     </div>
                     <div
-                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-white/5 transition-colors gap-2">
+                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-white/40 transition-colors gap-3">
                         <div class="flex flex-col gap-1">
-                            <span class="font-body-md text-[15px] text-silver-light font-semibold">Pacote
-                                Completo</span>
-                            <span class="text-[12px] text-muted-gray italic">Plaquinha Premium NFC + Biosite + Google +
-                                40 fotos</span>
+                            <span class="font-body-md text-[15px] text-slate-900 font-semibold">Pacote Completo</span>
+                            <span class="text-[13px] text-muted-gray">Plaquinha Premium NFC + Biosite + Google + 40
+                                fotos</span>
                         </div>
                         <div class="flex items-center gap-4 text-right justify-end ml-auto sm:ml-0">
-                            <span class="font-headline-md text-[16px] text-primary whitespace-nowrap">R$ 697,00 <span class="text-[12px] font-normal text-muted-gray">à vista</span></span>
-                            <div class="flex items-center gap-3 bg-white/5 rounded-full px-2 py-1 border border-white/10">
-                                <button onclick="removeFromCart('pacote-completo')" class="w-6 h-6 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">remove</span></button>
-                                <span class="product-counter font-body-md text-[14px] text-white w-3 text-center" data-id="pacote-completo">0</span>
-                                <button onclick="addToCart('pacote-completo', 'Pacote Completo', 697)" class="w-6 h-6 rounded-full bg-electric-emerald text-black flex items-center justify-center hover:brightness-110 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">add</span></button>
+                            <span class="font-headline-md text-[16px] font-bold text-slate-900 whitespace-nowrap">R$
+                                697,00 <span class="text-[12px] font-normal text-muted-gray">à vista</span></span>
+                            <div
+                                class="flex items-center gap-2 bg-white/60 rounded-full px-2 py-1 border border-slate-300 shadow-sm">
+                                <button onclick="removeFromCart('pacote-completo')"
+                                    class="w-7 h-7 rounded-full bg-slate-200/80 text-slate-800 flex items-center justify-center hover:bg-slate-300 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">remove</span></button>
+                                <span
+                                    class="product-counter font-mono font-bold text-[13px] text-slate-900 w-4 text-center"
+                                    data-id="pacote-completo">0</span>
+                                <button onclick="addToCart('pacote-completo', 'Pacote Completo', 697)"
+                                    class="w-7 h-7 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-slate-800 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">add</span></button>
                             </div>
                         </div>
 
                     </div>
                     <div
-                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-primary/10 transition-colors gap-2 bg-primary/5">
+                        class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 hover:bg-white/40 transition-colors gap-3">
                         <div class="flex flex-col gap-1">
-                            <span class="font-body-md text-[15px] text-silver-light font-semibold">Pacote Digital
-                                Total</span>
-                            <span class="text-[12px] text-muted-gray italic">Plaquinha Premium NFC + Biosite + Google +
-                                20 fotos</span>
+                            <div class="flex items-center gap-2">
+                                <span class="font-body-md text-[15px] text-slate-900 font-semibold">Pacote Digital Total</span>
+                                <span class="bg-emerald-600 text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full shadow-xs">3 Meses Inclusos</span>
+                            </div>
+                            <span class="text-[13px] text-muted-gray">Plaquinha Premium NFC + Biosite + Google + 20 fotos + 3 meses de manutenção gerenciada inclusos</span>
                         </div>
                         <div class="flex items-center gap-4 text-right justify-end ml-auto sm:ml-0">
-                            <span class="font-headline-md text-[16px] text-primary whitespace-nowrap">R$ 747,00 <span class="text-[12px] font-normal text-muted-gray">à vista</span></span>
-                            <div class="flex items-center gap-3 bg-white/5 rounded-full px-2 py-1 border border-white/10">
-                                <button onclick="removeFromCart('pacote-digital-total')" class="w-6 h-6 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">remove</span></button>
-                                <span class="product-counter font-body-md text-[14px] text-white w-3 text-center" data-id="pacote-digital-total">0</span>
-                                <button onclick="addToCart('pacote-digital-total', 'Pacote Digital Total', 747)" class="w-6 h-6 rounded-full bg-electric-emerald text-black flex items-center justify-center hover:brightness-110 transition-colors active:scale-95"><span class="material-symbols-outlined text-[14px]">add</span></button>
+                            <span class="font-headline-md text-[16px] font-bold text-slate-900 whitespace-nowrap">R$
+                                747,00 <span class="text-[12px] font-normal text-muted-gray">à vista</span></span>
+                            <div
+                                class="flex items-center gap-2 bg-white/60 rounded-full px-2 py-1 border border-slate-300 shadow-sm">
+                                <button onclick="removeFromCart('pacote-digital-total')"
+                                    class="w-7 h-7 rounded-full bg-slate-200/80 text-slate-800 flex items-center justify-center hover:bg-slate-300 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">remove</span></button>
+                                <span
+                                    class="product-counter font-mono font-bold text-[13px] text-slate-900 w-4 text-center"
+                                    data-id="pacote-digital-total">0</span>
+                                <button onclick="addToCart('pacote-digital-total', 'Pacote Digital Total', 747)"
+                                    class="w-7 h-7 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-slate-800 transition-colors active:scale-95"><span
+                                        class="material-symbols-outlined text-[14px]">add</span></button>
                             </div>
                         </div>
 
                     </div>
-                    <div class="p-4 text-center">
-                        <span class="font-body-md text-[12px] text-muted-gray">Todos os pacotes: manutenção do Biosite
-                            R$ 29,90/mês cobrada separadamente.</span>
+                    <div class="p-4 text-center bg-slate-900/5">
+                        <span class="font-body-md text-[12px] text-slate-600 font-medium">Nos pacotes Entrada, Profissional e Completo: manutenção gerenciada do Biosite de R$ 75,00/mês cobrada separadamente (opcional). No Pacote Digital Total: os primeiros 3 meses de manutenção já estão 100% inclusos no valor.</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Category: Desenvolvimento Sob Medida de Software -->
+            <section class="reveal">
+                <div class="flex items-center gap-3 mb-4 pb-2 border-b border-slate-300/80">
+                    <div class="w-10 h-10 rounded-xl bg-slate-900/5 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-slate-900 text-[24px]">terminal</span>
+                    </div>
+                    <h2 class="font-headline-md text-[22px] font-bold text-slate-900">Desenvolvimento Sob Medida de Software</h2>
+                </div>
+
+                <div class="glass-panel rounded-2xl overflow-hidden divide-y divide-slate-200/70 border border-white/90">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-6 hover:bg-white/40 transition-colors gap-4">
+                        <div class="flex flex-col gap-1.5 max-w-xl">
+                            <div class="flex items-center gap-2">
+                                <span class="font-body-md text-[16px] text-slate-900 font-semibold">Licença com Implantação</span>
+                                <span class="bg-slate-900 text-white text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full shadow-xs">Enterprise</span>
+                            </div>
+                            <span class="text-[13px] text-muted-gray leading-relaxed">
+                                Sistema customizado para as regras do seu negócio (ex: gestão de oficinas mecânicas, controle de ordens de serviço, estoque, fluxo financeiro e clientes). Inclui configuração do ambiente, implantação guiada e treinamento operacional.
+                            </span>
+                            <span class="text-[12px] text-slate-600 font-medium flex items-center gap-1 mt-0.5">
+                                <span class="material-symbols-outlined text-[15px] text-slate-800">verified</span>
+                                Modelo de licença de uso personalizada com suporte técnico
+                            </span>
+                        </div>
+                        <div class="flex items-center gap-4 text-right justify-end ml-auto sm:ml-0 flex-shrink-0">
+                            <div class="flex flex-col text-right">
+                                <span class="font-headline-md text-[18px] sm:text-[20px] font-bold text-slate-900 whitespace-nowrap">A consultar</span>
+                                <span class="text-[11px] text-muted-gray">Sob demanda</span>
+                            </div>
+                            <a href="https://wa.me/556199771492?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20sobre%20o%20Desenvolvimento%20Sob%20Medida%20de%20Software%20(Licen%C3%A7a%20com%20Implanta%C3%A7%C3%A3o)."
+                                target="_blank" rel="noopener noreferrer"
+                                class="inline-flex items-center gap-1.5 py-2.5 px-4 rounded-xl bg-slate-900 text-white font-label-sm text-[12px] font-semibold hover:bg-slate-800 transition-all shadow-xs active:scale-95 whitespace-nowrap">
+                                <span>Solicitar Orçamento</span>
+                                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -455,48 +739,81 @@
 
         <!-- Call to Action -->
         <div class="mt-16 text-center reveal">
-            <p class="font-body-md text-[14px] text-muted-gray mb-8">Preços sujeitos a alterações sem aviso prévio.
-                Consulte condições para orçamentos personalizados.</p>
-            <a href="agendamento.html"
-                class="inline-block bg-electric-emerald text-black font-label-sm text-[14px] font-semibold uppercase tracking-wider py-4 px-12 rounded-lg shadow-neon-glow hover:shadow-neon-glow-hover hover:scale-105 transition-all duration-300">
-                FALE CONOSCO
+            <p class="font-body-md text-[14px] text-muted-gray mb-6">Deseja um projeto personalizado para sua rede de
+                lojas?</p>
+            <a href="agendamento.html" class="btn-interactive">
+                <div class="flex items-center justify-center gap-2.5">
+                    <div class="btn-dot"></div>
+                    <span class="btn-text-initial">Falar com Especialista</span>
+                </div>
+                <div class="btn-text-hover">
+                    <span>Falar com Especialista</span>
+                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                </div>
             </a>
         </div>
     </main>
 
     <!-- FOOTER -->
-    <footer class="w-full py-12 border-t border-dark-circuit bg-cyber-black/50 backdrop-blur-sm relative z-10 mt-auto">
+    <footer class="w-full py-12 border-t border-slate-300/80 bg-white/40 backdrop-blur-md relative z-10 mt-auto">
         <div class="max-w-7xl mx-auto px-4 flex flex-col items-center gap-6">
             <div class="flex items-center gap-8">
-                <a href="https://wa.me/5561981659192?text=Oi!%20Quero%20saber%20mais%20sobre%20a%20Konnected"
+                <a href="https://wa.me/556199771492?text=Oi!%20Quero%20saber%20mais%20sobre%20a%20Konnected"
                     target="_blank" rel="noopener noreferrer"
-                    class="text-muted-gray hover:text-primary transition-colors flex flex-col items-center gap-2">
-                    <span class="material-symbols-outlined text-[24px]">chat</span>
-                    <span class="font-label-sm text-[10px] uppercase tracking-wider">WhatsApp</span>
+                    class="text-slate-600 hover:text-slate-900 transition-colors flex flex-col items-center gap-2 group">
+                    <span
+                        class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">chat</span>
+                    <span class="font-label-sm text-[11px] uppercase tracking-wider font-medium">WhatsApp</span>
                 </a>
                 <a href="https://www.instagram.com/konnected.sd/" target="_blank" rel="noopener noreferrer"
-                    class="text-muted-gray hover:text-primary transition-colors flex flex-col items-center gap-2">
-                    <span class="material-symbols-outlined text-[24px]">photo_camera</span>
-                    <span class="font-label-sm text-[10px] uppercase tracking-wider">Instagram</span>
+                    class="text-slate-600 hover:text-slate-900 transition-colors flex flex-col items-center gap-2 group">
+                    <span
+                        class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">photo_camera</span>
+                    <span class="font-label-sm text-[11px] uppercase tracking-wider font-medium">Instagram</span>
                 </a>
-                <a href="mailto:contato@konnected.sd"
-                    class="text-muted-gray hover:text-primary transition-colors flex flex-col items-center gap-2">
-                    <span class="material-symbols-outlined text-[24px]">mail</span>
-                    <span class="font-label-sm text-[10px] uppercase tracking-wider">E-mail</span>
+                <a href="mailto:konnected.sd@gmail.com"
+                    class="text-slate-600 hover:text-slate-900 transition-colors flex flex-col items-center gap-2 group">
+                    <span
+                        class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">mail</span>
+                    <span class="font-label-sm text-[11px] uppercase tracking-wider font-medium">E-mail</span>
                 </a>
             </div>
-            <p class="font-label-sm text-[10px] text-muted-gray/50 uppercase tracking-widest text-center mt-4">
-                Konnected © 2026<br />
-                Presença Digital Local
-            </p>
+
+            <!-- Links de Conformidade Legal -->
+            <div class="flex items-center gap-6 text-[12px] font-body-md text-slate-500">
+                <a href="politica-privacidade.html"
+                    class="hover:text-slate-900 transition-colors underline-offset-4 hover:underline">Política de
+                    Privacidade</a>
+                <span>•</span>
+                <a href="termos-uso.html"
+                    class="hover:text-slate-900 transition-colors underline-offset-4 hover:underline">Termos de Uso</a>
+            </div>
+
+            <!-- Rodapé com identificação regulatória obrigatória (Decreto 7.962/2013 e CDC) -->
+            <div class="text-center text-[11px] font-body-md text-slate-500 border-t border-slate-200/80 pt-6 mt-2 max-w-2xl">
+                <p class="font-medium text-slate-700 mb-1">
+                    67.202.316 DIMITRI LOPES BARRETO • CNPJ: 67.202.316/0001-37
+                </p>
+                <p class="text-slate-500">
+                    Quadra QN 7 Conjunto 11 - Riacho Fundo I, Brasília - DF, CEP: 71805-711
+                </p>
+                <p class="text-slate-400 mt-1">
+                    WhatsApp: (61) 9977-1492 • E-mail: konnected.sd@gmail.com
+                </p>
+                <p class="mt-2 text-slate-400 font-mono text-[10px]">
+                    Konnected © 2026 • Presença Digital Local • Todos os direitos reservados.
+                </p>
+            </div>
         </div>
     </footer>
 
     <!-- WhatsApp FAB -->
-    <a href="https://wa.me/5561981659192?text=Oi!%20Quero%20saber%20mais%20sobre%20a%20Konnected" target="_blank"
-        rel="noopener noreferrer" class="whatsapp-fab" aria-label="Fale conosco pelo WhatsApp">
+    <a href="https://wa.me/556199771492?text=Oi!%20Quero%20saber%20mais%20sobre%20a%20Konnected" target="_blank"
+        rel="noopener noreferrer" class="whatsapp-fab group" aria-label="Fale conosco pelo WhatsApp">
         <span class="fab-ping"></span>
-        <span class="material-symbols-outlined text-white text-[28px] relative z-10">chat</span>
+        <svg class="w-7 h-7 text-white fill-current relative z-10 transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.048 2C6.502 2 2 6.502 2 12.048c0 1.77.462 3.498 1.34 5.02L2 22l5.08-1.332a10.02 10.02 0 0 0 4.968 1.309c5.546 0 10.048-4.502 10.048-10.048 0-2.684-1.045-5.207-2.943-7.105C17.255 3.045 14.732 2 12.048 2zm0 1.67c2.22 0 4.307.865 5.877 2.435a8.27 8.27 0 0 1 2.431 5.872c0 4.58-3.727 8.307-8.307 8.307-1.637 0-3.15-.522-4.384-1.411l-.314-.228-3.256.854.869-3.176-.205-.327a8.28 8.28 0 0 1-1.267-4.38c0-4.58 3.727-8.307 8.307-8.307zm5.424 10.712c-.301-.15-1.78-.878-2.056-.978-.276-.1-.477-.15-.678.15-.2.301-.778.978-.954 1.18-.175.2-.35.225-.65.075-.301-.15-1.27-.468-2.42-1.493-.894-.798-1.5-1.783-1.676-2.083-.175-.3-.019-.462.13-.61.135-.135.301-.35.451-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.677-1.633-.927-2.235-.244-.587-.493-.507-.677-.516-.176-.008-.376-.01-.577-.01-.2 0-.526.075-.802.375-.276.3-1.053 1.028-1.053 2.508s1.078 2.908 1.228 3.109c.15.2 2.122 3.24 5.14 4.542.719.31 1.28.495 1.718.634.722.229 1.379.197 1.9.119.58-.088 1.78-.727 2.03-1.428.25-.7.25-1.303.175-1.428-.075-.125-.275-.2-.576-.35z"/>
+        </svg>
     </a>
 
     <!-- Scripts -->
@@ -540,25 +857,46 @@
                 }
             });
 
-            if (window.matchMedia('(hover: hover)').matches) {
-                const glow = document.createElement('div');
-                glow.classList.add('cursor-glow');
-                document.body.appendChild(glow);
+            // Mobile Menu Controller
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuIcon = document.getElementById('mobile-menu-icon');
 
-                document.addEventListener('mousemove', (e) => {
-                    glow.style.left = e.clientX + 'px';
-                    glow.style.top = e.clientY + 'px';
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+                    if (isExpanded) {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                        if (mobileMenuIcon) mobileMenuIcon.textContent = 'menu';
+                    } else {
+                        mobileMenu.classList.remove('hidden');
+                        mobileMenuBtn.setAttribute('aria-expanded', 'true');
+                        if (mobileMenuIcon) mobileMenuIcon.textContent = 'close';
+                    }
+                });
+
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                        if (mobileMenuIcon) mobileMenuIcon.textContent = 'menu';
+                    });
                 });
             }
         });
     </script>
 
     <!-- Floating Cart Button -->
-    <a href="carrinho.html" id="floating-cart" class="hidden fixed top-24 right-4 sm:right-8 z-50 bg-electric-emerald text-black p-4 rounded-full shadow-neon-glow hover:scale-105 transition-all items-center justify-center group">
+    <a href="carrinho.html" id="floating-cart"
+        class="hidden fixed top-24 right-4 sm:right-8 z-50 bg-slate-900 text-white p-4 rounded-full shadow-lux hover:scale-105 transition-all items-center justify-center group">
         <span class="material-symbols-outlined text-[24px]">shopping_cart</span>
-        <span id="cart-counter" class="absolute -top-2 -right-2 bg-white text-black text-[12px] font-bold w-6 h-6 rounded-full flex items-center justify-center shadow-md border-2 border-electric-emerald">0</span>
+        <span id="cart-counter"
+            class="absolute -top-2 -right-2 bg-slate-900 text-white text-[12px] font-bold w-6 h-6 rounded-full flex items-center justify-center shadow-md border-2 border-white">0</span>
         <!-- Tooltip -->
-        <span class="absolute right-full mr-4 bg-black/90 text-white text-[12px] px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Ver Simulação</span>
+        <span
+            class="absolute right-full mr-4 bg-white/90 text-slate-900 text-[12px] px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-sm">Ver
+            Simulação</span>
     </a>
 
     <!-- Cart Script -->

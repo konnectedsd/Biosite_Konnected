@@ -1,0 +1,594 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* Diretivas Modernas do Tailwind CSS v4 */
+@source "./*.html";
+
+/* Container dedicado para o modelo 3D com dimensões calibradas */
+.nfc-model-container {
+    width: 330px;
+    height: 330px;
+    max-width: calc(100vw - 2rem);
+    aspect-ratio: 1 / 1;
+}
+@media (min-width: 640px) {
+    .nfc-model-container {
+        width: 420px;
+        height: 420px;
+        max-width: none;
+    }
+}
+@media (min-width: 768px) {
+    .nfc-model-container {
+        width: 500px;
+        height: 500px;
+    }
+}
+@media (min-width: 1024px) {
+    .nfc-model-container {
+        width: 580px;
+        height: 580px;
+    }
+}
+@media (min-width: 1280px) {
+    .nfc-model-container {
+        width: 640px;
+        height: 640px;
+    }
+}
+
+@theme {
+    --color-slate-900: #0F172A;
+    /* Primary Dark Text / Accents */
+    --color-slate-800: #1E293B;
+    --color-slate-600: #475569;
+    /* Body text */
+    --color-slate-400: #94A3B8;
+    /* Silver Light Details */
+    --color-slate-300: #CBD5E1;
+    --color-slate-200: #E2E8F0;
+    --color-slate-100: #F1F5F9;
+    --color-slate-50: #d6d6d6;
+    /* Gelo Background */
+
+    --color-muted-gray: #64748B;
+
+    --color-primary: #0F172A;
+    --color-electric-emerald: #0F172A;
+    /* Overwrite for existing classes to map to dark slate */
+    --color-silver-light: #475569;
+
+    --font-display-xl: "Space Grotesk", sans-serif;
+    --font-headline-lg: "Space Grotesk", sans-serif;
+    --font-headline-md: "Space Grotesk", sans-serif;
+    --font-body-lg: "Inter", sans-serif;
+    --font-headline-lg-mobile: "Space Grotesk", sans-serif;
+    --font-body-md: "Inter", sans-serif;
+    --font-label-sm: "Inter", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+
+    --shadow-lux: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+    --shadow-lux-hover: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 20px 35px -5px rgba(15, 23, 42, 0.12);
+    --shadow-neon-glow: 0 4px 20px rgba(15, 23, 42, 0.05);
+}
+
+:root {
+    --bg-primary: #d6d6d6;
+}
+
+/* Globals */
+body {
+    min-height: 100vh;
+    background-color: var(--bg-primary);
+    position: relative;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    font-family: 'Inter', sans-serif;
+    color: #0F172A;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.65);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.glass-header {
+    background: rgba(248, 250, 252, 0.75);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+/* Interactive Hover Button (Magic UI Design System) */
+.btn-interactive {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 9999px;
+    border: 1px solid rgba(203, 213, 225, 0.9);
+    background-color: #ffffff;
+    padding: 0.875rem 2.25rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #0f172a;
+    box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.04);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    text-decoration: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.btn-interactive:hover {
+    border-color: #0f172a;
+    box-shadow: 0 10px 25px -4px rgba(15, 23, 42, 0.25);
+    transform: translateY(-2px);
+}
+
+.btn-interactive .btn-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background-color: #0f172a;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    flex-shrink: 0;
+}
+
+.btn-interactive:hover .btn-dot {
+    transform: scale(100);
+}
+
+.btn-interactive .btn-text-initial {
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
+}
+
+.btn-interactive:hover .btn-text-initial {
+    transform: translateX(3rem);
+    opacity: 0;
+}
+
+.btn-interactive .btn-text-hover {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: #ffffff;
+    opacity: 0;
+    transform: translateX(3rem);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.btn-interactive:hover .btn-text-hover {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Variante WhatsApp do Interactive Hover Button */
+.btn-interactive-whatsapp {
+    border-color: rgba(37, 211, 102, 0.4);
+    color: #0f172a;
+}
+
+.btn-interactive-whatsapp .btn-dot {
+    background-color: #25D366;
+}
+
+.btn-interactive-whatsapp:hover {
+    border-color: #25D366;
+    box-shadow: 0 10px 25px -4px rgba(37, 211, 102, 0.35);
+}
+
+.btn-interactive-whatsapp .btn-text-hover {
+    color: #ffffff;
+}
+
+.glass-panel:hover {
+    box-shadow: var(--shadow-lux-hover);
+}
+
+@media (min-width: 768px) {
+    .glass-panel {
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+    }
+}
+
+/* Remove outline e borda de foco do model-viewer */
+model-viewer,
+model-viewer:focus,
+model-viewer:focus-visible,
+model-viewer:active {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+body.full-width {
+    max-width: none;
+    box-shadow: none;
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Premium Redesign Effects - Minimal Noise/Gradient Background */
+.hero-gradient-mesh {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(148, 163, 184, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(203, 213, 225, 0.15) 0%, transparent 40%),
+        radial-gradient(ellipse at 50% 80%, rgba(148, 163, 184, 0.1) 0%, transparent 45%);
+    animation: mesh-drift 15s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes mesh-drift {
+    0% {
+        background-position: 0% 0%, 100% 0%, 50% 100%;
+    }
+
+    50% {
+        background-position: 30% 20%, 70% 50%, 20% 60%;
+    }
+
+    100% {
+        background-position: 10% 40%, 90% 10%, 60% 80%;
+    }
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce-gentle 2s ease-in-out infinite;
+    opacity: 0.6;
+    color: var(--primary);
+}
+
+@keyframes bounce-gentle {
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(8px);
+    }
+}
+
+/* Removed cyber-bg grids */
+.cyber-bg {
+    display: none;
+}
+
+.circuit-pattern,
+.circuit-bg,
+.circuit-bg-radial {
+    display: none;
+}
+
+/* Botão Mobile Menu: Garantia estrita de exibição apenas no mobile */
+#mobile-menu-btn {
+    display: none !important;
+}
+@media (max-width: 767px) {
+    #mobile-menu-btn {
+        display: flex !important;
+    }
+}
+
+/* FAB Settings */
+.whatsapp-fab {
+    position: fixed;
+    bottom: 20px;
+    bottom: max(20px, env(safe-area-inset-bottom, 20px));
+    right: 20px;
+    right: max(20px, env(safe-area-inset-right, 20px));
+    z-index: 50;
+    width: 56px;
+    height: 56px;
+    background-color: #0F172A;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2);
+    transition: all 0.3s ease;
+}
+
+.whatsapp-fab:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.3);
+}
+
+.fab-ping {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background-color: #0F172A;
+    animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    opacity: 0.1;
+}
+
+@keyframes ping {
+
+    75%,
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Interactive Elements */
+.interactive-btn {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.interactive-btn:active {
+    transform: scale(0.95);
+}
+
+@media (hover: hover) {
+    .interactive-btn:hover {
+        transform: scale(1.02);
+        box-shadow: var(--shadow-lux-hover);
+    }
+}
+
+.row-hover {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.row-hover:hover {
+    background-color: rgba(15, 23, 42, 0.03);
+    transform: translateX(4px) !important;
+}
+
+/* Utilities */
+.neon-glow {
+    box-shadow: var(--shadow-neon-glow);
+}
+
+.emerald-glow {
+    box-shadow: var(--shadow-lux);
+}
+
+.text-gradient-reveal {
+    background: linear-gradient(90deg, #0F172A 0%, #0F172A 50%, rgba(15, 23, 42, 0.3) 50%, rgba(15, 23, 42, 0.3) 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: text-fill 1.2s ease-out forwards;
+}
+
+@keyframes text-fill {
+    from {
+        background-position: 100% 0;
+    }
+
+    to {
+        background-position: 0% 0;
+    }
+}
+
+/* Entrance Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1),
+        transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   Componente Visual: Tag NFC Inteligente Pseudo-3D (Epoxy Token)
+   ========================================================================== */
+.nfc-3d-scene {
+    perspective: 1200px;
+    transform-style: preserve-3d;
+}
+
+.nfc-tag-disc {
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: transform 0.15s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.nfc-tag-disc.is-leaving {
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nfc-tag-disc.idle-floating {
+    animation: nfc-tag-float-idle 6s ease-in-out infinite;
+}
+
+@keyframes nfc-tag-float-idle {
+
+    0%,
+    100% {
+        transform: translateY(0) rotateX(3deg) rotateY(-4deg) rotateZ(0deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotateX(-3deg) rotateY(5deg) rotateZ(1deg);
+    }
+}
+
+.layer-z-base {
+    transform: translateZ(0);
+}
+
+.layer-z-antenna {
+    transform: translateZ(22px);
+    transform-style: preserve-3d;
+}
+
+.layer-z-chip {
+    transform: translateZ(38px);
+    transform-style: preserve-3d;
+}
+
+.layer-z-dome {
+    transform: translateZ(52px);
+    transform-style: preserve-3d;
+}
+
+/* Superfície da Tag: Resina Epóxi / Acrílico Cristalino Circular */
+.nfc-epoxy-surface {
+    background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.5) 45%, rgba(241, 245, 249, 0.65) 100%);
+    border: 2px solid rgba(255, 255, 255, 0.95);
+    box-shadow:
+        0 24px 48px -12px rgba(15, 23, 42, 0.16),
+        0 0 0 1px rgba(255, 255, 255, 0.6),
+        inset 0 2px 4px rgba(255, 255, 255, 0.9),
+        inset 0 -3px 6px rgba(15, 23, 42, 0.06);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+}
+
+/* Domo de Lente Convexa e Reflexo Especular Dinâmico */
+.nfc-sheen-overlay {
+    background: radial-gradient(circle 220px at var(--sheen-x, 40%) var(--sheen-y, 35%),
+            rgba(255, 255, 255, 0.75) 0%,
+            rgba(255, 255, 255, 0.25) 40%,
+            transparent 75%);
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Sombra Esférica de Levitação */
+.nfc-floor-shadow {
+    filter: blur(14px);
+    background: radial-gradient(ellipse at center, rgba(15, 23, 42, 0.25) 0%, rgba(15, 23, 42, 0.06) 50%, transparent 75%);
+    transition: transform 0.15s cubic-bezier(0.2, 0, 0, 1), opacity 0.3s ease;
+}
+
+/* ==========================================================================
+   Componente: Hero NFC Field Background (SVG + Anime.js)
+   Linhas de campo eletromagnético convergindo para a plaquinha 3D.
+   ========================================================================== */
+
+/* Container de Fundo Global cobrindo toda a extensão da página até o rodapé */
+.site-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* O SVG deve preencher toda a janela com visual contínuo */
+.site-background svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Respeito a usuários com sensibilidade a movimento */
+@media (prefers-reduced-motion: reduce) {
+    .site-background * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Utilitário para ocultar barra de rolagem mantendo funcionalidade de rolagem */
+.no-scrollbar {
+    -ms-overflow-style: none; /* IE e Edge legados */
+}
+.no-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari e WebKit */
+}
+@supports (scrollbar-width: none) {
+    .no-scrollbar {
+        scrollbar-width: none; /* Firefox e navegadores modernos W3C */
+    }
+}
+
+/* Utilitários estruturais do Modelo 3D e Hotspots do Hero */
+.nfc-model-box {
+    width: 310px;
+    height: 310px;
+    max-width: 90vw;
+    max-height: 90vw;
+    overflow: visible;
+}
+@media (min-width: 640px) {
+    .nfc-model-box {
+        width: 400px;
+        height: 400px;
+    }
+}
+@media (min-width: 1024px) {
+    .nfc-model-box {
+        width: 580px;
+        height: 580px;
+    }
+}
+@media (min-width: 1280px) {
+    .nfc-model-box {
+        width: 640px;
+        height: 640px;
+    }
+}
+
+.nfc-viewer-element {
+    width: 100%;
+    height: 100%;
+    min-width: 280px;
+    min-height: 280px;
+    background: transparent;
+    outline: none;
+    border: none;
+    overflow: visible;
+}

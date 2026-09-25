@@ -114,18 +114,50 @@
         }
     </script>
 
+    <script>
+        if (window.self !== window.top || window.location.search.includes('embedded=true')) {
+            document.documentElement.classList.add('is-embedded');
+        }
+    </script>
+    <style>
+        .is-embedded .floating-nav-buttons,
+        .is-embedded [data-floating-nav] {
+            display: none !important;
+        }
+
+        /* Oculta a barra de rolagem lateral no simulador sem desativar a rolagem */
+        .is-embedded,
+        .is-embedded body,
+        .is-embedded main,
+        .is-embedded #biosite-container {
+            -ms-overflow-style: none !important;
+            scrollbar-width: none !important;
+        }
+
+        .is-embedded::-webkit-scrollbar,
+        .is-embedded body::-webkit-scrollbar,
+        .is-embedded main::-webkit-scrollbar,
+        .is-embedded #biosite-container::-webkit-scrollbar {
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
+            background: transparent !important;
+        }
+    </style>
 </head>
 
 <body
     class="bg-background text-on-background min-h-screen font-body-md antialiased overflow-x-hidden flex justify-center">
-    
+
     <!-- Botões Flutuantes -->
-    <div class="fixed top-4 left-4 z-[999] flex flex-col gap-2">
-        <a href="demos.html" class="flex items-center gap-2 bg-[#1a1a1a] text-primary-container px-4 py-2 rounded-full font-label-caps tracking-widest shadow-lg hover:opacity-80 transition-opacity border border-primary-container/30">
+    <div class="floating-nav-buttons fixed top-4 left-4 z-[999] flex flex-col gap-2" data-floating-nav>
+        <a href="demos.html"
+            class="flex items-center gap-2 bg-[#1a1a1a] text-primary-container px-4 py-2 rounded-full font-label-caps tracking-widest shadow-lg hover:opacity-80 transition-opacity border border-primary-container/30">
             <span class="material-symbols-outlined text-[18px]">arrow_back</span>
             Voltar
         </a>
-        <button id="mobile-mode-toggle" class="hidden md:flex opacity-30 hover:opacity-100 transition-opacity bg-primary-container text-black px-4 py-2 rounded-full items-center gap-2 font-label-caps tracking-widest shadow-lg">
+        <button id="mobile-mode-toggle"
+            class="hidden md:flex opacity-30 hover:opacity-100 transition-opacity bg-primary-container text-black px-4 py-2 rounded-full items-center gap-2 font-label-caps tracking-widest shadow-lg">
             <span class="material-symbols-outlined text-[18px]">smartphone</span>
             Modo Celular
         </button>
@@ -350,13 +382,13 @@
         // Mobile Sim Mode Toggle
         const mobileToggleBtn = document.getElementById('mobile-mode-toggle');
         const biositeContainer = document.getElementById('biosite-container');
-        
-        if(mobileToggleBtn && biositeContainer) {
+
+        if (mobileToggleBtn && biositeContainer) {
             mobileToggleBtn.addEventListener('click', () => {
                 biositeContainer.classList.toggle('mobile-sim-mode');
-                if(biositeContainer.classList.contains('mobile-sim-mode')) {
+                if (biositeContainer.classList.contains('mobile-sim-mode')) {
                     document.body.style.overflow = 'hidden';
-                    window.scrollTo({top: 0, behavior: 'smooth'});
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                     biositeContainer.setAttribute('data-lenis-prevent', '');
                     mobileToggleBtn.classList.add('opacity-100');
                     mobileToggleBtn.classList.remove('opacity-30');
@@ -383,10 +415,11 @@
             overflow-y: auto !important;
             display: block !important;
         }
-        
+
         .mobile-sim-mode::-webkit-scrollbar {
             display: none;
         }
+
         .mobile-sim-mode {
             -ms-overflow-style: none;
         }

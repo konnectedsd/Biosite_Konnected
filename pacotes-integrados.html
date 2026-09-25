@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="dark" lang="pt-BR">
+<html class="" lang="pt-BR">
 
 <head>
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval';">
@@ -7,268 +7,442 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Konnected - Pacotes Integrados</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <meta name="description"
+        content="Konnected - Presença Digital Local. Soluções completas sob medida para destacar seu negócio físico no digital de forma unificada e moderna.">
+    <meta name="keywords" content="presença digital, biosite, nfc, google meu negócio, site para negócios locais">
+    <meta name="author" content="Konnected">
+    <meta property="og:title" content="Konnected - Presença Digital Local">
+    <meta property="og:description"
+        content="Soluções completas sob medida para destacar seu negócio físico no digital.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/biosite.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Konnected - Presença Digital Local">
+    <meta name="twitter:description" content="Destaque seu negócio físico no digital com a Konnected.">
     <link
         href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap"
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "cyber-black": "#050707",
-                        "deep-charcoal": "#0E1111",
-                        "dark-circuit": "#141919",
-                        "electric-emerald": "#28A789",
-                        "primary": "#66daba",
-                        "silver-light": "#E1E3E2",
-                        "muted-gray": "#86948E"
-                    },
-                    fontFamily: {
-                        "display-xl": ["Space Grotesk", "sans-serif"],
-                        "headline-lg": ["Space Grotesk", "sans-serif"],
-                        "headline-md": ["Space Grotesk", "sans-serif"],
-                        "body-lg": ["Inter", "sans-serif"],
-                        "headline-lg-mobile": ["Space Grotesk", "sans-serif"],
-                        "body-md": ["Inter", "sans-serif"],
-                        "label-sm": ["Inter", "sans-serif"]
-                    }
-                }
-            }
-        }
-    </script>
     <link rel="stylesheet" href="styles.css" />
     <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
 </head>
 
-<body class="antialiased selection:bg-electric-emerald selection:text-black min-h-screen relative flex flex-col">
+<body class="antialiased selection:bg-slate-900 selection:text-white min-h-screen relative flex flex-col">
 
-    <!-- Animated Grid Background -->
-    <div class="cyber-bg"></div>
+    <!-- FULL-WIDTH RETANGULAR HEADER (Sticky Navigation — Minimalista Clean) -->
+    <header class="sticky top-0 z-40 w-full bg-white/80 backdrop-blur-md border-b border-slate-300/80 transition-all">
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-6">
+                <a href="index.html" class="flex items-center group select-none">
+                    <span class="font-headline-md text-[20px] sm:text-[22px] font-bold text-slate-900 tracking-tight group-hover:text-slate-700 transition-colors">
+                        Konnected
+                    </span>
+                </a>
+                <div class="h-4 w-px bg-slate-300 hidden sm:block"></div>
+                <a href="index.html" class="hidden sm:flex items-center gap-1.5 text-[13px] font-medium text-slate-600 hover:text-slate-900 transition-colors">
+                    <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+                    <span>Início</span>
+                </a>
+            </div>
 
-    <!-- Hero Gradient Mesh BG -->
-    <div class="hero-gradient-mesh opacity-50"></div>
+            <nav class="hidden md:flex items-center gap-6 lg:gap-7 text-[14px] font-medium font-body-md text-slate-600">
+                <a href="servicos-e-produtos.html" class="hover:text-slate-900 transition-colors">Serviços</a>
+                <a href="pacotes-integrados.html" class="text-slate-900 font-semibold transition-colors">Pacotes</a>
+                <a href="tabela-de-precos.html" class="hover:text-slate-900 transition-colors">Tabela de Preços</a>
+            </nav>
 
-    <!-- Header / Nav -->
-    <header class="w-full relative z-50 pt-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex items-center justify-between">
-        <a href="index.html"
-            class="flex items-center gap-2 text-silver-light/80 hover:text-primary transition-colors group">
-            <span class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
-            <span class="font-label-sm tracking-wider uppercase text-[12px]">Voltar</span>
-        </a>
-        <span
-            class="font-label-sm text-[12px] tracking-widest uppercase text-silver-light/60 border border-silver-light/20 rounded-full px-4 py-1">Konnected</span>
+            <!-- Actions: Cart + Quick Action + Mobile Menu Toggle -->
+            <div class="flex items-center gap-2 sm:gap-4">
+                <a href="carrinho.html" id="nav-cart-btn" class="relative p-2.5 min-w-[44px] min-h-[44px] rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-200/60 transition-colors flex items-center justify-center" aria-label="Abrir Carrinho">
+                    <span class="material-symbols-outlined text-[24px]">shopping_cart</span>
+                    <span id="nav-cart-counter" class="hidden absolute top-1 right-1 bg-slate-900 text-white font-mono text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-xs">0</span>
+                </a>
+                <a href="agendamento.html" class="hidden sm:inline-flex items-center gap-2 py-2 px-5 rounded-xl bg-slate-900 text-white font-label-sm text-[13px] font-semibold hover:bg-slate-800 transition-all shadow-xs">
+                    <span>Reunião</span>
+                    <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+                </a>
+                <!-- Mobile Hamburger Button -->
+                <button id="mobile-menu-btn"
+                    class="md:hidden p-2.5 min-w-[44px] min-h-[44px] rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-200/60 transition-colors flex items-center justify-center cursor-pointer"
+                    aria-label="Abrir Menu de Navegação" aria-expanded="false">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined text-[26px]">menu</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobile-menu"
+            class="hidden md:hidden border-t border-slate-200/80 bg-white/95 backdrop-blur-xl px-4 py-4 flex flex-col gap-2 shadow-lg transition-all">
+            <a href="index.html" class="mobile-nav-link flex items-center justify-between py-3 px-3.5 rounded-xl text-slate-800 hover:bg-slate-100 font-medium text-[15px] transition-colors">
+                <span class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-[20px] text-slate-600">home</span>
+                    Página Inicial
+                </span>
+                <span class="material-symbols-outlined text-[16px] text-slate-400">chevron_right</span>
+            </a>
+            <a href="servicos-e-produtos.html" class="mobile-nav-link flex items-center justify-between py-3 px-3.5 rounded-xl text-slate-800 hover:bg-slate-100 font-medium text-[15px] transition-colors">
+                <span class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-[20px] text-slate-600">inventory_2</span>
+                    Serviços & Produtos
+                </span>
+                <span class="material-symbols-outlined text-[16px] text-slate-400">chevron_right</span>
+            </a>
+            <a href="pacotes-integrados.html" class="mobile-nav-link flex items-center justify-between py-3 px-3.5 rounded-xl bg-slate-100 text-slate-900 font-semibold text-[15px] transition-colors">
+                <span class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-[20px] text-slate-900">loyalty</span>
+                    Pacotes Integrados
+                </span>
+                <span class="material-symbols-outlined text-[16px] text-slate-400">chevron_right</span>
+            </a>
+            <a href="cases.html" class="mobile-nav-link flex items-center justify-between py-3 px-3.5 rounded-xl text-slate-800 hover:bg-slate-100 font-medium text-[15px] transition-colors">
+                <span class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-[20px] text-slate-600">verified</span>
+                    Cases de Sucesso
+                </span>
+                <span class="material-symbols-outlined text-[16px] text-slate-400">chevron_right</span>
+            </a>
+            <a href="tabela-de-precos.html" class="mobile-nav-link flex items-center justify-between py-3 px-3.5 rounded-xl text-slate-800 hover:bg-slate-100 font-medium text-[15px] transition-colors">
+                <span class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-[20px] text-slate-600">payments</span>
+                    Tabela de Preços
+                </span>
+                <span class="material-symbols-outlined text-[16px] text-slate-400">chevron_right</span>
+            </a>
+            <div class="pt-2 border-t border-slate-200/80 mt-1">
+                <a href="agendamento.html" class="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-slate-900 text-white font-label-sm text-[14px] font-semibold hover:bg-slate-800 transition-all shadow-xs">
+                    <span>Agendar Reunião</span>
+                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                </a>
+            </div>
+        </div>
     </header>
 
-    <main class="flex-grow relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col pt-16 pb-24">
+    <main class="flex-grow relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col pt-12 pb-24">
 
         <!-- Hero Title -->
         <div class="text-center mb-16 reveal">
+            <span class="font-label-sm text-[11px] tracking-widest uppercase text-slate-600 mb-3 block">
+                Soluções Completas
+            </span>
             <h1
-                class="font-headline-lg-mobile text-[32px] md:text-[56px] font-bold text-white mb-4 leading-tight text-gradient-reveal">
+                class="font-headline-lg-mobile text-[36px] md:text-[54px] font-bold text-slate-900 mb-4 leading-tight text-gradient-reveal">
                 Nossos Pacotes
             </h1>
-            <p class="font-body-md text-[16px] md:text-[18px] text-silver-light/80 max-w-2xl mx-auto">
-                Soluções completas sob medida para destacar seu negócio físico no digital de forma unificada e moderna.
+            <div class="w-12 h-px bg-slate-300 mx-auto mb-4"></div>
+            <p class="font-body-md text-[16px] md:text-[18px] text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                Tudo o que seu negócio físico precisa para se destacar no Google Maps e converter clientes locais de
+                forma integrada.
             </p>
         </div>
 
         <!-- Pricing Cards Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:max-w-5xl lg:mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:max-w-5xl lg:mx-auto items-stretch">
 
             <!-- Card 1: Entrada -->
             <div
-                class="glass-panel p-6 rounded-xl border-t border-t-white/5 hover:border-primary transition-all duration-300 hover:-translate-y-2 group reveal flex flex-col">
-                <div
-                    class="absolute inset-0 opacity-5 pointer-events-none bg-gradient-top-right group-hover:opacity-10 transition-opacity">
+                class="glass-panel p-8 rounded-2xl hover:-translate-y-1 transition-all duration-300 group reveal flex flex-col justify-between">
+                <div>
+                    <h3 class="font-headline-md text-[18px] font-bold text-slate-900 mb-3 tracking-wide uppercase">
+                        Pacote Entrada</h3>
+                    <div class="mb-6 flex flex-col">
+                        <span class="font-headline-md text-[32px] font-bold text-slate-900">R$ 227,00 <span
+                                class="text-[13px] text-muted-gray font-normal tracking-normal">à vista</span></span>
+                        <span class="font-label-sm text-[12px] text-muted-gray mt-1 font-medium">+ R$ 75,00/mês de
+                            manutenção <span class="text-slate-500 font-normal">(opcional)</span></span>
+                    </div>
+                    <div class="w-full h-px bg-slate-200/80 mb-6"></div>
+                    <ul class="space-y-4 font-body-md text-[14px] text-slate-700">
+                        <li class="flex items-start gap-3">
+                            <span
+                                class="material-symbols-outlined text-slate-900 text-[20px] flex-shrink-0 mt-0.5">check_circle</span>
+                            <span>Plaquinha Básica NFC + QR Code</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span
+                                class="material-symbols-outlined text-slate-900 text-[20px] flex-shrink-0 mt-0.5">check_circle</span>
+                            <span>Biosite criado e publicado no seu domínio</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span
+                                class="material-symbols-outlined text-slate-900 text-[20px] flex-shrink-0 mt-0.5">check_circle</span>
+                            <span>Configuração do Google Meu Negócio</span>
+                        </li>
+                    </ul>
                 </div>
-                <h3 class="font-headline-md text-[20px] text-white mb-2">PACOTE ENTRADA</h3>
-                <div class="mb-6 flex flex-col">
-                    <span class="font-headline-md text-[24px] text-primary">R$ 227,00 <span
-                            class="text-[12px] text-muted-gray font-normal tracking-wide">à vista</span></span>
-                    <span class="font-label-sm text-[12px] text-muted-gray mt-1">+ R$ 29,90/mês</span>
-                </div>
-                <div class="w-full h-px bg-dark-circuit mb-6"></div>
-                <ul class="space-y-4 font-body-md text-[14px] text-silver-light/90 flex-grow">
-                    <li class="flex items-start gap-3">
-                        <span
-                            class="material-symbols-outlined text-primary text-[20px] flex-shrink-0">check_circle</span>
-                        <span>Plaquinha Básica com QR Code (Sem NFC)</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span
-                            class="material-symbols-outlined text-primary text-[20px] flex-shrink-0">check_circle</span>
-                        <span>Biosite criado e publicado no seu domínio</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span
-                            class="material-symbols-outlined text-primary text-[20px] flex-shrink-0">check_circle</span>
-                        <span>Google Meu Negócio configurado</span>
-                    </li>
-                </ul>
+                <button type="button"
+                    onclick="selectPackage('pacote-entrada', 'Pacote Entrada (NFC + Biosite + GMN)', 227.00)"
+                    class="btn-interactive mt-8 w-full">
+                    <div class="flex items-center justify-center gap-2.5">
+                        <div class="btn-dot"></div>
+                        <span class="btn-text-initial">Selecionar Pacote</span>
+                    </div>
+                    <div class="btn-text-hover">
+                        <span>Selecionar Pacote</span>
+                        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    </div>
+                </button>
                 <a href="agendamento.html"
-                    class="mt-8 w-full block text-center border border-primary text-primary font-label-sm text-[12px] uppercase tracking-wider py-3 rounded-lg hover:bg-primary/10 transition-colors">Selecionar</a>
+                    class="mt-3 block text-center font-label-sm text-[12px] text-slate-500 hover:text-slate-900 transition-colors">
+                    Ou agendar reunião estratégica →
+                </a>
             </div>
 
-            <!-- Card 2: Profissional -->
-            <div class="glass-panel p-6 rounded-xl border border-primary/50 hover:border-primary transition-all duration-300 hover:-translate-y-2 group reveal flex flex-col relative"
-                style="transition-delay: 100ms;">
+            <!-- Card 2: Profissional (Recomendado) -->
+            <div class="glass-panel p-8 rounded-2xl border-2 border-slate-900 shadow-lux-hover hover:-translate-y-1 transition-all duration-300 delay-100 group reveal flex flex-col justify-between relative">
                 <div
-                    class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-black font-label-sm text-[10px] font-bold uppercase tracking-widest py-1 px-3 rounded-full">
-                    Recomendado</div>
-                <div
-                    class="absolute inset-0 opacity-5 pointer-events-none bg-gradient-top-right group-hover:opacity-10 transition-opacity">
+                    class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-slate-900 text-white font-label-sm text-[11px] font-semibold uppercase tracking-widest py-1 px-4 rounded-full shadow-md">
+                    Mais Escolhido
                 </div>
-                <h3 class="font-headline-md text-[20px] text-white mb-2 mt-2">PACOTE PROFISSIONAL</h3>
-                <div class="mb-6 flex flex-col">
-                    <span class="font-headline-md text-[24px] text-primary">R$ 547,00 <span
-                            class="text-[12px] text-muted-gray font-normal tracking-wide">à vista</span></span>
-                    <span class="font-label-sm text-[12px] text-muted-gray mt-1">+ R$ 29,90/mês</span>
+                <div>
+                    <h3 class="font-headline-md text-[18px] font-bold text-slate-900 mb-3 mt-2 tracking-wide uppercase">
+                        Pacote Profissional</h3>
+                    <div class="mb-6 flex flex-col">
+                        <span class="font-headline-md text-[32px] font-bold text-slate-900">R$ 547,00 <span
+                                class="text-[13px] text-muted-gray font-normal tracking-normal">à vista</span></span>
+                        <span class="font-label-sm text-[12px] text-muted-gray mt-1 font-medium">+ R$ 75,00/mês de
+                            manutenção <span class="text-slate-500 font-normal">(opcional)</span></span>
+                    </div>
+                    <div class="w-full h-px bg-slate-200/80 mb-6"></div>
+                    <ul class="space-y-4 font-body-md text-[14px] text-slate-700">
+                        <li class="flex items-start gap-3">
+                            <span
+                                class="material-symbols-outlined text-slate-900 text-[20px] flex-shrink-0 mt-0.5">check_circle</span>
+                            <span class="font-medium">Plaquinha Premium NFC + QR Code</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span
+                                class="material-symbols-outlined text-slate-900 text-[20px] flex-shrink-0 mt-0.5">check_circle</span>
+                            <span>Biosite criado e publicado no seu domínio</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span
+                                class="material-symbols-outlined text-slate-900 text-[20px] flex-shrink-0 mt-0.5">check_circle</span>
+                            <span>Configuração do Google Meu Negócio</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span
+                                class="material-symbols-outlined text-slate-900 text-[20px] flex-shrink-0 mt-0.5">check_circle</span>
+                            <span class="font-medium">Sessão Fotográfica — 20 fotos editadas</span>
+                        </li>
+                    </ul>
                 </div>
-                <div class="w-full h-px bg-dark-circuit mb-6"></div>
-                <ul class="space-y-4 font-body-md text-[14px] text-silver-light/90 flex-grow">
-                    <li class="flex items-start gap-3">
-                        <span
-                            class="material-symbols-outlined text-primary text-[20px] flex-shrink-0">check_circle</span>
-                        <span>Plaquinha Premium com Tecnologia NFC + QR Code</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span
-                            class="material-symbols-outlined text-primary text-[20px] flex-shrink-0">check_circle</span>
-                        <span>Biosite criado e publicado no seu domínio</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span
-                            class="material-symbols-outlined text-primary text-[20px] flex-shrink-0">check_circle</span>
-                        <span>Google Meu Negócio configurado</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span
-                            class="material-symbols-outlined text-primary text-[20px] flex-shrink-0">check_circle</span>
-                        <span>Sessão Básica — 20 fotos editadas</span>
-                    </li>
-                </ul>
+                <button type="button"
+                    onclick="selectPackage('pacote-profissional', 'Pacote Profissional (NFC + Biosite + GMN + 20 Fotos)', 547.00)"
+                    class="btn-interactive mt-8 w-full border-slate-900 shadow-md">
+                    <div class="flex items-center justify-center gap-2.5">
+                        <div class="btn-dot"></div>
+                        <span class="btn-text-initial">Selecionar Pacote</span>
+                    </div>
+                    <div class="btn-text-hover">
+                        <span>Selecionar Pacote</span>
+                        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    </div>
+                </button>
                 <a href="agendamento.html"
-                    class="mt-8 w-full block text-center bg-primary text-black font-label-sm font-semibold text-[12px] uppercase tracking-wider py-3 rounded-lg hover:shadow-neon-glow transition-all">Selecionar</a>
+                    class="mt-3 block text-center font-label-sm text-[12px] text-slate-500 hover:text-slate-900 transition-colors">
+                    Ou agendar reunião estratégica →
+                </a>
             </div>
 
             <!-- Card 3: Completo -->
-            <div class="glass-panel p-6 rounded-xl border-t border-t-white/5 hover:border-primary transition-all duration-300 hover:-translate-y-2 group reveal flex flex-col"
-                style="transition-delay: 200ms;">
-                <div
-                    class="absolute inset-0 opacity-5 pointer-events-none bg-gradient-top-right group-hover:opacity-10 transition-opacity">
+            <div class="glass-panel p-8 rounded-2xl hover:-translate-y-1 transition-all duration-300 delay-200 group reveal flex flex-col justify-between">
+                <div>
+                    <h3 class="font-headline-md text-[18px] font-bold text-slate-900 mb-3 tracking-wide uppercase">
+                        Pacote Completo</h3>
+                    <div class="mb-6 flex flex-col">
+                        <span class="font-headline-md text-[32px] font-bold text-slate-900">R$ 697,00 <span
+                                class="text-[13px] text-muted-gray font-normal tracking-normal">à vista</span></span>
+                        <span class="font-label-sm text-[12px] text-muted-gray mt-1 font-medium">+ R$ 75,00/mês de
+                            manutenção <span class="text-slate-500 font-normal">(opcional)</span></span>
+                    </div>
+                    <div class="w-full h-px bg-slate-200/80 mb-6"></div>
+                    <ul class="space-y-4 font-body-md text-[14px] text-slate-700">
+                        <li class="flex items-start gap-3">
+                            <span
+                                class="material-symbols-outlined text-slate-900 text-[20px] flex-shrink-0 mt-0.5">check_circle</span>
+                            <span>Plaquinha Premium NFC + QR Code</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span
+                                class="material-symbols-outlined text-slate-900 text-[20px] flex-shrink-0 mt-0.5">check_circle</span>
+                            <span>Biosite criado e publicado no seu domínio</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span
+                                class="material-symbols-outlined text-slate-900 text-[20px] flex-shrink-0 mt-0.5">check_circle</span>
+                            <span>Configuração do Google Meu Negócio</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span
+                                class="material-symbols-outlined text-slate-900 text-[20px] flex-shrink-0 mt-0.5">check_circle</span>
+                            <span class="font-medium">Sessão Fotográfica — 40 fotos editadas</span>
+                        </li>
+                    </ul>
                 </div>
-                <h3 class="font-headline-md text-[20px] text-white mb-2">PACOTE COMPLETO</h3>
-                <div class="mb-6 flex flex-col">
-                    <span class="font-headline-md text-[24px] text-primary">R$ 697,00 <span
-                            class="text-[12px] text-muted-gray font-normal tracking-wide">à vista</span></span>
-                    <span class="font-label-sm text-[12px] text-muted-gray mt-1">+ R$ 29,90/mês</span>
-                </div>
-                <div class="w-full h-px bg-dark-circuit mb-6"></div>
-                <ul class="space-y-4 font-body-md text-[14px] text-silver-light/90 flex-grow">
-                    <li class="flex items-start gap-3">
-                        <span
-                            class="material-symbols-outlined text-primary text-[20px] flex-shrink-0">check_circle</span>
-                        <span>Plaquinha Premium com Tecnologia NFC + QR Code</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span
-                            class="material-symbols-outlined text-primary text-[20px] flex-shrink-0">check_circle</span>
-                        <span>Biosite criado e publicado no seu domínio</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span
-                            class="material-symbols-outlined text-primary text-[20px] flex-shrink-0">check_circle</span>
-                        <span>Google Meu Negócio configurado</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span
-                            class="material-symbols-outlined text-primary text-[20px] flex-shrink-0">check_circle</span>
-                        <span>Sessão Completa — 40 fotos editadas</span>
-                    </li>
-                </ul>
+                <button type="button"
+                    onclick="selectPackage('pacote-completo', 'Pacote Completo (NFC + Biosite + GMN + 40 Fotos)', 697.00)"
+                    class="btn-interactive mt-8 w-full">
+                    <div class="flex items-center justify-center gap-2.5">
+                        <div class="btn-dot"></div>
+                        <span class="btn-text-initial">Selecionar Pacote</span>
+                    </div>
+                    <div class="btn-text-hover">
+                        <span>Selecionar Pacote</span>
+                        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    </div>
+                </button>
                 <a href="agendamento.html"
-                    class="mt-8 w-full block text-center border border-primary text-primary font-label-sm text-[12px] uppercase tracking-wider py-3 rounded-lg hover:bg-primary/10 transition-colors">Selecionar</a>
+                    class="mt-3 block text-center font-label-sm text-[12px] text-slate-500 hover:text-slate-900 transition-colors">
+                    Ou agendar reunião estratégica →
+                </a>
             </div>
 
             <!-- Card 4: Digital Total -->
-            <div class="glass-panel p-6 rounded-xl border-t border-t-white/5 hover:border-primary transition-all duration-300 hover:-translate-y-2 group reveal flex flex-col"
-                style="transition-delay: 300ms;">
-                <div
-                    class="absolute inset-0 opacity-5 pointer-events-none bg-gradient-top-right group-hover:opacity-10 transition-opacity">
+            <div class="glass-panel p-8 rounded-2xl hover:-translate-y-1 transition-all duration-300 delay-300 group reveal flex flex-col justify-between border-2 border-slate-900/10">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="font-headline-md text-[18px] font-bold text-slate-900 tracking-wide uppercase">
+                            Pacote Digital Total</h3>
+                        <span class="bg-emerald-600 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-xs">
+                            3 Meses Grátis
+                        </span>
+                    </div>
+                    <div class="mb-6 flex flex-col">
+                        <span class="font-headline-md text-[32px] font-bold text-slate-900">R$ 747,00 <span
+                                class="text-[13px] text-muted-gray font-normal tracking-normal">à vista</span></span>
+                        <span class="font-label-sm text-[12px] text-emerald-700 mt-1 font-semibold flex items-center gap-1">
+                            <span class="material-symbols-outlined text-[16px]">verified</span>
+                            3 meses de manutenção inclusos <span class="text-slate-500 font-normal font-mono">(após, R$ 75/mês opcional)</span>
+                        </span>
+                    </div>
+                    <div class="w-full h-px bg-slate-200/80 mb-6"></div>
+                    <ul class="space-y-4 font-body-md text-[14px] text-slate-700">
+                        <li class="flex items-start gap-3">
+                            <span
+                                class="material-symbols-outlined text-slate-900 text-[20px] flex-shrink-0 mt-0.5">check_circle</span>
+                            <span class="font-medium">Plaquinha Premium NFC + QR Code</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span
+                                class="material-symbols-outlined text-slate-900 text-[20px] flex-shrink-0 mt-0.5">check_circle</span>
+                            <span>Biosite criado e publicado no seu domínio</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span
+                                class="material-symbols-outlined text-slate-900 text-[20px] flex-shrink-0 mt-0.5">check_circle</span>
+                            <span>Configuração + Otimização Google Maps</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span
+                                class="material-symbols-outlined text-slate-900 text-[20px] flex-shrink-0 mt-0.5">check_circle</span>
+                            <span>Sessão Fotográfica — 20 fotos editadas</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-emerald-500/10 p-2.5 rounded-xl border border-emerald-500/20">
+                            <span
+                                class="material-symbols-outlined text-emerald-700 text-[20px] flex-shrink-0 mt-0.5">stars</span>
+                            <span class="text-emerald-900 font-semibold text-[13px]">Bônus: 3 Meses de Hospedagem & Manutenção Gerenciada Inclusos (Economia de R$ 225,00)</span>
+                        </li>
+                    </ul>
                 </div>
-                <h3 class="font-headline-md text-[20px] text-white mb-2">PACOTE DIGITAL TOTAL</h3>
-                <div class="mb-6 flex flex-col">
-                    <span class="font-headline-md text-[24px] text-primary">R$ 747,00 <span
-                            class="text-[12px] text-muted-gray font-normal tracking-wide">à vista</span></span>
-                    <span class="font-label-sm text-[12px] text-muted-gray mt-1">+ R$ 29,90/mês</span>
-                </div>
-                <div class="w-full h-px bg-dark-circuit mb-6"></div>
-                <ul class="space-y-4 font-body-md text-[14px] text-silver-light/90 flex-grow">
-                    <li class="flex items-start gap-3">
-                        <span
-                            class="material-symbols-outlined text-primary text-[20px] flex-shrink-0">check_circle</span>
-                        <span>Plaquinha Premium com Tecnologia NFC + QR Code</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span
-                            class="material-symbols-outlined text-primary text-[20px] flex-shrink-0">check_circle</span>
-                        <span>Biosite criado e publicado no seu domínio</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span
-                            class="material-symbols-outlined text-primary text-[20px] flex-shrink-0">check_circle</span>
-                        <span>Google Meu Negócio configurado</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span
-                            class="material-symbols-outlined text-primary text-[20px] flex-shrink-0">check_circle</span>
-                        <span>Sessão Básica — 20 fotos editadas</span>
-                    </li>
-                </ul>
+                <button type="button"
+                    onclick="selectPackage('pacote-digital-total', 'Pacote Digital Total (NFC + Biosite + Maps + Fotos)', 747.00)"
+                    class="btn-interactive mt-8 w-full">
+                    <div class="flex items-center justify-center gap-2.5">
+                        <div class="btn-dot"></div>
+                        <span class="btn-text-initial">Selecionar Pacote</span>
+                    </div>
+                    <div class="btn-text-hover">
+                        <span>Selecionar Pacote</span>
+                        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    </div>
+                </button>
                 <a href="agendamento.html"
-                    class="mt-8 w-full block text-center border border-primary text-primary font-label-sm text-[12px] uppercase tracking-wider py-3 rounded-lg hover:bg-primary/10 transition-colors">Selecionar</a>
+                    class="mt-3 block text-center font-label-sm text-[12px] text-slate-500 hover:text-slate-900 transition-colors">
+                    Ou agendar reunião estratégica →
+                </a>
             </div>
 
+        </div>
+
+        <!-- Banner Informativo: Autonomia e Manutenção do Biosite -->
+        <div class="mt-12 glass-panel p-6 sm:p-8 rounded-2xl border border-slate-300/80 shadow-sm reveal max-w-4xl mx-auto bg-white/70">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+                <div class="w-12 h-12 rounded-xl bg-slate-900 text-white flex items-center justify-center flex-shrink-0 shadow-md">
+                    <span class="material-symbols-outlined text-[26px]">info</span>
+                </div>
+                <div class="space-y-1">
+                    <h4 class="font-headline-md text-[16px] sm:text-[17px] font-bold text-slate-900">
+                        Como funciona a manutenção do Biosite?
+                    </h4>
+                    <p class="font-body-md text-[14px] text-slate-600 leading-relaxed">
+                        A criação do Biosite está inclusa no valor de montagem do pacote. A manutenção mensal (<strong class="text-slate-900">R$ 75,00/mês</strong>) é um serviço à parte que cobre hospedagem ultrarrápida, certificado de segurança SSL e suporte contínuo a atualizações. <strong>Você tem total liberdade:</strong> se preferir hospedar e manter seu site por conta própria, você não paga essa mensalidade; se optar pela conveniência e tranquilidade de deixar toda a infraestrutura sob nossos cuidados, o valor é de R$ 75,00 mensais.
+                    </p>
+                </div>
+            </div>
         </div>
     </main>
 
     <!-- FOOTER -->
-    <footer class="w-full py-12 border-t border-dark-circuit bg-cyber-black/50 backdrop-blur-sm relative z-10">
+    <footer class="w-full py-12 border-t border-slate-300/80 bg-white/40 backdrop-blur-md relative z-10 mt-auto">
         <div class="max-w-7xl mx-auto px-4 flex flex-col items-center gap-6">
             <div class="flex items-center gap-8">
-                <a href="https://wa.me/5561981659192?text=Oi!%20Quero%20saber%20mais%20sobre%20a%20Konnected"
+                <a href="https://wa.me/556199771492?text=Oi!%20Quero%20saber%20mais%20sobre%20os%20pacotes%20da%20Konnected"
                     target="_blank" rel="noopener noreferrer"
-                    class="text-muted-gray hover:text-primary transition-colors flex flex-col items-center gap-2">
-                    <span class="material-symbols-outlined text-[24px]">chat</span>
-                    <span class="font-label-sm text-[10px] uppercase tracking-wider">WhatsApp</span>
+                    class="text-slate-600 hover:text-slate-900 transition-colors flex flex-col items-center gap-2 group">
+                    <span
+                        class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">chat</span>
+                    <span class="font-label-sm text-[11px] uppercase tracking-wider font-medium">WhatsApp</span>
                 </a>
                 <a href="https://www.instagram.com/konnected.sd/" target="_blank" rel="noopener noreferrer"
-                    class="text-muted-gray hover:text-primary transition-colors flex flex-col items-center gap-2">
-                    <span class="material-symbols-outlined text-[24px]">photo_camera</span>
-                    <span class="font-label-sm text-[10px] uppercase tracking-wider">Instagram</span>
+                    class="text-slate-600 hover:text-slate-900 transition-colors flex flex-col items-center gap-2 group">
+                    <span
+                        class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">photo_camera</span>
+                    <span class="font-label-sm text-[11px] uppercase tracking-wider font-medium">Instagram</span>
                 </a>
-                <a href="mailto:contato@konnected.sd"
-                    class="text-muted-gray hover:text-primary transition-colors flex flex-col items-center gap-2">
-                    <span class="material-symbols-outlined text-[24px]">mail</span>
-                    <span class="font-label-sm text-[10px] uppercase tracking-wider">E-mail</span>
+                <a href="mailto:konnected.sd@gmail.com"
+                    class="text-slate-600 hover:text-slate-900 transition-colors flex flex-col items-center gap-2 group">
+                    <span
+                        class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">mail</span>
+                    <span class="font-label-sm text-[11px] uppercase tracking-wider font-medium">E-mail</span>
                 </a>
             </div>
-            <p class="font-label-sm text-[10px] text-muted-gray/50 uppercase tracking-widest text-center mt-4">
-                Konnected © 2026<br />
-                Presença Digital Local
-            </p>
+
+            <!-- Links de Conformidade Legal -->
+            <div class="flex items-center gap-6 text-[12px] font-body-md text-slate-500">
+                <a href="politica-privacidade.html"
+                    class="hover:text-slate-900 transition-colors underline-offset-4 hover:underline">Política de
+                    Privacidade</a>
+                <span>•</span>
+                <a href="termos-uso.html"
+                    class="hover:text-slate-900 transition-colors underline-offset-4 hover:underline">Termos de Uso</a>
+            </div>
+
+            <!-- Rodapé com identificação regulatória obrigatória (Decreto 7.962/2013 e CDC) -->
+            <div class="text-center text-[11px] font-body-md text-slate-500 border-t border-slate-200/80 pt-6 mt-2 max-w-2xl">
+                <p class="font-medium text-slate-700 mb-1">
+                    67.202.316 DIMITRI LOPES BARRETO • CNPJ: 67.202.316/0001-37
+                </p>
+                <p class="text-slate-500">
+                    Quadra QN 7 Conjunto 11 - Riacho Fundo I, Brasília - DF, CEP: 71805-711
+                </p>
+                <p class="text-slate-400 mt-1">
+                    WhatsApp: (61) 9977-1492 • E-mail: konnected.sd@gmail.com
+                </p>
+                <p class="mt-2 text-slate-400 font-mono text-[10px]">
+                    Konnected © 2026 • Presença Digital Local • Todos os direitos reservados.
+                </p>
+            </div>
         </div>
     </footer>
 
     <!-- WhatsApp FAB -->
-    <a href="https://wa.me/5561981659192?text=Oi!%20Quero%20saber%20mais%20sobre%20a%20Konnected" target="_blank"
-        rel="noopener noreferrer" class="whatsapp-fab" aria-label="Fale conosco pelo WhatsApp">
+    <a href="https://wa.me/556199771492?text=Oi!%20Quero%20saber%20mais%20sobre%20a%20Konnected" target="_blank"
+        rel="noopener noreferrer" class="whatsapp-fab group" aria-label="Fale conosco pelo WhatsApp">
         <span class="fab-ping"></span>
-        <span class="material-symbols-outlined text-white text-[28px] relative z-10">chat</span>
+        <svg class="w-7 h-7 text-white fill-current relative z-10 transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.048 2C6.502 2 2 6.502 2 12.048c0 1.77.462 3.498 1.34 5.02L2 22l5.08-1.332a10.02 10.02 0 0 0 4.968 1.309c5.546 0 10.048-4.502 10.048-10.048 0-2.684-1.045-5.207-2.943-7.105C17.255 3.045 14.732 2 12.048 2zm0 1.67c2.22 0 4.307.865 5.877 2.435a8.27 8.27 0 0 1 2.431 5.872c0 4.58-3.727 8.307-8.307 8.307-1.637 0-3.15-.522-4.384-1.411l-.314-.228-3.256.854.869-3.176-.205-.327a8.28 8.28 0 0 1-1.267-4.38c0-4.58 3.727-8.307 8.307-8.307zm5.424 10.712c-.301-.15-1.78-.878-2.056-.978-.276-.1-.477-.15-.678.15-.2.301-.778.978-.954 1.18-.175.2-.35.225-.65.075-.301-.15-1.27-.468-2.42-1.493-.894-.798-1.5-1.783-1.676-2.083-.175-.3-.019-.462.13-.61.135-.135.301-.35.451-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.677-1.633-.927-2.235-.244-.587-.493-.507-.677-.516-.176-.008-.376-.01-.577-.01-.2 0-.526.075-.802.375-.276.3-1.053 1.028-1.053 2.508s1.078 2.908 1.228 3.109c.15.2 2.122 3.24 5.14 4.542.719.31 1.28.495 1.718.634.722.229 1.379.197 1.9.119.58-.088 1.78-.727 2.03-1.428.25-.7.25-1.303.175-1.428-.075-.125-.275-.2-.576-.35z"/>
+        </svg>
     </a>
 
     <!-- Scripts -->
@@ -312,18 +486,49 @@
                 }
             });
 
-            if (window.matchMedia('(hover: hover)').matches) {
-                const glow = document.createElement('div');
-                glow.classList.add('cursor-glow');
-                document.body.appendChild(glow);
+            // Mobile Menu Controller
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuIcon = document.getElementById('mobile-menu-icon');
 
-                document.addEventListener('mousemove', (e) => {
-                    glow.style.left = e.clientX + 'px';
-                    glow.style.top = e.clientY + 'px';
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+                    if (isExpanded) {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                        if (mobileMenuIcon) mobileMenuIcon.textContent = 'menu';
+                    } else {
+                        mobileMenu.classList.remove('hidden');
+                        mobileMenuBtn.setAttribute('aria-expanded', 'true');
+                        if (mobileMenuIcon) mobileMenuIcon.textContent = 'close';
+                    }
+                });
+
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                        if (mobileMenuIcon) mobileMenuIcon.textContent = 'menu';
+                    });
                 });
             }
         });
     </script>
+    <!-- Floating Cart Button -->
+    <a href="carrinho.html" id="floating-cart"
+        class="hidden fixed top-24 right-4 sm:right-8 z-50 bg-slate-900 text-white p-4 rounded-full shadow-lux hover:scale-105 transition-all items-center justify-center group">
+        <span class="material-symbols-outlined text-[24px]">shopping_cart</span>
+        <span id="cart-counter"
+            class="absolute -top-2 -right-2 bg-slate-900 text-white text-[12px] font-bold w-6 h-6 rounded-full flex items-center justify-center shadow-md border-2 border-white">0</span>
+        <!-- Tooltip -->
+        <span
+            class="absolute right-full mr-4 bg-white/90 text-slate-900 text-[12px] px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-sm">Ver
+            Simulação</span>
+    </a>
+
+    <!-- Cart Script -->
+    <script src="js/cart.js"></script>
 </body>
 
 </html>

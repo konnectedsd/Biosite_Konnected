@@ -283,3 +283,30 @@ body.am-body {
     filter: blur(0);
     transform: translateY(0);
 }
+
+/* ── MODO EMBUTIDO NO SIMULADOR (INDEX.HTML) ─────────────────── */
+html.is-embedded,
+html.is-embedded body,
+html.is-embedded main,
+html.is-embedded #biosite-container,
+html.is-embedded #app-container {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+}
+
+html.is-embedded::-webkit-scrollbar,
+html.is-embedded body::-webkit-scrollbar,
+html.is-embedded main::-webkit-scrollbar,
+html.is-embedded #biosite-container::-webkit-scrollbar,
+html.is-embedded #app-container::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+}
+
+html.is-embedded .floating-nav-buttons,
+html.is-embedded [data-floating-nav] {
+    display: none !important;
+}
+

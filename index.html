@@ -1,347 +1,1147 @@
 <!DOCTYPE html>
-<html class="dark" lang="pt-BR">
+<html class="" lang="pt-BR">
 
 <head>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval';">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' https: data: blob: 'unsafe-inline' 'unsafe-eval';">
 
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Konnected - Presença Digital Local</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <meta name="description"
+        content="Konnected - Presença Digital Local. Soluções completas sob medida para destacar seu negócio físico no digital de forma unificada e moderna.">
+    <meta name="keywords" content="presença digital, biosite, nfc, google meu negócio, site para negócios locais">
+    <meta name="author" content="Konnected">
+    <meta property="og:title" content="Konnected - Presença Digital Local">
+    <meta property="og:description"
+        content="Soluções completas sob medida para destacar seu negócio físico no digital.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/biosite.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Konnected - Presença Digital Local">
+    <meta name="twitter:description" content="Destaque seu negócio físico no digital com a Konnected.">
     <link
         href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap"
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "cyber-black": "#050707",
-                        "deep-charcoal": "#0E1111",
-                        "dark-circuit": "#141919",
-                        "electric-emerald": "#28A789",
-                        "primary": "#66daba",
-                        "silver-light": "#E1E3E2",
-                        "muted-gray": "#86948E"
-                    },
-                    fontFamily: {
-                        "display-xl": ["Space Grotesk", "sans-serif"],
-                        "headline-lg": ["Space Grotesk", "sans-serif"],
-                        "headline-md": ["Space Grotesk", "sans-serif"],
-                        "body-lg": ["Inter", "sans-serif"],
-                        "headline-lg-mobile": ["Space Grotesk", "sans-serif"],
-                        "body-md": ["Inter", "sans-serif"],
-                        "label-sm": ["Inter", "sans-serif"]
-                    }
-                }
-            }
-        }
-    </script>
     <link rel="stylesheet" href="styles.css" />
     <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+    <!-- Google Model Viewer para renderização 3D nativa do arquivo GLB -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+    <!-- Anime.js v3 — biblioteca de animação para o background NFC -->
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
 </head>
 
-<body class="antialiased selection:bg-electric-emerald selection:text-black min-h-screen relative">
+<body class="antialiased selection:bg-slate-900 selection:text-white min-h-screen relative bg-slate-100">
 
-    <!-- Animated Grid Background -->
-    <div class="cyber-bg"></div>
+    <!-- Global NFC Field Background: Cobre toda a janela (Full-Bleed Viewport) -->
+    <div class="site-background" aria-hidden="true">
+        <svg id="nfc-field-svg" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <!-- Paths gerados dinamicamente por js/background-animation.js -->
+        </svg>
+    </div>
 
-    <!-- Hero Gradient Mesh -->
-    <div class="hero-gradient-mesh"></div>
+    <!-- FULL-WIDTH RETANGULAR HEADER (Sticky Navigation) -->
+    <header class="sticky top-0 z-40 w-full bg-white/80 backdrop-blur-md border-b border-slate-300/80 transition-all">
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Brand Logo: Apenas o Nome -->
+            <a href="index.html" class="flex items-center group">
+                <span
+                    class="font-headline-md text-[20px] sm:text-[22px] font-bold text-slate-900 tracking-tight group-hover:text-slate-700 transition-colors">
+                    Konnected
+                </span>
+            </a>
+
+            <!-- Anchor Nav Links (Desktop) com texto ampliado -->
+            <nav
+                class="hidden md:flex items-center gap-7 lg:gap-8 text-[14px] lg:text-[15px] font-medium font-body-md text-slate-600">
+                <a href="#solucoes" class="hover:text-slate-900 transition-colors">Soluções</a>
+                <a href="#demos" class="hover:text-slate-900 transition-colors">Demonstração</a>
+                <a href="#como-funciona" class="hover:text-slate-900 transition-colors">Como Funciona</a>
+                <a href="pacotes-integrados.html" class="hover:text-slate-900 transition-colors">Pacotes</a>
+                <a href="#faq" class="hover:text-slate-900 transition-colors">Dúvidas</a>
+            </nav>
+
+            <!-- Actions: Cart + Quick Action + Mobile Menu Toggle -->
+            <div class="flex items-center gap-2 sm:gap-4">
+                <a href="carrinho.html" id="nav-cart-btn"
+                    class="relative p-2.5 min-w-[44px] min-h-[44px] rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-200/60 transition-colors flex items-center justify-center"
+                    aria-label="Abrir Carrinho">
+                    <span class="material-symbols-outlined text-[24px]">shopping_cart</span>
+                    <span id="nav-cart-counter"
+                        class="hidden absolute top-1 right-1 bg-slate-900 text-white font-mono text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-xs">0</span>
+                </a>
+                <a href="agendamento.html"
+                    class="hidden sm:inline-flex items-center gap-2 py-2 px-5 rounded-xl bg-slate-900 text-white font-label-sm text-[13px] font-semibold hover:bg-slate-800 transition-all shadow-xs">
+                    <span>Reunião</span>
+                    <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+                </a>
+                <!-- Mobile Hamburger Button (44x44px target) -->
+                <button id="mobile-menu-btn"
+                    class="md:hidden p-2.5 min-w-[44px] min-h-[44px] rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-200/60 transition-colors flex items-center justify-center cursor-pointer"
+                    aria-label="Abrir Menu de Navegação" aria-expanded="false">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined text-[26px]">menu</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobile-menu"
+            class="hidden md:hidden border-t border-slate-200/80 bg-white/95 backdrop-blur-xl px-4 py-4 flex flex-col gap-2 shadow-lg transition-all">
+            <a href="#solucoes" class="mobile-nav-link flex items-center justify-between py-3 px-3.5 rounded-xl text-slate-800 hover:bg-slate-100 font-medium text-[15px] transition-colors">
+                <span class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-[20px] text-slate-600">apps</span>
+                    Soluções
+                </span>
+                <span class="material-symbols-outlined text-[16px] text-slate-400">chevron_right</span>
+            </a>
+            <a href="#demos" class="mobile-nav-link flex items-center justify-between py-3 px-3.5 rounded-xl text-slate-800 hover:bg-slate-100 font-medium text-[15px] transition-colors">
+                <span class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-[20px] text-slate-600">devices</span>
+                    Demonstração
+                </span>
+                <span class="material-symbols-outlined text-[16px] text-slate-400">chevron_right</span>
+            </a>
+            <a href="servicos-e-produtos.html" class="mobile-nav-link flex items-center justify-between py-3 px-3.5 rounded-xl text-slate-800 hover:bg-slate-100 font-medium text-[15px] transition-colors">
+                <span class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-[20px] text-slate-600">inventory_2</span>
+                    Serviços & Produtos
+                </span>
+                <span class="material-symbols-outlined text-[16px] text-slate-400">chevron_right</span>
+            </a>
+            <a href="pacotes-integrados.html" class="mobile-nav-link flex items-center justify-between py-3 px-3.5 rounded-xl text-slate-800 hover:bg-slate-100 font-medium text-[15px] transition-colors">
+                <span class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-[20px] text-slate-600">loyalty</span>
+                    Pacotes Integrados
+                </span>
+                <span class="material-symbols-outlined text-[16px] text-slate-400">chevron_right</span>
+            </a>
+            <a href="cases.html" class="mobile-nav-link flex items-center justify-between py-3 px-3.5 rounded-xl text-slate-800 hover:bg-slate-100 font-medium text-[15px] transition-colors">
+                <span class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-[20px] text-slate-600">verified</span>
+                    Cases de Sucesso
+                </span>
+                <span class="material-symbols-outlined text-[16px] text-slate-400">chevron_right</span>
+            </a>
+            <a href="tabela-de-precos.html" class="mobile-nav-link flex items-center justify-between py-3 px-3.5 rounded-xl text-slate-800 hover:bg-slate-100 font-medium text-[15px] transition-colors">
+                <span class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-[20px] text-slate-600">payments</span>
+                    Tabela de Preços
+                </span>
+                <span class="material-symbols-outlined text-[16px] text-slate-400">chevron_right</span>
+            </a>
+            <div class="pt-2 border-t border-slate-200/80 mt-1">
+                <a href="agendamento.html" class="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-slate-900 text-white font-label-sm text-[14px] font-semibold hover:bg-slate-800 transition-all shadow-xs">
+                    <span>Agendar Reunião</span>
+                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+    </header>
 
     <main class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-24 pb-24">
 
         <!-- SECTION 1: HERO -->
-        <section class="min-h-screen flex flex-col items-center justify-center text-center pt-20 relative">
+        <section
+            class="min-h-[85vh] flex flex-col items-center justify-center text-center pt-8 sm:pt-12 md:pt-16 lg:pt-20 relative overflow-visible">
 
-            <div class="flex flex-col md:flex-row items-center justify-center gap-12 w-full">
-                <!-- Left: Copy -->
+            <!-- Container Hero: Flexbox Responsivo (Coluna no Mobile com 3D no topo; Linha no Desktop) -->
+            <div
+                class="w-full relative min-h-[580px] lg:min-h-[640px] flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-0">
+
+                <!-- 1. Plaquinha NFC 3D: Topo no Mobile (order-1), À Direita no Desktop (lg:order-2) -->
                 <div
-                    class="flex-1 flex flex-col items-center md:items-start text-center md:text-left reveal order-2 md:order-1">
+                    class="nfc-model-container nfc-model-box relative order-1 lg:order-2 lg:absolute lg:right-0 sm:lg:right-2 md:lg:right-4 lg:right-8 xl:right-12 lg:top-1/2 lg:-translate-y-1/2 z-10 flex items-center justify-center select-none pointer-events-auto">
+                    <model-viewer id="nfc-model-viewer" src="NFC_Model.glb"
+                        alt="Plaquinha Inteligente NFC Konnected em 3D" auto-rotate rotation-per-second="8deg"
+                        auto-rotate-delay="0" camera-controls touch-action="pan-y" disable-zoom
+                        interaction-prompt="none" shadow-intensity="1.2" shadow-softness="0.9" exposure="1.15"
+                        camera-orbit="25deg 78deg 105%" field-of-view="30deg" min-field-of-view="30deg"
+                        max-field-of-view="30deg" min-camera-orbit="auto auto 105%" max-camera-orbit="auto auto 105%"
+                        loading="eager"
+                        class="nfc-viewer-element cursor-grab active:cursor-grabbing w-full h-full focus:outline-none focus:ring-0">
+                        <!-- Indicador de Carregamento Estilizado -->
+                        <div slot="progress-bar"
+                            class="w-24 h-1 bg-slate-300 rounded-full overflow-hidden absolute bottom-4 left-1/2 -translate-x-1/2">
+                            <div class="h-full bg-slate-900 rounded-full animate-pulse"></div>
+                        </div>
+                    </model-viewer>
+                </div>
+
+                <!-- 2. Copy & Chamada: Abaixo no Mobile (order-2), À Esquerda no Desktop (lg:order-1) -->
+                <div
+                    class="relative z-20 w-full max-w-xl lg:max-w-2xl flex flex-col items-center lg:items-start text-center lg:text-left reveal order-2 lg:order-1 pt-2 pb-8 lg:py-12">
                     <span
-                        class="font-label-sm text-[12px] tracking-widest uppercase text-silver-light/60 mb-4 border border-silver-light/20 rounded-full px-4 py-1">
-                        Konnected
+                        class="font-label-sm text-[11px] tracking-widest uppercase text-slate-600 bg-white/80 backdrop-blur-md mb-6 border border-slate-300/80 rounded-full px-4 py-1.5 shadow-sm inline-block">
+                        Presença Digital Local
                     </span>
                     <h1
-                        class="font-headline-lg-mobile text-[32px] md:text-[64px] font-bold text-white mb-2 leading-tight text-gradient-reveal">
+                        class="font-headline-lg-mobile text-[40px] sm:text-[50px] md:text-[58px] lg:text-[64px] font-bold text-slate-900 mb-4 leading-[1.06] tracking-tight text-gradient-reveal">
                         VOCÊ SEMPRE<br />EM PRIMEIRO
                     </h1>
-                    <h2 class="font-headline-md text-[20px] md:text-[28px] text-electric-emerald mb-6">
+                    <h2
+                        class="font-headline-md text-[20px] sm:text-[23px] md:text-[26px] text-slate-700 font-medium mb-5 max-w-lg leading-snug">
                         Conectando você ao que realmente importa: seus clientes.
                     </h2>
-                    <div class="w-16 h-px bg-electric-emerald opacity-50 mb-6 mx-auto md:mx-0"></div>
+                    <div class="w-12 h-px bg-slate-300 mb-6 mx-auto lg:mx-0"></div>
                     <p
-                        class="font-body-md text-[15px] md:text-[18px] text-silver-light/90 max-w-md mb-8 leading-relaxed">
-                        Plaquinha NFC + Biosite + fotos profissionais.<br />
-                        Clientes te encontram, confiam e ligam.
+                        class="font-body-md text-[15px] sm:text-[16px] md:text-[17px] text-slate-600 max-w-md mb-8 leading-relaxed">
+                        Plaquinha NFC + Biosite ultrarrápido + fotos profissionais.<br class="hidden sm:inline" />
+                        Clientes te encontram no Google, confiam e compram.
                     </p>
 
-                    <div class="flex flex-col sm:flex-row items-center gap-6 w-full md:w-auto">
-                        <a href="pacotes-integrados.html"
-                            class="w-full sm:w-auto bg-electric-emerald text-black font-label-sm text-[14px] font-semibold uppercase tracking-wider py-4 px-8 rounded-lg shadow-[0_0_20px_rgba(40,167,137,0.3)] hover:shadow-[0_0_30px_rgba(40,167,137,0.5)] hover:scale-105 transition-all duration-300">
-                            Ver pacotes
+                    <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+                        <a href="pacotes-integrados.html" class="btn-interactive w-full sm:w-auto">
+                            <div class="flex items-center justify-center gap-2.5">
+                                <div class="btn-dot"></div>
+                                <span class="btn-text-initial">Ver pacotes</span>
+                            </div>
+                            <div class="btn-text-hover">
+                                <span>Ver pacotes</span>
+                                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                            </div>
                         </a>
                         <a href="agendamento.html"
-                            class="text-primary font-label-sm text-[14px] font-medium hover:text-white transition-colors flex items-center gap-2 group">
+                            class="w-full sm:w-auto text-slate-700 font-label-sm text-[13px] font-medium hover:text-slate-900 transition-colors flex items-center justify-center gap-2 group py-2">
                             Agendar reunião
+                            <span
+                                class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- Right: Logo/Video -->
-                <div
-                    class="logo-glow rounded-full border border-dark-circuit flex-shrink-0 w-[240px] h-[240px] md:w-[400px] md:h-[400px] relative force-circle overflow-hidden reveal order-1 md:order-2">
-                    <video id="hero-logo-video-1" autoplay muted playsinline preload="auto"
-                        class="w-full h-full object-cover pointer-events-none absolute inset-0 transition-opacity duration-500 scale-[1.4] opacity-100">
-                        <source src="images/Konnected_logo_animation_sequence_202606161832.mp4" type="video/mp4">
-                    </video>
-                    <video id="hero-logo-video-2" muted playsinline preload="auto"
-                        class="w-full h-full object-cover pointer-events-none absolute inset-0 transition-opacity duration-500 scale-[1.4] opacity-0">
-                        <source src="images/Konnected_logo_animation_sequence_202606161832.mp4" type="video/mp4">
-                    </video>
-                </div>
             </div>
 
+            <!-- Script de Calibração PBR Metálica e Retomada Imediata -->
+            <script>
+                (function initNFCModelExperience() {
+                    const mv = document.getElementById('nfc-model-viewer');
+                    if (!mv) return;
+
+                    // Calibração PBR de Metal
+                    mv.addEventListener('load', () => {
+                        try {
+                            if (mv.model && mv.model.materials) {
+                                mv.model.materials.forEach(mat => {
+                                    const pbr = mat.pbrMetallicRoughness;
+                                    if (pbr && typeof pbr.setMetallicFactor === 'function') {
+                                        pbr.setMetallicFactor(0.92);
+                                        pbr.setRoughnessFactor(0.22);
+                                        pbr.setBaseColorFactor([0.78, 0.80, 0.84, 1.0]);
+                                    }
+                                });
+                            }
+                        } catch (err) {
+                            console.warn('Calibração PBR:', err);
+                        }
+                    });
+
+                    // Retomada Imediata da Rotação Automática ao Soltar o Clique/Toque (Zero Delay)
+                    const resumeRotation = () => {
+                        mv.autoRotate = true;
+                    };
+
+                    mv.addEventListener('pointerup', resumeRotation);
+                    mv.addEventListener('pointerleave', resumeRotation);
+                    mv.addEventListener('touchend', resumeRotation);
+                    mv.addEventListener('touchcancel', resumeRotation);
+                })();
+            </script>
 
         </section>
 
-        <!-- SECTION 2: MÉTRICAS -->
+        <!-- SECTION 2: MÉTRICAS HONESTAS -->
         <section class="w-full grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div class="glass-panel p-6 rounded-xl flex items-center gap-4 reveal">
-                <span class="material-symbols-outlined text-primary text-[28px]">location_on</span>
+            <div class="glass-panel p-6 rounded-2xl flex items-center gap-4 reveal">
+                <div class="w-12 h-12 rounded-xl bg-slate-900/5 flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-slate-900 text-[26px]">location_on</span>
+                </div>
                 <div>
-                    <h3 class="font-headline-md text-[16px] text-white">Brasília, DF</h3>
-                    <p class="font-body-md text-[12px] text-muted-gray uppercase tracking-wider">Atendimento presencial
-                    </p>
+                    <h3 class="font-headline-md text-[16px] text-slate-900 font-semibold">Brasília, DF</h3>
+                    <p class="font-body-md text-[13px] text-muted-gray">Atendimento presencial</p>
                 </div>
             </div>
-            <div class="glass-panel p-6 rounded-xl flex items-center gap-4 reveal delay-100">
-                <span class="material-symbols-outlined text-primary text-[28px]">verified</span>
+            <div class="glass-panel p-6 rounded-2xl flex items-center gap-4 reveal delay-100">
+                <div class="w-12 h-12 rounded-xl bg-slate-900/5 flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-slate-900 text-[26px]">verified</span>
+                </div>
                 <div>
-                    <h3 class="font-headline-md text-[16px] text-white">Resultado garantido</h3>
-                    <p class="font-body-md text-[12px] text-muted-gray uppercase tracking-wider">Comprometimento</p>
+                    <h3 class="font-headline-md text-[16px] text-slate-900 font-semibold">Resultado garantido</h3>
+                    <p class="font-body-md text-[13px] text-muted-gray">Comprometimento com entrega</p>
                 </div>
             </div>
-            <div class="glass-panel p-6 rounded-xl flex items-center gap-4 reveal delay-200">
-                <span class="material-symbols-outlined text-primary text-[28px]">schedule</span>
+            <div class="glass-panel p-6 rounded-2xl flex items-center gap-4 reveal delay-200">
+                <div class="w-12 h-12 rounded-xl bg-slate-900/5 flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-slate-900 text-[26px]">schedule</span>
+                </div>
                 <div>
-                    <h3 class="font-headline-md text-[16px] text-white">Entrega em 7 dias</h3>
-                    <p class="font-body-md text-[12px] text-muted-gray uppercase tracking-wider">Prazo realista</p>
+                    <h3 class="font-headline-md text-[16px] text-slate-900 font-semibold">Entrega em 7 dias</h3>
+                    <p class="font-body-md text-[13px] text-muted-gray">Prazo realista</p>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 3: O QUE FAZEMOS -->
-        <section class="w-full pt-12">
-            <h2 class="font-headline-md text-[24px] md:text-[32px] text-white mb-2 text-center md:text-left reveal">
-                O que fazemos pelo seu negócio
-            </h2>
-            <div class="w-16 h-1 bg-electric-emerald mb-12 mx-auto md:mx-0 reveal"></div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div
-                    class="glass-panel p-8 rounded-xl border-t border-t-white/5 hover:border-primary hover:shadow-[0_8px_24px_rgba(40,167,137,0.15)] transition-all duration-300 hover:scale-[1.02] group reveal">
-                    <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6">
-                        <span class="material-symbols-outlined text-primary text-[32px]">nfc</span>
-                    </div>
-                    <h3 class="font-headline-md text-[18px] text-primary mb-3">Plaquinha NFC + QR Code</h3>
-                    <p class="font-body-md text-[14px] text-muted-gray leading-relaxed">
-                        Avaliações automáticas no Google via chip de aproximação. O cliente encosta o celular e já
-                        avalia.
-                    </p>
+        <!-- SECTION 3: O QUE FAZEMOS (Carrossel Interativo de Soluções) -->
+        <section id="solucoes" class="w-full pt-8 scroll-mt-24" data-lenis-prevent>
+            <!-- Header da Seção com Título e Controles de Navegação -->
+            <div class="flex items-end justify-between mb-8 reveal">
+                <div>
+                    <span class="font-label-sm text-[11px] uppercase tracking-widest text-slate-500 block mb-2 font-semibold">
+                        Portfólio de Soluções
+                    </span>
+                    <h2 class="font-headline-md text-[26px] md:text-[34px] font-bold text-slate-900 tracking-tight leading-tight">
+                        O que fazemos pelo seu negócio
+                    </h2>
                 </div>
-
-                <div
-                    class="glass-panel p-8 rounded-xl border-t border-t-white/5 hover:border-primary hover:shadow-[0_8px_24px_rgba(40,167,137,0.15)] transition-all duration-300 hover:scale-[1.02] group reveal delay-100">
-                    <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6">
-                        <span class="material-symbols-outlined text-primary text-[32px]">language</span>
-                    </div>
-                    <h3 class="font-headline-md text-[18px] text-primary mb-3">Biosite Profissional</h3>
-                    <p class="font-body-md text-[14px] text-muted-gray leading-relaxed">
-                        Site compacto, ultra-rápido, publicado no seu domínio. Carrega em &lt; 1 segundo.
-                    </p>
-                </div>
-
-                <div
-                    class="glass-panel p-8 rounded-xl border-t border-t-white/5 hover:border-primary hover:shadow-[0_8px_24px_rgba(40,167,137,0.15)] transition-all duration-300 hover:scale-[1.02] group reveal delay-200">
-                    <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6">
-                        <span class="material-symbols-outlined text-primary text-[32px]">photo_camera</span>
-                    </div>
-                    <h3 class="font-headline-md text-[18px] text-primary mb-3">Sessão Fotográfica</h3>
-                    <p class="font-body-md text-[14px] text-muted-gray leading-relaxed">
-                        Fotos profissionais do seu estabelecimento para Google, redes sociais e biosite.
-                    </p>
+                <!-- Link Geral de Catálogo -->
+                <div class="flex items-center">
+                    <a href="servicos-e-produtos.html"
+                        class="inline-flex items-center gap-2 text-slate-700 hover:text-slate-950 font-label-sm text-[13px] sm:text-[14px] font-semibold transition-all bg-white/80 hover:bg-white border border-slate-300/80 px-4 py-2 rounded-xl shadow-xs hover:shadow-sm">
+                        <span>Ver catálogo completo</span>
+                        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    </a>
                 </div>
             </div>
 
-            <div class="mt-10 text-center md:text-right reveal">
-                <a href="servicos-e-produtos.html"
-                    class="text-primary font-label-sm text-[14px] hover:text-white transition-colors inline-flex items-center gap-2 uppercase tracking-wider group">
-                    Ver todos os serviços <span
-                        class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            <!-- Trilho Horizontal com Giro Contínuo Suave Estilo Marquee Infinito -->
+            <div id="apple-carousel-track" data-lenis-prevent style="will-change: scroll-position; contain: paint;"
+                class="no-scrollbar flex gap-5 overflow-x-auto py-4 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 select-none cursor-grab active:cursor-grabbing">
+                
+                <!-- Card 1: Google Meu Negócio -->
+                <div class="apple-card flex-shrink-0 w-[290px] sm:w-[320px] md:w-[350px] h-[440px] md:h-[480px] rounded-3xl overflow-hidden relative cursor-pointer group shadow-lux hover:shadow-2xl transition-all duration-500"
+                    data-service="gmn">
+                    <img src="images/google_meunegocio.png" alt="Configuração Google Meu Negócio" loading="lazy" decoding="async"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-slate-950/15"></div>
+
+                    <div class="absolute inset-0 p-6 flex flex-col justify-between z-10">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-white/20 backdrop-blur-md text-white text-[11px] font-semibold tracking-wider uppercase px-3.5 py-1 rounded-full border border-white/25 shadow-sm">
+                                Otimização & SEO
+                            </span>
+                        </div>
+                        <div>
+                            <span class="text-slate-300 font-mono text-[12px] uppercase tracking-wider font-semibold block mb-1.5">A partir de R$ 97,00</span>
+                            <h3 class="font-headline-md text-[21px] md:text-[24px] font-bold text-white leading-tight mb-2 group-hover:text-slate-200 transition-colors">
+                                Configuração Google Meu Negócio
+                            </h3>
+                            <p class="font-body-md text-[13px] text-slate-300 leading-snug line-clamp-2 mb-4">
+                                Otimização completa no Google Maps para seu comércio ser encontrado antes da concorrência.
+                            </p>
+                            <div class="flex items-center justify-between pt-2 border-t border-white/10">
+                                <span class="text-[12px] font-medium text-white/90 group-hover:translate-x-1 transition-transform flex items-center gap-1">
+                                    Ver detalhes <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+                                </span>
+                                <div class="w-9 h-9 rounded-full bg-white/20 group-hover:bg-white text-white group-hover:text-slate-950 backdrop-blur-md border border-white/30 flex items-center justify-center transition-all duration-300 shadow-sm">
+                                    <span class="material-symbols-outlined text-[20px]">add</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Criação de Biosite Profissional -->
+                <div class="apple-card flex-shrink-0 w-[290px] sm:w-[320px] md:w-[350px] h-[440px] md:h-[480px] rounded-3xl overflow-hidden relative cursor-pointer group shadow-lux hover:shadow-2xl transition-all duration-500"
+                    data-service="biosite">
+                    <img src="images/biosite.jpg" alt="Criação de Biosite Profissional" loading="lazy" decoding="async"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-slate-950/15"></div>
+
+                    <div class="absolute inset-0 p-6 flex flex-col justify-between z-10">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-white/20 backdrop-blur-md text-white text-[11px] font-semibold tracking-wider uppercase px-3.5 py-1 rounded-full border border-white/25 shadow-sm">
+                                Mobile First
+                            </span>
+                            <span class="bg-slate-900/90 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full border border-white/20">
+                                Mais Vendido
+                            </span>
+                        </div>
+                        <div>
+                            <span class="text-slate-300 font-mono text-[12px] uppercase tracking-wider font-semibold block mb-1.5">A partir de R$ 150,00</span>
+                            <h3 class="font-headline-md text-[21px] md:text-[24px] font-bold text-white leading-tight mb-2 group-hover:text-slate-200 transition-colors">
+                                Criação de Biosite Profissional
+                            </h3>
+                            <p class="font-body-md text-[13px] text-slate-300 leading-snug line-clamp-2 mb-4">
+                                Site ultrarrápido compacto publicado em domínio próprio para converter visitas em clientes.
+                            </p>
+                            <div class="flex items-center justify-between pt-2 border-t border-white/10">
+                                <span class="text-[12px] font-medium text-white/90 group-hover:translate-x-1 transition-transform flex items-center gap-1">
+                                    Ver detalhes <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+                                </span>
+                                <div class="w-9 h-9 rounded-full bg-white/20 group-hover:bg-white text-white group-hover:text-slate-950 backdrop-blur-md border border-white/30 flex items-center justify-center transition-all duration-300 shadow-sm">
+                                    <span class="material-symbols-outlined text-[20px]">add</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Sessão Fotográfica Profissional -->
+                <div class="apple-card flex-shrink-0 w-[290px] sm:w-[320px] md:w-[350px] h-[440px] md:h-[480px] rounded-3xl overflow-hidden relative cursor-pointer group shadow-lux hover:shadow-2xl transition-all duration-500"
+                    data-service="foto">
+                    <img src="images/sessão.jpg" alt="Sessão Fotográfica Profissional" loading="lazy" decoding="async"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-slate-950/15"></div>
+
+                    <div class="absolute inset-0 p-6 flex flex-col justify-between z-10">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-white/20 backdrop-blur-md text-white text-[11px] font-semibold tracking-wider uppercase px-3.5 py-1 rounded-full border border-white/25 shadow-sm">
+                                Imagem & Autoridade
+                            </span>
+                        </div>
+                        <div>
+                            <span class="text-slate-300 font-mono text-[12px] uppercase tracking-wider font-semibold block mb-1.5">A partir de R$ 197,00</span>
+                            <h3 class="font-headline-md text-[21px] md:text-[24px] font-bold text-white leading-tight mb-2 group-hover:text-slate-200 transition-colors">
+                                Sessão Fotográfica Profissional
+                            </h3>
+                            <p class="font-body-md text-[13px] text-slate-300 leading-snug line-clamp-2 mb-4">
+                                Produção de fotos do estabelecimento, produtos e fachada para passar máxima credibilidade.
+                            </p>
+                            <div class="flex items-center justify-between pt-2 border-t border-white/10">
+                                <span class="text-[12px] font-medium text-white/90 group-hover:translate-x-1 transition-transform flex items-center gap-1">
+                                    Ver detalhes <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+                                </span>
+                                <div class="w-9 h-9 rounded-full bg-white/20 group-hover:bg-white text-white group-hover:text-slate-950 backdrop-blur-md border border-white/30 flex items-center justify-center transition-all duration-300 shadow-sm">
+                                    <span class="material-symbols-outlined text-[20px]">add</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Plaquinha Premium NFC -->
+                <div class="apple-card flex-shrink-0 w-[290px] sm:w-[320px] md:w-[350px] h-[440px] md:h-[480px] rounded-3xl overflow-hidden relative cursor-pointer group shadow-lux hover:shadow-2xl transition-all duration-500"
+                    data-service="placa">
+                    <img src="images/display_A5.jpeg" alt="Plaquinha Premium NFC" loading="lazy" decoding="async"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-slate-950/15"></div>
+
+                    <div class="absolute inset-0 p-6 flex flex-col justify-between z-10">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-white/20 backdrop-blur-md text-white text-[11px] font-semibold tracking-wider uppercase px-3.5 py-1 rounded-full border border-white/25 shadow-sm">
+                                Hardware Inteligente
+                            </span>
+                        </div>
+                        <div>
+                            <span class="text-slate-300 font-mono text-[12px] uppercase tracking-wider font-semibold block mb-1.5">A partir de R$ 89,90</span>
+                            <h3 class="font-headline-md text-[21px] md:text-[24px] font-bold text-white leading-tight mb-2 group-hover:text-slate-200 transition-colors">
+                                Plaquinha Premium NFC
+                            </h3>
+                            <p class="font-body-md text-[13px] text-slate-300 leading-snug line-clamp-2 mb-4">
+                                Display de balcão com chip NFC de aproximação e QR Code para avaliações em 3 segundos.
+                            </p>
+                            <div class="flex items-center justify-between pt-2 border-t border-white/10">
+                                <span class="text-[12px] font-medium text-white/90 group-hover:translate-x-1 transition-transform flex items-center gap-1">
+                                    Ver detalhes <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+                                </span>
+                                <div class="w-9 h-9 rounded-full bg-white/20 group-hover:bg-white text-white group-hover:text-slate-950 backdrop-blur-md border border-white/30 flex items-center justify-center transition-all duration-300 shadow-sm">
+                                    <span class="material-symbols-outlined text-[20px]">add</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5: Solução Completa Integrada (Combo) -->
+                <div class="apple-card flex-shrink-0 w-[290px] sm:w-[320px] md:w-[350px] h-[440px] md:h-[480px] rounded-3xl overflow-hidden relative cursor-pointer group shadow-lux hover:shadow-2xl transition-all duration-500"
+                    data-service="combo">
+                    <img src="images/plaquinha_simples.jpeg" alt="Solução Completa Integrada" loading="lazy" decoding="async"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-slate-950/15"></div>
+
+                    <div class="absolute inset-0 p-6 flex flex-col justify-between z-10">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-white/20 backdrop-blur-md text-white text-[11px] font-semibold tracking-wider uppercase px-3.5 py-1 rounded-full border border-white/25 shadow-sm">
+                                Ecossistema Completo
+                            </span>
+                        </div>
+                        <div>
+                            <span class="text-slate-300 font-mono text-[12px] uppercase tracking-wider font-semibold block mb-1.5">A partir de R$ 227,00</span>
+                            <h3 class="font-headline-md text-[21px] md:text-[24px] font-bold text-white leading-tight mb-2 group-hover:text-slate-200 transition-colors">
+                                Solução Completa Integrada
+                            </h3>
+                            <p class="font-body-md text-[13px] text-slate-300 leading-snug line-clamp-2 mb-4">
+                                Plaquinha NFC inteligente + Biosite + Google Meu Negócio unificados para o seu balcão.
+                            </p>
+                            <div class="flex items-center justify-between pt-2 border-t border-white/10">
+                                <span class="text-[12px] font-medium text-white/90 group-hover:translate-x-1 transition-transform flex items-center gap-1">
+                                    Ver detalhes <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+                                </span>
+                                <div class="w-9 h-9 rounded-full bg-white/20 group-hover:bg-white text-white group-hover:text-slate-950 backdrop-blur-md border border-white/30 flex items-center justify-center transition-all duration-300 shadow-sm">
+                                    <span class="material-symbols-outlined text-[20px]">add</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION: VITRINE INTERATIVA DE BIOSITES -->
+        <section id="demos" class="w-full pt-8 scroll-mt-24">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-4">
+                <div>
+                    <span
+                        class="font-label-sm text-[11px] tracking-widest uppercase text-slate-600 bg-white/80 backdrop-blur-md mb-3 border border-slate-300/80 rounded-full px-3.5 py-1 shadow-xs inline-block reveal">
+                        Experiência Real
+                    </span>
+                    <h2 class="font-headline-md text-[26px] md:text-[34px] font-bold text-slate-900 mb-2 reveal">
+                        Veja um Biosite em ação no celular
+                    </h2>
+                    <p class="font-body-md text-[14px] md:text-[16px] text-muted-gray max-w-xl reveal">
+                        Páginas ultrarrápidas carregadas em menos de 1 segundo, projetadas para converter visitas
+                        casuais em clientes no balcão e no WhatsApp.
+                    </p>
+                </div>
+                <a href="demos_biosites/demos.html"
+                    class="text-slate-900 font-label-sm text-[13px] font-semibold hover:text-slate-700 transition-colors inline-flex items-center gap-2 uppercase tracking-wider group reveal">
+                    Ver catálogo de demos
+                    <span
+                        class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
                 </a>
+            </div>
+
+            <!-- Container Showcase: Card Principal Clean Slate -->
+            <div
+                class="glass-panel p-4 sm:p-8 lg:p-10 rounded-3xl flex flex-col lg:grid lg:grid-cols-12 gap-8 lg:gap-12 items-center reveal">
+
+                <!-- 1. BARRA DE SELEÇÃO RÁPIDA NO TOPO (Pills de Baixo Atrito para Mobile & Acesso Rápido) -->
+                <div class="w-full lg:hidden flex flex-col gap-3">
+                    <span
+                        class="font-label-sm text-[11px] uppercase tracking-wider text-slate-500 font-semibold flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-[16px] text-slate-900">touch_app</span>
+                        Toque para alternar o modelo:
+                    </span>
+                    <!-- Pills em Grid Compacto de 2 colunas no mobile -->
+                    <div class="grid grid-cols-2 gap-2 w-full">
+                        <button type="button" data-demo-url="demos_biosites/Bk.html"
+                            class="demo-selector-btn active py-2.5 px-3 rounded-xl border text-xs font-semibold flex items-center justify-center gap-2 transition-all bg-slate-900 text-white border-slate-900 shadow-xs cursor-pointer">
+                            <span class="material-symbols-outlined text-[16px]">content_cut</span>
+                            <span class="truncate">Barbearia</span>
+                        </button>
+                        <button type="button" data-demo-url="demos_biosites/SB.html"
+                            class="demo-selector-btn py-2.5 px-3 rounded-xl border text-xs font-semibold flex items-center justify-center gap-2 transition-all bg-white/70 hover:bg-white text-slate-800 border-slate-300/80 shadow-xs cursor-pointer">
+                            <span class="material-symbols-outlined text-[16px]">spa</span>
+                            <span class="truncate">Salão Bella</span>
+                        </button>
+                        <button type="button" data-demo-url="demos_biosites/CS.html"
+                            class="demo-selector-btn py-2.5 px-3 rounded-xl border text-xs font-semibold flex items-center justify-center gap-2 transition-all bg-white/70 hover:bg-white text-slate-800 border-slate-300/80 shadow-xs cursor-pointer">
+                            <span class="material-symbols-outlined text-[16px]">dentistry</span>
+                            <span class="truncate">Clínica Odonto</span>
+                        </button>
+                        <button type="button" data-demo-url="demos_biosites/AM.html"
+                            class="demo-selector-btn py-2.5 px-3 rounded-xl border text-xs font-semibold flex items-center justify-center gap-2 transition-all bg-white/70 hover:bg-white text-slate-800 border-slate-300/80 shadow-xs cursor-pointer">
+                            <span class="material-symbols-outlined text-[16px]">checkroom</span>
+                            <span class="truncate">Atelier Moda</span>
+                        </button>
+                    </div>
+
+                    <!-- Botão de Ver em Tela Cheia no Mobile (Destaque Primário) -->
+                    <a id="showcase-fullscreen-btn-mobile" href="demos_biosites/Bk.html" target="_blank"
+                        rel="noopener noreferrer"
+                        class="w-full py-2.5 px-4 rounded-xl bg-slate-900/10 hover:bg-slate-900 hover:text-white text-slate-900 font-label-sm text-[12px] font-semibold flex items-center justify-center gap-2 transition-all border border-slate-300/80 mt-1">
+                        <span class="material-symbols-outlined text-[17px]">open_in_new</span>
+                        <span>Abrir biosite completo em tela cheia</span>
+                    </a>
+                </div>
+
+                <!-- 2. SIMULADOR DO SMARTPHONE (Dimensões Fixadas: Imune a encurtamento no Desktop) -->
+                <div class="lg:col-span-5 flex flex-col items-center justify-center w-full">
+
+                    <!-- Botão Fullscreen no Desktop (Acima do Celular) -->
+                    <div class="hidden lg:flex w-[310px] items-center justify-between mb-3 text-[12px]">
+                        <span class="font-label-sm text-slate-500 font-medium flex items-center gap-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+                            Simulador Interativo
+                        </span>
+                        <a id="showcase-fullscreen-btn" href="demos_biosites/Bk.html" target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center gap-1.5 text-slate-700 hover:text-slate-900 font-label-sm font-semibold hover:underline transition-colors"
+                            title="Abrir página completa em nova aba">
+                            <span>Ver completo</span>
+                            <span class="material-symbols-outlined text-[15px]">open_in_new</span>
+                        </a>
+                    </div>
+
+                    <!-- Casca Externa do Smartphone (w: 310px, h: 620px com trava min-h) -->
+                    <div
+                        class="relative w-[300px] sm:w-[315px] h-[610px] min-h-[610px] bg-slate-900 rounded-[44px] p-3 shadow-lux-hover border-4 border-slate-800 flex flex-col flex-shrink-0 select-none">
+
+                        <!-- Notch do Celular com Alto-falante e Câmera Frontal -->
+                        <div
+                            class="w-28 h-4 bg-slate-900 rounded-b-xl mx-auto absolute top-3 left-1/2 -translate-x-1/2 z-30 flex items-center justify-center gap-2">
+                            <div class="w-10 h-1 bg-slate-700 rounded-full"></div>
+                            <div class="w-2 h-2 bg-slate-800 rounded-full"></div>
+                        </div>
+
+                        <!-- Tela do Celular (Iframe com flex: 1 e min-height: 0) -->
+                        <div
+                            class="w-full flex-1 min-h-0 rounded-[34px] overflow-hidden bg-white relative z-20 shadow-inner flex flex-col">
+                            <iframe id="showcase-iframe" src="demos_biosites/Bk.html?embedded=true"
+                                title="Demonstração Interativa do Biosite"
+                                class="w-full h-full flex-1 border-0 select-auto transition-opacity duration-300"
+                                loading="lazy"></iframe>
+                        </div>
+
+                        <!-- Barra de Navegação Inferior (Home Indicator Bar) -->
+                        <div class="w-28 h-1 bg-slate-600/80 rounded-full mx-auto mt-2 flex-shrink-0"></div>
+                    </div>
+
+                    <!-- Badges Técnicas sob o Celular -->
+                    <div
+                        class="flex items-center justify-center gap-3 sm:gap-4 mt-4 text-[11px] sm:text-[12px] font-mono text-slate-600">
+                        <span
+                            class="flex items-center gap-1.5 bg-white/80 px-3 py-1 rounded-full border border-slate-200 shadow-2xs">
+                            <span class="material-symbols-outlined text-[13px] text-slate-800">bolt</span>
+                            Carregamento 0.8s
+                        </span>
+                        <span
+                            class="flex items-center gap-1.5 bg-white/80 px-3 py-1 rounded-full border border-slate-200 shadow-2xs">
+                            <span class="material-symbols-outlined text-[14px] text-slate-800">devices</span>
+                            100% Responsivo
+                        </span>
+                    </div>
+                </div>
+
+                <!-- 3. PAINEL DE CONTROLE DETALHADO NO DESKTOP (7 colunas) -->
+                <div class="hidden lg:flex lg:col-span-7 flex-col gap-3.5">
+                    <div class="mb-2">
+                        <span
+                            class="font-label-sm text-[11px] uppercase tracking-wider text-slate-500 font-semibold">Segmentos
+                            Demonstrativos</span>
+                        <h3 class="font-headline-md text-[22px] font-bold text-slate-900 mb-1">
+                            Escolha um modelo para testar em tempo real
+                        </h3>
+                        <p class="font-body-md text-[13px] text-muted-gray">
+                            O simulador ao lado é totalmente interativo: você pode rolar a página, tocar nos botões e
+                            testar a velocidade de carregamento.
+                        </p>
+                    </div>
+
+                    <!-- Item 1: Barbearia Kings -->
+                    <button type="button" data-demo-url="demos_biosites/Bk.html"
+                        class="demo-selector-btn desktop-btn active w-full p-4 rounded-2xl border text-left transition-all duration-300 flex items-center justify-between group bg-slate-900 text-white border-slate-900 shadow-sm cursor-pointer">
+                        <div class="flex items-center gap-3.5">
+                            <div
+                                class="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center text-white font-bold group-hover:scale-105 transition-transform flex-shrink-0">
+                                <span class="material-symbols-outlined text-[22px]">content_cut</span>
+                            </div>
+                            <div>
+                                <span
+                                    class="font-label-sm text-[10px] uppercase tracking-widest text-slate-300">Barbearia
+                                    & Estilo</span>
+                                <h4 class="font-headline-md text-[16px] font-semibold">Barbearia Kings</h4>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="demo-status-pill text-[11px] font-label-sm px-2.5 py-0.5 rounded-full bg-white/20 text-white">Ativo</span>
+                            <span
+                                class="material-symbols-outlined text-[18px] text-white/60 group-hover:text-white transition-colors">chevron_right</span>
+                        </div>
+                    </button>
+
+                    <!-- Item 2: Studio Bella -->
+                    <button type="button" data-demo-url="demos_biosites/SB.html"
+                        class="demo-selector-btn desktop-btn w-full p-4 rounded-2xl border text-left transition-all duration-300 flex items-center justify-between group bg-white/60 hover:bg-white text-slate-800 border-slate-200/90 shadow-xs cursor-pointer">
+                        <div class="flex items-center gap-3.5">
+                            <div
+                                class="w-11 h-11 rounded-xl bg-slate-900/5 flex items-center justify-center text-slate-900 font-bold group-hover:scale-105 transition-transform flex-shrink-0">
+                                <span class="material-symbols-outlined text-[22px]">spa</span>
+                            </div>
+                            <div>
+                                <span class="font-label-sm text-[10px] uppercase tracking-widest text-muted-gray">Salão
+                                    & Estética</span>
+                                <h4 class="font-headline-md text-[16px] font-semibold text-slate-900">Studio Bella</h4>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="demo-status-pill hidden text-[11px] font-label-sm px-2.5 py-0.5 rounded-full bg-white/20 text-white">Ativo</span>
+                            <span
+                                class="material-symbols-outlined text-[18px] text-slate-400 group-hover:text-slate-900 transition-colors">chevron_right</span>
+                        </div>
+                    </button>
+
+                    <!-- Item 3: Clínica Sorrir -->
+                    <button type="button" data-demo-url="demos_biosites/CS.html"
+                        class="demo-selector-btn desktop-btn w-full p-4 rounded-2xl border text-left transition-all duration-300 flex items-center justify-between group bg-white/60 hover:bg-white text-slate-800 border-slate-200/90 shadow-xs cursor-pointer">
+                        <div class="flex items-center gap-3.5">
+                            <div
+                                class="w-11 h-11 rounded-xl bg-slate-900/5 flex items-center justify-center text-slate-900 font-bold group-hover:scale-105 transition-transform flex-shrink-0">
+                                <span class="material-symbols-outlined text-[22px]">dentistry</span>
+                            </div>
+                            <div>
+                                <span
+                                    class="font-label-sm text-[10px] uppercase tracking-widest text-muted-gray">Odontologia
+                                    & Saúde</span>
+                                <h4 class="font-headline-md text-[16px] font-semibold text-slate-900">Clínica Sorrir
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="demo-status-pill hidden text-[11px] font-label-sm px-2.5 py-0.5 rounded-full bg-white/20 text-white">Ativo</span>
+                            <span
+                                class="material-symbols-outlined text-[18px] text-slate-400 group-hover:text-slate-900 transition-colors">chevron_right</span>
+                        </div>
+                    </button>
+
+                    <!-- Item 4: Atelier Modo -->
+                    <button type="button" data-demo-url="demos_biosites/AM.html"
+                        class="demo-selector-btn desktop-btn w-full p-4 rounded-2xl border text-left transition-all duration-300 flex items-center justify-between group bg-white/60 hover:bg-white text-slate-800 border-slate-200/90 shadow-xs cursor-pointer">
+                        <div class="flex items-center gap-3.5">
+                            <div
+                                class="w-11 h-11 rounded-xl bg-slate-900/5 flex items-center justify-center text-slate-900 font-bold group-hover:scale-105 transition-transform flex-shrink-0">
+                                <span class="material-symbols-outlined text-[22px]">checkroom</span>
+                            </div>
+                            <div>
+                                <span class="font-label-sm text-[10px] uppercase tracking-widest text-muted-gray">Moda &
+                                    Vestuário</span>
+                                <h4 class="font-headline-md text-[16px] font-semibold text-slate-900">Atelier Modo</h4>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="demo-status-pill hidden text-[11px] font-label-sm px-2.5 py-0.5 rounded-full bg-white/20 text-white">Ativo</span>
+                            <span
+                                class="material-symbols-outlined text-[18px] text-slate-400 group-hover:text-slate-900 transition-colors">chevron_right</span>
+                        </div>
+                    </button>
+
+                    <!-- Link de ação inferior -->
+                    <div
+                        class="pt-3 flex items-center justify-between text-[13px] text-muted-gray border-t border-slate-200/80">
+                        <span class="flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-[16px] text-slate-900">devices</span>
+                            Páginas 100% responsivas em qualquer aparelho.
+                        </span>
+                        <a href="agendamento.html"
+                            class="text-slate-900 font-semibold hover:underline inline-flex items-center gap-1 group">
+                            <span>Quero para o meu negócio</span>
+                            <span
+                                class="material-symbols-outlined text-[15px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </section>
 
         <!-- SECTION 4: COMO FUNCIONA -->
-        <section class="w-full pt-12">
-            <h2 class="font-headline-md text-[24px] md:text-[32px] text-white mb-2 text-center reveal">
-                Como funciona
-            </h2>
-            <div class="w-16 h-1 bg-electric-emerald mb-12 mx-auto reveal"></div>
+        <section id="como-funciona" class="w-full pt-8 scroll-mt-24">
+            <div class="text-center mb-12">
+                <h2 class="font-headline-md text-[26px] md:text-[34px] font-bold text-slate-900 mb-3 reveal">
+                    Como funciona
+                </h2>
+                <div class="w-12 h-px bg-slate-300 mx-auto reveal"></div>
+            </div>
 
-            <div class="flex flex-col gap-6 relative max-w-3xl mx-auto">
+            <div class="flex flex-col gap-5 relative max-w-3xl mx-auto">
 
                 <!-- Step 1 -->
-                <div class="flex flex-row gap-4 md:gap-8 reveal group">
-                    <div class="flex flex-col items-center min-w-[40px] md:min-w-[60px]">
+                <div class="flex flex-row gap-5 md:gap-8 reveal group">
+                    <div class="flex flex-col items-center min-w-[44px] md:min-w-[56px]">
                         <span
-                            class="font-headline-md text-[32px] md:text-[48px] text-primary/30 leading-none group-hover:text-primary transition-colors duration-300">01</span>
+                            class="font-headline-md text-[28px] md:text-[40px] font-bold text-slate-900/25 leading-none group-hover:text-slate-900 transition-colors duration-300">01</span>
                         <div
-                            class="w-0.5 h-full min-h-[60px] bg-outline-variant mt-4 group-hover:bg-primary transition-colors duration-300">
+                            class="w-px h-full min-h-[50px] bg-slate-300/80 mt-3 group-hover:bg-slate-900/40 transition-colors duration-300">
                         </div>
                     </div>
                     <div
-                        class="glass-panel p-6 rounded-xl border border-white/5 flex-grow group-hover:border-primary/50 transition-colors duration-300">
+                        class="glass-panel p-6 rounded-2xl flex-grow transition-all duration-300 group-hover:-translate-y-0.5">
                         <div class="flex items-center gap-3 mb-2">
-                            <span class="material-symbols-outlined text-primary text-[24px]">chat</span>
-                            <h3 class="font-headline-md text-[20px] text-white">Contato</h3>
+                            <span class="material-symbols-outlined text-slate-900 text-[22px]">chat</span>
+                            <h3 class="font-headline-md text-[18px] font-semibold text-slate-900">Contato</h3>
                         </div>
-                        <p class="font-body-md text-[15px] text-muted-gray leading-relaxed">Você entra em contato pelo
-                            WhatsApp ou agenda uma reunião gratuita.</p>
+                        <p class="font-body-md text-[14px] text-muted-gray leading-relaxed">Você entra em contato pelo
+                            WhatsApp ou agenda uma reunião rápida online.</p>
                     </div>
                 </div>
 
                 <!-- Step 2 -->
-                <div class="flex flex-row gap-4 md:gap-8 reveal group">
-                    <div class="flex flex-col items-center min-w-[40px] md:min-w-[60px]">
+                <div class="flex flex-row gap-5 md:gap-8 reveal group">
+                    <div class="flex flex-col items-center min-w-[44px] md:min-w-[56px]">
                         <span
-                            class="font-headline-md text-[32px] md:text-[48px] text-primary/30 leading-none group-hover:text-primary transition-colors duration-300">02</span>
+                            class="font-headline-md text-[28px] md:text-[40px] font-bold text-slate-900/25 leading-none group-hover:text-slate-900 transition-colors duration-300">02</span>
                         <div
-                            class="w-0.5 h-full min-h-[60px] bg-outline-variant mt-4 group-hover:bg-primary transition-colors duration-300">
+                            class="w-px h-full min-h-[50px] bg-slate-300/80 mt-3 group-hover:bg-slate-900/40 transition-colors duration-300">
                         </div>
                     </div>
                     <div
-                        class="glass-panel p-6 rounded-xl border border-white/5 flex-grow group-hover:border-primary/50 transition-colors duration-300">
+                        class="glass-panel p-6 rounded-2xl flex-grow transition-all duration-300 group-hover:-translate-y-0.5">
                         <div class="flex items-center gap-3 mb-2">
-                            <span class="material-symbols-outlined text-primary text-[24px]">analytics</span>
-                            <h3 class="font-headline-md text-[20px] text-white">Análise</h3>
+                            <span class="material-symbols-outlined text-slate-900 text-[22px]">analytics</span>
+                            <h3 class="font-headline-md text-[18px] font-semibold text-slate-900">Diagnóstico</h3>
                         </div>
-                        <p class="font-body-md text-[15px] text-muted-gray leading-relaxed">Analisamos o seu negócio,
-                            concorrência e região para montar a melhor estratégia.</p>
+                        <p class="font-body-md text-[14px] text-muted-gray leading-relaxed">Analisamos a presença do seu
+                            negócio,
+                            sua concorrência local e desenhamos a estratégia ideal.</p>
                     </div>
                 </div>
 
                 <!-- Step 3 -->
-                <div class="flex flex-row gap-4 md:gap-8 reveal group">
-                    <div class="flex flex-col items-center min-w-[40px] md:min-w-[60px]">
+                <div class="flex flex-row gap-5 md:gap-8 reveal group">
+                    <div class="flex flex-col items-center min-w-[44px] md:min-w-[56px]">
                         <span
-                            class="font-headline-md text-[32px] md:text-[48px] text-primary/30 leading-none group-hover:text-primary transition-colors duration-300">03</span>
+                            class="font-headline-md text-[28px] md:text-[40px] font-bold text-slate-900/25 leading-none group-hover:text-slate-900 transition-colors duration-300">03</span>
                         <div
-                            class="w-0.5 h-full min-h-[60px] bg-outline-variant mt-4 group-hover:bg-primary transition-colors duration-300">
+                            class="w-px h-full min-h-[50px] bg-slate-300/80 mt-3 group-hover:bg-slate-900/40 transition-colors duration-300">
                         </div>
                     </div>
                     <div
-                        class="glass-panel p-6 rounded-xl border border-white/5 flex-grow group-hover:border-primary/50 transition-colors duration-300">
+                        class="glass-panel p-6 rounded-2xl flex-grow transition-all duration-300 group-hover:-translate-y-0.5">
                         <div class="flex items-center gap-3 mb-2">
-                            <span class="material-symbols-outlined text-primary text-[24px]">build</span>
-                            <h3 class="font-headline-md text-[20px] text-white">Criação</h3>
+                            <span class="material-symbols-outlined text-slate-900 text-[22px]">build</span>
+                            <h3 class="font-headline-md text-[18px] font-semibold text-slate-900">Produção</h3>
                         </div>
-                        <p class="font-body-md text-[15px] text-muted-gray leading-relaxed">Produzimos tudo: biosite,
-                            plaquinha NFC, fotos profissionais e configuração do Google.</p>
+                        <p class="font-body-md text-[14px] text-muted-gray leading-relaxed">Criamos seu biosite,
+                            configuramos a plaquinha NFC física e gravamos as fotos profissionais.</p>
                     </div>
                 </div>
 
                 <!-- Step 4 -->
-                <div class="flex flex-row gap-4 md:gap-8 reveal group">
-                    <div class="flex flex-col items-center min-w-[40px] md:min-w-[60px]">
+                <div class="flex flex-row gap-5 md:gap-8 reveal group">
+                    <div class="flex flex-col items-center min-w-[44px] md:min-w-[56px]">
                         <span
-                            class="font-headline-md text-[32px] md:text-[48px] text-primary/30 leading-none group-hover:text-primary transition-colors duration-300">04</span>
-                        <!-- No trailing line for the last item -->
+                            class="font-headline-md text-[28px] md:text-[40px] font-bold text-slate-900/25 leading-none group-hover:text-slate-900 transition-colors duration-300">04</span>
                     </div>
                     <div
-                        class="glass-panel p-6 rounded-xl border border-white/5 flex-grow group-hover:border-primary/50 transition-colors duration-300 mb-8">
+                        class="glass-panel p-6 rounded-2xl flex-grow transition-all duration-300 group-hover:-translate-y-0.5 mb-6">
                         <div class="flex items-center gap-3 mb-2">
-                            <span class="material-symbols-outlined text-primary text-[24px]">rocket_launch</span>
-                            <h3 class="font-headline-md text-[20px] text-white">Entrega</h3>
+                            <span class="material-symbols-outlined text-slate-900 text-[22px]">rocket_launch</span>
+                            <h3 class="font-headline-md text-[18px] font-semibold text-slate-900">Entrega</h3>
                         </div>
-                        <p class="font-body-md text-[15px] text-muted-gray leading-relaxed">Em até 7 dias, tudo pronto e
-                            funcionando. Você começa a receber avaliações.</p>
+                        <p class="font-body-md text-[14px] text-muted-gray leading-relaxed">Em até 7 dias, tudo pronto e
+                            funcionando no seu balcão e no topo do Google Maps.</p>
                     </div>
                 </div>
 
-            </div>
-        </section>
+                <!-- SECTION: PERGUNTAS FREQUENTES (FAQ) -->
+                <section id="faq" class="w-full pt-8 scroll-mt-24">
+                    <div class="text-center mb-12">
+                        <span
+                            class="font-label-sm text-[11px] tracking-widest uppercase text-slate-600 bg-white/80 backdrop-blur-md mb-3 border border-slate-300/80 rounded-full px-3.5 py-1 shadow-xs inline-block reveal">
+                            Tire Suas Dúvidas
+                        </span>
+                        <h2 class="font-headline-md text-[26px] md:text-[34px] font-bold text-slate-900 mb-3 reveal">
+                            Perguntas Frequentes
+                        </h2>
+                        <div class="w-12 h-px bg-slate-300 mx-auto reveal mb-4"></div>
+                        <p class="font-body-md text-[14px] md:text-[16px] text-muted-gray max-w-xl mx-auto reveal">
+                            Tudo o que você precisa saber sobre a plaquinha NFC, o biosite e o modelo de entrega da
+                            Konnected.
+                        </p>
+                    </div>
 
-        <!-- SECTION 5: CTA FINAL -->
-        <section class="w-full pt-12 reveal">
-            <div
-                class="glass-panel rounded-[16px] border border-electric-emerald/50 hover:border-electric-emerald transition-colors duration-500 p-8 md:p-12 relative overflow-hidden group flex flex-col md:flex-row items-center justify-between gap-8">
-                <!-- Glow corner -->
-                <div
-                    class="absolute -top-16 -right-16 w-64 h-64 bg-electric-emerald/10 rounded-full blur-3xl group-hover:bg-electric-emerald/20 transition-all duration-700">
-                </div>
+                    <div class="max-w-3xl mx-auto flex flex-col gap-4 reveal">
+                        <!-- FAQ Item 1 -->
+                        <div
+                            class="faq-item glass-panel rounded-2xl border border-white/80 overflow-hidden transition-all duration-200">
+                            <button type="button"
+                                class="faq-toggle w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 select-none cursor-pointer"
+                                aria-expanded="false">
+                                <span class="font-headline-md text-[15px] sm:text-[17px] font-semibold text-slate-900">
+                                    O cliente precisa baixar algum aplicativo para ler a plaquinha NFC?
+                                </span>
+                                <span
+                                    class="material-symbols-outlined text-slate-600 transition-transform duration-300 text-[22px] flex-shrink-0 faq-icon">
+                                    expand_more
+                                </span>
+                            </button>
+                            <div
+                                class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-5 sm:px-6">
+                                <p
+                                    class="font-body-md text-[13px] sm:text-[14px] text-muted-gray pb-5 sm:pb-6 leading-relaxed">
+                                    Não. A tecnologia NFC é nativa e vem ativada de fábrica em praticamente todos os
+                                    smartphones modernos (Apple iOS e Android). O cliente apenas encosta o aparelho no
+                                    balcão e a página de avaliação do Google ou seu biosite se abre instantaneamente no
+                                    navegador padrão. Além disso, incluímos um QR Code de alta precisão impresso na peça
+                                    como alternativa para aparelhos mais antigos.
+                                </p>
+                            </div>
+                        </div>
 
-                <div class="relative z-10 text-center md:text-left">
-                    <h2 class="font-headline-md text-[24px] md:text-[32px] text-white mb-2">
-                        Pronto para dominar o Google Maps?
-                    </h2>
-                    <p class="font-body-md text-[16px] text-muted-gray">
-                        Pacotes completos a partir de R$ 227.
-                    </p>
-                </div>
+                        <!-- FAQ Item 2 -->
+                        <div
+                            class="faq-item glass-panel rounded-2xl border border-white/80 overflow-hidden transition-all duration-200">
+                            <button type="button"
+                                class="faq-toggle w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 select-none cursor-pointer"
+                                aria-expanded="false">
+                                <span class="font-headline-md text-[15px] sm:text-[17px] font-semibold text-slate-900">
+                                    Sou obrigado a pagar mensalidade depois que o site for entregue?
+                                </span>
+                                <span
+                                    class="material-symbols-outlined text-slate-600 transition-transform duration-300 text-[22px] flex-shrink-0 faq-icon">
+                                    expand_more
+                                </span>
+                            </button>
+                            <div
+                                class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-5 sm:px-6">
+                                <p
+                                    class="font-body-md text-[13px] sm:text-[14px] text-muted-gray pb-5 sm:pb-6 leading-relaxed">
+                                    Não, você tem total autonomia e o projeto é seu. A entrega é definitiva e sem taxas
+                                    ocultas. Oferecemos um plano de suporte e manutenção gerenciada opcional de R$
+                                    75,00/mês para comerciantes que preferem não se preocupar com atualizações e desejam
+                                    alterações ilimitadas de fotos, links, cardápios e promoções feitas pelo nosso time
+                                    técnico.
+                                </p>
+                            </div>
+                        </div>
 
-                <div class="relative z-10 flex flex-col items-center md:items-end gap-4 w-full md:w-auto">
-                    <a href="pacotes-integrados.html"
-                        class="w-full md:w-auto bg-electric-emerald text-black font-label-sm text-[14px] font-semibold uppercase tracking-wider py-4 px-8 rounded-lg shadow-neon-glow hover:shadow-neon-glow-hover hover:scale-105 transition-all duration-300 text-center">
-                        VER PACOTES <span class="ml-2">→</span>
-                    </a>
-                    <a href="agendamento.html"
-                        class="text-primary font-label-sm text-[14px] font-medium hover:text-white transition-colors hover:underline">
-                        Agendar reunião →
-                    </a>
-                </div>
-            </div>
-        </section>
+                        <!-- FAQ Item 3 -->
+                        <div
+                            class="faq-item glass-panel rounded-2xl border border-white/80 overflow-hidden transition-all duration-200">
+                            <button type="button"
+                                class="faq-toggle w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 select-none cursor-pointer"
+                                aria-expanded="false">
+                                <span class="font-headline-md text-[15px] sm:text-[17px] font-semibold text-slate-900">
+                                    Qual é o prazo de entrega das plaquinhas e do biosite?
+                                </span>
+                                <span
+                                    class="material-symbols-outlined text-slate-600 transition-transform duration-300 text-[22px] flex-shrink-0 faq-icon">
+                                    expand_more
+                                </span>
+                            </button>
+                            <div
+                                class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-5 sm:px-6">
+                                <p
+                                    class="font-body-md text-[13px] sm:text-[14px] text-muted-gray pb-5 sm:pb-6 leading-relaxed">
+                                    O prazo padrão de entrega é de até 7 dias úteis após a aprovação das informações e
+                                    fotos do seu negócio. A plaquinha física com chip tecnológico NTAG213 é gravada,
+                                    testada e entregue em mãos no seu estabelecimento (em Brasília/DF) ou despachada com
+                                    código de rastreamento.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Item 4 -->
+                        <div
+                            class="faq-item glass-panel rounded-2xl border border-white/80 overflow-hidden transition-all duration-200">
+                            <button type="button"
+                                class="faq-toggle w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 select-none cursor-pointer"
+                                aria-expanded="false">
+                                <span class="font-headline-md text-[15px] sm:text-[17px] font-semibold text-slate-900">
+                                    O domínio (.com.br) e as contas ficam registrados no meu nome?
+                                </span>
+                                <span
+                                    class="material-symbols-outlined text-slate-600 transition-transform duration-300 text-[22px] flex-shrink-0 faq-icon">
+                                    expand_more
+                                </span>
+                            </button>
+                            <div
+                                class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-5 sm:px-6">
+                                <p
+                                    class="font-body-md text-[13px] sm:text-[14px] text-muted-gray pb-5 sm:pb-6 leading-relaxed">
+                                    Sim, 100% no seu nome ou no CNPJ da sua empresa. Você é o legítimo proprietário de
+                                    todas as credenciais, do domínio e dos dados de clientes gerados. Não praticamos
+                                    qualquer tipo de aprisionamento (*vendor lock-in*).
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Item 5 -->
+                        <div
+                            class="faq-item glass-panel rounded-2xl border border-white/80 overflow-hidden transition-all duration-200">
+                            <button type="button"
+                                class="faq-toggle w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 select-none cursor-pointer"
+                                aria-expanded="false">
+                                <span class="font-headline-md text-[15px] sm:text-[17px] font-semibold text-slate-900">
+                                    Como a plaquinha NFC ajuda meu comércio a subir no Google Maps?
+                                </span>
+                                <span
+                                    class="material-symbols-outlined text-slate-600 transition-transform duration-300 text-[22px] flex-shrink-0 faq-icon">
+                                    expand_more
+                                </span>
+                            </button>
+                            <div
+                                class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-5 sm:px-6">
+                                <p
+                                    class="font-body-md text-[13px] sm:text-[14px] text-muted-gray pb-5 sm:pb-6 leading-relaxed">
+                                    O algoritmo local do Google prioriza empresas que recebem avaliações positivas
+                                    constantes e recentes. Ao reduzir o atrito para o cliente avaliar no momento em que
+                                    ele está pagando no balcão (em apenas 3 segundos), você multiplica o volume de
+                                    feedbacks 5 estrelas e ultrapassa os concorrentes locais na busca por proximidade.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Item 6: Software Sob Medida (Demanda Consultiva B2B) -->
+                        <div
+                            class="faq-item glass-panel rounded-2xl border border-white/80 overflow-hidden transition-all duration-200">
+                            <button type="button"
+                                class="faq-toggle w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 select-none cursor-pointer"
+                                aria-expanded="false">
+                                <span class="font-headline-md text-[15px] sm:text-[17px] font-semibold text-slate-900">
+                                    Vocês desenvolvem sistemas ou aplicativos sob medida para o meu comércio?
+                                </span>
+                                <span
+                                    class="material-symbols-outlined text-slate-600 transition-transform duration-300 text-[22px] flex-shrink-0 faq-icon">
+                                    expand_more
+                                </span>
+                            </button>
+                            <div
+                                class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-5 sm:px-6">
+                                <p
+                                    class="font-body-md text-[13px] sm:text-[14px] text-muted-gray pb-5 sm:pb-6 leading-relaxed">
+                                    Sim, mediante diagnóstico e projeto sob demanda. Além dos nossos produtos de prateleira 
+                                    (Plaquinhas NFC, Biosites e Otimização do Google Meu Negócio), criamos sistemas de 
+                                    gestão internos, cardápios interativos com pedidos diretos e integrações personalizadas. 
+                                    Como cada estabelecimento possui processos e regras específicas, esses projetos são avaliados 
+                                    em caráter consultivo para definir arquitetura, escopo e prazos fechados. Você pode 
+                                    <a href="agendamento.html" class="text-slate-900 font-semibold underline underline-offset-2 hover:text-slate-700 transition-colors">agendar uma reunião de diagnóstico</a> 
+                                    com nosso time técnico para analisarmos as necessidades da sua operação.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION 5: CTA FINAL -->
+                <section class="w-full pt-8 reveal">
+                    <div
+                        class="glass-panel rounded-3xl p-8 md:p-12 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 border border-white/90">
+                        <div class="relative z-10 text-center md:text-left">
+                            <h2 class="font-headline-md text-[24px] md:text-[32px] font-bold text-slate-900 mb-2">
+                                Pronto para dominar o Google Maps?
+                            </h2>
+                            <p class="font-body-md text-[15px] md:text-[16px] text-muted-gray">
+                                Pacotes completos integrados a partir de R$ 227.
+                            </p>
+                        </div>
+
+                        <div class="relative z-10 flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto">
+                            <a href="pacotes-integrados.html" class="btn-interactive w-full sm:w-auto">
+                                <div class="flex items-center justify-center gap-2.5">
+                                    <div class="btn-dot"></div>
+                                    <span class="btn-text-initial">Ver todos os pacotes</span>
+                                </div>
+                                <div class="btn-text-hover">
+                                    <span>Ver todos os pacotes</span>
+                                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                                </div>
+                            </a>
+                            <a href="agendamento.html"
+                                class="w-full sm:w-auto text-slate-700 font-label-sm text-[13px] font-medium hover:text-slate-900 transition-colors py-3 px-6 text-center">
+                                Falar com consultor
+                            </a>
+                        </div>
+                    </div>
+                </section>
 
     </main>
 
     <!-- SECTION 6: FOOTER -->
-    <footer class="w-full py-12 border-t border-dark-circuit bg-cyber-black/50 backdrop-blur-sm relative z-10">
+    <footer class="w-full py-12 border-t border-slate-300/80 bg-white/40 backdrop-blur-md relative z-10">
         <div class="max-w-7xl mx-auto px-4 flex flex-col items-center gap-6">
             <div class="flex items-center gap-8">
-                <a href="https://wa.me/5561981659192?text=Oi!%20Quero%20saber%20mais%20sobre%20a%20Konnected"
+                <a href="https://wa.me/556199771492?text=Oi!%20Quero%20saber%20mais%20sobre%20a%20Konnected"
                     target="_blank" rel="noopener noreferrer"
-                    class="text-muted-gray hover:text-primary transition-colors flex flex-col items-center gap-2">
-                    <span class="material-symbols-outlined text-[24px]">chat</span>
-                    <span class="font-label-sm text-[10px] uppercase tracking-wider">WhatsApp</span>
+                    class="text-slate-600 hover:text-slate-900 transition-colors flex flex-col items-center gap-2 group">
+                    <span
+                        class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">chat</span>
+                    <span class="font-label-sm text-[11px] uppercase tracking-wider font-medium">WhatsApp</span>
                 </a>
                 <a href="https://www.instagram.com/konnected.sd/" target="_blank" rel="noopener noreferrer"
-                    class="text-muted-gray hover:text-primary transition-colors flex flex-col items-center gap-2">
-                    <span class="material-symbols-outlined text-[24px]">photo_camera</span>
-                    <span class="font-label-sm text-[10px] uppercase tracking-wider">Instagram</span>
+                    class="text-slate-600 hover:text-slate-900 transition-colors flex flex-col items-center gap-2 group">
+                    <span
+                        class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">photo_camera</span>
+                    <span class="font-label-sm text-[11px] uppercase tracking-wider font-medium">Instagram</span>
                 </a>
-                <a href="mailto:contato@konnected.sd"
-                    class="text-muted-gray hover:text-primary transition-colors flex flex-col items-center gap-2">
-                    <span class="material-symbols-outlined text-[24px]">mail</span>
-                    <span class="font-label-sm text-[10px] uppercase tracking-wider">E-mail</span>
+                <a href="mailto:konnected.sd@gmail.com"
+                    class="text-slate-600 hover:text-slate-900 transition-colors flex flex-col items-center gap-2 group">
+                    <span
+                        class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">mail</span>
+                    <span class="font-label-sm text-[11px] uppercase tracking-wider font-medium">E-mail</span>
                 </a>
             </div>
-            <p class="font-label-sm text-[10px] text-muted-gray/50 uppercase tracking-widest text-center mt-4">
-                Konnected © 2026<br />
-                Presença Digital Local
-            </p>
+
+            <!-- Links de Conformidade Legal -->
+            <div class="flex items-center gap-6 text-[12px] font-body-md text-slate-500">
+                <a href="politica-privacidade.html"
+                    class="hover:text-slate-900 transition-colors underline-offset-4 hover:underline">Política de
+                    Privacidade</a>
+                <span>•</span>
+                <a href="termos-uso.html"
+                    class="hover:text-slate-900 transition-colors underline-offset-4 hover:underline">Termos de Uso</a>
+            </div>
+
+            <!-- Rodapé com identificação regulatória obrigatória (Decreto 7.962/2013 e CDC) -->
+            <div class="text-center text-[11px] font-body-md text-slate-500 border-t border-slate-200/80 pt-6 mt-2 max-w-2xl">
+                <p class="font-medium text-slate-700 mb-1">
+                    67.202.316 DIMITRI LOPES BARRETO • CNPJ: 67.202.316/0001-37
+                </p>
+                <p class="text-slate-500">
+                    Quadra QN 7 Conjunto 11 - Riacho Fundo I, Brasília - DF, CEP: 71805-711
+                </p>
+                <p class="text-slate-400 mt-1">
+                    WhatsApp: (61) 9977-1492 • E-mail: konnected.sd@gmail.com
+                </p>
+                <p class="mt-2 text-slate-400 font-mono text-[10px]">
+                    Konnected © 2026 • Presença Digital Local • Todos os direitos reservados.
+                </p>
+            </div>
         </div>
     </footer>
 
+    <!-- Modal de Detalhes Estilo Apple (Expansão do Card - Posicionado na Raiz) -->
+    <div id="service-modal" class="fixed inset-0 z-[9999] bg-slate-950/75 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 md:p-6 opacity-0 pointer-events-none transition-all duration-300">
+        <div id="service-modal-card" class="bg-white text-slate-900 rounded-2xl sm:rounded-3xl max-w-lg sm:max-w-xl w-full max-h-[82vh] overflow-y-auto shadow-2xl border border-slate-200/80 transform scale-95 transition-all duration-300 relative flex flex-col my-auto">
+            <div class="relative h-36 sm:h-44 md:h-48 w-full overflow-hidden flex-shrink-0 rounded-t-2xl sm:rounded-t-3xl">
+                <img id="modal-img" src="" alt="" class="w-full h-full object-cover object-center">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/35 to-transparent"></div>
+                <button id="modal-close-btn" class="absolute top-3 right-3 sm:top-4 sm:right-4 w-11 h-11 min-w-[44px] min-h-[44px] rounded-full bg-black/60 hover:bg-black/85 text-white backdrop-blur-md flex items-center justify-center transition active:scale-95 cursor-pointer shadow-md z-10" aria-label="Fechar modal de detalhes">
+                    <span class="material-symbols-outlined text-[22px]">close</span>
+                </button>
+                <div class="absolute bottom-3 sm:bottom-4 left-4 sm:left-5 right-4 sm:right-5 text-white">
+                    <span id="modal-category" class="bg-white/20 backdrop-blur-md text-white text-[10px] sm:text-[11px] font-semibold tracking-wider uppercase px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full border border-white/25 inline-block mb-1.5 shadow-sm"></span>
+                    <h3 id="modal-title" class="font-headline-md text-[18px] sm:text-[22px] font-bold text-white leading-tight"></h3>
+                </div>
+            </div>
+
+            <div class="p-4 sm:p-6 flex flex-col gap-3.5 sm:gap-4.5">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-200/80">
+                    <div>
+                        <span class="text-[11px] text-slate-500 uppercase tracking-wider font-semibold block">Investimento</span>
+                        <span id="modal-price" class="font-headline-md text-[17px] sm:text-[19px] font-bold text-slate-900"></span>
+                    </div>
+                    <span class="text-[11px] text-slate-700 bg-slate-100 border border-slate-300 px-2.5 py-0.5 rounded-full font-semibold">Entrega em até 7 dias</span>
+                </div>
+
+                <div>
+                    <h4 class="font-headline-md text-[13px] sm:text-[14px] font-bold text-slate-900 mb-1">Sobre este serviço</h4>
+                    <p id="modal-desc" class="font-body-md text-[12.5px] sm:text-[13px] text-slate-600 leading-relaxed"></p>
+                </div>
+
+                <div>
+                    <h4 class="font-headline-md text-[13px] sm:text-[14px] font-bold text-slate-900 mb-2">O que está incluído</h4>
+                    <ul id="modal-features" class="space-y-2"></ul>
+                </div>
+
+                <div class="pt-3 border-t border-slate-200 flex flex-col sm:flex-row items-center gap-2.5">
+                    <a id="modal-cta-whatsapp" href="" target="_blank" rel="noopener noreferrer"
+                        class="w-full sm:flex-1 bg-slate-900 hover:bg-slate-800 text-white font-label-sm text-[12px] sm:text-[13px] font-semibold uppercase tracking-wider py-3 px-5 rounded-xl shadow-lux transition text-center flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined text-[17px]">chat</span>
+                        Contratar pelo WhatsApp
+                    </a>
+                    <a id="modal-cta-extra" href=""
+                        class="w-full sm:w-auto border border-slate-300 hover:bg-slate-100 text-slate-800 font-label-sm text-[12px] sm:text-[13px] font-medium py-3 px-5 rounded-xl transition text-center hidden">
+                        Ver Mais
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- WhatsApp FAB -->
-    <a href="https://wa.me/5561981659192?text=Oi!%20Quero%20saber%20mais%20sobre%20a%20Konnected" target="_blank"
-        rel="noopener noreferrer" class="whatsapp-fab" aria-label="Fale conosco pelo WhatsApp">
+    <a href="https://wa.me/556199771492?text=Oi!%20Quero%20saber%20mais%20sobre%20a%20Konnected" target="_blank"
+        rel="noopener noreferrer" class="whatsapp-fab group" aria-label="Fale conosco pelo WhatsApp">
         <span class="fab-ping"></span>
-        <span class="material-symbols-outlined text-white text-[28px] relative z-10">chat</span>
+        <svg class="w-7 h-7 text-white fill-current relative z-10 transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.048 2C6.502 2 2 6.502 2 12.048c0 1.77.462 3.498 1.34 5.02L2 22l5.08-1.332a10.02 10.02 0 0 0 4.968 1.309c5.546 0 10.048-4.502 10.048-10.048 0-2.684-1.045-5.207-2.943-7.105C17.255 3.045 14.732 2 12.048 2zm0 1.67c2.22 0 4.307.865 5.877 2.435a8.27 8.27 0 0 1 2.431 5.872c0 4.58-3.727 8.307-8.307 8.307-1.637 0-3.15-.522-4.384-1.411l-.314-.228-3.256.854.869-3.176-.205-.327a8.28 8.28 0 0 1-1.267-4.38c0-4.58 3.727-8.307 8.307-8.307zm5.424 10.712c-.301-.15-1.78-.878-2.056-.978-.276-.1-.477-.15-.678.15-.2.301-.778.978-.954 1.18-.175.2-.35.225-.65.075-.301-.15-1.27-.468-2.42-1.493-.894-.798-1.5-1.783-1.676-2.083-.175-.3-.019-.462.13-.61.135-.135.301-.35.451-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.677-1.633-.927-2.235-.244-.587-.493-.507-.677-.516-.176-.008-.376-.01-.577-.01-.2 0-.526.075-.802.375-.276.3-1.053 1.028-1.053 2.508s1.078 2.908 1.228 3.109c.15.2 2.122 3.24 5.14 4.542.719.31 1.28.495 1.718.634.722.229 1.379.197 1.9.119.58-.088 1.78-.727 2.03-1.428.25-.7.25-1.303.175-1.428-.075-.125-.275-.2-.576-.35z"/>
+        </svg>
     </a>
 
     <!-- Scripts -->
@@ -388,65 +1188,459 @@
                 }
             });
 
-            // Video Loop
-            const video1 = document.getElementById('hero-logo-video-1');
-            const video2 = document.getElementById('hero-logo-video-2');
 
-            if (video1 && video2) {
-                let activeVideo = 1;
-                const loopStart = 5.0;
-                const loopEnd = 7.0;
-                const fadeDuration = 0.5;
 
-                video2.currentTime = loopStart;
 
-                const checkTime = () => {
-                    const currentVid = activeVideo === 1 ? video1 : video2;
-                    const nextVid = activeVideo === 1 ? video2 : video1;
+            // ── INTERATIVIDADE DO SHOWCASE / VITRINE DE DEMOS ───────────────
+            const demoButtons = document.querySelectorAll('.demo-selector-btn');
+            const showcaseIframe = document.getElementById('showcase-iframe');
+            const fsBtnDesktop = document.getElementById('showcase-fullscreen-btn');
+            const fsBtnMobile = document.getElementById('showcase-fullscreen-btn-mobile');
 
-                    if (currentVid.currentTime >= loopEnd - fadeDuration) {
-                        if (nextVid.classList.contains('opacity-0')) {
-                            nextVid.currentTime = loopStart;
-                            nextVid.play();
-                            nextVid.classList.remove('opacity-0');
-                            nextVid.classList.add('opacity-100');
-                            currentVid.classList.remove('opacity-100');
-                            currentVid.classList.add('opacity-0');
+            demoButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const demoUrl = btn.getAttribute('data-demo-url');
+                    if (!demoUrl || !showcaseIframe) return;
 
-                            setTimeout(() => {
-                                currentVid.pause();
-                            }, fadeDuration * 1000);
+                    // Atualiza os links para tela cheia
+                    if (fsBtnDesktop) fsBtnDesktop.href = demoUrl;
+                    if (fsBtnMobile) fsBtnMobile.href = demoUrl;
 
-                            activeVideo = activeVideo === 1 ? 2 : 1;
+                    // Transição suave no iframe
+                    showcaseIframe.style.opacity = '0.25';
+                    showcaseIframe.src = demoUrl + '?embedded=true';
+                    showcaseIframe.onload = () => {
+                        showcaseIframe.style.opacity = '1';
+                    };
+
+                    // Sincroniza TODOS os botões que apontam para essa mesma URL (mobile pills e desktop cards)
+                    demoButtons.forEach(b => {
+                        const isMatch = b.getAttribute('data-demo-url') === demoUrl;
+                        const isDesktopCard = b.classList.contains('desktop-btn');
+
+                        if (isMatch) {
+                            b.classList.add('active', 'bg-slate-900', 'text-white', 'border-slate-900');
+                            b.classList.remove('bg-white/60', 'bg-white/70', 'hover:bg-white', 'text-slate-800', 'border-slate-200/90', 'border-slate-300/80');
+
+                            const iconBox = b.querySelector('.material-symbols-outlined')?.closest('div');
+                            if (iconBox) {
+                                iconBox.classList.remove('bg-slate-900/5', 'text-slate-900');
+                                iconBox.classList.add('bg-white/10', 'text-white');
+                            }
+                            const statusPill = b.querySelector('.demo-status-pill');
+                            if (statusPill) statusPill.classList.remove('hidden');
+                        } else {
+                            b.classList.remove('active', 'bg-slate-900', 'text-white', 'border-slate-900');
+                            if (isDesktopCard) {
+                                b.classList.add('bg-white/60', 'hover:bg-white', 'text-slate-800', 'border-slate-200/90');
+                            } else {
+                                b.classList.add('bg-white/70', 'hover:bg-white', 'text-slate-800', 'border-slate-300/80');
+                            }
+
+                            const iconBox = b.querySelector('.material-symbols-outlined')?.closest('div');
+                            if (iconBox) {
+                                iconBox.classList.remove('bg-white/10', 'text-white');
+                                iconBox.classList.add('bg-slate-900/5', 'text-slate-900');
+                            }
+                            const statusPill = b.querySelector('.demo-status-pill');
+                            if (statusPill) statusPill.classList.add('hidden');
                         }
-                    }
-                    requestAnimationFrame(checkTime);
-                };
-                requestAnimationFrame(checkTime);
-            }
-
-            // Cursor Glow
-            if (window.matchMedia('(hover: hover)').matches) {
-                const glow = document.createElement('div');
-                glow.classList.add('cursor-glow');
-                document.body.appendChild(glow);
-
-                document.addEventListener('mousemove', (e) => {
-                    glow.style.left = e.clientX + 'px';
-                    glow.style.top = e.clientY + 'px';
-                });
-            }
-
-            // Parallax Images (if any)
-            window.addEventListener('scroll', () => {
-                document.querySelectorAll('.parallax-img').forEach(img => {
-                    const rect = img.getBoundingClientRect();
-                    const offset = (rect.top - window.innerHeight / 2) * 0.08;
-                    img.style.setProperty('--parallax-offset', offset + 'px');
+                    });
                 });
             });
+
+            // ── INTERATIVIDADE DO FAQ ACCORDION ─────────────────────────────
+            const faqToggles = document.querySelectorAll('.faq-toggle');
+            faqToggles.forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    const item = toggle.closest('.faq-item');
+                    const content = item.querySelector('.faq-content');
+                    const icon = toggle.querySelector('.faq-icon');
+                    const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+
+                    faqToggles.forEach(otherToggle => {
+                        if (otherToggle !== toggle) {
+                            otherToggle.setAttribute('aria-expanded', 'false');
+                            const otherItem = otherToggle.closest('.faq-item');
+                            const otherContent = otherItem.querySelector('.faq-content');
+                            const otherIcon = otherToggle.querySelector('.faq-icon');
+                            if (otherContent) otherContent.classList.replace('max-h-96', 'max-h-0');
+                            if (otherIcon) otherIcon.classList.remove('rotate-180');
+                        }
+                    });
+
+                    if (isExpanded) {
+                        toggle.setAttribute('aria-expanded', 'false');
+                        content.classList.replace('max-h-96', 'max-h-0');
+                        icon.classList.remove('rotate-180');
+                    } else {
+                        toggle.setAttribute('aria-expanded', 'true');
+                        content.classList.replace('max-h-0', 'max-h-96');
+                        icon.classList.add('rotate-180');
+                    }
+                });
+            });
+
+            // ── APPLE CARDS CAROUSEL: GIRO CONTÍNUO INFINITO & MOUSE WHEEL ─────
+            const track = document.getElementById('apple-carousel-track');
+            const sectionSolucoes = document.getElementById('solucoes');
+
+            if (track) {
+                // 1. Duplicação dos cards para criar efeito infinito contínuo sem emendas
+                const cards = Array.from(track.children);
+                cards.forEach(card => {
+                    const clone = card.cloneNode(true);
+                    track.appendChild(clone);
+                });
+
+                let halfWidth = track.scrollWidth / 2;
+                const calculateHalfWidth = () => {
+                    halfWidth = track.scrollWidth / 2;
+                };
+                window.addEventListener('resize', calculateHalfWidth);
+                window.addEventListener('load', calculateHalfWidth);
+                setTimeout(calculateHalfWidth, 300);
+
+                let isHovered = false;
+                let isInteracting = false;
+                let isIntersecting = false;
+                let rafId = null;
+                let scrollPos = track.scrollLeft || 0;
+                let wheelTimer = null;
+                let lastTime = performance.now();
+                const speedPxPerSec = 40; // Cadência contínua, elegante e suave (~40px por segundo)
+
+                // 2. Loop contínuo e suave normalizado por deltaTime (imune à taxa de Hz da tela)
+                function marqueeStep(currentTime) {
+                    if (!isIntersecting) {
+                        rafId = null;
+                        return; // Suspende o loop se o usuário não estiver na seção (0% CPU)
+                    }
+
+                    const deltaSec = Math.min((currentTime - lastTime) / 1000, 0.1);
+                    lastTime = currentTime;
+
+                    if (!isHovered && !isInteracting) {
+                        scrollPos += speedPxPerSec * deltaSec;
+                        if (scrollPos >= halfWidth) {
+                            scrollPos -= halfWidth;
+                        }
+                        track.scrollLeft = scrollPos;
+                    }
+                    rafId = requestAnimationFrame(marqueeStep);
+                }
+
+                function startAnimation() {
+                    if (!rafId && isIntersecting) {
+                        lastTime = performance.now();
+                        rafId = requestAnimationFrame(marqueeStep);
+                    }
+                }
+
+                function stopAnimation() {
+                    if (rafId) {
+                        cancelAnimationFrame(rafId);
+                        rafId = null;
+                    }
+                }
+
+                // IntersectionObserver: ATIVAÇÃO TARDIA (Zero CPU durante carregamento da página)
+                if ('IntersectionObserver' in window && sectionSolucoes) {
+                    const carouselObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            isIntersecting = entry.isIntersecting;
+                            if (isIntersecting) {
+                                startAnimation();
+                            } else {
+                                stopAnimation();
+                            }
+                        });
+                    }, { rootMargin: '100px 0px 100px 0px', threshold: 0.05 });
+                    carouselObserver.observe(sectionSolucoes);
+                } else {
+                    isIntersecting = true;
+                    startAnimation();
+                }
+
+                // 3. Scroll horizontal ágil e responsivo com a rodinha do mouse
+                function handleWheel(e) {
+                    const delta = Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+                    if (delta !== 0) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        isInteracting = true;
+
+                        // Sincroniza sempre com o scroll atual do elemento para evitar saltos
+                        scrollPos = track.scrollLeft + delta * 1.15;
+
+                        if (scrollPos >= halfWidth) {
+                            scrollPos -= halfWidth;
+                        } else if (scrollPos < 0) {
+                            scrollPos += halfWidth;
+                        }
+                        track.scrollLeft = scrollPos;
+
+                        clearTimeout(wheelTimer);
+                        wheelTimer = setTimeout(() => {
+                            isInteracting = false;
+                            lastTime = performance.now();
+                        }, 750);
+                    }
+                }
+
+                // Captura a rodinha do mouse tanto no trilho quanto na seção dos cards
+                track.addEventListener('wheel', handleWheel, { passive: false });
+                if (sectionSolucoes) {
+                    sectionSolucoes.addEventListener('wheel', handleWheel, { passive: false });
+                }
+
+                // 4. Pausa imediata no hover sobre os cards para permitir leitura tranquila
+                const pauseCarousel = () => {
+                    isHovered = true;
+                    scrollPos = track.scrollLeft;
+                };
+
+                const resumeCarousel = () => {
+                    isHovered = false;
+                    scrollPos = track.scrollLeft;
+                    lastTime = performance.now();
+                };
+
+                track.addEventListener('mouseenter', pauseCarousel);
+                track.addEventListener('mouseleave', resumeCarousel);
+                if (sectionSolucoes) {
+                    sectionSolucoes.addEventListener('mouseenter', pauseCarousel);
+                    sectionSolucoes.addEventListener('mouseleave', resumeCarousel);
+                }
+
+                // Suporte para touch no mobile
+                track.addEventListener('touchstart', () => {
+                    isInteracting = true;
+                }, { passive: true });
+
+                track.addEventListener('touchend', () => {
+                    scrollPos = track.scrollLeft;
+                    setTimeout(() => {
+                        isInteracting = false;
+                        lastTime = performance.now();
+                    }, 800);
+                }, { passive: true });
+
+                // 5. Delegação de clique para abrir o modal em qualquer card (original ou clone)
+                track.addEventListener('click', (e) => {
+                    const card = e.target.closest('.apple-card');
+                    if (card) {
+                        const key = card.getAttribute('data-service');
+                        if (key && typeof openModal === 'function') {
+                            openModal(key);
+                        }
+                    }
+                });
+            }
+
+            const servicesData = {
+                gmn: {
+                    category: "Otimização & SEO",
+                    title: "Configuração Google Meu Negócio",
+                    price: "A partir de R$ 97,00",
+                    img: "images/google_meunegocio.png",
+                    desc: "Otimização completa do seu perfil no Google Maps, inclusão de palavras-chave estratégicas e configuração técnica para indexação prioritária para clientes que pesquisam perto de você.",
+                    features: [
+                        "Configuração e verificação oficial do perfil no Google Maps",
+                        "Seleção de categorias primárias e secundárias estratégicas",
+                        "Otimização de palavras-chave com maior volume de busca local",
+                        "Padronização de horários, catálogo, telefones e rotas de GPS",
+                        "Estratégia prática para coleta contínua de avaliações 5 estrelas"
+                    ],
+                    whatsapp: "Oi! Gostaria de contratar a Configuração do Google Meu Negócio."
+                },
+                biosite: {
+                    category: "Mobile First",
+                    title: "Criação de Biosite Profissional",
+                    price: "A partir de R$ 150,00",
+                    img: "images/biosite.jpg",
+                    desc: "Desenvolvimento de um site compacto de carregamento ultrarrápido, otimizado para conversão mobile e publicado em domínio próprio da sua marca. Perfeito para o link da bio do Instagram.",
+                    features: [
+                        "Carregamento instantâneo em menos de 1 segundo (Core Web Vitals verdes)",
+                        "Botões diretos para WhatsApp, chamada telefônica e rotas de GPS",
+                        "Catálogo de serviços e fotos em alta definição dos seus produtos",
+                        "Design 100% responsivo e personalizado com a identidade da sua marca",
+                        "Configuração de domínio próprio e certificado de segurança SSL grátis"
+                    ],
+                    extraLink: { text: "Veja Exemplos", url: "demos_biosites/demos.html" },
+                    whatsapp: "Oi! Gostaria de contratar a Criação de Biosite Profissional."
+                },
+                foto: {
+                    category: "Imagem & Autoridade",
+                    title: "Sessão Fotográfica Profissional",
+                    price: "A partir de R$ 197,00",
+                    img: "images/sessão.jpg",
+                    desc: "Produção de fotos em alta resolução do seu estabelecimento, produtos, fachada e equipe para transmitir autoridade máxima nas redes sociais e na primeira dobra do Google Maps.",
+                    features: [
+                        "Ensaio fotográfico profissional de fachada, ambiente e produtos",
+                        "Tratamento digital e calibragem de iluminação cinematográfica",
+                        "Arquivos prontos em alta resolução para web, redes e impressão",
+                        "Upload estratégico direto no seu perfil do Google Maps",
+                        "Atendimento presencial no Distrito Federal e entorno"
+                    ],
+                    whatsapp: "Oi! Gostaria de agendar uma Sessão Fotográfica Profissional."
+                },
+                placa: {
+                    category: "Hardware Inteligente",
+                    title: "Plaquinha Premium NFC",
+                    price: "A partir de R$ 89,90",
+                    img: "images/display_A5.jpeg",
+                    desc: "Display físico de mesa em acrílico premium com chip NFC por aproximação e QR Code gravado. Clientes avaliam no Google ou abrem seu biosite em 3 segundos.",
+                    features: [
+                        "Chip NFC NTAG integrado com leitura ultra veloz",
+                        "QR Code de contingência para aparelhos sem NFC",
+                        "Impressão em alta definição e acabamento refinado",
+                        "Zero baterias ou recargas necessárias",
+                        "Configuração e linkagem direta inclusas"
+                    ],
+                    extraLink: { text: "Tabela de Preços", url: "tabela-de-precos.html" },
+                    whatsapp: "Oi! Gostaria de encomendar a Plaquinha Premium NFC."
+                },
+                combo: {
+                    category: "Ecossistema Completo",
+                    title: "Solução Completa Integrada",
+                    price: "A partir de R$ 227,00",
+                    img: "images/plaquinha_simples.jpeg",
+                    desc: "A união de hardware inteligente e presença digital. Seus clientes aproximam o smartphone da plaquinha física no balcão e já abrem instantaneamente seu biosite ou sua página de avaliações do Google.",
+                    features: [
+                        "Plaquinha física NFC inteligente personalizada para seu balcão",
+                        "Biosite profissional publicado em domínio próprio",
+                        "Otimização completa do Google Meu Negócio inclusa",
+                        "Zero baterias ou recargas: indução passiva por aproximação",
+                        "Entrega completa com suporte e acompanhamento"
+                    ],
+                    extraLink: { text: "Ver Pacotes", url: "pacotes-integrados.html" },
+                    whatsapp: "Oi! Gostaria de conhecer os Pacotes Integrados da Konnected."
+                },
+                software: {
+                    category: "Engenharia & Automação",
+                    title: "Desenvolvimento Sob Medida de Software",
+                    price: "A Consultar (Licença com Implantação)",
+                    img: "images/software_sob_medida.png",
+                    desc: "Desenvolvimento de software e sistemas web dedicados às regras exclusivas do seu negócio. Do controle de ordens de serviço e estoque ao fluxo financeiro e atendimento ao cliente, criamos plataformas eficientes, escaláveis e sem mensalidades abusivas de terceiros.",
+                    features: [
+                        "Arquitetura desenhada exclusivamente para os processos e rotinas da sua empresa",
+                        "Gestão integrada: ordens de serviço, catálogo de produtos e controle de estoque",
+                        "Módulo financeiro simplificado com relatórios gerenciais e fluxo de caixa",
+                        "Banco de dados seguro, controle de permissões por usuário e backup automático",
+                        "Implantação guiada completa, treinamento da equipe e suporte técnico contínuo"
+                    ],
+                    extraLink: { text: "Cases de Sucesso", url: "cases.html" },
+                    whatsapp: "Olá! Gostaria de solicitar um orçamento para Desenvolvimento Sob Medida de Software."
+                }
+            };
+
+            const modal = document.getElementById('service-modal');
+            const modalCard = document.getElementById('service-modal-card');
+            const modalCloseBtn = document.getElementById('modal-close-btn');
+            const modalImg = document.getElementById('modal-img');
+            const modalCategory = document.getElementById('modal-category');
+            const modalTitle = document.getElementById('modal-title');
+            const modalPrice = document.getElementById('modal-price');
+            const modalDesc = document.getElementById('modal-desc');
+            const modalFeatures = document.getElementById('modal-features');
+            const modalCtaWhatsapp = document.getElementById('modal-cta-whatsapp');
+            const modalCtaExtra = document.getElementById('modal-cta-extra');
+
+            function openModal(serviceKey) {
+                const data = servicesData[serviceKey];
+                if (!data || !modal) return;
+
+                modalImg.src = data.img;
+                modalImg.alt = data.title;
+                modalCategory.textContent = data.category;
+                modalTitle.textContent = data.title;
+                modalPrice.textContent = data.price;
+                modalDesc.textContent = data.desc;
+
+                modalFeatures.innerHTML = data.features.map(f => `
+                    <li class="flex items-start gap-2.5 text-[13px] text-slate-700">
+                        <span class="material-symbols-outlined text-slate-900 text-[18px] flex-shrink-0 mt-0.5">check_circle</span>
+                        <span>${f}</span>
+                    </li>
+                `).join('');
+
+                const encodedMsg = encodeURIComponent(data.whatsapp);
+                modalCtaWhatsapp.href = `https://wa.me/556199771492?text=${encodedMsg}`;
+
+                if (data.extraLink) {
+                    modalCtaExtra.href = data.extraLink.url;
+                    modalCtaExtra.textContent = data.extraLink.text;
+                    modalCtaExtra.classList.remove('hidden');
+                } else {
+                    modalCtaExtra.classList.add('hidden');
+                }
+
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                modal.classList.add('opacity-100', 'pointer-events-auto');
+                modalCard.classList.remove('scale-95');
+                modalCard.classList.add('scale-100');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                if (!modal) return;
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                modal.classList.remove('opacity-100', 'pointer-events-auto');
+                modalCard.classList.add('scale-95');
+                modalCard.classList.remove('scale-100');
+                document.body.style.overflow = '';
+            }
+
+            // Os cliques nos cards são tratados via delegação no listener do track (#apple-carousel-track)
+
+
+            if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closeModal();
+                });
+            }
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeModal();
+            });
+
+            // Mobile Menu Controller
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+                    if (isExpanded) {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                        if (mobileMenuIcon) mobileMenuIcon.textContent = 'menu';
+                    } else {
+                        mobileMenu.classList.remove('hidden');
+                        mobileMenuBtn.setAttribute('aria-expanded', 'true');
+                        if (mobileMenuIcon) mobileMenuIcon.textContent = 'close';
+                    }
+                });
+
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                        if (mobileMenuIcon) mobileMenuIcon.textContent = 'menu';
+                    });
+                });
+            }
         });
     </script>
+
+    <!-- Cart State Management -->
+    <script src="js/cart.js"></script>
+
+    <!-- NFC Field Background Animation -->
+    <script src="js/background-animation.js"></script>
+
 </body>
 
 </html>

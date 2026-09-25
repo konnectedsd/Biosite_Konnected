@@ -1,124 +1,305 @@
 <!DOCTYPE html>
-<html class="dark" lang="pt-BR">
+<html class="" lang="pt-BR">
+
 <head>
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval';">
 
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Konnected - Serviços e Produtos</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "cyber-black": "#050707",
-                        "deep-charcoal": "#0E1111",
-                        "dark-circuit": "#141919",
-                        "electric-emerald": "#28A789",
-                        "primary": "#66daba",
-                        "silver-light": "#E1E3E2",
-                        "muted-gray": "#86948E"
-                    },
-                    fontFamily: {
-                        "display-xl": ["Space Grotesk", "sans-serif"],
-                        "headline-lg": ["Space Grotesk", "sans-serif"],
-                        "headline-md": ["Space Grotesk", "sans-serif"],
-                        "body-lg": ["Inter", "sans-serif"],
-                        "headline-lg-mobile": ["Space Grotesk", "sans-serif"],
-                        "body-md": ["Inter", "sans-serif"],
-                        "label-sm": ["Inter", "sans-serif"]
-                    }
-                }
-            }
-        }
-    </script>
+    <meta name="description"
+        content="Konnected - Presença Digital Local. Soluções completas sob medida para destacar seu negócio físico no digital de forma unificada e moderna.">
+    <meta name="keywords" content="presença digital, biosite, nfc, google meu negócio, site para negócios locais">
+    <meta name="author" content="Konnected">
+    <meta property="og:title" content="Konnected - Presença Digital Local">
+    <meta property="og:description"
+        content="Soluções completas sob medida para destacar seu negócio físico no digital.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/biosite.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Konnected - Presença Digital Local">
+    <meta name="twitter:description" content="Destaque seu negócio físico no digital com a Konnected.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
 </head>
-<body class="antialiased selection:bg-electric-emerald selection:text-black min-h-screen relative flex flex-col">
-    
-    <!-- Animated Grid Background -->
-    <div class="cyber-bg"></div>
-    
-    <!-- Hero Gradient Mesh BG -->
-    <div class="hero-gradient-mesh opacity-50"></div>
 
-    <!-- Header / Nav -->
-    <header class="w-full relative z-50 pt-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex items-center justify-between">
-        <a href="index.html" class="flex items-center gap-2 text-silver-light/80 hover:text-primary transition-colors group">
-            <span class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
-            <span class="font-label-sm tracking-wider uppercase text-[12px]">Voltar</span>
-        </a>
-        <span class="font-label-sm text-[12px] tracking-widest uppercase text-silver-light/60 border border-silver-light/20 rounded-full px-4 py-1">Konnected</span>
+<body class="antialiased selection:bg-slate-900 selection:text-white min-h-screen relative flex flex-col bg-slate-100">
+
+    <!-- FULL-WIDTH RETANGULAR HEADER (Sticky Navigation — Minimalista Clean) -->
+    <header class="sticky top-0 z-40 w-full bg-white/80 backdrop-blur-md border-b border-slate-300/80 transition-all">
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Brand / Voltar -->
+            <div class="flex items-center gap-6">
+                <a href="index.html" class="flex items-center group select-none">
+                    <span class="font-headline-md text-[20px] sm:text-[22px] font-bold text-slate-900 tracking-tight group-hover:text-slate-700 transition-colors">
+                        Konnected
+                    </span>
+                </a>
+                <div class="h-4 w-px bg-slate-300 hidden sm:block"></div>
+                <a href="index.html" class="hidden sm:flex items-center gap-1.5 text-[13px] font-medium text-slate-600 hover:text-slate-900 transition-colors">
+                    <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+                    <span>Início</span>
+                </a>
+            </div>
+
+            <!-- Nav Links (Desktop) -->
+            <nav class="hidden md:flex items-center gap-6 lg:gap-7 text-[14px] font-medium font-body-md text-slate-600">
+                <a href="servicos-e-produtos.html" class="text-slate-900 font-semibold border-b-2 border-slate-900 pb-0.5">Serviços</a>
+                <a href="pacotes-integrados.html" class="hover:text-slate-900 transition-colors">Pacotes</a>
+                <a href="tabela-de-precos.html" class="hover:text-slate-900 transition-colors">Tabela de Preços</a>
+            </nav>
+
+            <!-- Actions: Cart + Quick Action + Mobile Menu Toggle -->
+            <div class="flex items-center gap-2 sm:gap-4">
+                <a href="carrinho.html" id="nav-cart-btn" class="relative p-2.5 min-w-[44px] min-h-[44px] rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-200/60 transition-colors flex items-center justify-center" aria-label="Abrir Carrinho">
+                    <span class="material-symbols-outlined text-[24px]">shopping_cart</span>
+                    <span id="nav-cart-counter" class="hidden absolute top-1 right-1 bg-slate-900 text-white font-mono text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-xs">0</span>
+                </a>
+                <a href="agendamento.html" class="hidden sm:inline-flex items-center gap-2 py-2 px-5 rounded-xl bg-slate-900 text-white font-label-sm text-[13px] font-semibold hover:bg-slate-800 transition-all shadow-xs">
+                    <span>Reunião</span>
+                    <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+                </a>
+                <!-- Mobile Hamburger Button -->
+                <button id="mobile-menu-btn"
+                    class="md:hidden p-2.5 min-w-[44px] min-h-[44px] rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-200/60 transition-colors flex items-center justify-center cursor-pointer"
+                    aria-label="Abrir Menu de Navegação" aria-expanded="false">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined text-[26px]">menu</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobile-menu"
+            class="hidden md:hidden border-t border-slate-200/80 bg-white/95 backdrop-blur-xl px-4 py-4 flex flex-col gap-2 shadow-lg transition-all">
+            <a href="index.html" class="mobile-nav-link flex items-center justify-between py-3 px-3.5 rounded-xl text-slate-800 hover:bg-slate-100 font-medium text-[15px] transition-colors">
+                <span class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-[20px] text-slate-600">home</span>
+                    Página Inicial
+                </span>
+                <span class="material-symbols-outlined text-[16px] text-slate-400">chevron_right</span>
+            </a>
+            <a href="servicos-e-produtos.html" class="mobile-nav-link flex items-center justify-between py-3 px-3.5 rounded-xl bg-slate-100 text-slate-900 font-semibold text-[15px] transition-colors">
+                <span class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-[20px] text-slate-900">inventory_2</span>
+                    Serviços & Produtos
+                </span>
+                <span class="material-symbols-outlined text-[16px] text-slate-400">chevron_right</span>
+            </a>
+            <a href="pacotes-integrados.html" class="mobile-nav-link flex items-center justify-between py-3 px-3.5 rounded-xl text-slate-800 hover:bg-slate-100 font-medium text-[15px] transition-colors">
+                <span class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-[20px] text-slate-600">loyalty</span>
+                    Pacotes Integrados
+                </span>
+                <span class="material-symbols-outlined text-[16px] text-slate-400">chevron_right</span>
+            </a>
+            <a href="cases.html" class="mobile-nav-link flex items-center justify-between py-3 px-3.5 rounded-xl text-slate-800 hover:bg-slate-100 font-medium text-[15px] transition-colors">
+                <span class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-[20px] text-slate-600">verified</span>
+                    Cases de Sucesso
+                </span>
+                <span class="material-symbols-outlined text-[16px] text-slate-400">chevron_right</span>
+            </a>
+            <a href="tabela-de-precos.html" class="mobile-nav-link flex items-center justify-between py-3 px-3.5 rounded-xl text-slate-800 hover:bg-slate-100 font-medium text-[15px] transition-colors">
+                <span class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-[20px] text-slate-600">payments</span>
+                    Tabela de Preços
+                </span>
+                <span class="material-symbols-outlined text-[16px] text-slate-400">chevron_right</span>
+            </a>
+            <div class="pt-2 border-t border-slate-200/80 mt-1">
+                <a href="agendamento.html" class="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-slate-900 text-white font-label-sm text-[14px] font-semibold hover:bg-slate-800 transition-all shadow-xs">
+                    <span>Agendar Reunião</span>
+                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                </a>
+            </div>
+        </div>
     </header>
 
     <main class="flex-grow relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col pt-16 pb-24">
-        
+
         <!-- Hero Title -->
         <div class="text-center mb-16 reveal">
-            <h1 class="font-headline-lg-mobile text-[32px] md:text-[56px] font-bold text-white mb-4 leading-tight text-gradient-reveal">
+            <h1
+                class="font-headline-lg-mobile text-[32px] md:text-[56px] font-bold text-slate-900 mb-4 leading-tight text-gradient-reveal">
                 Serviços e Produtos
             </h1>
-            <p class="font-body-md text-[16px] md:text-[18px] text-silver-light/80 max-w-2xl mx-auto">
-                Tudo o que o seu comércio local precisa para atrair, engajar e converter clientes do mundo físico ao digital.
+            <p class="font-body-md text-[16px] md:text-[18px] text-slate-600/80 max-w-2xl mx-auto">
+                Tudo o que o seu comércio local precisa para atrair, engajar e converter clientes do mundo físico ao
+                digital.
             </p>
         </div>
 
-        <!-- Serviços Digitais -->
-        <section class="mb-20">
-            <h2 class="font-headline-md text-[24px] text-white mb-8 border-b border-white/10 pb-4 inline-block reveal">Serviços Digitais</h2>
-            
-            <div class="flex flex-col gap-6">
-                
-                <!-- GMN -->
-                <div class="glass-panel p-6 rounded-xl border-t border-t-white/5 hover:border-primary transition-all duration-300 flex flex-col md:flex-row gap-6 items-center group reveal">
-                    <div class="w-full md:w-48 h-48 md:h-32 rounded-lg overflow-hidden flex-shrink-0 relative group-hover:shadow-image-glow transition-shadow">
-                        <img src="images/google_meunegocio.png" alt="Google Meu Negócio" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                    </div>
-                    <div class="flex flex-col flex-grow text-center md:text-left">
-                        <h3 class="font-headline-md text-[20px] text-primary mb-2">Configuração Google Meu Negócio</h3>
-                        <p class="font-body-md text-[14px] text-muted-gray leading-relaxed mb-4">
-                            Otimização completa do seu perfil no Google Maps, inclusão de palavras-chave estratégicas e configuração para indexação prioritária na sua região.
-                        </p>
-                        <span class="font-label-sm text-[12px] text-primary/80 uppercase tracking-wider">A partir de R$ 97,00</span>
-                    </div>
-                </div>
+        <!-- Serviços Digitais: Grid Aberto (Padrão Produtos Físicos) -->
+        <section class="mb-20 relative">
+            <!-- Header da Seção -->
+            <div class="mb-8 reveal">
+                <span class="font-label-sm text-[11px] uppercase tracking-widest text-slate-500 block mb-2 font-semibold">Portfólio de Soluções</span>
+                <h2 class="font-headline-md text-[26px] md:text-[34px] font-bold text-slate-900 tracking-tight leading-tight">
+                    Serviços Digitais
+                </h2>
+            </div>
 
-                <!-- Biosite -->
-                <div class="glass-panel p-6 rounded-xl border-t border-t-white/5 hover:border-primary transition-all duration-300 flex flex-col md:flex-row gap-6 items-center group reveal delay-100">
-                    <div class="w-full md:w-48 h-48 md:h-32 rounded-lg overflow-hidden flex-shrink-0 relative group-hover:shadow-image-glow transition-shadow">
-                        <img src="images/biosite.jpg" alt="Biosite Profissional" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                    </div>
-                    <div class="flex flex-col flex-grow text-center md:text-left">
-                        <h3 class="font-headline-md text-[20px] text-primary mb-2">Criação de Biosite Profissional</h3>
-                        <p class="font-body-md text-[14px] text-muted-gray leading-relaxed mb-4">
-                            Desenvolvimento de um site compacto de carregamento ultra-rápido, otimizado para conversão mobile e publicado em domínio próprio da sua marca.
-                        </p>
-                        <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
-                            <span class="font-label-sm text-[12px] text-primary/80 uppercase tracking-wider">A partir de R$ 150,00</span>
-                            <a href="demos_biosites/demos.html" class="inline-flex items-center gap-2 border border-primary/50 text-primary hover:bg-primary hover:text-black font-label-sm text-[12px] font-semibold uppercase tracking-wider py-1.5 px-4 rounded-lg transition-all duration-300">
-                                Veja exemplos
-                                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-                            </a>
+            <!-- Grid de Cards em 2 Colunas -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Card 1: Google Meu Negócio -->
+                <div class="glass-panel rounded-2xl overflow-hidden border border-slate-200/80 bg-white/70 hover:border-slate-400 hover:shadow-lux hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between cursor-pointer reveal"
+                    data-service="gmn">
+                    <div>
+                        <div class="aspect-[16/10] w-full overflow-hidden relative border-b border-slate-200/80">
+                            <img src="images/google_meunegocio.png" alt="Google Meu Negócio"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-white/90 backdrop-blur-md text-slate-800 text-[11px] font-semibold tracking-wider uppercase px-3 py-1 rounded-full border border-slate-200/70 shadow-sm">
+                                    Otimização & SEO
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-headline-md text-[20px] font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">
+                                Configuração Google Meu Negócio
+                            </h3>
+                            <p class="font-body-md text-[14px] text-muted-gray leading-relaxed mb-4">
+                                Otimização completa no Google Maps para seu comércio ser encontrado antes da concorrência com fotos, catálogo e rotas de GPS.
+                            </p>
                         </div>
                     </div>
+                    <div class="px-6 pb-6 pt-2 flex items-center justify-between border-t border-slate-100">
+                        <span class="font-mono text-[13px] font-semibold text-slate-900 uppercase tracking-wider">A partir de R$ 97,00</span>
+                        <span class="text-[13px] font-medium text-slate-700 group-hover:text-slate-950 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                            Ver detalhes <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                        </span>
+                    </div>
                 </div>
 
-                <!-- Sessão Fotográfica -->
-                <div class="glass-panel p-6 rounded-xl border-t border-t-white/5 hover:border-primary transition-all duration-300 flex flex-col md:flex-row gap-6 items-center group reveal delay-200">
-                    <div class="w-full md:w-48 h-48 md:h-32 rounded-lg overflow-hidden flex-shrink-0 relative group-hover:shadow-image-glow transition-shadow">
-                        <img src="images/sessão.jpg" alt="Sessão Fotográfica" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                <!-- Card 2: Criação de Biosite Profissional -->
+                <div class="glass-panel rounded-2xl overflow-hidden border border-slate-200/80 bg-white/70 hover:border-slate-400 hover:shadow-lux hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between cursor-pointer reveal delay-100"
+                    data-service="biosite">
+                    <div>
+                        <div class="aspect-[16/10] w-full overflow-hidden relative border-b border-slate-200/80">
+                            <img src="images/biosite.jpg" alt="Criação de Biosite Profissional"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
+                            <div class="absolute top-4 left-4 flex items-center gap-2">
+                                <span class="bg-white/90 backdrop-blur-md text-slate-800 text-[11px] font-semibold tracking-wider uppercase px-3 py-1 rounded-full border border-slate-200/70 shadow-sm">
+                                    Mobile First
+                                </span>
+                                <span class="bg-slate-900 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
+                                    Mais Vendido
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-headline-md text-[20px] font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">
+                                Criação de Biosite Profissional
+                            </h3>
+                            <p class="font-body-md text-[14px] text-muted-gray leading-relaxed mb-4">
+                                Site ultrarrápido compacto publicado em domínio próprio para centralizar pedidos no WhatsApp e converter visitas em clientes reais.
+                            </p>
+                        </div>
                     </div>
-                    <div class="flex flex-col flex-grow text-center md:text-left">
-                        <h3 class="font-headline-md text-[20px] text-primary mb-2">Sessão Fotográfica Profissional</h3>
-                        <p class="font-body-md text-[14px] text-muted-gray leading-relaxed mb-4">
-                            Produção de fotos em alta resolução do seu estabelecimento para destacar o seu negócio nas redes sociais e no Google Maps.
-                        </p>
-                        <span class="font-label-sm text-[12px] text-primary/80 uppercase tracking-wider">A partir de R$ 197,00</span>
+                    <div class="px-6 pb-6 pt-2 flex items-center justify-between border-t border-slate-100">
+                        <span class="font-mono text-[13px] font-semibold text-slate-900 uppercase tracking-wider">A partir de R$ 150,00</span>
+                        <span class="text-[13px] font-medium text-slate-700 group-hover:text-slate-950 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                            Ver detalhes <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Card 3: Sessão Fotográfica Profissional -->
+                <div class="glass-panel rounded-2xl overflow-hidden border border-slate-200/80 bg-white/70 hover:border-slate-400 hover:shadow-lux hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between cursor-pointer reveal"
+                    data-service="fotos">
+                    <div>
+                        <div class="aspect-[16/10] w-full overflow-hidden relative border-b border-slate-200/80">
+                            <img src="images/sessão.jpg" alt="Sessão Fotográfica Profissional"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-white/90 backdrop-blur-md text-slate-800 text-[11px] font-semibold tracking-wider uppercase px-3 py-1 rounded-full border border-slate-200/70 shadow-sm">
+                                    Imagem & Autoridade
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-headline-md text-[20px] font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">
+                                Sessão Fotográfica Profissional
+                            </h3>
+                            <p class="font-body-md text-[14px] text-muted-gray leading-relaxed mb-4">
+                                Produção de fotos em alta resolução da fachada, ambiente interno e produtos para passar credibilidade no Maps e redes sociais.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-2 flex items-center justify-between border-t border-slate-100">
+                        <span class="font-mono text-[13px] font-semibold text-slate-900 uppercase tracking-wider">A partir de R$ 197,00</span>
+                        <span class="text-[13px] font-medium text-slate-700 group-hover:text-slate-950 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                            Ver detalhes <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Card 4: Solução Completa Integrada -->
+                <div class="glass-panel rounded-2xl overflow-hidden border border-slate-200/80 bg-white/70 hover:border-slate-400 hover:shadow-lux hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between cursor-pointer reveal delay-100"
+                    data-service="combo">
+                    <div>
+                        <div class="aspect-[16/10] w-full overflow-hidden relative border-b border-slate-200/80">
+                            <img src="images/display_A5.jpeg" alt="Pacotes Integrados"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-white/90 backdrop-blur-md text-slate-800 text-[11px] font-semibold tracking-wider uppercase px-3 py-1 rounded-full border border-slate-200/70 shadow-sm">
+                                    Ecossistema Completo
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-headline-md text-[20px] font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">
+                                Solução Completa Integrada
+                            </h3>
+                            <p class="font-body-md text-[14px] text-muted-gray leading-relaxed mb-4">
+                                Plaquinha NFC inteligente de balcão integrada ao Biosite e Google Meu Negócio unificados em um único ecossistema.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-2 flex items-center justify-between border-t border-slate-100">
+                        <span class="font-mono text-[13px] font-semibold text-slate-900 uppercase tracking-wider">A partir de R$ 227,00</span>
+                        <span class="text-[13px] font-medium text-slate-700 group-hover:text-slate-950 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                            Ver detalhes <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Card 5: Desenvolvimento Sob Medida de Software -->
+                <div class="glass-panel rounded-2xl overflow-hidden border border-slate-200/80 bg-white/70 hover:border-slate-400 hover:shadow-lux hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between cursor-pointer reveal md:col-span-2 lg:col-span-1"
+                    data-service="software">
+                    <div>
+                        <div class="aspect-[16/10] w-full overflow-hidden relative border-b border-slate-200/80 bg-slate-900/5">
+                            <img src="images/software_sob_medida.png" alt="Desenvolvimento Sob Medida de Software"
+                                class="w-full h-full object-cover object-left-top group-hover:scale-105 transition-transform duration-700 ease-out">
+                            <div class="absolute top-4 left-4 flex items-center gap-2">
+                                <span class="bg-white/90 backdrop-blur-md text-slate-800 text-[11px] font-semibold tracking-wider uppercase px-3 py-1 rounded-full border border-slate-200/70 shadow-sm">
+                                    Engenharia & Automação
+                                </span>
+                                <span class="bg-slate-900 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
+                                    Enterprise
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-headline-md text-[20px] font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">
+                                Desenvolvimento Sob Medida de Software
+                            </h3>
+                            <p class="font-body-md text-[14px] text-muted-gray leading-relaxed mb-4">
+                                Sistemas web dedicados e plataformas customizadas para as regras do seu negócio: esteira de ordens de serviço, robô de WhatsApp, controle de estoque e conciliação financeira.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-2 flex items-center justify-between border-t border-slate-100">
+                        <span class="font-mono text-[13px] font-semibold text-slate-900 uppercase tracking-wider">A Consultar</span>
+                        <span class="text-[13px] font-medium text-slate-700 group-hover:text-slate-950 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                            Ver detalhes <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                        </span>
                     </div>
                 </div>
 
@@ -126,44 +307,91 @@
         </section>
 
         <!-- Produtos Físicos -->
-        <section>
-            <h2 class="font-headline-md text-[24px] text-white mb-8 border-b border-white/10 pb-4 inline-block reveal">Produtos Físicos</h2>
-            
+        <section class="mb-20">
+            <div class="mb-8 reveal">
+                <span class="font-label-sm text-[11px] uppercase tracking-widest text-slate-500 block mb-2 font-semibold">Displays Inteligentes</span>
+                <h2 class="font-headline-md text-[26px] md:text-[34px] font-bold text-slate-900 tracking-tight leading-tight">
+                    Produtos Físicos
+                </h2>
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                
+
                 <!-- Plaquinha Básica -->
-                <div class="glass-panel rounded-xl overflow-hidden border-t border-t-white/5 hover:border-primary transition-all duration-300 group reveal">
-                    <div class="aspect-[4/3] w-full overflow-hidden relative border-b border-dark-circuit">
-                        <img src="images/plaquinha_simples.jpeg" alt="Plaquinha Básica" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100">
+                <div class="glass-panel rounded-2xl overflow-hidden border border-slate-200/80 bg-white/70 hover:border-slate-400 hover:shadow-lux hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between reveal">
+                    <div>
+                        <div class="aspect-[16/10] w-full overflow-hidden relative border-b border-slate-200/80">
+                            <img src="images/plaquinha_simples.jpeg" alt="Plaquinha Básica"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-white/90 backdrop-blur-md text-slate-800 text-[11px] font-semibold tracking-wider uppercase px-3 py-1 rounded-full border border-slate-200/70 shadow-sm">
+                                    Display Balcão
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-headline-md text-[20px] font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">
+                                Plaquinha Básica
+                            </h3>
+                            <p class="font-body-md text-[14px] text-muted-gray leading-relaxed mb-4">
+                                Arte clean personalizada com o logo da sua marca e QR Code de avaliação direta para facilitar o feedback dos clientes no balcão.
+                            </p>
+                        </div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="font-headline-md text-[20px] text-primary mb-2">Plaquinha Básica</h3>
-                        <p class="font-body-md text-[14px] text-muted-gray leading-relaxed mb-4">
-                            Arte clean com o logo da sua marca e QR Code de avaliação direta para facilitar o feedback dos clientes.
-                        </p>
-                        <span class="font-label-sm text-[12px] text-primary/80 uppercase tracking-wider">A partir de R$ 44,90</span>
+                    <div class="px-6 pb-6 pt-2 flex items-center justify-between border-t border-slate-100">
+                        <span class="font-mono text-[13px] font-semibold text-slate-900 uppercase tracking-wider">A partir de R$ 44,90</span>
+                        <a href="https://wa.me/556199771492?text=Oi!%20Gostaria%20de%20pedir%20uma%20Plaquinha%20Básica." target="_blank" rel="noopener noreferrer"
+                            class="text-[13px] font-medium text-slate-700 hover:text-slate-950 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                            Pedir no WhatsApp <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                        </a>
                     </div>
                 </div>
 
                 <!-- Plaquinha NFC -->
-                <div class="glass-panel rounded-xl overflow-hidden border-t border-t-white/5 hover:border-primary transition-all duration-300 group reveal delay-100">
-                    <div class="aspect-[4/3] w-full overflow-hidden relative border-b border-dark-circuit">
-                        <img src="images/display_A5.jpeg" alt="Plaquinha Premium NFC" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100">
+                <div class="glass-panel rounded-2xl overflow-hidden border border-slate-200/80 bg-white/70 hover:border-slate-400 hover:shadow-lux hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between reveal delay-100">
+                    <div>
+                        <div class="aspect-[16/10] w-full overflow-hidden relative border-b border-slate-200/80">
+                            <img src="images/display_A5.jpeg" alt="Plaquinha Premium NFC"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
+                            <div class="absolute top-4 left-4 flex items-center gap-2">
+                                <span class="bg-white/90 backdrop-blur-md text-slate-800 text-[11px] font-semibold tracking-wider uppercase px-3 py-1 rounded-full border border-slate-200/70 shadow-sm">
+                                    Aproximação Inteligente
+                                </span>
+                                <span class="bg-slate-900 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
+                                    NFC Ativo
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-headline-md text-[20px] font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">
+                                Plaquinha Premium NFC
+                            </h3>
+                            <p class="font-body-md text-[14px] text-muted-gray leading-relaxed mb-4">
+                                Identidade visual completa com chip de aproximação inteligente NFC e QR Code integrado. Avaliação no Google em um único toque.
+                            </p>
+                        </div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="font-headline-md text-[20px] text-primary mb-2">Plaquinha Premium NFC</h3>
-                        <p class="font-body-md text-[14px] text-muted-gray leading-relaxed mb-4">
-                            Identidade visual completa com chip de aproximação inteligente NFC e QR Code integrado. Avaliação em um toque.
-                        </p>
-                        <span class="font-label-sm text-[12px] text-primary/80 uppercase tracking-wider">A partir de R$ 89,90</span>
+                    <div class="px-6 pb-6 pt-2 flex items-center justify-between border-t border-slate-100">
+                        <span class="font-mono text-[13px] font-semibold text-slate-900 uppercase tracking-wider">A partir de R$ 89,90</span>
+                        <a href="https://wa.me/556199771492?text=Oi!%20Gostaria%20de%20pedir%20uma%20Plaquinha%20Premium%20NFC." target="_blank" rel="noopener noreferrer"
+                            class="text-[13px] font-medium text-slate-700 hover:text-slate-950 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                            Pedir no WhatsApp <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                        </a>
                     </div>
                 </div>
 
             </div>
 
             <div class="mt-12 text-center reveal delay-200">
-                <a href="tabela-de-precos.html" class="inline-block bg-electric-emerald text-black font-label-sm text-[14px] font-semibold uppercase tracking-wider py-4 px-8 rounded-lg shadow-neon-glow hover:shadow-neon-glow-hover hover:scale-105 transition-all duration-300">
-                    PREÇOS INDIVIDUAIS
+                <a href="tabela-de-precos.html" class="btn-interactive">
+                    <div class="flex items-center justify-center gap-2.5">
+                        <div class="btn-dot"></div>
+                        <span class="btn-text-initial">Preços Individuais</span>
+                    </div>
+                    <div class="btn-text-hover">
+                        <span>Preços Individuais</span>
+                        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    </div>
                 </a>
             </div>
         </section>
@@ -171,37 +399,114 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="w-full py-12 border-t border-dark-circuit bg-cyber-black/50 backdrop-blur-sm relative z-10 mt-auto">
+    <footer class="w-full py-12 border-t border-slate-300/80 bg-white/40 backdrop-blur-md relative z-10 mt-auto">
         <div class="max-w-7xl mx-auto px-4 flex flex-col items-center gap-6">
             <div class="flex items-center gap-8">
-                <a href="https://wa.me/5561981659192?text=Oi!%20Quero%20saber%20mais%20sobre%20a%20Konnected" target="_blank" rel="noopener noreferrer" class="text-muted-gray hover:text-primary transition-colors flex flex-col items-center gap-2">
-                    <span class="material-symbols-outlined text-[24px]">chat</span>
-                    <span class="font-label-sm text-[10px] uppercase tracking-wider">WhatsApp</span>
+                <a href="https://wa.me/556199771492?text=Oi!%20Quero%20saber%20mais%20sobre%20a%20Konnected"
+                    target="_blank" rel="noopener noreferrer"
+                    class="text-slate-600 hover:text-slate-900 transition-colors flex flex-col items-center gap-2 group">
+                    <span
+                        class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">chat</span>
+                    <span class="font-label-sm text-[11px] uppercase tracking-wider font-medium">WhatsApp</span>
                 </a>
-                <a href="https://www.instagram.com/konnected.sd/" target="_blank" rel="noopener noreferrer" class="text-muted-gray hover:text-primary transition-colors flex flex-col items-center gap-2">
-                    <span class="material-symbols-outlined text-[24px]">photo_camera</span>
-                    <span class="font-label-sm text-[10px] uppercase tracking-wider">Instagram</span>
+                <a href="https://www.instagram.com/konnected.sd/" target="_blank" rel="noopener noreferrer"
+                    class="text-slate-600 hover:text-slate-900 transition-colors flex flex-col items-center gap-2 group">
+                    <span
+                        class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">photo_camera</span>
+                    <span class="font-label-sm text-[11px] uppercase tracking-wider font-medium">Instagram</span>
                 </a>
-                <a href="mailto:contato@konnected.sd" class="text-muted-gray hover:text-primary transition-colors flex flex-col items-center gap-2">
-                    <span class="material-symbols-outlined text-[24px]">mail</span>
-                    <span class="font-label-sm text-[10px] uppercase tracking-wider">E-mail</span>
+                <a href="mailto:konnected.sd@gmail.com"
+                    class="text-slate-600 hover:text-slate-900 transition-colors flex flex-col items-center gap-2 group">
+                    <span
+                        class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">mail</span>
+                    <span class="font-label-sm text-[11px] uppercase tracking-wider font-medium">E-mail</span>
                 </a>
             </div>
-            <p class="font-label-sm text-[10px] text-muted-gray/50 uppercase tracking-widest text-center mt-4">
-                Konnected © 2026<br/>
-                Presença Digital Local
-            </p>
+
+            <!-- Links de Conformidade Legal -->
+            <div class="flex items-center gap-6 text-[12px] font-body-md text-slate-500">
+                <a href="politica-privacidade.html"
+                    class="hover:text-slate-900 transition-colors underline-offset-4 hover:underline">Política de
+                    Privacidade</a>
+                <span>•</span>
+                <a href="termos-uso.html"
+                    class="hover:text-slate-900 transition-colors underline-offset-4 hover:underline">Termos de Uso</a>
+            </div>
+
+            <!-- Rodapé com identificação regulatória obrigatória (Decreto 7.962/2013 e CDC) -->
+            <div class="text-center text-[11px] font-body-md text-slate-500 border-t border-slate-200/80 pt-6 mt-2 max-w-2xl">
+                <p class="font-medium text-slate-700 mb-1">
+                    67.202.316 DIMITRI LOPES BARRETO • CNPJ: 67.202.316/0001-37
+                </p>
+                <p class="text-slate-500">
+                    Quadra QN 7 Conjunto 11 - Riacho Fundo I, Brasília - DF, CEP: 71805-711
+                </p>
+                <p class="text-slate-400 mt-1">
+                    WhatsApp: (61) 9977-1492 • E-mail: konnected.sd@gmail.com
+                </p>
+                <p class="mt-2 text-slate-400 font-mono text-[10px]">
+                    Konnected © 2026 • Presença Digital Local • Todos os direitos reservados.
+                </p>
+            </div>
         </div>
     </footer>
 
+    <!-- Modal de Detalhes Estilo Apple (Expansão do Card - Posicionado na Raiz) -->
+    <div id="service-modal" class="fixed inset-0 z-[9999] bg-slate-950/75 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 md:p-6 opacity-0 pointer-events-none transition-all duration-300">
+        <div id="service-modal-card" class="bg-white text-slate-900 rounded-2xl sm:rounded-3xl max-w-lg sm:max-w-xl w-full max-h-[82vh] overflow-y-auto shadow-2xl border border-slate-200/80 transform scale-95 transition-all duration-300 relative flex flex-col my-auto">
+            <div class="relative h-36 sm:h-44 md:h-48 w-full overflow-hidden flex-shrink-0 rounded-t-2xl sm:rounded-t-3xl">
+                <img id="modal-img" src="" alt="" class="w-full h-full object-cover object-left-top sm:object-center">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/35 to-transparent"></div>
+                <button id="modal-close-btn" class="absolute top-3 right-3 sm:top-4 sm:right-4 w-11 h-11 min-w-[44px] min-h-[44px] rounded-full bg-black/60 hover:bg-black/85 text-white backdrop-blur-md flex items-center justify-center transition active:scale-95 cursor-pointer shadow-md z-10" aria-label="Fechar modal de detalhes">
+                    <span class="material-symbols-outlined text-[22px]">close</span>
+                </button>
+                <div class="absolute bottom-3 sm:bottom-4 left-4 sm:left-5 right-4 sm:right-5 text-white">
+                    <span id="modal-category" class="bg-white/20 backdrop-blur-md text-white text-[10px] sm:text-[11px] font-semibold tracking-wider uppercase px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full border border-white/25 inline-block mb-1.5 shadow-sm"></span>
+                    <h3 id="modal-title" class="font-headline-md text-[18px] sm:text-[22px] font-bold text-white leading-tight"></h3>
+                </div>
+            </div>
+
+            <div class="p-4 sm:p-6 flex flex-col gap-3.5 sm:gap-4.5">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-200/80">
+                    <div>
+                        <span class="text-[11px] text-slate-500 uppercase tracking-wider font-semibold block">Investimento</span>
+                        <span id="modal-price" class="font-headline-md text-[17px] sm:text-[19px] font-bold text-slate-900"></span>
+                    </div>
+                    <span class="text-[11px] text-slate-700 bg-slate-100 border border-slate-300 px-2.5 py-0.5 rounded-full font-semibold">Entrega em até 7 dias</span>
+                </div>
+
+                <div>
+                    <h4 class="font-headline-md text-[13px] sm:text-[14px] font-bold text-slate-900 mb-1">Sobre este serviço</h4>
+                    <p id="modal-desc" class="font-body-md text-[12.5px] sm:text-[13px] text-slate-600 leading-relaxed"></p>
+                </div>
+
+                <div>
+                    <h4 class="font-headline-md text-[13px] sm:text-[14px] font-bold text-slate-900 mb-2">O que está incluído</h4>
+                    <ul id="modal-features" class="space-y-2"></ul>
+                </div>
+
+                <div class="pt-3 border-t border-slate-200 flex flex-col sm:flex-row items-center gap-2.5">
+                    <a id="modal-cta-whatsapp" href="" target="_blank" rel="noopener noreferrer"
+                        class="w-full sm:flex-1 bg-slate-900 hover:bg-slate-800 text-white font-label-sm text-[12px] sm:text-[13px] font-semibold uppercase tracking-wider py-3 px-5 rounded-xl shadow-lux transition text-center flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined text-[17px]">chat</span>
+                        Contratar pelo WhatsApp
+                    </a>
+                    <a id="modal-cta-extra" href=""
+                        class="w-full sm:w-auto border border-slate-300 hover:bg-slate-100 text-slate-800 font-label-sm text-[12px] sm:text-[13px] font-medium py-3 px-5 rounded-xl transition text-center hidden">
+                        Ver Mais
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- WhatsApp FAB -->
-    <a href="https://wa.me/5561981659192?text=Oi!%20Quero%20saber%20mais%20sobre%20a%20Konnected"
-       target="_blank"
-       rel="noopener noreferrer"
-       class="whatsapp-fab"
-       aria-label="Fale conosco pelo WhatsApp">
+    <a href="https://wa.me/556199771492?text=Oi!%20Quero%20saber%20mais%20sobre%20a%20Konnected" target="_blank"
+        rel="noopener noreferrer" class="whatsapp-fab group" aria-label="Fale conosco pelo WhatsApp">
         <span class="fab-ping"></span>
-        <span class="material-symbols-outlined text-white text-[28px] relative z-10">chat</span>
+        <svg class="w-7 h-7 text-white fill-current relative z-10 transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.048 2C6.502 2 2 6.502 2 12.048c0 1.77.462 3.498 1.34 5.02L2 22l5.08-1.332a10.02 10.02 0 0 0 4.968 1.309c5.546 0 10.048-4.502 10.048-10.048 0-2.684-1.045-5.207-2.943-7.105C17.255 3.045 14.732 2 12.048 2zm0 1.67c2.22 0 4.307.865 5.877 2.435a8.27 8.27 0 0 1 2.431 5.872c0 4.58-3.727 8.307-8.307 8.307-1.637 0-3.15-.522-4.384-1.411l-.314-.228-3.256.854.869-3.176-.205-.327a8.28 8.28 0 0 1-1.267-4.38c0-4.58 3.727-8.307 8.307-8.307zm5.424 10.712c-.301-.15-1.78-.878-2.056-.978-.276-.1-.477-.15-.678.15-.2.301-.778.978-.954 1.18-.175.2-.35.225-.65.075-.301-.15-1.27-.468-2.42-1.493-.894-.798-1.5-1.783-1.676-2.083-.175-.3-.019-.462.13-.61.135-.135.301-.35.451-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.677-1.633-.927-2.235-.244-.587-.493-.507-.677-.516-.176-.008-.376-.01-.577-.01-.2 0-.526.075-.802.375-.276.3-1.053 1.028-1.053 2.508s1.078 2.908 1.228 3.109c.15.2 2.122 3.24 5.14 4.542.719.31 1.28.495 1.718.634.722.229 1.379.197 1.9.119.58-.088 1.78-.727 2.03-1.428.25-.7.25-1.303.175-1.428-.075-.125-.275-.2-.576-.35z"/>
+        </svg>
     </a>
 
     <!-- Scripts -->
@@ -245,17 +550,199 @@
                 }
             });
 
-            if (window.matchMedia('(hover: hover)').matches) {
-                const glow = document.createElement('div');
-                glow.classList.add('cursor-glow');
-                document.body.appendChild(glow);
-                
-                document.addEventListener('mousemove', (e) => {
-                    glow.style.left = e.clientX + 'px';
-                    glow.style.top = e.clientY + 'px';
+
+
+            // ==========================================================================
+            // Dados dos Serviços para o Modal Estilo Apple
+            // ==========================================================================
+            const servicesData = {
+                gmn: {
+                    category: "Otimização & SEO",
+                    title: "Configuração Google Meu Negócio",
+                    price: "A partir de R$ 97,00",
+                    img: "images/google_meunegocio.png",
+                    desc: "Otimização completa do seu perfil no Google Maps, inclusão de palavras-chave estratégicas e configuração técnica para indexação prioritária para clientes que pesquisam perto de você.",
+                    features: [
+                        "Configuração e verificação oficial do perfil no Google Maps",
+                        "Seleção de categorias primárias e secundárias estratégicas",
+                        "Otimização de palavras-chave com maior volume de busca local",
+                        "Padronização de horários, catálogo, telefones e rotas de GPS",
+                        "Estratégia prática para coleta contínua de avaliações 5 estrelas"
+                    ],
+                    whatsapp: "Oi! Gostaria de contratar a Configuração do Google Meu Negócio."
+                },
+                biosite: {
+                    category: "Mobile First",
+                    title: "Criação de Biosite Profissional",
+                    price: "A partir de R$ 150,00",
+                    img: "images/biosite.jpg",
+                    desc: "Desenvolvimento de um site compacto de carregamento ultrarrápido, otimizado para conversão mobile e publicado em domínio próprio da sua marca. Perfeito para o link da bio do Instagram.",
+                    features: [
+                        "Carregamento instantâneo em menos de 1 segundo (Core Web Vitals verdes)",
+                        "Botões diretos para WhatsApp, chamada telefônica e rotas de GPS",
+                        "Catálogo de serviços e fotos em alta definição dos seus produtos",
+                        "Design 100% responsivo e personalizado com a identidade da sua marca",
+                        "Configuração de domínio próprio e certificado de segurança SSL grátis"
+                    ],
+                    extraLink: { text: "Veja Exemplos", url: "demos_biosites/demos.html" },
+                    whatsapp: "Oi! Gostaria de contratar a Criação de Biosite Profissional."
+                },
+                fotos: {
+                    category: "Imagem & Autoridade",
+                    title: "Sessão Fotográfica Profissional",
+                    price: "A partir de R$ 197,00",
+                    img: "images/sessão.jpg",
+                    desc: "Produção de fotos em alta resolução do seu estabelecimento, produtos, fachada e equipe para transmitir autoridade máxima nas redes sociais e na primeira dobra do Google Maps.",
+                    features: [
+                        "Ensaio fotográfico profissional de fachada, ambiente e produtos",
+                        "Tratamento digital e calibragem de iluminação cinematográfica",
+                        "Arquivos prontos em alta resolução para web, redes e impressão",
+                        "Upload estratégico direto no seu perfil do Google Maps",
+                        "Atendimento presencial no Distrito Federal e entorno"
+                    ],
+                    whatsapp: "Oi! Gostaria de agendar uma Sessão Fotográfica Profissional."
+                },
+                combo: {
+                    category: "Ecossistema Completo",
+                    title: "Solução Completa Integrada",
+                    price: "A partir de R$ 227,00",
+                    img: "images/display_A5.jpeg",
+                    desc: "A união de hardware inteligente e presença digital. Seus clientes aproximam o smartphone da plaquinha física no balcão e já abrem instantaneamente seu biosite ou sua página de avaliações do Google.",
+                    features: [
+                        "Plaquinha física NFC inteligente personalizada para seu balcão",
+                        "Biosite profissional publicado em domínio próprio",
+                        "Otimização completa do Google Meu Negócio inclusa",
+                        "Zero baterias ou recargas: indução passiva por aproximação",
+                        "Entrega completa com suporte e acompanhamento"
+                    ],
+                    extraLink: { text: "Ver Pacotes", url: "pacotes-integrados.html" },
+                    whatsapp: "Oi! Gostaria de conhecer os Pacotes Integrados da Konnected."
+                },
+                software: {
+                    category: "Engenharia & Automação",
+                    title: "Desenvolvimento Sob Medida de Software",
+                    price: "A Consultar (Licença com Implantação)",
+                    img: "images/software_sob_medida.png",
+                    desc: "Desenvolvimento de software e sistemas web dedicados às regras exclusivas do seu negócio. Do controle de ordens de serviço e estoque ao fluxo financeiro e atendimento ao cliente, criamos plataformas eficientes, escaláveis e sem mensalidades abusivas de terceiros.",
+                    features: [
+                        "Arquitetura desenhada exclusivamente para os processos e rotinas da sua empresa",
+                        "Gestão integrada: ordens de serviço, catálogo de produtos e controle de estoque",
+                        "Módulo financeiro simplificado com relatórios gerenciais e fluxo de caixa",
+                        "Banco de dados seguro, controle de permissões por usuário e backup automático",
+                        "Implantação guiada completa, treinamento da equipe e suporte técnico contínuo"
+                    ],
+                    extraLink: { text: "Cases de Sucesso", url: "cases.html" },
+                    whatsapp: "Olá! Gostaria de solicitar um orçamento para Desenvolvimento Sob Medida de Software."
+                }
+            };
+
+            // Modal Handlers
+            const modal = document.getElementById('service-modal');
+            const modalCard = document.getElementById('service-modal-card');
+            const modalCloseBtn = document.getElementById('modal-close-btn');
+            const modalImg = document.getElementById('modal-img');
+            const modalCategory = document.getElementById('modal-category');
+            const modalTitle = document.getElementById('modal-title');
+            const modalPrice = document.getElementById('modal-price');
+            const modalDesc = document.getElementById('modal-desc');
+            const modalFeatures = document.getElementById('modal-features');
+            const modalCtaWhatsapp = document.getElementById('modal-cta-whatsapp');
+            const modalCtaExtra = document.getElementById('modal-cta-extra');
+
+            function openModal(serviceKey) {
+                const data = servicesData[serviceKey];
+                if (!data || !modal) return;
+
+                modalImg.src = data.img;
+                modalImg.alt = data.title;
+                modalCategory.textContent = data.category;
+                modalTitle.textContent = data.title;
+                modalPrice.textContent = data.price;
+                modalDesc.textContent = data.desc;
+
+                modalFeatures.innerHTML = data.features.map(f => `
+                    <li class="flex items-start gap-2.5 text-[13px] text-slate-700">
+                        <span class="material-symbols-outlined text-slate-900 text-[18px] flex-shrink-0 mt-0.5">check_circle</span>
+                        <span>${f}</span>
+                    </li>
+                `).join('');
+
+                const encodedMsg = encodeURIComponent(data.whatsapp);
+                modalCtaWhatsapp.href = `https://wa.me/556199771492?text=${encodedMsg}`;
+
+                if (data.extraLink) {
+                    modalCtaExtra.href = data.extraLink.url;
+                    modalCtaExtra.textContent = data.extraLink.text;
+                    modalCtaExtra.classList.remove('hidden');
+                } else {
+                    modalCtaExtra.classList.add('hidden');
+                }
+
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                modal.classList.add('opacity-100', 'pointer-events-auto');
+                modalCard.classList.remove('scale-95');
+                modalCard.classList.add('scale-100');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                if (!modal) return;
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                modal.classList.remove('opacity-100', 'pointer-events-auto');
+                modalCard.classList.add('scale-95');
+                modalCard.classList.remove('scale-100');
+                document.body.style.overflow = '';
+            }
+
+            document.querySelectorAll('[data-service]').forEach(card => {
+                card.addEventListener('click', () => {
+                    const service = card.getAttribute('data-service');
+                    openModal(service);
+                });
+            });
+
+            if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closeModal();
+                });
+            }
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal && !modal.classList.contains('pointer-events-none')) {
+                    closeModal();
+                }
+            });
+
+            // Mobile Menu Controller
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+                    if (isExpanded) {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                        if (mobileMenuIcon) mobileMenuIcon.textContent = 'menu';
+                    } else {
+                        mobileMenu.classList.remove('hidden');
+                        mobileMenuBtn.setAttribute('aria-expanded', 'true');
+                        if (mobileMenuIcon) mobileMenuIcon.textContent = 'close';
+                    }
+                });
+
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                        if (mobileMenuIcon) mobileMenuIcon.textContent = 'menu';
+                    });
                 });
             }
         });
     </script>
 </body>
+
 </html>

@@ -15,11 +15,7 @@
             theme: {
                 extend: {
                     colors: {
-                        "cyber-black": "#050707",
-                        "deep-charcoal": "#0E1111",
-                        "dark-circuit": "#141919",
-                        "electric-emerald": "#28A789",
-                        "primary": "#66daba",
+                        "primary": "#0F172A",
                         "silver-light": "#E1E3E2",
                         "muted-gray": "#86948E"
                     },
@@ -39,32 +35,56 @@
     <link rel="stylesheet" href="../styles.css" />
     <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
 </head>
-<body class="antialiased selection:bg-electric-emerald selection:text-black min-h-screen relative flex flex-col">
+<body class="antialiased selection:bg-slate-900 selection:text-white min-h-screen relative flex flex-col bg-slate-50 text-slate-900">
     
-    <!-- Animated Grid Background -->
-    <div class="cyber-bg"></div>
-    
-    <!-- Hero Gradient Mesh BG -->
-    <div class="hero-gradient-mesh opacity-50"></div>
+    <!-- FULL-WIDTH RETANGULAR HEADER (Sticky Navigation — Minimalista Clean) -->
+    <header class="sticky top-0 z-40 w-full bg-white/80 backdrop-blur-md border-b border-slate-300/80 transition-all">
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-6">
+                <a href="../index.html" class="flex items-center group select-none">
+                    <span class="font-headline-md text-[20px] sm:text-[22px] font-bold text-slate-900 tracking-tight group-hover:text-slate-700 transition-colors">
+                        Konnected
+                    </span>
+                </a>
+                <div class="h-4 w-px bg-slate-300 hidden sm:block"></div>
+                <a href="../index.html" class="hidden sm:flex items-center gap-1.5 text-[13px] font-medium text-slate-600 hover:text-slate-900 transition-colors">
+                    <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+                    <span>Início</span>
+                </a>
+            </div>
 
-    <!-- Header / Nav -->
-    <header class="w-full relative z-50 pt-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex items-center justify-between">
-        <a href="../servicos-e-produtos.html" class="flex items-center gap-2 text-silver-light/80 hover:text-primary transition-colors group">
-            <span class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
-            <span class="font-label-sm tracking-wider uppercase text-[12px]">Voltar</span>
-        </a>
-        <span class="font-label-sm text-[12px] tracking-widest uppercase text-silver-light/60 border border-silver-light/20 rounded-full px-4 py-1">Konnected</span>
+            <nav class="hidden md:flex items-center gap-6 lg:gap-7 text-[14px] font-medium font-body-md text-slate-600">
+                <a href="../servicos-e-produtos.html" class="hover:text-slate-900 transition-colors">Serviços</a>
+                <a href="../pacotes-integrados.html" class="hover:text-slate-900 transition-colors">Pacotes</a>
+                <a href="../tabela-de-precos.html" class="hover:text-slate-900 transition-colors">Tabela de Preços</a>
+            </nav>
+
+            <div class="flex items-center gap-3 sm:gap-4">
+                <a href="../carrinho.html" id="nav-cart-btn" class="relative p-2 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-200/60 transition-colors flex items-center justify-center" aria-label="Abrir Carrinho">
+                    <span class="material-symbols-outlined text-[24px]">shopping_cart</span>
+                    <span id="nav-cart-counter" class="hidden absolute -top-1 -right-1 bg-slate-900 text-white font-mono text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-xs">0</span>
+                </a>
+                <a href="../agendamento.html" class="hidden sm:inline-flex items-center gap-2 py-2 px-5 rounded-xl bg-slate-900 text-white font-label-sm text-[13px] font-semibold hover:bg-slate-800 transition-all shadow-xs">
+                    <span>Reunião</span>
+                    <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+                </a>
+            </div>
+        </div>
     </header>
 
-    <main class="flex-grow relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col pt-16 pb-24">
+    <main class="flex-grow relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col pt-12 pb-24">
         
         <!-- Hero Title -->
-        <div class="text-center mb-16 reveal">
-            <h1 class="font-headline-lg-mobile text-[32px] md:text-[56px] font-bold text-white mb-4 leading-tight text-gradient-reveal">
+        <div class="text-center mb-14 reveal">
+            <span class="font-label-sm text-[11px] tracking-widest uppercase text-slate-600 mb-2 block">
+                Demonstrações Interativas
+            </span>
+            <h1 class="font-headline-lg-mobile text-[32px] md:text-[52px] font-bold text-slate-900 mb-3 leading-tight text-gradient-reveal">
                 Escolha a Demo
             </h1>
-            <p class="font-body-md text-[16px] md:text-[18px] text-silver-light/80 max-w-2xl mx-auto">
-                Selecione o tipo de negócio para visualizar um biosite profissional em ação.
+            <div class="w-12 h-px bg-slate-300 mx-auto mb-4"></div>
+            <p class="font-body-md text-[16px] md:text-[18px] text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                Selecione o segmento para visualizar a experiência de um biosite profissional em tela cheia.
             </p>
         </div>
 
@@ -72,46 +92,58 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             
             <!-- Card 1: Barbearia -->
-            <a href="Bk.html" class="glass-panel p-6 rounded-xl border-t border-t-white/5 hover:border-primary transition-all duration-300 group reveal flex flex-col gap-5">
-                <div class="h-[160px] w-full rounded-lg overflow-hidden relative group-hover:shadow-image-glow transition-shadow border-b border-dark-circuit">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEeT40hhvhJzaH6YxJod-SUcPuQ2Z3iMmo-VXCUlpxWV09f--jByrutqxviyP_sP0Ljonf2wrkB9UZJyJoXeUYRhAWGgEFlK1OEqUmbJbANWDSAPgr-KEKwYd4t-CsmrU04jonfRM1qpRfzv4Q-kZpTrgc8vYHTkO-13_hZLDfAxxNKX32lo7FwcnKaGeyusDG2plL5qo_TZ1zGTknYkirp-7xk9Eb6Z2IyOySMccmepWIuIO9Zk2Qs5ri38dj8EERcyJOtCqdmA" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-100" alt="Barbearia Kings Logo">
+            <a href="Bk.html" class="glass-panel p-6 rounded-2xl border border-slate-200/80 bg-white/70 hover:border-slate-400 hover:shadow-lux hover:-translate-y-1 transition-all duration-300 group reveal flex flex-col gap-5">
+                <div class="h-[170px] w-full rounded-xl overflow-hidden relative border border-slate-200/60 bg-slate-100">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEeT40hhvhJzaH6YxJod-SUcPuQ2Z3iMmo-VXCUlpxWV09f--jByrutqxviyP_sP0Ljonf2wrkB9UZJyJoXeUYRhAWGgEFlK1OEqUmbJbANWDSAPgr-KEKwYd4t-CsmrU04jonfRM1qpRfzv4Q-kZpTrgc8vYHTkO-13_hZLDfAxxNKX32lo7FwcnKaGeyusDG2plL5qo_TZ1zGTknYkirp-7xk9Eb6Z2IyOySMccmepWIuIO9Zk2Qs5ri38dj8EERcyJOtCqdmA" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Barbearia Kings Logo">
                 </div>
-                <div class="flex flex-col gap-1">
-                    <span class="font-label-sm text-[10px] font-bold text-primary tracking-widest uppercase">BARBEARIA</span>
-                    <h2 class="font-headline-md text-xl font-bold text-white group-hover:text-primary transition-colors">Barbearia Kings</h2>
+                <div class="flex items-center justify-between">
+                    <div>
+                        <span class="font-label-sm text-[11px] font-bold text-slate-500 tracking-wider uppercase block mb-1">BARBEARIA</span>
+                        <h2 class="font-headline-md text-xl font-bold text-slate-900 group-hover:text-slate-700 transition-colors">Barbearia Kings</h2>
+                    </div>
+                    <span class="material-symbols-outlined text-slate-400 group-hover:text-slate-900 group-hover:translate-x-1 transition-all">arrow_forward</span>
                 </div>
             </a>
 
             <!-- Card 2: Studio Bella -->
-            <a href="SB.html" class="glass-panel p-6 rounded-xl border-t border-t-white/5 hover:border-primary transition-all duration-300 group reveal flex flex-col gap-5 delay-100">
-                <div class="h-[160px] w-full rounded-lg overflow-hidden relative group-hover:shadow-image-glow transition-shadow border-b border-dark-circuit">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDe7PVhFILjhfNjcsDQJfRM1QAetlqKmfClzQkt-XQidObuRJ5DPMatzzYewhoHhhTiH-KUCVat61nDM9rFEVgWmlPNm0nVI_F4MxfF_VQ7C2tatzOj9xgyTRbhhQN44UsR1shTfnjYAOHp_Bg7xQnuK6RQGxrPCX76h4Ok2geL0i1hN92BoA7-wciEKjRF8alzE4NuGiu7B6ftmE_EBSJi_DlQITDRZ-60Ff7UFmvz5g8eApP1o4naYCqOFBU7FPcParFVmnApHA" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-100" alt="Studio Bella Logo">
+            <a href="SB.html" class="glass-panel p-6 rounded-2xl border border-slate-200/80 bg-white/70 hover:border-slate-400 hover:shadow-lux hover:-translate-y-1 transition-all duration-300 group reveal flex flex-col gap-5 delay-100">
+                <div class="h-[170px] w-full rounded-xl overflow-hidden relative border border-slate-200/60 bg-slate-100">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDe7PVhFILjhfNjcsDQJfRM1QAetlqKmfClzQkt-XQidObuRJ5DPMatzzYewhoHhhTiH-KUCVat61nDM9rFEVgWmlPNm0nVI_F4MxfF_VQ7C2tatzOj9xgyTRbhhQN44UsR1shTfnjYAOHp_Bg7xQnuK6RQGxrPCX76h4Ok2geL0i1hN92BoA7-wciEKjRF8alzE4NuGiu7B6ftmE_EBSJi_DlQITDRZ-60Ff7UFmvz5g8eApP1o4naYCqOFBU7FPcParFVmnApHA" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Studio Bella Logo">
                 </div>
-                <div class="flex flex-col gap-1">
-                    <span class="font-label-sm text-[10px] font-bold text-primary tracking-widest uppercase">SALÃO DE BELEZA</span>
-                    <h2 class="font-headline-md text-xl font-bold text-white group-hover:text-primary transition-colors">Studio Bella</h2>
+                <div class="flex items-center justify-between">
+                    <div>
+                        <span class="font-label-sm text-[11px] font-bold text-slate-500 tracking-wider uppercase block mb-1">SALÃO DE BELEZA</span>
+                        <h2 class="font-headline-md text-xl font-bold text-slate-900 group-hover:text-slate-700 transition-colors">Studio Bella</h2>
+                    </div>
+                    <span class="material-symbols-outlined text-slate-400 group-hover:text-slate-900 group-hover:translate-x-1 transition-all">arrow_forward</span>
                 </div>
             </a>
 
             <!-- Card 3: Clínica Sorrir -->
-            <a href="CS.html" class="glass-panel p-6 rounded-xl border-t border-t-white/5 hover:border-primary transition-all duration-300 group reveal flex flex-col gap-5">
-                <div class="h-[160px] w-full rounded-lg overflow-hidden relative group-hover:shadow-image-glow transition-shadow border-b border-dark-circuit">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuj2igtXLmIk5gKNe9Ssi6RdxdOGIkCBZPFhpwReymE9JT1Of_WJ5l1lXK_bD8cM-7xn7512e9qlNPbfSo0RmkJvgFYpVSOjazI67BgNh0WttFSDb5yBp120R_846Md6Jxggbu7ha_g5VpT8W8LErWxTNtIMlu9Wvi7MDrlBXWxqhPXU7cZvlGOlqJBivT9jw0b7WRZosOVkWdxqjjXzR7q1e9qy_ALFGi41qR7NfC5TDJnsQlL2pvWRqgB7WSZBEvmTZxICMjyQ" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-100" alt="Clínica Sorrir Logo">
+            <a href="CS.html" class="glass-panel p-6 rounded-2xl border border-slate-200/80 bg-white/70 hover:border-slate-400 hover:shadow-lux hover:-translate-y-1 transition-all duration-300 group reveal flex flex-col gap-5">
+                <div class="h-[170px] w-full rounded-xl overflow-hidden relative border border-slate-200/60 bg-slate-100">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuj2igtXLmIk5gKNe9Ssi6RdxdOGIkCBZPFhpwReymE9JT1Of_WJ5l1lXK_bD8cM-7xn7512e9qlNPbfSo0RmkJvgFYpVSOjazI67BgNh0WttFSDb5yBp120R_846Md6Jxggbu7ha_g5VpT8W8LErWxTNtIMlu9Wvi7MDrlBXWxqhPXU7cZvlGOlqJBivT9jw0b7WRZosOVkWdxqjjXzR7q1e9qy_ALFGi41qR7NfC5TDJnsQlL2pvWRqgB7WSZBEvmTZxICMjyQ" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Clínica Sorrir Logo">
                 </div>
-                <div class="flex flex-col gap-1">
-                    <span class="font-label-sm text-[10px] font-bold text-primary tracking-widest uppercase">ODONTOLOGIA</span>
-                    <h2 class="font-headline-md text-xl font-bold text-white group-hover:text-primary transition-colors">Clínica Sorrir</h2>
+                <div class="flex items-center justify-between">
+                    <div>
+                        <span class="font-label-sm text-[11px] font-bold text-slate-500 tracking-wider uppercase block mb-1">ODONTOLOGIA</span>
+                        <h2 class="font-headline-md text-xl font-bold text-slate-900 group-hover:text-slate-700 transition-colors">Clínica Sorrir</h2>
+                    </div>
+                    <span class="material-symbols-outlined text-slate-400 group-hover:text-slate-900 group-hover:translate-x-1 transition-all">arrow_forward</span>
                 </div>
             </a>
 
             <!-- Card 4: Atelier Modo -->
-            <a href="AM.html" class="glass-panel p-6 rounded-xl border-t border-t-white/5 hover:border-primary transition-all duration-300 group reveal flex flex-col gap-5 delay-100">
-                <div class="h-[160px] w-full rounded-lg overflow-hidden relative group-hover:shadow-image-glow transition-shadow border-b border-dark-circuit">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-kFXNzpU3t4gttwlS_sN6v4KVVty4YpddCLVQtf6KsR_r41MRQXiSZLL22-hqHBXWATXlm4HxSOEJC31I94jgjDx9g8m7UfZGPD3eOwetG2qukfvVpoW1KGTPrLGHWJtiF5F035N76uqxQsyZrq4BbrxlMvdO8KkH_37qpfRE3lMUAoYEbmgsYUI8wdqoiS_RPTOr3ZSoIxU4lc7dqAfuPeCjq9rzwl6MuQbmEvArJZzx9hENVSp8hK0gkCuvzdqqrmzwTyr8cQ" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-100" alt="Atelier Modo Logo">
+            <a href="AM.html" class="glass-panel p-6 rounded-2xl border border-slate-200/80 bg-white/70 hover:border-slate-400 hover:shadow-lux hover:-translate-y-1 transition-all duration-300 group reveal flex flex-col gap-5 delay-100">
+                <div class="h-[170px] w-full rounded-xl overflow-hidden relative border border-slate-200/60 bg-slate-100">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-kFXNzpU3t4gttwlS_sN6v4KVVty4YpddCLVQtf6KsR_r41MRQXiSZLL22-hqHBXWATXlm4HxSOEJC31I94jgjDx9g8m7UfZGPD3eOwetG2qukfvVpoW1KGTPrLGHWJtiF5F035N76uqxQsyZrq4BbrxlMvdO8KkH_37qpfRE3lMUAoYEbmgsYUI8wdqoiS_RPTOr3ZSoIxU4lc7dqAfuPeCjq9rzwl6MuQbmEvArJZzx9hENVSp8hK0gkCuvzdqqrmzwTyr8cQ" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Atelier Modo Logo">
                 </div>
-                <div class="flex flex-col gap-1">
-                    <span class="font-label-sm text-[10px] font-bold text-primary tracking-widest uppercase">MODA & ESTILO</span>
-                    <h2 class="font-headline-md text-xl font-bold text-white group-hover:text-primary transition-colors">Atelier Modo</h2>
+                <div class="flex items-center justify-between">
+                    <div>
+                        <span class="font-label-sm text-[11px] font-bold text-slate-500 tracking-wider uppercase block mb-1">MODA & ESTILO</span>
+                        <h2 class="font-headline-md text-xl font-bold text-slate-900 group-hover:text-slate-700 transition-colors">Atelier Modo</h2>
+                    </div>
+                    <span class="material-symbols-outlined text-slate-400 group-hover:text-slate-900 group-hover:translate-x-1 transition-all">arrow_forward</span>
                 </div>
             </a>
 
@@ -119,11 +151,11 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="w-full py-12 border-t border-dark-circuit bg-cyber-black/50 backdrop-blur-sm relative z-10 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col items-center gap-6">
-            <p class="font-label-sm text-[10px] text-muted-gray/50 uppercase tracking-widest text-center mt-4">
-                Konnected © 2026<br/>
-                Presença Digital Local
+    <footer class="w-full py-10 border-t border-slate-200 bg-white/80 backdrop-blur-sm relative z-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col items-center gap-2">
+            <span class="font-headline-md text-[18px] font-bold text-slate-900">Konnected</span>
+            <p class="font-label-sm text-[12px] text-slate-500 uppercase tracking-widest text-center">
+                Presença Digital Local • 2026
             </p>
         </div>
     </footer>
@@ -169,16 +201,6 @@
                 }
             });
 
-            if (window.matchMedia('(hover: hover)').matches) {
-                const glow = document.createElement('div');
-                glow.classList.add('cursor-glow');
-                document.body.appendChild(glow);
-                
-                document.addEventListener('mousemove', (e) => {
-                    glow.style.left = e.clientX + 'px';
-                    glow.style.top = e.clientY + 'px';
-                });
-            }
         });
     </script>
 </body>
