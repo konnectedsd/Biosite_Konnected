@@ -527,6 +527,12 @@ body.full-width {
     overflow: hidden;
 }
 
+@media (max-width: 767px) {
+    .site-background {
+        opacity: 0.70;
+    }
+}
+
 /* O SVG deve preencher toda a janela com visual contínuo */
 .site-background svg {
     width: 100%;

@@ -15,8 +15,12 @@ window.NFC_CONFIG = {
         color: '#0F172A',        // Cor grafite nobre e profunda
         opacityMin: 0.12,        // Opacidade das linhas das pontas
         opacityMax: 0.40,        // Opacidade das linhas centrais bem definidas
+        opacityMinMobile: 0.05,  // Opacidade atenuada no mobile para não competir com texto
+        opacityMaxMobile: 0.18,  // Opacidade máxima suave no mobile
         strokeWidthMin: 1.0,     // Espessura mínima (em pixels)
         strokeWidthMax: 2.0,     // Espessura máxima (em pixels)
+        strokeWidthMinMobile: 0.8, // Traço mais fino no mobile
+        strokeWidthMaxMobile: 1.3,
     },
 
     // 3. AURÉOLA AO REDOR DA PLAQUINHA 3D
@@ -166,12 +170,16 @@ window.NFC_CONFIG = {
                      bottomX.toFixed(1) + ',' + bottomY.toFixed(1)
             ].join(' ');
 
-            // Variação harmônica de opacidade e espessura
-            var opacitySpan = cfg.style.opacityMax - cfg.style.opacityMin;
-            var baseOpacity = (cfg.style.opacityMin + Math.sin(t * Math.PI) * opacitySpan).toFixed(3);
+            // Variação harmônica de opacidade e espessura (calibrada para mobile/desktop)
+            var effOpacityMin = isMobile ? cfg.style.opacityMinMobile : cfg.style.opacityMin;
+            var effOpacityMax = isMobile ? cfg.style.opacityMaxMobile : cfg.style.opacityMax;
+            var opacitySpan = effOpacityMax - effOpacityMin;
+            var baseOpacity = (effOpacityMin + Math.sin(t * Math.PI) * opacitySpan).toFixed(3);
 
-            var widthSpan = cfg.style.strokeWidthMax - cfg.style.strokeWidthMin;
-            var strokeWidth = (cfg.style.strokeWidthMin + (1 - Math.abs(t - 0.5) * 2) * widthSpan).toFixed(2);
+            var effWidthMin = isMobile ? cfg.style.strokeWidthMinMobile : cfg.style.strokeWidthMin;
+            var effWidthMax = isMobile ? cfg.style.strokeWidthMaxMobile : cfg.style.strokeWidthMax;
+            var widthSpan = effWidthMax - effWidthMin;
+            var strokeWidth = (effWidthMin + (1 - Math.abs(t - 0.5) * 2) * widthSpan).toFixed(2);
 
             var pathEl = document.createElementNS('http://www.w3.org/2000/svg', 'path');
             pathEl.setAttribute('d', d);
